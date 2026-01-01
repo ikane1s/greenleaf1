@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Callback.module.scss';
+import foto from '../../assets/svetlana.jpg';
 
 const CallbackButton = ({ onClick }) => {
   const [visible, setVisible] = useState(false);
@@ -17,7 +18,7 @@ const CallbackButton = ({ onClick }) => {
 
   return (
     <button className={styles.callbackButton} onClick={onClick}>
-      Заказать звонок
+      <img src={foto} alt="" />
     </button>
   );
 };
