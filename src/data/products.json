@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "category": "facial-skin-care",
+    "image": "/images/products/facial-cream.jpg",
+    "name": "Увлажняющий крем для лица",
+    "description": "Лёгкий увлажняющий крем для всех типов кожи, помогает удерживать влагу и делает кожу мягкой.",
+    "priceRetail": 1200,
+    "pricePartner": 950
+  },
+  {
+    "id": 2,
+    "category": "facial-skin-care",
+    "image": "/images/products/facial-serum.jpg",
+    "name": "Сыворотка для лица с витамином C",
+    "description": "Эффективная сыворотка, выравнивает тон кожи и придаёт сияние.",
+    "priceRetail": 1500,
+    "pricePartner": 1200
+  },
+  {
+    "id": 3,
+    "category": "decorative-cosmetics",
+    "image": "/images/products/lipstick.jpg",
+    "name": "Помада для губ",
+    "description": "Длительное покрытие, насыщенный цвет и увлажнение губ.",
+    "priceRetail": 800,
+    "pricePartner": 650
+  },
+  {
+    "id": 4,
+    "category": "decorative-cosmetics",
+    "image": "/images/products/eyeshadow-palette.jpg",
+    "name": "Палетка теней для век",
+    "description": "Насыщенные и стойкие оттенки для повседневного и вечернего макияжа.",
+    "priceRetail": 1200,
+    "pricePartner": 950
+  },
+  {
+    "id": 5,
+    "category": "body-skin-care",
+    "image": "/images/products/body-lotion.jpg",
+    "name": "Лосьон для тела",
+    "description": "Питательный лосьон с лёгкой текстурой, увлажняет и смягчает кожу.",
+    "priceRetail": 900,
+    "pricePartner": 700
+  },
+  {
+    "id": 6,
+    "category": "body-skin-care",
+    "image": "/images/products/body-scrub.jpg",
+    "name": "Скраб для тела с морской солью",
+    "description": "Мягко отшелушивает и обновляет кожу, делает её гладкой и свежей.",
+    "priceRetail": 1100,
+    "pricePartner": 900
+  }
+]
