@@ -9,6 +9,51 @@
     "pricePartner": 950
   },
   {
+    "id": 1,
+    "category": "facial-skin-care",
+    "image": "/images/products/facial-cream.jpg",
+    "name": "Увлажняющий крем для лица",
+    "description": "Лёгкий увлажняющий крем для всех типов кожи, помогает удерживать влагу и делает кожу мягкой.",
+    "priceRetail": 1200,
+    "pricePartner": 950
+  },
+  {
+    "id": 1,
+    "category": "facial-skin-care",
+    "image": "/images/products/facial-cream.jpg",
+    "name": "Увлажняющий крем для лица",
+    "description": "Лёгкий увлажняющий крем для всех типов кожи, помогает удерживать влагу и делает кожу мягкой.",
+    "priceRetail": 1200,
+    "pricePartner": 950
+  },
+  {
+    "id": 1,
+    "category": "facial-skin-care",
+    "image": "/images/products/facial-cream.jpg",
+    "name": "Увлажняющий крем для лица",
+    "description": "Лёгкий увлажняющий крем для всех типов кожи, помогает удерживать влагу и делает кожу мягкой.",
+    "priceRetail": 1200,
+    "pricePartner": 950
+  },
+  {
+    "id": 1,
+    "category": "facial-skin-care",
+    "image": "/images/products/facial-cream.jpg",
+    "name": "Увлажняющий крем для лица",
+    "description": "Лёгкий увлажняющий крем для всех типов кожи, помогает удерживать влагу и делает кожу мягкой.",
+    "priceRetail": 1200,
+    "pricePartner": 950
+  },
+  {
+    "id": 1,
+    "category": "facial-skin-care",
+    "image": "/images/products/facial-cream.jpg",
+    "name": "Увлажняющий крем для лица",
+    "description": "Лёгкий увлажняющий крем для всех типов кожи, помогает удерживать влагу и делает кожу мягкой.",
+    "priceRetail": 1200,
+    "pricePartner": 950
+  },
+  {
     "id": 2,
     "category": "facial-skin-care",
     "image": "/images/products/facial-serum.jpg",
