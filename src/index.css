@@ -2,6 +2,12 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
 :root {
   /* Основные цвета из логотипа */
   --primary-green: #84b626;

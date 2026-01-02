@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import styles from './Callback.module.scss';
-import foto from '../../assets/svetlana.jpg';
+import React, { useEffect, useState } from "react";
+import styles from "./Callback.module.scss";
+import foto from "../../assets/svetlana.jpg";
 
 const CallbackButton = ({ onClick }) => {
   const [visible, setVisible] = useState(false);
@@ -10,8 +10,11 @@ const CallbackButton = ({ onClick }) => {
       setVisible(window.scrollY > 300);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    // Проверяем сразу при монтировании
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   if (!visible) return null;
