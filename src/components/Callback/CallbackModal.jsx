@@ -11,11 +11,11 @@ const CallbackModal = ({ onClose }) => {
     setLoading(true);
     
     try {
-      await fetch('http://localhost:3001/api/callback', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ phone }),
-      });
+    await fetch('http://localhost:3001/api/callback', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ phone }),
+    });
       setSuccess(true);
       setTimeout(() => {
         onClose();

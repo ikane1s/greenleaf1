@@ -1,6 +1,7 @@
 import "./App.scss";
 import Catalog from "./pages/Catalog/Catalog";
 import Home from "./pages/Home";
+import ProductDetail from "./pages/ProductDetail/ProductDetail";
 import { Route, Routes } from "react-router-dom";
 import NotFound from "./pages/NotFound";
 import Header from "./components/Header";
@@ -17,6 +18,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/catalog/:category" element={<Catalog />} />
+        <Route path="/product/:id" element={<ProductDetail />} />
         <Route path="/become-a-partners" element={<Partners />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import productsData from "../../data/products.json";
 import styles from "./Catalog.module.scss";
 
@@ -47,6 +47,7 @@ const getPV = (pricePartner) => {
 
 const Catalog = () => {
   const { category } = useParams();
+  const navigate = useNavigate();
   const [sortBy, setSortBy] = useState("priceAsc");
   const [priceFilter, setPriceFilter] = useState({ min: "", max: "" });
   const [pvFilter, setPvFilter] = useState({ min: "", max: "" });
@@ -308,7 +309,11 @@ const Catalog = () => {
             <>
               <div className={styles.products}>
                 {paginatedProducts.map((product) => (
-                  <div key={product.id} className={styles.productCard}>
+                  <div
+                    key={product.id}
+                    className={styles.productCard}
+                    onClick={() => navigate(`/product/${product.id}`)}
+                  >
                     <img
                       src={product.image}
                       alt={product.name}
