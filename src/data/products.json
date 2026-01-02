@@ -2,100 +2,4473 @@
   {
     "id": 1,
     "category": "facial-skin-care",
-    "image": "/images/products/facial-cream.jpg",
-    "name": "Увлажняющий крем для лица",
-    "description": "Лёгкий увлажняющий крем для всех типов кожи, помогает удерживать влагу и делает кожу мягкой.",
-    "priceRetail": 1200,
-    "pricePartner": 950
-  },
-  {
-    "id": 1,
-    "category": "facial-skin-care",
-    "image": "/images/products/facial-cream.jpg",
-    "name": "Увлажняющий крем для лица",
-    "description": "Лёгкий увлажняющий крем для всех типов кожи, помогает удерживать влагу и делает кожу мягкой.",
-    "priceRetail": 1200,
-    "pricePartner": 950
-  },
-  {
-    "id": 1,
-    "category": "facial-skin-care",
-    "image": "/images/products/facial-cream.jpg",
-    "name": "Увлажняющий крем для лица",
-    "description": "Лёгкий увлажняющий крем для всех типов кожи, помогает удерживать влагу и делает кожу мягкой.",
-    "priceRetail": 1200,
-    "pricePartner": 950
-  },
-  {
-    "id": 1,
-    "category": "facial-skin-care",
-    "image": "/images/products/facial-cream.jpg",
-    "name": "Увлажняющий крем для лица",
-    "description": "Лёгкий увлажняющий крем для всех типов кожи, помогает удерживать влагу и делает кожу мягкой.",
-    "priceRetail": 1200,
-    "pricePartner": 950
-  },
-  {
-    "id": 1,
-    "category": "facial-skin-care",
-    "image": "/images/products/facial-cream.jpg",
-    "name": "Увлажняющий крем для лица",
-    "description": "Лёгкий увлажняющий крем для всех типов кожи, помогает удерживать влагу и делает кожу мягкой.",
-    "priceRetail": 1200,
-    "pricePartner": 950
-  },
-  {
-    "id": 1,
-    "category": "facial-skin-care",
-    "image": "/images/products/facial-cream.jpg",
-    "name": "Увлажняющий крем для лица",
-    "description": "Лёгкий увлажняющий крем для всех типов кожи, помогает удерживать влагу и делает кожу мягкой.",
-    "priceRetail": 1200,
-    "pricePartner": 950
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/терфазка.png",
+    "name": "Трехфазная жидкость для снятия макияжа с растительными экстрактами",
+    "priceRetail": 1338,
+    "pricePartner": "699 / 3pv"
   },
   {
     "id": 2,
     "category": "facial-skin-care",
-    "image": "/images/products/facial-serum.jpg",
-    "name": "Сыворотка для лица с витамином C",
-    "description": "Эффективная сыворотка, выравнивает тон кожи и придаёт сияние.",
-    "priceRetail": 1500,
-    "pricePartner": 1200
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/пенка-зеленый-чай-5.png",
+    "name": "Пенка для снятия макияжа с зеленым чаем",
+    "priceRetail": 766,
+    "pricePartner": "383 / 383 к / 0,50pv"
   },
   {
     "id": 3,
-    "category": "decorative-cosmetics",
-    "image": "/images/products/lipstick.jpg",
-    "name": "Помада для губ",
-    "description": "Длительное покрытие, насыщенный цвет и увлажнение губ.",
-    "priceRetail": 800,
-    "pricePartner": 650
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/гидро-масло.png",
+    "name": "Очищающий и увлажняющий мусс с аминокислотами",
+    "priceRetail": 952,
+    "pricePartner": "476 / 2,50pv"
   },
   {
     "id": 4,
-    "category": "decorative-cosmetics",
-    "image": "/images/products/eyeshadow-palette.jpg",
-    "name": "Палетка теней для век",
-    "description": "Насыщенные и стойкие оттенки для повседневного и вечернего макияжа.",
-    "priceRetail": 1200,
-    "pricePartner": 950
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/МУСС-АМИНОКИСЛОТНЫЙ.png",
+    "name": "Увлажняющий праймер под макияж",
+    "priceRetail": 1198,
+    "pricePartner": "599 / 0,50pv"
   },
   {
     "id": 5,
-    "category": "body-skin-care",
-    "image": "/images/products/body-lotion.jpg",
-    "name": "Лосьон для тела",
-    "description": "Питательный лосьон с лёгкой текстурой, увлажняет и смягчает кожу.",
-    "priceRetail": 900,
-    "pricePartner": 700
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-мицеллярная-вода-для-очищения-и-увлажнения-кожи-500-мл.png",
+    "name": "Мицеллярная вода для очищения и увлажнения кожи",
+    "priceRetail": 932,
+    "pricePartner": "466 / 2pv"
   },
   {
     "id": 6,
-    "category": "body-skin-care",
-    "image": "/images/products/body-scrub.jpg",
-    "name": "Скраб для тела с морской солью",
-    "description": "Мягко отшелушивает и обновляет кожу, делает её гладкой и свежей.",
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-Освежающее-очищающее-молочко-100г.png",
+    "name": "Освежающее очищающее молочко для кожи лица",
+    "priceRetail": 1178,
+    "pricePartner": "399 / 2pv"
+  },
+  {
+    "id": 7,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-Освежающий-увлажняющий-гель-для-контроля-жирности-75-мл.png",
+    "name": "Освежающий гель для контроля жирности кожи",
+    "priceRetail": 1500,
+    "pricePartner": "750 / 3pv"
+  },
+  {
+    "id": 8,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/очищение-камелия.png",
+    "name": "Очищающее средство для снятия макияжа с маслом семян камелии",
+    "priceRetail": 1398,
+    "pricePartner": "699 / 3pv"
+  },
+  {
+    "id": 9,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/паста-з-чай-4.png",
+    "name": "Увлажняющая очищающая паста для лица с зеленым чаем",
+    "priceRetail": 352,
+    "pricePartner": "176 / 176 купон / 0,20pv"
+  },
+  {
+    "id": 10,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-285-мл-Очищающее-молочко-для-лица-с-аминокислотами1-300x228-1.png",
+    "name": "Очищающее молочко для лица с аминокислотами",
+    "priceRetail": 1178,
+    "pricePartner": "589 / 3pv"
+  },
+  {
+    "id": 11,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-Самопенящееся-очищающее-молочко-с-аминокислотами-300x228-1.png",
+    "name": "Самопенящееся молочко для лица с аминокислотами",
+    "priceRetail": 1340,
+    "pricePartner": "699 / 3pv"
+  },
+  {
+    "id": 12,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Sonpheskin-Ниацинамидное-отбеливающее-очищающее-молочко-300x228-1.png",
+    "name": "Ниацинамидное отбеливающее очищающее молочко",
+    "priceRetail": 1332,
+    "pricePartner": "666 / 3pv"
+  },
+  {
+    "id": 13,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-200-г-Глубоко-очищающий-гель-для-лица-жирная-300x228-1.png",
+    "name": "Очищающий гель с аминокислотами для нормальной и жирной кожи",
+    "priceRetail": 934,
+    "pricePartner": "467 / 2pv"
+  },
+  {
+    "id": 14,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-200-г-Глубоко-очищающий-гель-сухая-300x228-1.png",
+    "name": "Очищающий гель с аминокислотами для нормальной и сухой кожи",
+    "priceRetail": 1000,
+    "pricePartner": "500 / 2pv"
+  },
+  {
+    "id": 15,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-Очищающее-масло-с-растительными-экстрактами-200мл-300x228-1.png",
+    "name": "Очищающее масло с растительными экстрактами",
+    "priceRetail": 1734,
+    "pricePartner": "867 / 4pv"
+  },
+  {
+    "id": 16,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-150-мл-Мужская-аминокислотная-прохладная-очищающая-пенка-300x225-1.png",
+    "name": "Мужская аминокислотная прохладная очищающая пенка",
+    "priceRetail": 1000,
+    "pricePartner": "500 / 2pv"
+  },
+  {
+    "id": 17,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-Ферментный-очищающий-порошок-300x228-1.png",
+    "name": "Ферментный очищающий порошок",
+    "priceRetail": 1934,
+    "pricePartner": "967 / 5pv"
+  },
+  {
+    "id": 18,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-Ферментный-очищающий-порошок-300x228-1.png",
+    "name": "Ферментный очищающий порошок",
+    "priceRetail": 1000,
+    "pricePartner": "500 / 2pv"
+  },
+  {
+    "id": 19,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/краб-для-лица-эксф-300x225-1.png",
+    "name": "Скраб для лица",
+    "priceRetail": 820,
+    "pricePartner": "410 / 2pv"
+  },
+  {
+    "id": 20,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ОЧИЩАЮЩЕЕ-ЖЕЛЕ-УЛУЧШАЮЩЕЕ-ЦВЕТ-ЛИЦА-300x228-1.png",
+    "name": "Желе улучшающее цвет лица",
+    "priceRetail": 724,
+    "pricePartner": "362 / 2pv"
+  },
+  {
+    "id": 21,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/САЛФЕТКИ-МАКИЯЖ-300x228-1.png",
+    "name": "Влажные салфетки для снятия макияжа",
+    "priceRetail": 550,
+    "pricePartner": "275 / 275 купон / 0,20pv"
+  },
+  {
+    "id": 22,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Влажные-салфетки-для-снятия-макияжа-30шт-300x226-1.png",
+    "name": "Влажные салфетки для снятия макияжа",
+    "priceRetail": 268,
+    "pricePartner": "134 / 134 купон / 0,20pv"
+  },
+  {
+    "id": 23,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/гиалурон-300x225-1.png",
+    "name": "Увлажняющая сыворотка с гиалуроновой кислотой",
+    "priceRetail": 778,
+    "pricePartner": "389 / 2pv"
+  },
+  {
+    "id": 24,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/PINK-POINT-Вода-с-двухкомпонентной-дрожжевой-эссенцией-480-мл-300x228-1.png",
+    "name": "Вода с двухкомпонентной дрожжевой эссенцией",
+    "priceRetail": 996,
+    "pricePartner": "498 / 2pv"
+  },
+  {
+    "id": 25,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-Коллагеновая-сыворотка-190мл-300x228-1.png",
+    "name": "Вода с двухкомпонентной дрожжевой эссенцией",
+    "priceRetail": 996,
+    "pricePartner": "498 / 2pv"
+  },
+  {
+    "id": 26,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Сыворотка-красоты-SEALUXE-AQUA-300x228-1.png",
+    "name": "Сыворотка красоты aqua",
+    "priceRetail": 1378,
+    "pricePartner": "689 / 3pv"
+  },
+  {
+    "id": 27,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-20-мл-Сыворотка-для-борьбы-с-акне-300x228-1.png",
+    "name": "Сыворотка для борьбы с акне",
+    "priceRetail": 1500,
+    "pricePartner": "750 / 3pv"
+  },
+  {
+    "id": 28,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/увлажняющий-гель-125-мл-300x228-1.png",
+    "name": "Увлажняющий гель для лица",
+    "priceRetail": 2742,
+    "pricePartner": "1371 / 7pv"
+  },
+  {
+    "id": 29,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-210-мл-Омолаживающий-тонер1-150x150-1.png",
+    "name": "Омолаживаюший тонер",
+    "priceRetail": 4570,
+    "pricePartner": "2285/ 12pv"
+  },
+  {
+    "id": 30,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ТОНЕР-УПРУГОСТЬ-КОЖИ-300x228-1.png",
+    "name": "Увлажняющий тонер для упругости кожи",
+    "priceRetail": 5734,
+    "pricePartner": "2867 / 16pv"
+  },
+  {
+    "id": 31,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/эссенции-утро-вечер-300x226-1.png",
+    "name": "Набор эссенций для лица «утро — вечер»",
+    "priceRetail": 3792,
+    "pricePartner": "1896 / 10pv"
+  },
+  {
+    "id": 32,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-Астаксантиновая-сыворотка-с-микрогранулами-жемчуга-30-мл-300x228-1.png",
+    "name": "Астаксантиновая сыворотка с микрогранулами жемчуга",
+    "priceRetail": 1578,
+    "pricePartner": "789 / 3pv"
+  },
+  {
+    "id": 33,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Сыворотка-с-ретинолом-и-микрогранулами-жемчуга-SEALUXE-30мл-300x228-1.png",
+    "name": "Сыворотка с ретинолом и микрогранулами жемчуга",
+    "priceRetail": 1538,
+    "pricePartner": "769 / 3pv"
+  },
+  {
+    "id": 34,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/2фазы-сыв-300x225-2.png",
+    "name": "Двухфазная восстанавливающая сыворотка для лица",
+    "priceRetail": 3738,
+    "pricePartner": "1869 / 10pv"
+  },
+  {
+    "id": 35,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ЖЕЛАТИНОВЫЕ-КАПСУЛЫ-300x225-1.png",
+    "name": "Омолаживающая сыворотка в желатиновых капсулах",
+    "priceRetail": 1500,
+    "pricePartner": "2655 / 15pv"
+  },
+  {
+    "id": 36,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-200ml-Успокаивающий-увлажняющий-спрей-с-трава-центеллы-300x228-1.png",
+    "name": "Увлажняющий спрей с центеллой азиатской",
+    "priceRetail": 1500,
+    "pricePartner": "750 / 3pv"
+  },
+  {
+    "id": 37,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ДВОЙНОЙ-ЭЛЕКСИР-300x225-1.png",
+    "name": "Сыворотка с двумя растительными экстрактами",
+    "priceRetail": 4798,
+    "pricePartner": "2399 / 10pv"
+  },
+  {
+    "id": 38,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/масло-календулы-лицо-300x225-1.png",
+    "name": "Успокаивающее эфирное масло календулы для лица",
+    "priceRetail": 3030,
+    "pricePartner": "1515 / 8pv"
+  },
+  {
+    "id": 39,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Витамин-B-для-ухода-за-кожей-с-глицерином-300x228-1.png",
+    "name": "Витамин в для кожи лица с глицерином",
+    "priceRetail": 268,
+    "pricePartner": "134 / 0,50pv"
+  },
+  {
+    "id": 40,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/МОЛОЧКО-ВИТАМИН-Е-300x228-1.png",
+    "name": "Молочко с витамином е",
+    "priceRetail": 460,
+    "pricePartner": "230 / 230 купон / 0,50pv"
+  },
+  {
+    "id": 41,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ZHENXI-Отбеливающий-крем-от-пигментных-пятен-300x228-1.png",
+    "name": "Отбеливающий крем от пигментных пятен",
+    "priceRetail": 604,
+    "pricePartner": "302 / 302 купон / 0,50pv"
+  },
+  {
+    "id": 42,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/крем-с-лошадиным-маслом-300x226-1.png",
+    "name": "Крем для лица с конским жиром",
+    "priceRetail": 900,
+    "pricePartner": "450 / 450 купон / 0,50pv"
+  },
+  {
+    "id": 43,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-50-г-Увлажняющий-крем-с-ниацинамидом-300x228-1.png",
+    "name": "Увлажняющий крем с ниацинамидом",
+    "priceRetail": 1998,
+    "pricePartner": "999 / 5pv"
+  },
+  {
+    "id": 44,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-Увлажняющий-крем-с-микрогранулами-300x228-1.png",
+    "name": "Увлажняющий крем для лица с микрогранулами",
+    "priceRetail": 1644,
+    "pricePartner": "822 / 4,50pv"
+  },
+  {
+    "id": 45,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-Глубоко-увлажняющий-крем-с-морской-эссенцией-50-г-300x228-1.png",
+    "name": "Глубоко увлажняющий крем для лица с морской эссенцией",
+    "priceRetail": 5000,
+    "pricePartner": "2500 / 10pv"
+  },
+  {
+    "id": 46,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Sinos-Bose-крем-против-морщин50г-300x228-1.png",
+    "name": "Крем для лица от морщин с проксиланом",
+    "priceRetail": 2980,
+    "pricePartner": "1490 / 6pv"
+  },
+  {
+    "id": 47,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/для-век-прокси-300x225-1.png",
+    "name": "Крем для кожи вокруг глаз с проксиланом",
+    "priceRetail": 2056,
+    "pricePartner": "1028 / 6pv"
+  },
+  {
+    "id": 48,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/iLiFE-Крем-для-лица-с-протеином-и-медом-SOD-300x228-1.png",
+    "name": "Крем для лица с протеином и медеом (sod)",
+    "priceRetail": 390,
+    "pricePartner": "195 / 195 купон / 0,50pv"
+  },
+  {
+    "id": 49,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/отбеливающий-солнцезащитный-крем-300x227-1.png",
+    "name": "Отбеливающий солнцезащитный крем для лица",
+    "priceRetail": 1338,
+    "pricePartner": "669 / 2,50pv"
+  },
+  {
+    "id": 50,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Освежающий-солнцезащитный-лосьон-SPF45-300x238-1.png",
+    "name": "Освежающий солнцезащитный лосьон spf-45",
+    "priceRetail": 2000,
+    "pricePartner": "1000 / 4pv"
+  },
+  {
+    "id": 51,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Sealuxe-Прозрачный-изолирующий-многофункциональный-лосьон-35-мл-300x228-1.png",
+    "name": "Прозрачный изолирующий многофункциональный лосьон",
+    "priceRetail": 1300,
+    "pricePartner": "650 / 2pv"
+  },
+  {
+    "id": 52,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/крем-козье-молоко-300x228-1.png",
+    "name": "Увлажняющий крем из козьего молока",
+    "priceRetail": 696,
+    "pricePartner": "348 / 348 купон / 0,50pv"
+  },
+  {
+    "id": 53,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/тоник-БИФИДОДРОЖЖИ-120-мл-300x226-1.png",
+    "name": "Двухкомпонентный дрожжевой тоник",
+    "priceRetail": 1500,
+    "pricePartner": "750 / 3pv"
+  },
+  {
+    "id": 54,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/лосьон-БИФИДОДРОЖЖИ-100-мл-300x225-1.png",
+    "name": "Смягчающий лосьон на основе двухвалентных дрожжей",
+    "priceRetail": 2000,
+    "pricePartner": "1000 / 4pv"
+  },
+  {
+    "id": 55,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/эссенция-БИФИДОДРОЖЖИ-30-мл-300x228-1.png",
+    "name": "Смягчающая сыворотка на основе двухвалентных дрожжей",
+    "priceRetail": 2000,
+    "pricePartner": "1000 / 4pv"
+  },
+  {
+    "id": 56,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-укрепляющий-крем-с-бифидодрожжами-50г-300x226-1.png",
+    "name": "Укрепляющий крем для лица с бифидодрожжами",
+    "priceRetail": 1598,
+    "pricePartner": "799 / 4pv"
+  },
+  {
+    "id": 57,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/КРЕМ-ВОКРУГ-ГЛАЗ-БИФИДОДРОЖЖИ-300x228-1.png",
+    "name": "Укрепляющий крем вокруг глаз на основе двух дрожжей",
+    "priceRetail": 1500,
+    "pricePartner": "750 / 3pv"
+  },
+  {
+    "id": 58,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/молочко-ум-без-добавок-300x225-1.png",
+    "name": "Увлажняющее молочко для умывания",
+    "priceRetail": 598,
+    "pricePartner": "299 / 299 купон / 0,50pv"
+  },
+  {
+    "id": 59,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Увлажняющий-лосьон-SEALUXE-50-мл-300x228-1.png",
+    "name": "Увлажняющий лосьон с жемчугом",
+    "priceRetail": 788,
+    "pricePartner": "394 / 1,50pv"
+  },
+  {
+    "id": 60,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Увлажняющая-эмульсия-SEALUXE-75-мл-300x228-1.png",
+    "name": "Увлажняющая эмульсия с жемчугом",
+    "priceRetail": 748,
+    "pricePartner": "347 / 1pv"
+  },
+  {
+    "id": 61,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-30-г-Интенсивно-увлажняющий-крем-300x228-1.png",
+    "name": "Интенсивно увлажняющий крем для лица с жемчугом",
+    "priceRetail": 890,
+    "pricePartner": "445 / 2pv"
+  },
+  {
+    "id": 62,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-15-г-Жемчужный-крем-для-области-вокруг-глаз-300x225-1.png",
+    "name": "Крем для кожи вокруг глаз с жемчугом",
+    "priceRetail": 1734,
+    "pricePartner": "867 / 5pv"
+  },
+  {
+    "id": 63,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/очищ-ниацинамид-300x228-1.png",
+    "name": "Очищающее молочко с ниаминацидной эссенцией и экстрактом лука",
+    "priceRetail": 1080,
+    "pricePartner": "540 / 3pv"
+  },
+  {
+    "id": 64,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-120-мл-Смягчающий-успокаивающий-лосьон-для-лица-с-ниацинамидом-и-экстрактом-лука-300x228-1.png",
+    "name": "Смягчающий лосьон с ниацинамидом и экстрактом лука",
+    "priceRetail": 1934,
+    "pricePartner": "967 / 5pv"
+  },
+  {
+    "id": 65,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-100-мл-Смягчающая-успокаивающая-эмульсия-с-ниацинамидом-и-экстрактом-лука-1-300x228-1.png",
+    "name": "Смягчающая эмульсия с ниацинамидом и экстрактом лука",
+    "priceRetail": 1934,
+    "pricePartner": "967 / 5pv"
+  },
+  {
+    "id": 66,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-40г-Смягчающий-сыворотка-с-ниацинамидом-и-экстрактом-лука-300x228-1.png",
+    "name": "Смягчающая сыворотка с ниацинамидом и экстрактом лука",
+    "priceRetail": 1934,
+    "pricePartner": "967 / 5pv"
+  },
+  {
+    "id": 67,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-50-г-Смягчающий-крем-с-ниацинамидом-и-экстрактом-лука-300x228-1.png",
+    "name": "Смягчающий крем для лица с ниацинамидом и экстрактом лука",
+    "priceRetail": 1934,
+    "pricePartner": "967 / 5pv"
+  },
+  {
+    "id": 68,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-Тонизирующий-лосьон-с-экстрактом-огурца-200мл-300x228-1.png",
+    "name": "Тонизирующий лосьон с экстрактом огурца",
+    "priceRetail": 552,
+    "pricePartner": "276 / 1pv"
+  },
+  {
+    "id": 69,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Тоник-для-лица-огуречный-SEALUXE-500-мл-300x225-1.png",
+    "name": "Тонизирующий лосьон с экстрактом огурца",
+    "priceRetail": 778,
+    "pricePartner": "389 / 1,50pv"
+  },
+  {
+    "id": 70,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-Крем-огуречный-увлажняющий-50г-300x226-1.png",
+    "name": "Увлажняющий крем для лица огуречный",
+    "priceRetail": 1872,
+    "pricePartner": "436 / 2pv"
+  },
+  {
+    "id": 71,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-Увлажняющий-тонизирующий-лосьон-с-гиалуронатом-натрия-100-мл-300x225-1.png",
+    "name": "Увлажняющий тонизирующий лосьон с гиалуроновой кислотой",
+    "priceRetail": 1932,
+    "pricePartner": "966 / 4pv"
+  },
+  {
+    "id": 72,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/крем-гиалурон-сиалюкс-300x228-1.png",
+    "name": "Увлажняющий тонизирующий крем с гиалуроновой кислотой",
+    "priceRetail": 1712,
+    "pricePartner": "856 / 4pv"
+  },
+  {
+    "id": 73,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/КРЕМ-ГИАЛУР-ВОКРУГ-ГЛАЗ-СИАЛЮКС-300x237-1.png",
+    "name": "Увлажняющий освежающий крем вокруг глаз с гиалуроновой кислотой",
+    "priceRetail": 1532,
+    "pricePartner": "766 / 4pv"
+  },
+  {
+    "id": 74,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-100-мл-Увлажняющий-тонер-с-цветочным-мёдом-300x225-1.png",
+    "name": "Смягчающий и успокаивающий тоник для лица с цветочным медом",
+    "priceRetail": 1178,
+    "pricePartner": "642 / 642 купон / 0,50pv"
+  },
+  {
+    "id": 75,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-40-мл-Увлажняющая-сыворотка-с-цветочным-мёдом-300x225-1.png",
+    "name": "Увлажняющая сыворотка для лица с цветочным медом",
+    "priceRetail": 1130,
+    "pricePartner": "565 / 565 купон / 0,50pv"
+  },
+  {
+    "id": 76,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-120-мл-Смягчающий-успокаивающая-эмульсия-для-лица-с-цветочным-мёдом-100мл-300x225-1.png",
+    "name": "Увлажняющая эмульсия для лица с цветочным медом",
+    "priceRetail": 1130,
+    "pricePartner": "628 / 628 купон / 0,50pv"
+  },
+  {
+    "id": 77,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-50-г-Увлажняющий-крем-для-лица-с-цветочным-мёдом-300x225-1.png",
+    "name": "Увлажняющий крем для лица с цветочным медом",
+    "priceRetail": 1186,
+    "pricePartner": "593 / 593 купон / 0,50pv"
+  },
+  {
+    "id": 78,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/КРЕМ-ДЛЯ-ГЛАЗ-ЦВЕТОЧНЫЙ-МЕД-300x228-1.png",
+    "name": "Крем для кожи вокруг глаз с цветочным медом",
+    "priceRetail": 440,
+    "pricePartner": "220 / 220 купон / 0,50pv"
+  },
+  {
+    "id": 79,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-Вода-с-пробиотической-эссенцией-160-мл-300x228-1.png",
+    "name": "Вода с пробиотической эссенцией",
+    "priceRetail": 1358,
+    "pricePartner": "679 / 3pv"
+  },
+  {
+    "id": 80,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-лосьон-с-пробиотиками-130-мл-300x228-1.png",
+    "name": "Лосьон с пробиотической эссенцией",
+    "priceRetail": 1358,
+    "pricePartner": "679 / 3,50pv"
+  },
+  {
+    "id": 81,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-сыворотка-с-пробиотиками-40-мл-300x228-1.png",
+    "name": "Сыворотка с пробиотической эссенцией",
+    "priceRetail": 1132,
+    "pricePartner": "566 / 3,50pv"
+  },
+  {
+    "id": 82,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-крем-для-лица-с-пробитиками-50-г-300x228-1.png",
+    "name": "Крем для лица с пробиотиками",
+    "priceRetail": 1358,
+    "pricePartner": "679/ 4pv"
+  },
+  {
+    "id": 83,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Успокаивающий-лосьон-с-семенами-коикса-SEALUXE-500-мл-300x225-1.png",
+    "name": "Успокаивающий лосьон с семенами коикса",
+    "priceRetail": 778,
+    "pricePartner": "389 / 1,50pv"
+  },
+  {
+    "id": 84,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/крем-ячмень1-300x228-1.png",
+    "name": "Смягчающий крем с экстрактом ячменя",
+    "priceRetail": 1040,
+    "pricePartner": "520 / 2pv"
+  },
+  {
+    "id": 85,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-100-мл-Увлажняющая-лифтинг-эмульсия-возвращающая-коже-упругость-300x228-1.png",
+    "name": "Увлажняющая лифтинг — эмульсия для упругости кожи",
+    "priceRetail": 2376,
+    "pricePartner": "1188 / 5pv"
+  },
+  {
+    "id": 86,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-крем-для-лица-с-лифтинг-эффектом-50-г-300x228-1.png",
+    "name": "Крем для лица с лифтинг эффектом",
+    "priceRetail": 2000,
+    "pricePartner": "1000 / 4pv"
+  },
+  {
+    "id": 87,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ЛИФТИНГ-В-ГЛАЗ-ТЮЛЬПАН-300x228-1.png",
+    "name": "Увлажняющий крем вокруг глаз с лифтинг эффектом",
+    "priceRetail": 1588,
+    "pricePartner": "794 / 4pv"
+  },
+  {
+    "id": 88,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ТОНЕР-СИЯНИЕ-300x228-1.png",
+    "name": "Тонер для лица «сияние»",
+    "priceRetail": 4366,
+    "pricePartner": "2183 / 10pv"
+  },
+  {
+    "id": 89,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ТОНЕР-СИЯНИЕ1-300x228-1.png",
+    "name": "Эмульсия придающая свежесть и сияние",
+    "priceRetail": 5000,
+    "pricePartner": "2500 / 13pv"
+  },
+  {
+    "id": 90,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/СЫВОРОТКА-СИЯНИЕ-40-МЛ-300x225-1.png",
+    "name": "Сыворотка придающая свежесть и сияние",
+    "priceRetail": 3798,
+    "pricePartner": "1899 / 10pv"
+  },
+  {
+    "id": 91,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-100-мл-Смягчающий-лифтинг-лосьон-для-лица-с-эдельвейсом-1-300x228-1.png",
+    "name": "Смягчающий тоник с лифтинг эффектом и экстрактом эдельвейса",
+    "priceRetail": 4248,
+    "pricePartner": "2124 / 12pv"
+  },
+  {
+    "id": 92,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ЛОСЬОН-50-ЭДЕЛЬВЕЙС-300x228-1.png",
+    "name": "Смягчающий лосьон с лифтинг эффектом и экстрактом эдельвейса",
+    "priceRetail": 3136,
+    "pricePartner": "1568 / 8pv"
+  },
+  {
+    "id": 93,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/СЫВОРОТКА30-ЭДЕЛЬВЕЙС-300x228-1.png",
+    "name": "Смягчающая сыворотка с лифтинг эффектом и экстрактом эдельвейса",
+    "priceRetail": 3804,
+    "pricePartner": "1902 / 10pv"
+  },
+  {
+    "id": 94,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/КРЕМ-ЭДЕЛЬВЕЙС-300x228-1.png",
+    "name": "Подтягивающий крем с экстрактом эдельвейса",
+    "priceRetail": 2512,
+    "pricePartner": "1256 / 5pv"
+  },
+  {
+    "id": 95,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-увлажняющее-очищающее-молочко-100-300x228-1.png",
+    "name": "Увлажняющее очищающее молоко для кожи лица",
+    "priceRetail": 1310,
+    "pricePartner": "665 / 3pv"
+  },
+  {
+    "id": 96,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ВЕЧНАЯ-КРАСОТА-МОРЯ-ЛОСЬОН-300x228-1.png",
+    "name": "Увлажняющий тонер «вечная красота моря»",
+    "priceRetail": 5798,
+    "pricePartner": "2899 / 15pv"
+  },
+  {
+    "id": 97,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/лосьон-60мл-вечная-красота-моря-300x226-1.png",
+    "name": "Увлажняющий лосьон «вечная красота моря»",
+    "priceRetail": 4776,
+    "pricePartner": "2388 / 11pv"
+  },
+  {
+    "id": 98,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ВЕЧНАЯ-КРАСОТА-МОРЯ-СЫВОРОТКА-300x228-1.png",
+    "name": "Увлажняющая сыворотка «вечная красота моря»",
+    "priceRetail": 5622,
+    "pricePartner": "2811 / 15pv"
+  },
+  {
+    "id": 99,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ВЕЧНАЯ-КРАСОТА-МОРЯ-СЫВОРОТКА-АМПУЛА-300x228-1.png",
+    "name": "Омолаживающая сыворотка в ампулах «вечная красота моря»",
+    "priceRetail": 5310,
+    "pricePartner": "2790 / 12pv"
+  },
+  {
+    "id": 100,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-Ночной-увлажняющий-крем-50-г-300x228-1.png",
+    "name": "Ночной увлажняющий крем для лица «вечная красота моря»",
+    "priceRetail": 4776,
+    "pricePartner": "2388 / 8pv"
+  },
+  {
+    "id": 101,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-Ночной-увлажняющий-крем-50-г-300x228-1.png",
+    "name": "Увлажняющий крем для области вокруг глаз «вечная красота моря»",
+    "priceRetail": 5564,
+    "pricePartner": "2782 / 15pv"
+  },
+  {
+    "id": 102,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/вокруг-глаз-осветл-300x228-1.png",
+    "name": "Осветляющий крем для век",
+    "priceRetail": 5666,
+    "pricePartner": "2833 / 15pv"
+  },
+  {
+    "id": 103,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Подарочная-коробка-Sinos-Polypeptide-Collagen-против-морщин-300x225-1.png",
+    "name": "Косметическая сери с пептидным коллагеном",
+    "priceRetail": 13998,
+    "pricePartner": "6999 / 30pv"
+  },
+  {
+    "id": 104,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-Мгновенная-осветляющая-маска-от-мелких-морщин-2-300x228-1.png",
+    "name": "Мгновенная осветляющая маска от мелких морщин",
+    "priceRetail": 1132,
+    "pricePartner": "566 / 2pv"
+  },
+  {
+    "id": 105,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-маска-для-глаз-кошачий-глаз-300x226-1.png",
+    "name": "Маска для лица «кошачий глаз»",
+    "priceRetail": 938,
+    "pricePartner": "469 / 1,50pv"
+  },
+  {
+    "id": 106,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-Легкая-маска-для-лица-с-камелией-100г-300x228-1.png",
+    "name": "Легкая маска для лица с камелией",
+    "priceRetail": 1312,
+    "pricePartner": "656 / 2,50pv"
+  },
+  {
+    "id": 107,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/МАСКА-ДЛЯ-СИЯНИЯ-И-СВЕЖЕСТИ-300x226-1.png",
+    "name": "Освежающая маска для лица, придающая сияние",
+    "priceRetail": 1400,
+    "pricePartner": "700 / 1pv"
+  },
+  {
+    "id": 108,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/МАСКА-МЕДОВАЯ-300x225-1.png",
+    "name": "Золотая маска для лица с эффектом лифтинга",
+    "priceRetail": 2506,
+    "pricePartner": "1253 / 5pv"
+  },
+  {
+    "id": 109,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/МАСКА-2-КОМП-НОЧНАЯ-300x225-1.png",
+    "name": "Ночная двухкомпонентная восстанавливающая питательная маска для лица",
+    "priceRetail": 3818,
+    "pricePartner": "1909 / 10pv"
+  },
+  {
+    "id": 110,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/МАСКА-ЭНЗИМЫ1-300x225-1.png",
+    "name": "Омолаживающая тонизирующая маска для лица с энзимами",
+    "priceRetail": 2598,
+    "pricePartner": "1299 / 5pv"
+  },
+  {
+    "id": 111,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/МАСКА-НИАЦИНАМИД-И-СЛИВКИ-300x226-1.png",
+    "name": "Маска для лица с ниацинамидом и сливками",
+    "priceRetail": 2264,
+    "pricePartner": "1132 / 6pv"
+  },
+  {
+    "id": 112,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/желе-маскаl-300x228-1.png",
+    "name": "Очищающая маска-желе для лица",
+    "priceRetail": 1458,
+    "pricePartner": "729 / 3pv"
+  },
+  {
+    "id": 113,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-25-мл-Увлажняющая-маска-с-алоэ-300x225-1.png",
+    "name": "Увлажняющая маска для лица с алоэ",
     "priceRetail": 1100,
-    "pricePartner": 900
+    "pricePartner": "550 / 2pv"
+  },
+  {
+    "id": 114,
+    "category": "facial-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Sinos-25-мл-маска-с-пробиотической-эссенцией-300x225-1.png",
+    "name": "Маска с пробиотической эссенцией",
+    "priceRetail": 996,
+    "pricePartner": "498 / 2pv"
+  },
+  {
+    "id": 115,
+    "category": "decorative-cosmetics",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/PINK-POINT-Увлажняющий-праймер-под-макияж-30-мл.png",
+    "name": "Увлажняющий праймер под макияж",
+    "priceRetail": 1198,
+    "pricePartner": "599 / 0,50pv"
+  },
+  {
+    "id": 116,
+    "category": "decorative-cosmetics",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Жемчужный-крем-для-макияжа.png",
+    "name": "Жемчужный крем для макияжа",
+    "priceRetail": 1178,
+    "pricePartner": "589 / 3pv"
+  },
+  {
+    "id": 117,
+    "category": "decorative-cosmetics",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ПРАЙМЕР-ПОД-МАКИЯЖ.png",
+    "name": "Праймер — стик под макияж",
+    "priceRetail": 858,
+    "pricePartner": "429 / 2pv"
+  },
+  {
+    "id": 118,
+    "category": "decorative-cosmetics",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-30-г-База-под-макияж-с-экстрактом-жемчуга.png",
+    "name": "База под макияж с экстрактом жемчуга",
+    "priceRetail": 956,
+    "pricePartner": "478 / 2pv"
+  },
+  {
+    "id": 119,
+    "category": "decorative-cosmetics",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/PINK-POINT-Легкий-спрей-для-фиксации-макияжа-80мл.png",
+    "name": "Легкий спрей для фиксации макияжа",
+    "priceRetail": 1158,
+    "pricePartner": "579 / 3pv"
+  },
+  {
+    "id": 120,
+    "category": "decorative-cosmetics",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/PINK-POINT-Стойкий-консилер-для-коррекции-несовершенств-кожи-01.png",
+    "name": "Стойкий консилер для коррекции несовершенств кожи",
+    "priceRetail": 1196,
+    "pricePartner": "598 / 3pv"
+  },
+  {
+    "id": 121,
+    "category": "decorative-cosmetics",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-40-г-Омолаживающий-тональный-крем-с-кордицепсом-китайским-слоновая-кость.png",
+    "name": "Омолаживающий тональный крем с кордицепсом китайским",
+    "priceRetail": 3536,
+    "pricePartner": "1768 / 9pv"
+  },
+  {
+    "id": 122,
+    "category": "decorative-cosmetics",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-Увлажняющий-солнцезащитный-тональный-крем-30-мл-300x225-2.png",
+    "name": "Увлажняющий солнцезащитный тональный крем",
+    "priceRetail": 2352,
+    "pricePartner": "1176 / 6pv"
+  },
+  {
+    "id": 123,
+    "category": "decorative-cosmetics",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/PINK-POINT-Стойкая-мерцающая-тональная-основа-01-300x225-2.png",
+    "name": "Стойкая мерцающая тональная основа",
+    "priceRetail": 1452,
+    "pricePartner": "726 / 4pv"
+  },
+  {
+    "id": 124,
+    "category": "decorative-cosmetics",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/КУШОН-ИНТЕЛЛ-БЕЛЫЙ-300x228-2.png",
+    "name": "Интеллектуальный кушон с эффектом сияния",
+    "priceRetail": 2300,
+    "pricePartner": "1150 / 3pv"
+  },
+  {
+    "id": 125,
+    "category": "decorative-cosmetics",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-12г-Насыщенный-и-безупречный-стойкий-кушон-СС-крем-естественный-цвет-300x228-2.png",
+    "name": "Насыщенный и безупречный кушон сс — крем",
+    "priceRetail": 2198,
+    "pricePartner": "1099 / 4pv"
+  },
+  {
+    "id": 126,
+    "category": "decorative-cosmetics",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-Крем-пудра-естественного-оттенка-для-безупречного-макияжа-300x228-1.png",
+    "name": "Нкрем — пудра естественного оттенка для безупречного макияжа",
+    "priceRetail": 3558,
+    "pricePartner": "1779 / 10pv"
+  },
+  {
+    "id": 127,
+    "category": "decorative-cosmetics",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/КУШОН-УВЛ-ЧЕРНЫЙ-300x228-2.png",
+    "name": "Увлажняющий сс кушон для безупречного макияжа",
+    "priceRetail": 1558,
+    "pricePartner": "779 / 779 купон / 0,20pv"
+  },
+  {
+    "id": 128,
+    "category": "decorative-cosmetics",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/PINK-POINT-Увлажняющий-BB-крем-кушон-с-эффектом-сияния-15-г-15-г-300x228-2.png",
+    "name": "Увлажняющий вв — кушон с эффектом сияния",
+    "priceRetail": 1794,
+    "pricePartner": "897 / 3pv"
+  },
+  {
+    "id": 129,
+    "category": "decorative-cosmetics",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Прозрачная-и-мягкая-рассыпчатая-пудра-для-макияжа-300x228-2.png",
+    "name": "Прозрачная мягкая матирующая пудра",
+    "priceRetail": 1500,
+    "pricePartner": "750 / 3pv"
+  },
+  {
+    "id": 130,
+    "category": "decorative-cosmetics",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/PINK-POINT-Тушь-для-ресниц-_Объём-и-удлинение_-4-мл-300x228-2.png",
+    "name": "Тушь для ресниц «объем и удлинение»",
+    "priceRetail": 748,
+    "pricePartner": "374 / 374 купон / 0,50pv"
+  },
+  {
+    "id": 131,
+    "category": "decorative-cosmetics",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ЭССЕНЦИЯ-ДЛЯ-РЕСНИЦ-300x225-1.png",
+    "name": "Эссенция для ресниц",
+    "priceRetail": 3232,
+    "pricePartner": "1616 / 7pv"
+  },
+  {
+    "id": 132,
+    "category": "decorative-cosmetics",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/КАРАНДАШ-ДЛЯ-БРОВЕЙ-ОБЪЕМ-300x225-2.png",
+    "name": "Карандаш для бровей со стойким объемным цветом",
+    "priceRetail": 778,
+    "pricePartner": "389 / 2pv"
+  },
+  {
+    "id": 133,
+    "category": "decorative-cosmetics",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-тонкий-трехмерный-карандаш-для-бровей-300x228-2.png",
+    "name": "Тонкий трехмерный карандаш для бровей",
+    "priceRetail": 490,
+    "pricePartner": "245 / 1pv"
+  },
+  {
+    "id": 134,
+    "category": "decorative-cosmetics",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/СТОЙКАЯ-ПОДВОДКА-300x225-2.png",
+    "name": "Стойкая жидкая подводка для глаз с ультралегким нанесением",
+    "priceRetail": 632,
+    "pricePartner": "316 / 1,50pv"
+  },
+  {
+    "id": 135,
+    "category": "decorative-cosmetics",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/подводка-легкое-нанесение-300x225-2.png",
+    "name": "Жидкая подводка с легким нанесением",
+    "priceRetail": 3232,
+    "pricePartner": "225 / 225 купон / 0,10pv"
+  },
+  {
+    "id": 136,
+    "category": "decorative-cosmetics",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/SEALUXE-увлажняющая-губная-помада-R01-300x228-1.png",
+    "name": "Увлажняющая губная помада",
+    "priceRetail": 554,
+    "pricePartner": "277 / 1pv"
+  },
+  {
+    "id": 137,
+    "category": "decorative-cosmetics",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/01-лето-экватор-300x225-2.png",
+    "name": "Смягчающая увлажняющая губная помада «млечный путь»",
+    "priceRetail": 780,
+    "pricePartner": "390 / 2pv"
+  },
+  {
+    "id": 138,
+    "category": "decorative-cosmetics",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ХАМЕЛИОН-ПОМАДА-300x228-1.png",
+    "name": "Полупрозрачная увлажняющая помада — хамелион",
+    "priceRetail": 720,
+    "pricePartner": "360 / 2pv"
+  },
+  {
+    "id": 139,
+    "category": "decorative-cosmetics",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/маска-для-губ-сияние-1-300x226-1.png",
+    "name": "Увлажняющая маска для губ с эффектом сияния",
+    "priceRetail": 732,
+    "pricePartner": "366 / 366 купон / 0,50pv"
+  },
+  {
+    "id": 140,
+    "category": "decorative-cosmetics",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/БАЛЬЗАМ-ДЛЯ-ГУБ-РОЗА-300x228-1.png",
+    "name": "Бальзам для губ с эффектом глубокого увлажнения «аромат розы»",
+    "priceRetail": 338,
+    "pricePartner": "169 / 169 купон / 0,20pv"
+  },
+  {
+    "id": 141,
+    "category": "decorative-cosmetics",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Бальзам-для-губ-красный-гранат-300x226-1.png",
+    "name": "Бальзам для губ «красный гранат»",
+    "priceRetail": 338,
+    "pricePartner": "169 / 169 купон / 0,20pv"
+  },
+  {
+    "id": 142,
+    "category": "decorative-cosmetics",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/БАЛЬЗАМ-ДЛЯ-ГУБ-С-МАСЛОМ-ШИ-300x231-1.png",
+    "name": "Бальзам для губ с маслом ши",
+    "priceRetail": 3232,
+    "pricePartner": "240 / 240 купон / 0,50pv"
+  },
+  {
+    "id": 143,
+    "category": "decorative-cosmetics",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Скриншот-20-10-2023-140156-300x234-1.png",
+    "name": "Набор спонжей для макияжа",
+    "priceRetail": 534,
+    "pricePartner": "267 / 267 кунон / 0,10pv"
+  },
+  {
+    "id": 144,
+    "category": "decorative-cosmetics",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ТВ-ДУХИ-БЕЛЫЙ-ЧАЙ-300x228-1.png",
+    "name": "Твердые духи «белый чай»",
+    "priceRetail": 798,
+    "pricePartner": "399 / 0,50pv"
+  },
+  {
+    "id": 145,
+    "category": "decorative-cosmetics",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ТВ-ДУХИ-РОЗА-300x228-1.png",
+    "name": "Твердые духи «роза»",
+    "priceRetail": 798,
+    "pricePartner": "399 / 0,50pv"
+  },
+  {
+    "id": 146,
+    "category": "decorative-cosmetics",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ТВ-ДУХИ-ВИШНЯ-300x228-1.png",
+    "name": "Твердые духи «цветение вишни»",
+    "priceRetail": 798,
+    "pricePartner": "399 / 0,50pv"
+  },
+  {
+    "id": 147,
+    "category": "decorative-cosmetics",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ДУХИ-АВРОРА-300x227-1.png",
+    "name": "Духи «аврора»",
+    "priceRetail": 1354,
+    "pricePartner": "677 / 0,50pv"
+  },
+  {
+    "id": 148,
+    "category": "decorative-cosmetics",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ДУХИ-ШАРМ-300x227-1.png",
+    "name": "Духи «чары»",
+    "priceRetail": 1354,
+    "pricePartner": "677 / 0,50pv"
+  },
+  {
+    "id": 149,
+    "category": "decorative-cosmetics",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/духи-звезда-1-300x227-1.png",
+    "name": "Духи «звезда»",
+    "priceRetail": 1500,
+    "pricePartner": "750 / 3pv"
+  },
+  {
+    "id": 150,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/МОЛОЧКО-ФРУКТЫ-768x576-1.png",
+    "name": "Молочко для тела с фруктовыми кислотами",
+    "priceRetail": 1092,
+    "pricePartner": "546/ 3pv"
+  },
+  {
+    "id": 151,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Zhenxi-300-г-отбеливающий-лосьон-для-тела-768x584-1.png",
+    "name": "Отбеливающий лосьон для тела",
+    "priceRetail": 1358,
+    "pricePartner": "679 / 3pv"
+  },
+  {
+    "id": 152,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/BLUE-POINT-Лосьон-для-тела-с-ниацинамидом-для-макияжа-230-мл.png",
+    "name": "Лосьон для тела с ниацинамидом",
+    "priceRetail": 952,
+    "pricePartner": "476 / 2,50pv"
+  },
+  {
+    "id": 153,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/CARICH-Увлажняющий-гель-для-душа-с-гиалуроновой-кислотой-500мл-300x228-1.png",
+    "name": "Увлажняющий лосьон для тела с гиалуроновой кислотой",
+    "priceRetail": 994,
+    "pricePartner": "497 / 2pv"
+  },
+  {
+    "id": 154,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/CARICH-Ароматное-освежающее-мороженое-для-тела-Тающий-лед-200г-300x228-1.png",
+    "name": "Ароматное освежающее мороженное для тела «тающий лед»",
+    "priceRetail": 956,
+    "pricePartner": "478 / 1.50pv"
+  },
+  {
+    "id": 155,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Крем-Кали-Ши-увлажняющий500г-300x226-1.png",
+    "name": "Увлажняющий универсальный крем для тела и лица",
+    "priceRetail": 1116,
+    "pricePartner": "558 / 558 купон / 0,50pv"
+  },
+  {
+    "id": 156,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/РОЗОВЫЙ-АЛОЭ-300x228-1.png",
+    "name": "Розовый гель «алоэ вера»",
+    "priceRetail": 700,
+    "pricePartner": "350 / 350 купон / 0,70pv"
+  },
+  {
+    "id": 157,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/iLiFE-180-г-Увлажняющий-гель-с-алоэ-вера-300x228-1.png",
+    "name": "Увлажняющий гель алоэ вера",
+    "priceRetail": 700,
+    "pricePartner": "350 / 350 купон / 0,70pv"
+  },
+  {
+    "id": 158,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Ilife-85-г-успокаивающий-увлажняющий-крем-с-алоэ-вера-300x228-1.png",
+    "name": "Увлажняющий успокаивающий гель алоэ вера",
+    "priceRetail": 556,
+    "pricePartner": "278 / 1pv"
+  },
+  {
+    "id": 159,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/iLiFE-Восстановливающий-Гель-Алоэ（50-г）-300x225-1.png",
+    "name": "Восстанавливающий гель алоэ вера",
+    "priceRetail": 354,
+    "pricePartner": "177 / 177 купон / 0,50pv"
+  },
+  {
+    "id": 160,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/CARICH-Освежающий-антибактериальный-спрей-30-мл-300x228-1.png",
+    "name": "Освежающий антебактериальный спрей для тела",
+    "priceRetail": 580,
+    "pricePartner": "290 / 290 купон / 0,20pv"
+  },
+  {
+    "id": 161,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ШАРИКОВЫЙ-ДЕЗИК-300x228-1.png",
+    "name": "Шариковый дезодорант антиперспирант для тела",
+    "priceRetail": 732,
+    "pricePartner": "366 / 2pv"
+  },
+  {
+    "id": 162,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/крем-для-депиляции-с-растительным-экстрактом-300x228-1.png",
+    "name": "Крем для депиляции с растительным экстрактом",
+    "priceRetail": 796,
+    "pricePartner": "398 / 2pv"
+  },
+  {
+    "id": 163,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Восстанавливающий-крем-с-экстрактом-окопника-от-укусов-насекомых-15-г-шампунь-300x228-1.png",
+    "name": "Восстанавливающий крем с экстрактом окопника",
+    "priceRetail": 520,
+    "pricePartner": "260 / 1pv"
+  },
+  {
+    "id": 164,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/CARICH-Увлажняющий-крем-для-рук-с-маслом-ши-300-г-300x228-1.png",
+    "name": "Увлажняющий крем для рук с маслом ши",
+    "priceRetail": 798,
+    "pricePartner": "399 / 2pv"
+  },
+  {
+    "id": 165,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/CARICH-Увлажняющий-крем-для-рук-с-маслом-карите-50-г-300x228-1.png",
+    "name": "Увлажняющий крем для рук с маслом карите",
+    "priceRetail": 198,
+    "pricePartner": "99 / 99 купон / 0,20pv"
+  },
+  {
+    "id": 166,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/CARICH-Увлажняющий-крем-для-рук-с-алоэ-вера-50-г-300x228-1.png",
+    "name": "Увлажняющий крем для рук с алоэ вера",
+    "priceRetail": 198,
+    "pricePartner": "99 / 99 купон / 0,20pv"
+  },
+  {
+    "id": 167,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/КРЕМ-ДЛЯ-РУК-КОЛОКОЛЬЧИК-300x225-1.png",
+    "name": "Парфюмированный крем для рук «дикий колокольчик»",
+    "priceRetail": 776,
+    "pricePartner": "338 / 2pv"
+  },
+  {
+    "id": 168,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Green-Leaf-Комбинированный-увлажняющий-крем-для-рук-с-витаминами-30-г3-300x228-1.png",
+    "name": "Комбинированный увлажняющий крем для рук с витаминами",
+    "priceRetail": 798,
+    "pricePartner": "339 / 1,50pv"
+  },
+  {
+    "id": 169,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/крем-с-конским-маслом-300x226-1.png",
+    "name": "Восстанавливающий крем с конским маслом",
+    "priceRetail": 778,
+    "pricePartner": "389 / 0,50pv"
+  },
+  {
+    "id": 170,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/шарики-для-ванн-эф-масло-300x227-1.png",
+    "name": "Шарики для ножных ванн с цветочным ароматом и эфирными маслами",
+    "priceRetail": 950,
+    "pricePartner": "475 / 2pv"
+  },
+  {
+    "id": 171,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ШАРИКИ-ДЛЯ-НОГ-С-ТРАВАМИ-300x228-1.png",
+    "name": "Шарики для ножных ванн с травами и эфирными маслами",
+    "priceRetail": 1200,
+    "pricePartner": "600 / 3pv"
+  },
+  {
+    "id": 172,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/CARICH-Минеральная-соль-для-ванн-Океан-200г-300x228-1.png",
+    "name": "Минеральная соль для ванны «океан»",
+    "priceRetail": 778,
+    "pricePartner": "389 / 2pv"
+  },
+  {
+    "id": 173,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/CARICH-Гель-для-душа-с-эфирными-маслами-и-аминокислотами-ароматный-и-увлажняющий-650г-300x228-1.png",
+    "name": "Ароматный увлажняющий гель для душа с эфирными маслами и аминокислотами",
+    "priceRetail": 776,
+    "pricePartner": "338 / 1pv"
+  },
+  {
+    "id": 174,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Green-Leaf-500мл-Гель-для-душа-с-позолоченными-микрошариками-утренняя-роса-300x228-1.png",
+    "name": "Ароматный увлажняющий гель для душа с эфирными маслами и аминокислотами",
+    "priceRetail": 332,
+    "pricePartner": "166 / 166 купон / 1pv"
+  },
+  {
+    "id": 175,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Гель-для-душа-с-эфирными-маслами-и-аминокислотами-_Аромат-розы_1-300x225-1.png",
+    "name": "Увлажняющий гель для душа с эфирными маслами и аминокислотами «аромат розы»",
+    "priceRetail": 776,
+    "pricePartner": "388 / 1pv"
+  },
+  {
+    "id": 176,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/CARICH-Гель-для-душа-с-эфирными-маслами-и-аминокислотами-ароматный-и-увлажняющий-200г-300x228-1.png",
+    "name": "Увлажняющий гель для душа с эфирными маслами и аминокислотами «аромат розы»",
+    "priceRetail": 332,
+    "pricePartner": "166 / 166 купон / 1pv"
+  },
+  {
+    "id": 177,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/гель-для-душа-цветы-вишни-300x225-1.png",
+    "name": "Увлажняющий и питательный гель для душа «цветы вишни»",
+    "priceRetail": 1034,
+    "pricePartner": "517 / 2pv"
+  },
+  {
+    "id": 178,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Green-Leaf-Гель-для-душа-Сладкая-вишня-580-мл-300x225-1.png",
+    "name": "Гель для душа «сладкая вишня»",
+    "priceRetail": 556,
+    "pricePartner": "565 / 1pv"
+  },
+  {
+    "id": 179,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/гель-для-душа-ментол-300x225-1.png",
+    "name": "Освежающий бодрящий гель для душа «ментол»",
+    "priceRetail": 1030,
+    "pricePartner": "515 / 2pv"
+  },
+  {
+    "id": 180,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Освежающий-гель-для-душа-_Ледяная-мята_-300x225-1.png",
+    "name": "Освежающий гель для душа «ледяная мята»",
+    "priceRetail": 1030,
+    "pricePartner": "515 / 2pv"
+  },
+  {
+    "id": 181,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/гель-для-энергия-океана-300x225-1.png",
+    "name": "Парфюмированный гель для душа «энергия океана»",
+    "priceRetail": 1798,
+    "pricePartner": "899 / 3pv"
+  },
+  {
+    "id": 182,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ГЕЛЬ-ДУШ-БЕЛОЕ-СИЯНИЕ-300x225-1.png",
+    "name": "Парфюмированный гель для душа «белоснежное сияние»",
+    "priceRetail": 1798,
+    "pricePartner": "899 / 3pv"
+  },
+  {
+    "id": 183,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/CARICH-Гель-для-душа-с-эфирными-маслами-и-аминокислотами-аромат-розы-300x225-1.png",
+    "name": "Гель для душа с позолоченными микрошариками «любовное настроение»",
+    "priceRetail": 1598,
+    "pricePartner": "799 / 3pv"
+  },
+  {
+    "id": 184,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Greenleaf-Гель-для-душа-с-позолоченными-микрошариками-500мл-Любовное-настроение-300x225-1.png",
+    "name": "Гель для душа с позолоченными микрошариками «утренняя роса»",
+    "priceRetail": 1598,
+    "pricePartner": "799 / 3pv"
+  },
+  {
+    "id": 185,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/CARICH-Увлажняющий-гель-для-душа-с-гиалуроновой-кислотой-500мл-300x228-1.png",
+    "name": "Увлажняющий гель для душа с гиалуроновой кислотой",
+    "priceRetail": 994,
+    "pricePartner": "497 / 2pv"
+  },
+  {
+    "id": 186,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Мягкий-отбеливающий-гель-для-душа-500мл-300x228-1.png",
+    "name": "Мягкий отбеливающий гель для душа",
+    "priceRetail": 1068,
+    "pricePartner": "534 / 1pv"
+  },
+  {
+    "id": 187,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Очищающий-гель-для-душа-с-морской-солью-Yue-Zhonggui-450-мл-300x228-1.png",
+    "name": "Очищающий гель для душа с морской солью",
+    "priceRetail": 1532,
+    "pricePartner": "766 / 4pv"
+  },
+  {
+    "id": 188,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ГЕЛЬ-ДЛЯ-ДУША-МАТОЧНОЕ-МОЛОЧКО-300x228-1.png",
+    "name": "Очищающий гель для душа с маточным молочком",
+    "priceRetail": 1152,
+    "pricePartner": "576 / 2pv"
+  },
+  {
+    "id": 189,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/мусс-для-душа-300x225-1.png",
+    "name": "Ароматный воздушный мусс для душа",
+    "priceRetail": 1198,
+    "pricePartner": "599 / 3pv"
+  },
+  {
+    "id": 190,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/АРОМА-ГЕЛЬ-ДЛЯ-ДУША-300x225-1.png",
+    "name": "Ароматный гель для душа",
+    "priceRetail": 570,
+    "pricePartner": "285 / 0,20pv"
+  },
+  {
+    "id": 191,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ДЛЯ-ДУША-ПЕРСИК-300x228-1.png",
+    "name": "Гель для душа «сочный персик»",
+    "priceRetail": 556,
+    "pricePartner": "570 / 570 купон / 0,50pv"
+  },
+  {
+    "id": 192,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ОСВЕЖ-ГЕЛЬ-ДЛЯ-ДУША-300x228-1.png",
+    "name": "Освежающий бодрящий гель для душа",
+    "priceRetail": 840,
+    "pricePartner": "420 / 420 купон / 0,50pv"
+  },
+  {
+    "id": 193,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ГЕЛЬ-ДЛЯ-ДУША-С-МОЛОКОМ-ГОРНОЙ-КОЗЫ-300x228-1.png",
+    "name": "Увлажняющий и смягчающий гель для душа с молоком горной козы",
+    "priceRetail": 840,
+    "pricePartner": "382 / 382 купон / 0,50pv"
+  },
+  {
+    "id": 194,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/CARICH-300-г-Смягчающий-увлажняющий-гель-с-ароматом-фрезии-300x228-1.png",
+    "name": "Мягкий увлажняющий гель для душа с ароматом фрезии",
+    "priceRetail": 818,
+    "pricePartner": "409 / 409 купон / 0,50pv"
+  },
+  {
+    "id": 195,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/iLiFE-Освежающий-увлажняющий-гель-для-душа-500-мл-300x225-1.png",
+    "name": "Освежающий увлажняющий гель для душа",
+    "priceRetail": 594,
+    "pricePartner": "297 / 297 купон / 0,50pv"
+  },
+  {
+    "id": 196,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/гель-против-прыщей-для-душа-500-300x228-1.png",
+    "name": "Гель для душа для борьбы с жирностью, против прыщей",
+    "priceRetail": 900,
+    "pricePartner": "450 / 450 купон / 0,50pv"
+  },
+  {
+    "id": 197,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/гель-для-душа-увлажн-1кг-300x231-1.png",
+    "name": "Увлажняюший гель для душа",
+    "priceRetail": 900,
+    "pricePartner": "450 / 450 купон / 0,50pv"
+  },
+  {
+    "id": 198,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/МЫЛО-ЦВЕТ-ВИШНИ-300x228-1.png",
+    "name": "Туалетное мыло с цветами вишни от чесоточного зудня",
+    "priceRetail": 682,
+    "pricePartner": "341 / 1,50pv"
+  },
+  {
+    "id": 199,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Green-Leaf-Мыло-от-прыщей-с-эфирным-маслом-чайного-дерева-300x228-1.png",
+    "name": "Туалетное мыло от прыщей с эфирным маслом чайного дерева",
+    "priceRetail": 500,
+    "pricePartner": "250 / 1pv"
+  },
+  {
+    "id": 200,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/BLUE-POINT-Мягкое-очищающее-мыло-от-клещей-с-морской-солью-100гBLUE-POINT-Мягкое-очищающее-мыло-300x228-1.png",
+    "name": "Туалетное мягкое очищающее мыло с морской солью",
+    "priceRetail": 598,
+    "pricePartner": "299 / 1pv"
+  },
+  {
+    "id": 201,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/МЫЛО-С-ЭФИРНЫМ-МАСЛОМ-РОЗЫ-1-300x228-1.png",
+    "name": "Мыло для ванны с эфирным маслом розы",
+    "priceRetail": 472,
+    "pricePartner": "236 / 1pv"
+  },
+  {
+    "id": 202,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/мыло-вербена-300x228-1.png",
+    "name": "Очищающее мыло с ароматом вербены",
+    "priceRetail": 500,
+    "pricePartner": "250 / 1pv"
+  },
+  {
+    "id": 203,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/мыло-вербена-300x228-2.png",
+    "name": "Антибактериальное туалетное мыло с полынью",
+    "priceRetail": 252,
+    "pricePartner": "126 / 126 купон / 0,20pv"
+  },
+  {
+    "id": 204,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/CARICH-Питательное-туалетное-мыло-с-маслом-карите-100-г-300x228-1.png",
+    "name": "Питательное туалетное мыло с маслом карите",
+    "priceRetail": 226,
+    "pricePartner": "113 / 113 купон / 0,20pv"
+  },
+  {
+    "id": 205,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/МЫЛО-ШЕЛК1-300x228-1.png",
+    "name": "Шелковое мыло с нитями фиброина",
+    "priceRetail": 448,
+    "pricePartner": "224 / 224 купон / 0,50pv"
+  },
+  {
+    "id": 206,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Мыло-с-эфирными-маслами-Бинчотан-ручной-работы-300x228-1.png",
+    "name": "Мыло с эфирными маслами «бинчотан» ручной работы",
+    "priceRetail": 262,
+    "pricePartner": "131 / 131 купон / 0,20pv"
+  },
+  {
+    "id": 207,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Антибактериальное-дезинфицирующее-средство-для-рук-Greenleaf-480-мл-300x228-1.png",
+    "name": "Освежающее антибактериальное жидкое мыло для рук",
+    "priceRetail": 396,
+    "pricePartner": "198 / 1,50pv"
+  },
+  {
+    "id": 208,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/осв-мыло-300x228-1.png",
+    "name": "Освежающее антибактериальное жидкое мыло для рук",
+    "priceRetail": 672,
+    "pricePartner": "336 / 1,50pv"
+  },
+  {
+    "id": 209,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/жидкое-мыло-для-рук-с-растительным-экстрактом-300x231-1.png",
+    "name": "Жидкое мыло для рук с растительным экстрактом",
+    "priceRetail": 450,
+    "pricePartner": "225 / 225 купон / 0,20pv"
+  },
+  {
+    "id": 210,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/iLiFE-Жидкое-мыло-пенка-для-рук-с-ромашкой-500-мл-300x228-1.png",
+    "name": "Жидкое мыло пенка для рук с ромашкой",
+    "priceRetail": 650,
+    "pricePartner": "325 / 325 купон / 0,50pv"
+  },
+  {
+    "id": 211,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Жидкое-мыло-пенка-для-рук-с-алоэ-вера-300x228-1.png",
+    "name": "Жидкое мыло пенка для рук с алоэ",
+    "priceRetail": 650,
+    "pricePartner": "325 / 325 купон / 0,50pv"
+  },
+  {
+    "id": 212,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Green-Leaf-Гель-для-рук-антибактериальный-не-требующий-смывания-450мл-300x225-1.png",
+    "name": "Гель для рук антибактериальный",
+    "priceRetail": 738,
+    "pricePartner": "369 / 1pv"
+  },
+  {
+    "id": 213,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ПЕНЯЩЕЕСЯ-ДЕЗИН-ДЛЯ-РУК-300x228-1.png",
+    "name": "Пенящееся антибактериальное дезинфицирующее средство для рук",
+    "priceRetail": 352,
+    "pricePartner": "176 / 0,50pv"
+  },
+  {
+    "id": 214,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Антибактериальное-дезинфицирующее-средство-для-рук-300x228-1.png",
+    "name": "Антибактериальное дезинфицирующее средство для рук",
+    "priceRetail": 690,
+    "pricePartner": "345 / 345 купон / 0,20pv"
+  },
+  {
+    "id": 215,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Greenleaf-Антибактериальная-пенка-для-очищения-рук-250-мл-300x240-1.png",
+    "name": "Антибактериальная пена для рук",
+    "priceRetail": 682,
+    "pricePartner": "375 / 1,50pv"
+  },
+  {
+    "id": 216,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Антибактериальная-пенка-для-дезинфекции-рук-300г-300x225-1.png",
+    "name": "Антибактериальная пенка для дезинфекции рук",
+    "priceRetail": 682,
+    "pricePartner": "345 / 345 купон / 0,20pv"
+  },
+  {
+    "id": 217,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ГЕЛЬ-МАССАЖ-300x226-1.png",
+    "name": "Оздоравливающий гель для шеи, плеч, поясницы и ног",
+    "priceRetail": 1996,
+    "pricePartner": "998 / 4pv"
+  },
+  {
+    "id": 218,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/бальзам-на-травах-300x228-1.png",
+    "name": "Питательный расслабляющий бальзам на травах",
+    "priceRetail": 1996,
+    "pricePartner": "998 / 5pv"
+  },
+  {
+    "id": 219,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/пластырь-от-холки-300x228-1.png",
+    "name": "Пластырь от холки",
+    "priceRetail": 1574,
+    "pricePartner": "787 / 4pv"
+  },
+  {
+    "id": 220,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ПЛАСТЫРЬ-ДЛЯ-СТОП-300x226-1.png",
+    "name": "Ночной пластырь для стоп с травами и янтарной эссенцией",
+    "priceRetail": 940,
+    "pricePartner": "470 / 2pv"
+  },
+  {
+    "id": 221,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Carich-Согревающие-пластыри-для-колена-4-шт-300x226-1.png",
+    "name": "Согревающие пластыри для колена",
+    "priceRetail": 1000,
+    "pricePartner": "500 / 2pv"
+  },
+  {
+    "id": 222,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/для-поясницы-300x226-1.png",
+    "name": "Согревающие пластыри для поясницы",
+    "priceRetail": 1000,
+    "pricePartner": "500 / 2pv"
+  },
+  {
+    "id": 223,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Carich-Согревающие-патчи-для-шеи-4-шт-300x226-1.png",
+    "name": "Согревающие пластыри для шеи",
+    "priceRetail": 1000,
+    "pricePartner": "500 / 2pv"
+  },
+  {
+    "id": 224,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/CARICH-согревающие-пластыри-на-ночь-с-эфирным-маслом-5-шт-300x231-1.png",
+    "name": "Патчи для хорошего сна с эфирными маслами",
+    "priceRetail": 398,
+    "pricePartner": "199 / 199 купон / 0,50pv"
+  },
+  {
+    "id": 225,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Травяной-компресс-для-ног-300x227-1.png",
+    "name": "Травяная ванночка для ног",
+    "priceRetail": 1300,
+    "pricePartner": "650 / 2pv"
+  },
+  {
+    "id": 226,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ТРАВЯНОЙ-ПЛАСТЫРЬ-КАРИЧ-300x225-1.png",
+    "name": "Ночной детоксикационный пластырь для стоп с травами",
+    "priceRetail": 900,
+    "pricePartner": "450 / 450 купон / 0,50pv"
+  },
+  {
+    "id": 227,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ПАРОВЫЕ-МАСКИ-300x226-1.png",
+    "name": "Паровые согревающие маски — компресс на глаза",
+    "priceRetail": 1000,
+    "pricePartner": "500 / 500 купон / 0,50pv"
+  },
+  {
+    "id": 228,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/мазь-полынь-300x228-1.png",
+    "name": "Успокаивающая увлажняющая антибактериальная мазь с полынью",
+    "priceRetail": 2240,
+    "pricePartner": "1120 / 6pv"
+  },
+  {
+    "id": 229,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/браслет-от-комаров-300x225-1.png",
+    "name": "Защитный браслет от комаров",
+    "priceRetail": 690,
+    "pricePartner": "345 / 1,50pv"
+  },
+  {
+    "id": 230,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/BAOZHONGBAO-Цветочная-вода-от-комаров-190-мл-300x225-1.png",
+    "name": "Цветочная вода от комаров",
+    "priceRetail": 562,
+    "pricePartner": "281 / 1,50pv"
+  },
+  {
+    "id": 231,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/тв-Жимолость-300x226-1.png",
+    "name": "Вода с жимолостью от комаров",
+    "priceRetail": 372,
+    "pricePartner": "186 / 1pv"
+  },
+  {
+    "id": 232,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Туалетная-вода-Weipu-от-комаров-300x240-1.png",
+    "name": "Вода weipu от комаров",
+    "priceRetail": 1200,
+    "pricePartner": "600 / 2pv"
+  },
+  {
+    "id": 233,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/МОЧАЛКА-2-ЦВЕТА-300x225-1.png",
+    "name": "Двухцветная мочалка для душа",
+    "priceRetail": 198,
+    "pricePartner": "99 / 99 купон / 0,10pv"
+  },
+  {
+    "id": 234,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/МОЧАЛКА-8813-300x225-1.png",
+    "name": "Мочалка — перчатка для душа",
+    "priceRetail": 278,
+    "pricePartner": "139 / 139 купон / 0,10pv"
+  },
+  {
+    "id": 235,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/1978-300x225-1.png",
+    "name": "Перчатки для ванной к крупнозернистой песочной текстурой",
+    "priceRetail": 238,
+    "pricePartner": "119 / 119 купон / 0,20pv"
+  },
+  {
+    "id": 236,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ПЕРЧАТКИ-ДЛЯ-ВАННОЙ-О918-300x225-1.png",
+    "name": "Перчатки для ванной со средней песочной текстурой",
+    "priceRetail": 238,
+    "pricePartner": "119 / 119 купон / 0,20pv"
+  },
+  {
+    "id": 237,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ПЕРЧАТКИ-ДЛЯ-ВАННОЙ-0086-300x225-1.png",
+    "name": "Перчатка для душа",
+    "priceRetail": 238,
+    "pricePartner": "119 / 119 купон / 0,20pv"
+  },
+  {
+    "id": 238,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ПЕРЧАТКИ-ДЛЯ-ВАННОЙ-0188-300x228-1.png",
+    "name": "Модные банные перчатки для душа",
+    "priceRetail": 238,
+    "pricePartner": "119 / 119 купон / 0,20pv"
+  },
+  {
+    "id": 239,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/МОЧАЛКА-КОСИЧКА-300x226-1.png",
+    "name": "Цветная мочалка для душа",
+    "priceRetail": 278,
+    "pricePartner": "139 / 139 купон / 0,10pv"
+  },
+  {
+    "id": 240,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/МОЧАЛКА-1831-300x228-1.png",
+    "name": "Мочалка — полотно для душа",
+    "priceRetail": 298,
+    "pricePartner": "149 / 149 купон / 0,10pv"
+  },
+  {
+    "id": 241,
+    "category": "body-skin-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/МОЧАЛКА-0018-300x228-1.png",
+    "name": "Мочалка — полотно для душа",
+    "priceRetail": 298,
+    "pricePartner": "149 / 149 купон / 0,10pv"
+  },
+  {
+    "id": 242,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/кондер-ароматный-пара-300x225-1.png",
+    "name": "Шампунь с цветочным ароматом",
+    "priceRetail": 934,
+    "pricePartner": "467 / 1,50pv"
+  },
+  {
+    "id": 243,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/шампунь-морской-бриз.png",
+    "name": "Шампунь от перхоти «морской бриз»",
+    "priceRetail": 1532,
+    "pricePartner": "766 / 3pv"
+  },
+  {
+    "id": 244,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/шампунь-маточное-молочко-300x228-1.png",
+    "name": "Шампунь с маточным молочком",
+    "priceRetail": 1152,
+    "pricePartner": "576 / 2pv"
+  },
+  {
+    "id": 245,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/шампунь-вечерняя-сакура-300x228-1.png",
+    "name": "Роскошный шампунь «вечерняя сакура»",
+    "priceRetail": 1532,
+    "pricePartner": "766 / 3,50pv"
+  },
+  {
+    "id": 246,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/шампунь-с-гиар-кислотой-осв-300x228-1.png",
+    "name": "Увлажняющий шампунь с гиалуроновой кислотой",
+    "priceRetail": 1138,
+    "pricePartner": "569 / 2pv"
+  },
+  {
+    "id": 247,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/кондиционер-с-гиар-кислотой-осв-300x228-1.png",
+    "name": "Увлажняющий кондиционер с гиалуроновой кислотой",
+    "priceRetail": 1138,
+    "pricePartner": "569 / 2pv"
+  },
+  {
+    "id": 248,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ШАМПУНЬ-С-ГОЛУБЫМИ-ГРАНУЛАМИ-300x225-1.png",
+    "name": "Шампунь для гладкости волос с аминокислотами и голубыми гранулами",
+    "priceRetail": 920,
+    "pricePartner": "460 / 460 купон / 0,20pv"
+  },
+  {
+    "id": 249,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Greenleaf-500-мл-Освежающий-шампунь-против-перхоти-300x228-1.png",
+    "name": "Освежающий шампунь против перхоти",
+    "priceRetail": 900,
+    "pricePartner": "450 / 2pv"
+  },
+  {
+    "id": 250,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/освеж-ш-от-перх-300x225-1.png",
+    "name": "Очищающий шампунь против перхоти",
+    "priceRetail": 778,
+    "pricePartner": "389 / 1pv"
+  },
+  {
+    "id": 251,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/шампунь-шампунь-увлажняющий-пара-300x225-1.png",
+    "name": "Увлажняющий и питательный шампунь",
+    "priceRetail": 778,
+    "pricePartner": "389 / 1pv"
+  },
+  {
+    "id": 252,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/шампунь-шампунь-увлажняющий-пара-300x225-2.png",
+    "name": "Увлажняющий и питательный шампунь",
+    "priceRetail": 798,
+    "pricePartner": "399 / 399 купон / 0,20pv"
+  },
+  {
+    "id": 253,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ПИТАТЕЛЬНЫЙ-БАЛЬЗАМ-300x225-1.png",
+    "name": "Увлажняющий и питательный кондиционер",
+    "priceRetail": 798,
+    "pricePartner": "399 / 399 купон / 0,20pv"
+  },
+  {
+    "id": 254,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/шампунь-освежающий-пара-300x225-1.png",
+    "name": "Освежающий шампунь для контроля жирности",
+    "priceRetail": 778,
+    "pricePartner": "389 / 1pv"
+  },
+  {
+    "id": 255,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ПАРФЮМ-ГЛАДКОСТЬ-ВОЛОС-ШАМПУНЬ-300x225-1.png",
+    "name": "Парфюмированный шампунь для гладкости волос",
+    "priceRetail": 778,
+    "pricePartner": "389 / 1pv"
+  },
+  {
+    "id": 256,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/кондер-ароматный-пара-300x225-1.png",
+    "name": "Ароматный разглаживающий кондиционер",
+    "priceRetail": 778,
+    "pricePartner": "389 / 1pv"
+  },
+  {
+    "id": 257,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/кондер-ароматный-пара-300x225-2.png",
+    "name": "Ароматный разглаживающий кондиционер",
+    "priceRetail": 970,
+    "pricePartner": "455 / 2pv"
+  },
+  {
+    "id": 258,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/шам-растит-экстр-300x228-1.png",
+    "name": "Увлажняющий шампунь для блеска волос с растительным экстрактом",
+    "priceRetail": 1584,
+    "pricePartner": "792 / 4pv"
+  },
+  {
+    "id": 259,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/конд-растит-экстр-300x225-1.png",
+    "name": "Увлажняющий бальзам для блеска волос с растительным экстрактом",
+    "priceRetail": 1552,
+    "pricePartner": "776 / 4pv"
+  },
+  {
+    "id": 260,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/полипептидный-шампунь-300x228-1.png",
+    "name": "Полипептидный увлажняющий шампунь",
+    "priceRetail": 1758,
+    "pricePartner": "879 / 4pv"
+  },
+  {
+    "id": 261,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/полипептидныйкондиционер-300x228-1.png",
+    "name": "Полипептидный увлажняющий бальзам — ополаскиватель",
+    "priceRetail": 1758,
+    "pricePartner": "879 / 4pv"
+  },
+  {
+    "id": 262,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ВОССТ-ШАМПУНЬ-1-300x225-1.png",
+    "name": "Нвосстанавливающий шампунь для поврежденных волос",
+    "priceRetail": 1532,
+    "pricePartner": "766 / 3pv"
+  },
+  {
+    "id": 263,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/восст-конд-300x225-1.png",
+    "name": "Нвосстанавливающий кондиционер для поврежденных волос",
+    "priceRetail": 1532,
+    "pricePartner": "766 / 3pv"
+  },
+  {
+    "id": 264,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/восст-корни-б-300x225-1.png",
+    "name": "Питающий и укрепляющий корни бальзам — ополаскиватель",
+    "priceRetail": 1390,
+    "pricePartner": "699 / 3pv"
+  },
+  {
+    "id": 265,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ИМБИРЬ-ШАМПУНЬ-300x225-1.png",
+    "name": "Имбирный шампунь для придания объема волосам",
+    "priceRetail": 800,
+    "pricePartner": "400 / 400 купон / 0,50pv"
+  },
+  {
+    "id": 266,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ИМБИРЬ-КОНДИЦИОНЕР-300x225-1.png",
+    "name": "Имбирный бальзам-ополаскиватель для придания объема волосам",
+    "priceRetail": 800,
+    "pricePartner": "400 / 400 купон / 0,50pv"
+  },
+  {
+    "id": 267,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Ш-САЛОН-300x225-1.png",
+    "name": "Шампунь для волос «салонный уход»",
+    "priceRetail": 1798,
+    "pricePartner": "899 / 4,50pv"
+  },
+  {
+    "id": 268,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Б-САЛОН-1-300x225-1.png",
+    "name": "Бальзам для волос «салонный уход»",
+    "priceRetail": 1798,
+    "pricePartner": "899 / 4,50pv"
+  },
+  {
+    "id": 269,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/шампунь-сильный-от-выпадения-300x228-1.png",
+    "name": "Сильный шампунь против выпадения волос",
+    "priceRetail": 1778,
+    "pricePartner": "889 / 4pv"
+  },
+  {
+    "id": 270,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/шампунь-против-перхоти-айлайв-300x225-1.png",
+    "name": "Освежающий шампунь против перхоти",
+    "priceRetail": 960,
+    "pricePartner": "480 / 0,20pv"
+  },
+  {
+    "id": 271,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/iLiFE-500-мл-Шампунь-против-перхоти-300x228-1.png",
+    "name": "Шампунь против перхоти",
+    "priceRetail": 636,
+    "pricePartner": "318 / 318 купон / 0,20pv"
+  },
+  {
+    "id": 272,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/iLiFE-500-мл-Увлажняющий-шампунь-для-гладких-и-послушных-волос-300x225-1.png",
+    "name": "Увлажняющий шампунь для гладких и послушных волос",
+    "priceRetail": 620,
+    "pricePartner": "310 / 310 купон / 0,20pv"
+  },
+  {
+    "id": 273,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/бальзам-ополаскиватель-для-послушных-волос-300x225-1.png",
+    "name": "Бальзам — ополаскиватель для гладких и послушных волос",
+    "priceRetail": 558,
+    "pricePartner": "279 / 279 купон / 0,20pv"
+  },
+  {
+    "id": 274,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/СУХОЙ-ШАМПУНЬ-300x225-1.png",
+    "name": "Несмываемый спрей для объема волос (сухой шампунь)",
+    "priceRetail": 998,
+    "pricePartner": "499 / 3pv"
+  },
+  {
+    "id": 275,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/CARICH-очищающий-шампунь-для-нормализации-жирности-кожи-450-мл-300x225-1.png",
+    "name": "Освежающий шампунь для нормализации жирности кожи",
+    "priceRetail": 958,
+    "pricePartner": "479 / 2pv"
+  },
+  {
+    "id": 276,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Greenleaf-Шампунь-против-перхоти-с-сульфид-селена-200-ml-300x231-1.png",
+    "name": "Шампунь против перхоти с сульфид селена",
+    "priceRetail": 790,
+    "pricePartner": "395 / 1,50pv"
+  },
+  {
+    "id": 277,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/CARICH-Шампунь-с-морской-солью-300-300x228-1.png",
+    "name": "Шампунь с морской солью",
+    "priceRetail": 1416,
+    "pricePartner": "708 / 708 купон / 0,50pv"
+  },
+  {
+    "id": 278,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/CARICH-Питательный-шампунь-с-эфирным-маслом-розы-500мл-300x228-1.png",
+    "name": "Питательный шампунь с эфирным маслом розы",
+    "priceRetail": 1000,
+    "pricePartner": "500 / 500 купон / 0,50pv"
+  },
+  {
+    "id": 279,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/CARICH-500-мл-Шампунь-двойного-действия-300x225-1.png",
+    "name": "Шампунь двойного действия",
+    "priceRetail": 892,
+    "pricePartner": "446 / 446 купон / 0,50pv"
+  },
+  {
+    "id": 280,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/пушистый-шампунь-300x225-1.png",
+    "name": "Освежающий пушистый шампунь для объема волос",
+    "priceRetail": 934,
+    "pricePartner": "467 / 1pv"
+  },
+  {
+    "id": 281,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Увлажняющая-маска-для-волос-с-эфирным-маслом-розы-300x225-1.png",
+    "name": "Увлажняющая маска для волос с эфирным маслом розы",
+    "priceRetail": 798,
+    "pricePartner": "399 / 2pv"
+  },
+  {
+    "id": 282,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/М-САЛОН-300x225-1.png",
+    "name": "Маска для волос «салонный уход»",
+    "priceRetail": 1420,
+    "pricePartner": "710 / 3pv"
+  },
+  {
+    "id": 283,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/BLUE-POINT-500-г-Увлажняющая-маска-для-гладких-и-послушных-300x228-1.png",
+    "name": "Увлажняющая маска для волос с двойной силой фруктов",
+    "priceRetail": 798,
+    "pricePartner": "370 / 370 купон / 0,50pv"
+  },
+  {
+    "id": 284,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/МАСЛО-ВОЛОСЫ-АРОМАТ-300x228-1.png",
+    "name": "Эфирное масло для ухода за волосами с тонким ароматом",
+    "priceRetail": 980,
+    "pricePartner": "490 / 490 купон / 0,20pv"
+  },
+  {
+    "id": 285,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/эф-масло-в-капсулах-300x261-1.png",
+    "name": "Эфирное масло в желатиновых капсулах для гладкости волос",
+    "priceRetail": 936,
+    "pricePartner": "468 / 468 купон / 0,50pv"
+  },
+  {
+    "id": 286,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/CARICH-75-мл-Увлажняющее-и-шелковистое-масло-для-волос-300x237-1.png",
+    "name": "Увлажняющее шелковистое масло для волос",
+    "priceRetail": 1000,
+    "pricePartner": "500 / 2pv"
+  },
+  {
+    "id": 287,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Zhengai-30-мл-жидкость-против-выпаления-волос-300x228-1.png",
+    "name": "Жидкость против выпадения волос",
+    "priceRetail": 1872,
+    "pricePartner": "936 / 6pv"
+  },
+  {
+    "id": 288,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/спрей-кондиционер-300x225-1.png",
+    "name": "Спрей — кондиционер с двойным растительным экстрактом",
+    "priceRetail": 798,
+    "pricePartner": "399 / 2pv"
+  },
+  {
+    "id": 289,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/CARICH-120-мл-Эластин-для-укладки-волос-300x228-1.png",
+    "name": "Эластин для укладки волос",
+    "priceRetail": 598,
+    "pricePartner": "299 / 1,50pv"
+  },
+  {
+    "id": 290,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/CARICH-эластин-для-увеличения-объема-190-г-300x228-1.png",
+    "name": "Эластин для увеличения объема",
+    "priceRetail": 798,
+    "pricePartner": "399 / 2pv"
+  },
+  {
+    "id": 291,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/эластин-55г-300x240-1.png",
+    "name": "Эластин для придания объема волосам",
+    "priceRetail": 280,
+    "pricePartner": "140 / 0,50pv"
+  },
+  {
+    "id": 292,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/4-коричнево-черный-150x150-1.png",
+    "name": "Крем — краска для волос с эффектом сияния",
+    "priceRetail": 1398,
+    "pricePartner": "699 / 3pv"
+  },
+  {
+    "id": 293,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/KAILANDUO-краска-для-волос-300x227-1.png",
+    "name": "Краска для волос",
+    "priceRetail": 1396,
+    "pricePartner": "698 / 3pv"
+  },
+  {
+    "id": 294,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/большая-изогнутая-расческа-зеленая-300x228-1.png",
+    "name": "Большая изогнутая расческа зеленая",
+    "priceRetail": 600,
+    "pricePartner": "299 / 1pv"
+  },
+  {
+    "id": 295,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Б-ИЗОГНУТАЯ-РОЗОВАЯ-300x225-1.png",
+    "name": "Большая изогнутая расческа розовая",
+    "priceRetail": 600,
+    "pricePartner": "299 / 1pv"
+  },
+  {
+    "id": 296,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/большая-изогнутая-расческа-фиолетовая-300x228-1.png",
+    "name": "Большая изогнутая расческа фиолетовая",
+    "priceRetail": 750,
+    "pricePartner": "375 / 1,50pv"
+  },
+  {
+    "id": 297,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/РАСЧЕСКА-СЕТКА-ФИОЛЕТОВАЯ-300x225-1.png",
+    "name": "Расческа-сетка темно-розовая",
+    "priceRetail": 578,
+    "pricePartner": "289 / 1pv"
+  },
+  {
+    "id": 298,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/РАСЧЕСКА-СЕТКА-БЕЖЕВАЯ-300x225-1.png",
+    "name": "Расческа-сетка бежевая",
+    "priceRetail": 578,
+    "pricePartner": "289 / 1pv"
+  },
+  {
+    "id": 299,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/РАСЧЕСКА-СЕТКА-БЕЖЕВАЯ-300x225-2.png",
+    "name": "Расческа-сетка зеленая",
+    "priceRetail": 750,
+    "pricePartner": "375 / 1,50pv"
+  },
+  {
+    "id": 300,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/МАЛЕНЬКАЯ-КРУГЛАЯ-МАССАЖНАЯ-300x225-1.png",
+    "name": "Маленькая круглая массажная расческа",
+    "priceRetail": 656,
+    "pricePartner": "328 / 1pv"
+  },
+  {
+    "id": 301,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/БОЛЬШАЯ-КВАДРАТНАЯ-ДЕРЕВ-МАССАЖНАЯ-300x225-1.png",
+    "name": "Квадратная деревянная большая массажная расческа",
+    "priceRetail": 700,
+    "pricePartner": "350 / 1pv"
+  },
+  {
+    "id": 302,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/МАЛЕНЬКАЯ-КВАДРАТНАЯ-ДЕРЕВ-МАССАЖНАЯ-300x225-1.png",
+    "name": "Квадратная деревянная маленькая массажная расческа",
+    "priceRetail": 656,
+    "pricePartner": "328 / 1pv"
+  },
+  {
+    "id": 303,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/КРУГЛАЯ-МАССАЖНАЯ-300x225-1.png",
+    "name": "Круглая массажная расческа",
+    "priceRetail": 656,
+    "pricePartner": "328 / 1,50pv"
+  },
+  {
+    "id": 304,
+    "category": "hair-care",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/КВАДРАТНАЯ-МАССАЖНАЯ-Р-300x225-1.png",
+    "name": "Квадратная массажная расческа",
+    "priceRetail": 656,
+    "pricePartner": "328 / 1,50pv"
+  },
+  {
+    "id": 305,
+    "category": "oral-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/зп-ледяная-мята-768x576-1.png",
+    "name": "Зубная паста со вкусом ледяной мяты",
+    "priceRetail": 540,
+    "pricePartner": "269 / 1pv"
+  },
+  {
+    "id": 306,
+    "category": "oral-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Зубная-паста-Fresh-со-вкусом-медовой-вишни.png",
+    "name": "Зубная паста со вкусом медовой вишни",
+    "priceRetail": 540,
+    "pricePartner": "269 / 1pv"
+  },
+  {
+    "id": 307,
+    "category": "oral-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/зп-против-кариеса-травяная-мята.png",
+    "name": "Зубная паста против кариесо со вкусом травяной мяты",
+    "priceRetail": 540,
+    "pricePartner": "267 / 1pv"
+  },
+  {
+    "id": 308,
+    "category": "oral-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/CARICH-120-г-Зубная-паста-с-пробиотиками-папоротник-жасмин.png",
+    "name": "Зубная паста с пробиотиком и ароматом жасмина",
+    "priceRetail": 520,
+    "pricePartner": "260 / 1pv"
+  },
+  {
+    "id": 309,
+    "category": "oral-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/пасты-утро-вечер-1.png",
+    "name": "Комплект зубных паст «утро-вечер»",
+    "priceRetail": 1380,
+    "pricePartner": "690 / 3pv"
+  },
+  {
+    "id": 310,
+    "category": "oral-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ЗП-про-и-пре.png",
+    "name": "Зубная паста с пробиотиками и пребиотиками",
+    "priceRetail": 1632,
+    "pricePartner": "816 / 4,50pv"
+  },
+  {
+    "id": 311,
+    "category": "oral-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ЗП-ТУРМАЛИН.png",
+    "name": "Зубная паста с пробиотиками и турмалином",
+    "priceRetail": 1198,
+    "pricePartner": "599 / 3pv"
+  },
+  {
+    "id": 312,
+    "category": "oral-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ЗП-ОТБЕЛИВАЮЩАЯ.png",
+    "name": "Отбеливающая зубная паста",
+    "priceRetail": 620,
+    "pricePartner": "310 / 1,50pv"
+  },
+  {
+    "id": 313,
+    "category": "oral-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ЗП-НАТ-ВОДОРОСЛИ.png",
+    "name": "Зубная паста на основе морских водорослей",
+    "priceRetail": 390,
+    "pricePartner": "195 / 195 купон"
+  },
+  {
+    "id": 314,
+    "category": "oral-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ЗП-БЕЗ-ФТОРА-1.png",
+    "name": "Освежающая зубная паста с морскими водорослями без фтора",
+    "priceRetail": 500,
+    "pricePartner": "250 / 1pv"
+  },
+  {
+    "id": 315,
+    "category": "oral-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ЗП-ЗЕЛ-ЧАЙ.png",
+    "name": "Освежающая паста с зеленым чаем",
+    "priceRetail": 398,
+    "pricePartner": "199 / 199 купон / 0,20pv"
+  },
+  {
+    "id": 316,
+    "category": "oral-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ЗП-для-эмали.png",
+    "name": "Зубная паста для восстановления эмали",
+    "priceRetail": 492,
+    "pricePartner": "246 / 246 купон / 0,20pv"
+  },
+  {
+    "id": 317,
+    "category": "oral-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ЗП-МЯТА.png",
+    "name": "Охлаждающая зубная паста со вкусом мяты",
+    "priceRetail": 398,
+    "pricePartner": "199 / 199 купон / 0,20pv"
+  },
+  {
+    "id": 318,
+    "category": "oral-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ЭНЗИМЫ-ПОРОШОК-ОТБЕЛИВАНИЕ.png",
+    "name": "Энзимный отбеливающий зубной порошок",
+    "priceRetail": 640,
+    "pricePartner": "320 / 1pv"
+  },
+  {
+    "id": 319,
+    "category": "oral-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ОТБ-КАРАНДАШ.png",
+    "name": "Отбеливающий карандаш для устранения зубного налета и пятен",
+    "priceRetail": 918,
+    "pricePartner": "459 / 3pv"
+  },
+  {
+    "id": 320,
+    "category": "oral-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/СРЕЙ-ГИАЛУРОНКА.png",
+    "name": "Увлажняющий спрей для полости рта с гиалуроновой кислотой",
+    "priceRetail": 356,
+    "pricePartner": "178 / 178 купон / 0,20pv"
+  },
+  {
+    "id": 321,
+    "category": "oral-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ополаскиватель-3-флакона.png",
+    "name": "Освежающий ополаскиватель для рота с гиалуроновой кислотой",
+    "priceRetail": 800,
+    "pricePartner": "399 / 1pv"
+  },
+  {
+    "id": 322,
+    "category": "oral-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ОПОЛАСКИВАТЕЛЬ.png",
+    "name": "Антибактериальный ополаскиватель для полости рта",
+    "priceRetail": 638,
+    "pricePartner": "319 / 1,50pv"
+  },
+  {
+    "id": 323,
+    "category": "oral-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Калиши-ополаскиватель-для-полости-рта300мл.png",
+    "name": "Ополаскиватель для полости рта",
+    "priceRetail": 638,
+    "pricePartner": "289 / 289 купон / 0,20pv"
+  },
+  {
+    "id": 324,
+    "category": "oral-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/зщ-для-мужчин.png",
+    "name": "Зубная щетка du pont с жесткой щетиной (только для мужчин)",
+    "priceRetail": 500,
+    "pricePartner": "250 / 1pv"
+  },
+  {
+    "id": 325,
+    "category": "oral-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/дет-зщ-для-защиты-десен-1.png",
+    "name": "Зубная щетка со спиральными щетинками для двойной защиты десен",
+    "priceRetail": 490,
+    "pricePartner": "245 / 1pv"
+  },
+  {
+    "id": 326,
+    "category": "oral-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/МЯГКАЯ-ШИРОКАЯ-ЗЩ.png",
+    "name": "Мягкая широкая зуюная щетка",
+    "priceRetail": 538,
+    "pricePartner": "269 / 1pv"
+  },
+  {
+    "id": 327,
+    "category": "oral-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ЗЩ-МЯГКАЯ-С-ШЕЛК-ЩЕТИНОЙ.png",
+    "name": "Мягкая зубная щетка с шелковистой щетиной",
+    "priceRetail": 474,
+    "pricePartner": "237 / 1pv"
+  },
+  {
+    "id": 328,
+    "category": "oral-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ПРОЗРАЧНАЯ-ЗУБНАЯ-ЩЕТКА-С-ИОНАМИ-СЕРЕБРА.png",
+    "name": "Прозрачная зубная щетка с ионами серебра",
+    "priceRetail": 588,
+    "pricePartner": "294 / 1,50pv"
+  },
+  {
+    "id": 329,
+    "category": "oral-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ЗУБНАЯ-ЩЕТКА-СО-СПИРАЛЬНОЙ-ЩЕТИНОЙ-3ШТ.png",
+    "name": "Зубная щетка со спиралевидной щетиной",
+    "priceRetail": 644,
+    "pricePartner": "322 / 1,50pv"
+  },
+  {
+    "id": 330,
+    "category": "oral-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ЗЩ-ГЛУБОКОЕ-ОЧИЩЕНИЕ.png",
+    "name": "Зубная щетка для глубокого очищения",
+    "priceRetail": 240,
+    "pricePartner": "120 / 120 купон / 0,20 pv"
+  },
+  {
+    "id": 331,
+    "category": "oral-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ЗЩ-ГИБКАЯ-ЩЕТИНА.png",
+    "name": "Зубная щетка с гибкой мягкой щетиной",
+    "priceRetail": 308,
+    "pricePartner": "154 / 154 купон / 0,20 pv"
+  },
+  {
+    "id": 332,
+    "category": "oral-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/двойная-зубная-нить.png",
+    "name": "Противокариесная и антибактериальная двойная зубная нить",
+    "priceRetail": 292,
+    "pricePartner": "146 / 0,50 pv"
+  },
+  {
+    "id": 333,
+    "category": "oral-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/CARICH-Палочка-для-зубной-нити-со-вкусом-мяты.png",
+    "name": "Зубная нить со вкусом мяты",
+    "priceRetail": 292,
+    "pricePartner": "130 / 130 купон /0,20 pv"
+  },
+  {
+    "id": 334,
+    "category": "oral-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ЗУБОЧИСТКИ.png",
+    "name": "Освежающие высокополимерные зубочистки с зубной нитью",
+    "priceRetail": 268,
+    "pricePartner": "134 / 134 купон /0,20 pv"
+  },
+  {
+    "id": 335,
+    "category": "oral-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Автоматический-контейнер-для-зубочисток-в-виде-коалы.png",
+    "name": "Автоматический контейнер для зубочисток «коала»",
+    "priceRetail": 250,
+    "pricePartner": "125 / 125 купон /0,20 pv"
+  },
+  {
+    "id": 336,
+    "category": "oral-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Зубная-щётка-Nano-Забота-о-дёснах-и.png",
+    "name": "Зубная щетка nano: забота о деснах и мягкое очищение",
+    "priceRetail": 656,
+    "pricePartner": "99 / 99 купон / 0,20pv"
+  },
+  {
+    "id": 337,
+    "category": "oral-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/CARICH-Зубная-щётка-с-тонкой-угольной-щетиной-2-шт.-в-упаковке.png",
+    "name": "Зубная щетка с тонкой угольной щетиной",
+    "priceRetail": 656,
+    "pricePartner": "113 / 113 купон / 0,20 pv"
+  },
+  {
+    "id": 338,
+    "category": "oral-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ЗЩ-ЛИМИТ.png",
+    "name": "Зубная щетка с углем и удлиненной щетиной",
+    "priceRetail": 644,
+    "pricePartner": "322 / 322 купон / 0,20 pv"
+  },
+  {
+    "id": 339,
+    "category": "oral-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ЗЩС-УГЛЕМ.png",
+    "name": "Зубная щетка с углем",
+    "priceRetail": 238,
+    "pricePartner": "119 / 119 купон / 0,20 pv"
+  },
+  {
+    "id": 340,
+    "category": "oral-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ЗЩ-УГОЛЬ-ОСВЕЖ.png",
+    "name": "Зубная щетка с угольной щетиной и освежающим эффектом",
+    "priceRetail": 180,
+    "pricePartner": "90 / 90 купон / 0,20 pv"
+  },
+  {
+    "id": 341,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/интим-пенка1-768x584-1.png",
+    "name": "Антибактериальная пенка для интимной гигиены",
+    "priceRetail": 732,
+    "pricePartner": "366 / 1,50pv"
+  },
+  {
+    "id": 342,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/интим-лосьон.png",
+    "name": "Женский антибактериальный лосьон",
+    "priceRetail": 575,
+    "pricePartner": "466 / 2pv"
+  },
+  {
+    "id": 343,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Антибактериальный-гель-интимный-зоны-для-женщин-300x226-1.png",
+    "name": "Антибактериальный гель для интимной гигиены",
+    "priceRetail": 3000,
+    "pricePartner": "1500 / 6pv"
+  },
+  {
+    "id": 344,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Антибактериальные-таблетки-с-молочнокислыми-бактериями-1-300x229-1.png",
+    "name": "Антибактериальные таблетки с кисломолочными бактериями (шаг 1)",
+    "priceRetail": 1360,
+    "pricePartner": "680 / 2pv"
+  },
+  {
+    "id": 345,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Антибактериальные-таблетки-с-молочнокислыми-бактериями-2-300x229-1.png",
+    "name": "Антибактериальные таблетки с кисломолочными бактериями (шаг 2)",
+    "priceRetail": 1830,
+    "pricePartner": "915 / 3pv"
+  },
+  {
+    "id": 346,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Ilife-менструальные-трусики-2-шт-300x228-1.png",
+    "name": "Менструальные трусики «спокойный сон»",
+    "priceRetail": 442,
+    "pricePartner": "221 / 1pv"
+  },
+  {
+    "id": 347,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ТРУСИКИ-СПОК-СОН-5ШТ-300x228-1.png",
+    "name": "Менструальные трусики «спокойный сон»",
+    "priceRetail": 930,
+    "pricePartner": "465 / 2pv"
+  },
+  {
+    "id": 348,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ТРУСИКИ-СПОК-СОН-2ШТ-300x228-1.png",
+    "name": "Менструальные трусики «спокойный сон»",
+    "priceRetail": 442,
+    "pricePartner": "221 / 1pv"
+  },
+  {
+    "id": 349,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/В-ВСТАВКА-8ШТ1-300x228-1.png",
+    "name": "Дневные неощутимые хлопковые прокладки с y-образной вставкой",
+    "priceRetail": 492,
+    "pricePartner": "246 / 1pv"
+  },
+  {
+    "id": 350,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/В-ВСТАВКА-6ШТ-300x228-1.png",
+    "name": "Ночные неощутимые хлопковые прокладки с y-образной вставкой",
+    "priceRetail": 498,
+    "pricePartner": "249 / 1pv"
+  },
+  {
+    "id": 351,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/В-ВСТАВКА-4ШТ-300x228-1.png",
+    "name": "Ночные удлиненные неощутимые хлопковые прокладки с y-образной вставкой",
+    "priceRetail": 492,
+    "pricePartner": "246 / 1pv"
+  },
+  {
+    "id": 352,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/НОЧЬ-ЧУВ-6ШТ-1-300x228-1.png",
+    "name": "Ночные гигиенические прокладки для чувствительной кожи",
+    "priceRetail": 504,
+    "pricePartner": "252 / 1,50pv"
+  },
+  {
+    "id": 353,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/НОЧЬ-ЧУВСИВ-8ШТ-300x228-1.png",
+    "name": "Ночные удлиненные гигиенические прокладки для чувствительной кожи",
+    "priceRetail": 352,
+    "pricePartner": "176 / 0,50pv"
+  },
+  {
+    "id": 354,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ДНЕВНЫЕ-ЧУВ-4ШТ-300x225-2.png",
+    "name": "Дневные гигиенические прокладки для чувствительной кожи",
+    "priceRetail": 368,
+    "pricePartner": "184 / 1pv"
+  },
+  {
+    "id": 355,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ДНЕВНЫЕ-ЧУВ-4ШТ-300x225-1.png",
+    "name": "Дневные гигиенические прокладки для чувствительной кожи",
+    "priceRetail": 570,
+    "pricePartner": "285 / 1,50pv"
+  },
+  {
+    "id": 356,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/iLiFE-Супертонкие-ночные-удлинённые-гигиенические-прокладки-из-чистого-хлопка-4-шт._40-300x228-1.png",
+    "name": "Супер тонкие ночные удлиненные гигиенические прокладки из чистого хлопка",
+    "priceRetail": 308,
+    "pricePartner": "154 / 154 купон / 0,20pv"
+  },
+  {
+    "id": 357,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/iLiFE-Супертонкие-прокладки-из-чистого-хлопка-Mini-10-шт._190-мм-300x228-1.png",
+    "name": "Супер тонкие дневные мини гигиенические прокладки из чистого хлопка",
+    "priceRetail": 300,
+    "pricePartner": "150 / 150 купон / 0,20pv"
+  },
+  {
+    "id": 358,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/iLiFE-Супертонкие-ночные-гигиенические-прокладки-из-чистого-хлопка-6-шт._280-мм-300x228-1.png",
+    "name": "Супер тонкие ночные гигиенические прокладки из чистого хлопка",
+    "priceRetail": 304,
+    "pricePartner": "152 / 152 купон / 0,20pv"
+  },
+  {
+    "id": 359,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/iLiFE-Супертонкие-дневные-гигиенические-прокладки-из-чистого-хлопка-8-шт.240-мм-300x228-1.png",
+    "name": "Супер тонкие дневные гигиенические прокладки из чистого хлопка",
+    "priceRetail": 306,
+    "pricePartner": "153 / 153 купон / 0,20pv"
+  },
+  {
+    "id": 360,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ГИГИЕНИЧ-ДНЕВНЫЕ-10-ШТ-300x228-1.png",
+    "name": "Дневные гигиенические прокладки",
+    "priceRetail": 470,
+    "pricePartner": "235 / 1pv"
+  },
+  {
+    "id": 361,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ГИГИЕНИЧ-ПРОКЛ-МИНИ-12-ШТ-300x228-1.png",
+    "name": "Дневные гигиенические прокладки мини",
+    "priceRetail": 370,
+    "pricePartner": "185 / 1pv"
+  },
+  {
+    "id": 362,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ГИГИЕНИЧ-ПРОКЛ-25-ШТ-300x228-1.png",
+    "name": "Ежедневные гигиенические прокладки",
+    "priceRetail": 446,
+    "pricePartner": "223 / 1pv"
+  },
+  {
+    "id": 363,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ГИГИЕНИЧ-ПРОКЛ-НОЧЬ-4-300x228-1.png",
+    "name": "Ночные удлиненные гигиенические прокладки",
+    "priceRetail": 416,
+    "pricePartner": "208 / 1pv"
+  },
+  {
+    "id": 364,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ГИГИЕНИЧ-ПРОКЛ-НОЧЬ-8-1-300x228-1.png",
+    "name": "Ночные гигиенические прокладки",
+    "priceRetail": 472,
+    "pricePartner": "236 / 1pv"
+  },
+  {
+    "id": 365,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/JINGHUXI-Ночные-гигиенические-прокладки-хорошо-впитывающие-и-удерживающие-влагу-8-шт-300x226-1.png",
+    "name": "Ночные гигиенические прокладки хорошо впитывающие и удерживающие влагу",
+    "priceRetail": 490,
+    "pricePartner": "245 / 1pv"
+  },
+  {
+    "id": 366,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Наслаждение-комфортом-ночные-6-шт-300x228-1.png",
+    "name": "Ночные гигиенические прокладки из мягкого хлопка «наслаждение комфортом 7 дней»",
+    "priceRetail": 288,
+    "pricePartner": "144 / 144 купон / 0,20pv"
+  },
+  {
+    "id": 367,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Наслаждение-комфортом-ночные-4-шт-300x228-1.png",
+    "name": "Супер длинные ночные гигиенические прокладки из мягкого хлопка «наслаждение комфортом 7 дней»",
+    "priceRetail": 290,
+    "pricePartner": "145 / 145 купон / 0,20pv"
+  },
+  {
+    "id": 368,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Наслаждение-комфортом-ночные-8-шт-300x228-1.png",
+    "name": "Дневные гигиенические прокладки из мягкого хлопка «наслаждение комфортом 7 дней»",
+    "priceRetail": 308,
+    "pricePartner": "154 / 154 купон / 0,20pv"
+  },
+  {
+    "id": 369,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Наслаждение-комфортом-ночные-12-шт-300x228-1.png",
+    "name": "Дневные мини гигиенические прокладки из мягкого хлопка «наслаждение комфортом 7 дней»",
+    "priceRetail": 310,
+    "pricePartner": "155 / 155 купон / 0,20pv"
+  },
+  {
+    "id": 370,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/iLiFE-Гигиенические-прокладки-мини-дневные-1-300x228-1.png",
+    "name": "Дневные мини гигиенические прокладки",
+    "priceRetail": 310,
+    "pricePartner": "155 / 155 купон / 0,20pv"
+  },
+  {
+    "id": 371,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ДЛИННЫЕ-НОЧНЫЕ-300x228-1.png",
+    "name": "Длинные ночные гигиенические прокладки",
+    "priceRetail": 306,
+    "pricePartner": "153 / 153 купон / 0,20pv"
+  },
+  {
+    "id": 372,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/iLiFE-Гигиенические-прокладки-еж-300x228-1.png",
+    "name": "Ежедневные гигиенические прокладки",
+    "priceRetail": 340,
+    "pricePartner": "170 / 170 купон / 0,20pv"
+  },
+  {
+    "id": 373,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/iLiFE-ДЕНЬ-300x228-1.png",
+    "name": "Дневные гигиенические прокладки",
+    "priceRetail": 360,
+    "pricePartner": "180 / 180 купон / 0,20pv"
+  },
+  {
+    "id": 374,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/НОЧНЫЕ-СТАРЫЕ-ОБН-300x228-1.png",
+    "name": "Ночные гигиенические прокладки",
+    "priceRetail": 360,
+    "pricePartner": "180 / 180 купон / 0,20pv"
+  },
+  {
+    "id": 375,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/DAD148-150x150-1.png",
+    "name": "Дневные антибактериальные гигиенические прокладки",
+    "priceRetail": 500,
+    "pricePartner": "250 / 1pv"
+  },
+  {
+    "id": 376,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/6-шт-150x150-1.png",
+    "name": "Ночные антибактериальные гигиенические прокладки",
+    "priceRetail": 500,
+    "pricePartner": "250 / 1pv"
+  },
+  {
+    "id": 377,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/антибактериальные-гигиенические-прокладки-4шт-300x227-1.png",
+    "name": "Ультра длинные антибактериальные гигиенические прокладки",
+    "priceRetail": 500,
+    "pricePartner": "250 / 1pv"
+  },
+  {
+    "id": 378,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/iLiFE-Ежедневные-гигиенические-ухаживающие-прокладки-12-шт-300x227-1.png",
+    "name": "Ежедневные ухаживающие гигиенические прокладки",
+    "priceRetail": 1176,
+    "pricePartner": "588 / 588 купон / 0,50pv"
+  },
+  {
+    "id": 379,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ватные-палочки-двухсторонние.png",
+    "name": "Ватные палочки двусторонние с бумажным стиком белые",
+    "priceRetail": 378,
+    "pricePartner": "189 / 1pv"
+  },
+  {
+    "id": 380,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/CARICH-хлопковые-ватные-палочки-с-ограничителем.png",
+    "name": "Хлопковые ватные палочки с ограничителем",
+    "priceRetail": 292,
+    "pricePartner": "146 / 0,50pv"
+  },
+  {
+    "id": 381,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/шт-в-пачке.png",
+    "name": "Многофункциональные ватные диски",
+    "priceRetail": 460,
+    "pricePartner": "230 / 0,50pv"
+  },
+  {
+    "id": 382,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Greenleaf-RIJI-Салфетки-повышенной-плотности-с-жемчужным-тиснением-для-лица-в-рулоне.png",
+    "name": "Салфетки повышенной плотности с жемчужным тиснением для лица",
+    "priceRetail": 620,
+    "pricePartner": "310 / 1pv"
+  },
+  {
+    "id": 383,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Greenleaf-RIJI-Салфетки-повышенной-плотности-с-жемчужным-тиснением-для-лица-в-рулоне-1.png",
+    "name": "Салфетки повышенной плотности с жемчужным тиснением для лица",
+    "priceRetail": 978,
+    "pricePartner": "489 / 2pv"
+  },
+  {
+    "id": 384,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Green-Leaf-Утолщенное-очищающее-полотенце-с-жемчужным-узором-рулонного-типа.png",
+    "name": "Утолщенное очищающее полотенце с жемчужным узором (рулон)",
+    "priceRetail": 978,
+    "pricePartner": "489 / 0,50pv"
+  },
+  {
+    "id": 385,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Green-Leaf-Мягкое-очищающее-ежедневное-полотенце-с-жемчужным-узором-съемное.png",
+    "name": "Утолщенное очищающее полотенце с жемчужным узором (съемное)",
+    "priceRetail": 978,
+    "pricePartner": "489 / 0,50pv"
+  },
+  {
+    "id": 386,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ПРЕС-ПОЛОТЕНЦЕ.png",
+    "name": "Мягкое хлопковое прессованное полотенце",
+    "priceRetail": 600,
+    "pricePartner": "300 / 300 купон / 0,50pv"
+  },
+  {
+    "id": 387,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/прес-полотенце-2.png",
+    "name": "Мягкое хлопковое прессованное полотенце",
+    "priceRetail": 678,
+    "pricePartner": "339 / 339 купон / 0,50pv"
+  },
+  {
+    "id": 388,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Высококачественные-безвредные-салфетки-для-кожи-на-основе-миниральной-воды.png",
+    "name": "Высококачественные салфетки для кожи на основе минеральной воды",
+    "priceRetail": 160,
+    "pricePartner": "80 / 80 купон / 0,10pv"
+  },
+  {
+    "id": 389,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Изысканные-высококачественные-очищающие-салфетки-безопасные-для-кожи.png",
+    "name": "Высококачественные салфетки безопасные для кожи",
+    "priceRetail": 970,
+    "pricePartner": "485 / 485 купон / 0,10pv"
+  },
+  {
+    "id": 390,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/висящее-полотнце.png",
+    "name": "Съемное полотенце для лица",
+    "priceRetail": 1198,
+    "pricePartner": "599 / 599 купон / 0,20pv"
+  },
+  {
+    "id": 391,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/гигиен-салфеткиСПИРТ-50-ШТ.png",
+    "name": "Гигиенические салфетки",
+    "priceRetail": 378,
+    "pricePartner": "189 / 189 купон / 0,20pv"
+  },
+  {
+    "id": 392,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/гигиен-салфеткиСПИРТ-8ШТ.png",
+    "name": "Гигиенические салфетки",
+    "priceRetail": 138,
+    "pricePartner": "69 / 69 купон / 0,10pv"
+  },
+  {
+    "id": 393,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/гигиен-салфетки-без-спирта-порт-уп.png",
+    "name": "Гигиенические салфетки не содержащие спирта",
+    "priceRetail": 160,
+    "pricePartner": "80 / 80 купон / 0,10pv"
+  },
+  {
+    "id": 394,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/бамбук-салф-4-слоя.png",
+    "name": "Экстрагируемые четырехслойные бамбуковые салфетки для лица",
+    "priceRetail": 1040,
+    "pricePartner": "520 / 520 купон / 0,20pv"
+  },
+  {
+    "id": 395,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/САЛФЕТКИ-БАМБУК-ПЛОСКИЕ.png",
+    "name": "Салфетки из натурального небеленого бамбукового волокна",
+    "priceRetail": 578,
+    "pricePartner": "289 / 1pv"
+  },
+  {
+    "id": 396,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/САЛФЕТКИ-БАМБУК-300x228-1.png",
+    "name": "Салфетки из натурального небеленого бамбукового волокна",
+    "priceRetail": 578,
+    "pricePartner": "520 / 520 купон / 0,20pv"
+  },
+  {
+    "id": 397,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/GREENLEAF-Натуральные-бамбуковые-салфетки-100шт-300x225-1.png",
+    "name": "Натуральные бамбуковые салфетки",
+    "priceRetail": 575,
+    "pricePartner": "359 / 359 купон / 0,20pv"
+  },
+  {
+    "id": 398,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/CARICH-Бамбуковые-портативные-салфетки-18штупаковка-300x228-1.png",
+    "name": "Бамбуковые портативные салфетки",
+    "priceRetail": 508,
+    "pricePartner": "254 / 254 купон / 0,20pv"
+  },
+  {
+    "id": 399,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/СТАКАНЧИКИ-БАМБУК-300x228-1.png",
+    "name": "Бумажные стаканчики из бамбукового волокна",
+    "priceRetail": 640,
+    "pricePartner": "320 / 1pv"
+  },
+  {
+    "id": 400,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/CARICH-iLiFE-Рулоновые-салфетки-из-бамбукового-волокна-1400г-300x225-1.png",
+    "name": "Рулоновые салфетки из бамбукового волокна",
+    "priceRetail": 1470,
+    "pricePartner": "735 / 735 купон / 0,20pv"
+  },
+  {
+    "id": 401,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/CARICH-Рулоновые-салфетки-из-бамбукового-волокна-300x228-1.png",
+    "name": "Рулоновые салфетки из бамбукового волокна",
+    "priceRetail": 1470,
+    "pricePartner": "735 / 735 купон / 0,20pv"
+  },
+  {
+    "id": 402,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/женская-туалетная-бумага-300x228-1.png",
+    "name": "Женская влажная туалетная бумага",
+    "priceRetail": 298,
+    "pricePartner": "149 / 149 купон / 0,20pv"
+  },
+  {
+    "id": 403,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/CARICH-iLiFE-Рулоновые-салфетки-из-бамбукового-волокна-1400г-300x225-2.png",
+    "name": "Рулон бумаги из небеленого бамбукового волокна без втулки",
+    "priceRetail": 1178,
+    "pricePartner": "589 / 0,50pv"
+  },
+  {
+    "id": 404,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/CARICH-Рулон-бумаги-из-натурального-небелёного-бамбукового-волокна-на-втулке-300x228-1.png",
+    "name": "Рулон бумаги из бамбукового волокна на втулке",
+    "priceRetail": 1600,
+    "pricePartner": "800 / 800 купон / 0,50pv"
+  },
+  {
+    "id": 405,
+    "category": "personal-hygiene",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/CARICH-Безопасная-для-кожи-влажная-туалетная-бумага80штук-в-упаковке-300x225-1.png",
+    "name": "Безопасная для кожи влажная туалетная бумага",
+    "priceRetail": 458,
+    "pricePartner": "229 / 229 купон / 0,20pv"
+  },
+  {
+    "id": 406,
+    "category": "products-for-children",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Детский-увлажняющий-крем-768x576-1.png",
+    "name": "Детский увлажняющий крем",
+    "priceRetail": 558,
+    "pricePartner": "279 / 279 купон /"
+  },
+  {
+    "id": 407,
+    "category": "products-for-children",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/крем-с-овсянкой-детский.png",
+    "name": "Детский увлажняющий крем с эссенцией овса",
+    "priceRetail": 980,
+    "pricePartner": "490 / 2pv"
+  },
+  {
+    "id": 408,
+    "category": "products-for-children",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/увлажнняющий-крем-лосьон-овес-200г-300x228-1.png",
+    "name": "Детский увлажняющий лосьон с эссенцией овса",
+    "priceRetail": 850,
+    "pricePartner": "425 / 2pv"
+  },
+  {
+    "id": 409,
+    "category": "products-for-children",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ДЕТ-ЛОСЬОН-300x228-1.png",
+    "name": "Увлажняющий лосьон для детей",
+    "priceRetail": 914,
+    "pricePartner": "457 / 2pv"
+  },
+  {
+    "id": 410,
+    "category": "products-for-children",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/детский-шампунь-с-овсом-300x225-1.png",
+    "name": "Детский шампунь с эссенцией овса",
+    "priceRetail": 980,
+    "pricePartner": "490 / 2pv"
+  },
+  {
+    "id": 411,
+    "category": "products-for-children",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/YIBEILE-300-мл-Детский-пенящийся-шампунь-и-гель-для-душа-2-в-1-молочный-аромат-300x225-1.png",
+    "name": "Детский пенящийся шампунь и гель для душа с молочным ароматом 2 в 1",
+    "priceRetail": 850,
+    "pricePartner": "399 / 399 купон / 0,50pv"
+  },
+  {
+    "id": 412,
+    "category": "products-for-children",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ДЕТ-Ш-2-В-1-300x228-1.png",
+    "name": "Детский пенящийся шампунь и гель для душа 2 в 1",
+    "priceRetail": 778,
+    "pricePartner": "389 / 389 купон / 0,50pv"
+  },
+  {
+    "id": 413,
+    "category": "products-for-children",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Yibeile-Calendula-Увлажняющий-детский-гель-для-душа-300x225-1.png",
+    "name": "Детский увлажняющий гель для душа с календулой",
+    "priceRetail": 790,
+    "pricePartner": "395 / 395 купон / 0,50pv"
+  },
+  {
+    "id": 414,
+    "category": "products-for-children",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Yibeile-Детская-пенка-меняющая-цвет-дезинфицирующее-средство-для-рук-250-мл-300x225-1.png",
+    "name": "Детская пенка для рук меняющая цвет",
+    "priceRetail": 790,
+    "pricePartner": "395 / 395 купон / 0,20pv"
+  },
+  {
+    "id": 415,
+    "category": "products-for-children",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/зп-детская-вкус-черники-300x225-1.png",
+    "name": "Детская зубная паста против кариеса со вкусом черники",
+    "priceRetail": 278,
+    "pricePartner": "139 / 0,50pv"
+  },
+  {
+    "id": 416,
+    "category": "products-for-children",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/YIBEILE-Детская-зубная-паста-со-вкусом-апельсина-80г-300x228-1.png",
+    "name": "Детская зубная паста со вкусом апельсина",
+    "priceRetail": 278,
+    "pricePartner": "139 / 139 купон / 0,20pv"
+  },
+  {
+    "id": 417,
+    "category": "products-for-children",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/зп-тройной-эктракт-фруктов-300x225-1.png",
+    "name": "Детская зубная паста с тройным экстрактом фруктов",
+    "priceRetail": 496,
+    "pricePartner": "248 / 1pv"
+  },
+  {
+    "id": 418,
+    "category": "products-for-children",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/детская-зп-300x237-1.png",
+    "name": "Детская зубная паста",
+    "priceRetail": 280,
+    "pricePartner": "140 / 0,50pv"
+  },
+  {
+    "id": 419,
+    "category": "products-for-children",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/детская-зп-с-пробиотиками-против-кариеса-300x225-1.png",
+    "name": "Детская зубная паста с пробиотиками против кариеса",
+    "priceRetail": 372,
+    "pricePartner": "186 / 1pv"
+  },
+  {
+    "id": 420,
+    "category": "products-for-children",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ДЕТ-ЗП-300x226-1.png",
+    "name": "Детская паста с ксилитом «клубничное мороженое»",
+    "priceRetail": 784,
+    "pricePartner": "392 / 1,50pv"
+  },
+  {
+    "id": 421,
+    "category": "products-for-children",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/дет-зщ-кролик-300x225-1.png",
+    "name": "Мягкая зубная щетка «кролик»",
+    "priceRetail": 376,
+    "pricePartner": "188 / 1pv"
+  },
+  {
+    "id": 422,
+    "category": "products-for-children",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/дет-зщ-для-защиты-десен-300x225-1.png",
+    "name": "Зубная щетка с мягкой щетиной для защиты десен",
+    "priceRetail": 438,
+    "pricePartner": "219 / 1pv"
+  },
+  {
+    "id": 423,
+    "category": "products-for-children",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ДЕТ-ЗЩ-МЯГКАЯ-ЩЕТИНА-300x228-1.png",
+    "name": "Детская зубная щетка с густой и нежной щетиной",
+    "priceRetail": 534,
+    "pricePartner": "267 / 1,50pv"
+  },
+  {
+    "id": 424,
+    "category": "products-for-children",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/YIBEILE-Детская-антибактериальная-зубная-щётка-2-300x225-1.png",
+    "name": "Детская антибактериальная зубная щетка",
+    "priceRetail": 270,
+    "pricePartner": "135 / 135 купон / 0,10pv"
+  },
+  {
+    "id": 425,
+    "category": "products-for-children",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ДЕТ-ЗЩ-ГУСЕНИЦА-300x228-1.png",
+    "name": "Детская зубная щетка для десен и зубов «гусеничка»",
+    "priceRetail": 657,
+    "pricePartner": "85 / 85 купон / 0,20pv"
+  },
+  {
+    "id": 426,
+    "category": "products-for-children",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/CARICH-Детские-влажные-салфетки-с-экстрактом-молока-80-шт-300x228-1.png",
+    "name": "Детские влажные салфетки с экстрактом молока",
+    "priceRetail": 398,
+    "pricePartner": "199 / 199 купон / 0,20pv"
+  },
+  {
+    "id": 427,
+    "category": "products-for-children",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/25-300x228-1.png",
+    "name": "Детские влажные салфетки с экстрактом молока",
+    "priceRetail": 158,
+    "pricePartner": "79 / 79 купон / 0,20pv"
+  },
+  {
+    "id": 428,
+    "category": "products-for-children",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/CARICH-Детские-влажные-салфетки-80шт-300x226-1.png",
+    "name": "Детские влажные салфетки",
+    "priceRetail": 508,
+    "pricePartner": "254 / 254 купон / 0,20pv"
+  },
+  {
+    "id": 429,
+    "category": "products-for-children",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/CARICH-Детские-влажные-салфетки-мини-300x227-1.png",
+    "name": "Детские влажные салфетки мини",
+    "priceRetail": 508,
+    "pricePartner": "254 / 254 купон / 0,20pv"
+  },
+  {
+    "id": 430,
+    "category": "products-for-children",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/детские-салфетки-300x226-1.png",
+    "name": "Детские влажные салфетки",
+    "priceRetail": 438,
+    "pricePartner": "219 / 0,50pv"
+  },
+  {
+    "id": 431,
+    "category": "products-for-children",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/детские-салфетки-мягкость-и-чистота-300x226-1.png",
+    "name": "Детские влажные салфетки «мягкость и чистота»",
+    "priceRetail": 578,
+    "pricePartner": "289 / 1pv"
+  },
+  {
+    "id": 432,
+    "category": "products-for-children",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Салфетки-Kalishi-Baby-EDI-Pure-Water-80-шт-300x226-1.png",
+    "name": "Детские влажные салфетки baby edi pure water",
+    "priceRetail": 398,
+    "pricePartner": "199 / 199 купон / 0,20pv"
+  },
+  {
+    "id": 433,
+    "category": "products-for-children",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/салф-для-новорожденных-300x238-1.png",
+    "name": "Увлажняющие бумажные салфетки для новорожденных детей",
+    "priceRetail": 718,
+    "pricePartner": "359 / 359 купон / 0,20pv"
+  },
+  {
+    "id": 434,
+    "category": "products-for-children",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ДЕТСКИЕ-ПОДГУЗНИКИ-300x229-1.png",
+    "name": "Дышащие детские подгузники",
+    "priceRetail": 4100,
+    "pricePartner": "2050 / 2050 купон / 0,50pv"
+  },
+  {
+    "id": 435,
+    "category": "products-for-children",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ДЕТСКИЕ-ПОДГУЗНИКИ2-В-300x228-1.png",
+    "name": "Детские подгузники",
+    "priceRetail": 2600,
+    "pricePartner": "1300 / 1300 купон / 0,50pv"
+  },
+  {
+    "id": 436,
+    "category": "products-for-children",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/KARDLI-Детское-полотенце-голубой-300x228-1.png",
+    "name": "Детское полотенце (цвет голубой)",
+    "priceRetail": 518,
+    "pricePartner": "259 / 259 купон / 0,50pv"
+  },
+  {
+    "id": 437,
+    "category": "products-for-children",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/KARDLI-Детское-полотенце-розовый-300x228-1.png",
+    "name": "Детское полотенце (цвет розовый)",
+    "priceRetail": 518,
+    "pricePartner": "259 / 259 купон / 0,50pv"
+  },
+  {
+    "id": 438,
+    "category": "products-for-children",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/полотенце-детское-оранжевое-300x228-1.png",
+    "name": "Детское полотенце (цвет оранжевый)",
+    "priceRetail": 538,
+    "pricePartner": "269 / 1pv"
+  },
+  {
+    "id": 439,
+    "category": "products-for-children",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/комбинезон-для-новорожденных-300x225-1.png",
+    "name": "Комбинезон для новорожденных",
+    "priceRetail": 1798,
+    "pricePartner": "899 / 2pv"
+  },
+  {
+    "id": 440,
+    "category": "products-for-children",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/НОСКИ-В-СЕТКУ-МАЛЬЧИКИ-300x228-1.png",
+    "name": "Носки в сеточку для мальчиков",
+    "priceRetail": 600,
+    "pricePartner": "300 / 1pv"
+  },
+  {
+    "id": 441,
+    "category": "products-for-children",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/KARDLI-Носки-в-сеточку-для-девочки-L-1-300x228-1.png",
+    "name": "Носки в сеточку для девочек",
+    "priceRetail": 600,
+    "pricePartner": "300 / 1pv"
+  },
+  {
+    "id": 442,
+    "category": "products-for-children",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/KARDLI-Всесезонные-носки-для-мальчиков-L-300x228-1.png",
+    "name": "Всесезонные носки для мальчиков",
+    "priceRetail": 600,
+    "pricePartner": "300 / 1pv"
+  },
+  {
+    "id": 443,
+    "category": "products-for-children",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/KARDLI-Всесезонные-носки-для-девочек-L-300x228-1.png",
+    "name": "Всесезонные носки для девочек",
+    "priceRetail": 600,
+    "pricePartner": "300 / 1pv"
+  },
+  {
+    "id": 444,
+    "category": "health",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/витамин-с-вкус-персик-768x584-1.png",
+    "name": "Шипучие таблетки с витамином с и вкусом персика",
+    "priceRetail": 360,
+    "pricePartner": "180 / 0,50pv"
+  },
+  {
+    "id": 445,
+    "category": "health",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Витамин-C-Шипучие-таблетки-со-вкусом-сладкого-апельсина.png",
+    "name": "Шипучие таблетки с витамином с и вкусом сладкого апельсина",
+    "priceRetail": 590,
+    "pricePartner": "295 / 1pv"
+  },
+  {
+    "id": 446,
+    "category": "health",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/КАПУСЫ-С-РЫБЬИМ-ЖИРОМ.png",
+    "name": "Мягкие капсулы с рыбьим жиром",
+    "priceRetail": 3500,
+    "pricePartner": "1750 / 7pv"
+  },
+  {
+    "id": 447,
+    "category": "health",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Капсулы-с-плацентой-красного-оленя-и-виноградными-косточками.png",
+    "name": "Мягкие капсулы с экстрактом плаценты оленя и виноградных косточек",
+    "priceRetail": 2500,
+    "pricePartner": "1250 / 5pv"
+  },
+  {
+    "id": 448,
+    "category": "health",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/КАПУСЫ-С-ГИАЛУРОНАТОМ-И-КРИЛЕМ.png",
+    "name": "Гелевые капсулы с гиалуронатом натрия и маслом криля",
+    "priceRetail": 4000,
+    "pricePartner": "2000 / 8pv"
+  },
+  {
+    "id": 449,
+    "category": "health",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Жевательная-гелевая-конфета-с-нулевым-содержанием-жира.png",
+    "name": "Гелевые конфеты с гиалуронатом натрия и маслом криля",
+    "priceRetail": 3000,
+    "pricePartner": "1500 / 6pv"
+  },
+  {
+    "id": 450,
+    "category": "health",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ЖЕЛАТИНОВЫЕ-КАПСУЛЫ-ДЛЯ-КИШЕЧНИКА.png",
+    "name": "Желатиновые капсулы для улучшения работы кишечника",
+    "priceRetail": 1960,
+    "pricePartner": "980 / 5pv"
+  },
+  {
+    "id": 451,
+    "category": "health",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Коэнзим-Q10-мягкие-гелевые-таблетки.png",
+    "name": "Мягкие капсулы с коэнзимом q10",
+    "priceRetail": 1996,
+    "pricePartner": "998 / 4pv"
+  },
+  {
+    "id": 452,
+    "category": "health",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/КОЛЛАГЕНОВЫЙ-ПЕПТИД-С-ГИАЛУРОНКОЙ-В-ТАБЛЕТКАХ.png",
+    "name": "Коллагеновый пептид с гиалуронатом натрия в таблетках",
+    "priceRetail": 2500,
+    "pricePartner": "1250 / 5pv"
+  },
+  {
+    "id": 453,
+    "category": "health",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/фруктово-овощное-желе.png",
+    "name": "Фруктово-овощное желе",
+    "priceRetail": 850,
+    "pricePartner": "425 / 1pv"
+  },
+  {
+    "id": 454,
+    "category": "health",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ПРОБИОТИЧЕСКИЕ-ПУЗЫРЬКОВЫЕ-ПАСТИЛКИ.png",
+    "name": "Пробиотические пузырьковые пастилки",
+    "priceRetail": 576,
+    "pricePartner": "288 / 1,50pv"
+  },
+  {
+    "id": 455,
+    "category": "health",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/капсулы-лютеин-черника.png",
+    "name": "Капсулы с лютеином и бета — каротином из черники",
+    "priceRetail": 2000,
+    "pricePartner": "1000 / 4pv"
+  },
+  {
+    "id": 456,
+    "category": "health",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Таблетированные-конфеты-с-маслом-расторопши.png",
+    "name": "Таблетированные конфеты с маслом расторопши",
+    "priceRetail": 3100,
+    "pricePartner": "1550 / 5pv"
+  },
+  {
+    "id": 457,
+    "category": "health",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Гелевые-таблетки-с-аммино-сахаром-и-кальцием.png",
+    "name": "Гелевые таблетки с глюкозамином, хондроитином и кальцием",
+    "priceRetail": 2100,
+    "pricePartner": "1050 / 4pv"
+  },
+  {
+    "id": 458,
+    "category": "health",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Эпимедиум-марки-Newitz-Fujioka-и-капсулы-Ganoderma.png",
+    "name": "Капсулы из эпедиума и ганодермы",
+    "priceRetail": 5100,
+    "pricePartner": "2550 / 8pv"
+  },
+  {
+    "id": 459,
+    "category": "health",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Конфеты-из-белой-фасоли-в-форме-таблеток.png",
+    "name": "Таблетированные таблетки из белой фасоли",
+    "priceRetail": 2700,
+    "pricePartner": "1350 / 5pv"
+  },
+  {
+    "id": 460,
+    "category": "health",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/фруктовый-порошок-облепиха-вишня.png",
+    "name": "Фруктовый порошковый напиток с облепихой и вишней",
+    "priceRetail": 3000,
+    "pricePartner": "1500 / 5pv"
+  },
+  {
+    "id": 461,
+    "category": "health",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/КОЛЛАГЕНОВЫЙ-НАПИТОК-КРАСНЫЙ-АПЕЛЬСИН.png",
+    "name": "Коллагеновый напиток «красный апельсин» с витамином с",
+    "priceRetail": 798,
+    "pricePartner": "399 / 1pv"
+  },
+  {
+    "id": 462,
+    "category": "health",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/КОЛЛАГЕНОВЫЙ-НАПИТОКЧЕРНОСЛИВ-И-КЛЕТЧАТКА.png",
+    "name": "Пробиотический фруктовый напиток с черносливом и клетчаткой",
+    "priceRetail": 1000,
+    "pricePartner": "500 / 2pv"
+  },
+  {
+    "id": 463,
+    "category": "health",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/НАПИТОК-СО-СПИРУЛИНОЙ-И-ПРОБИОТИКОМ.png",
+    "name": "Растворимый напиток со спирулиной и пробиотиками",
+    "priceRetail": 3000,
+    "pricePartner": "1500 / 6pv"
+  },
+  {
+    "id": 464,
+    "category": "health",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/КОФЕ-ПУЛЯ.png",
+    "name": "Пуленепробиваемый кофе: напиток для похудения",
+    "priceRetail": 1936,
+    "pricePartner": "968 / 3pv"
+  },
+  {
+    "id": 465,
+    "category": "health",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ЛАТТЕ.png",
+    "name": "Латте",
+    "priceRetail": 300,
+    "pricePartner": "150 / 0,50pv"
+  },
+  {
+    "id": 466,
+    "category": "health",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ВЕРБЛЮЖЬЕ-МОЛОКО.png",
+    "name": "Сухое верблюжье молоко с пробиотиками",
+    "priceRetail": 4998,
+    "pricePartner": "2499 / 10pv"
+  },
+  {
+    "id": 467,
+    "category": "health",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Nilrich-Сухое-козье-молоко-с-высоким-содержанием-кальция-пакетированный.png",
+    "name": "Сухое козье молоко с высоким содержанием кальция",
+    "priceRetail": 3100,
+    "pricePartner": "1550 / 5pv"
+  },
+  {
+    "id": 468,
+    "category": "health",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Newitz-Fish-Collagen-Peptide-Drink.png",
+    "name": "Пептидный напиток из рыбного коллагена",
+    "priceRetail": 3100,
+    "pricePartner": "1550 / 5pv"
+  },
+  {
+    "id": 469,
+    "category": "health",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Протеиновый-порошок-с-нулевым-содержанием-белка.png",
+    "name": "Соевый протеиновый порошок",
+    "priceRetail": 3998,
+    "pricePartner": "1999 / 8pv"
+  },
+  {
+    "id": 470,
+    "category": "health",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Newitz-Cranberry-Complex-Пробиотический-твердый-напиток30-упак.png",
+    "name": "Пробиотический твердый напиток",
+    "priceRetail": 1996,
+    "pricePartner": "998 / 4pv"
+  },
+  {
+    "id": 471,
+    "category": "health",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Олигопептидный-прозрачный-напиток.png",
+    "name": "Олигопептидный прозрачный напиток",
+    "priceRetail": 2500,
+    "pricePartner": "1250 / 5pv"
+  },
+  {
+    "id": 472,
+    "category": "health",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Полипептид-с-экстрактом-женьшеня-300x225-1.png",
+    "name": "Напиток с экстрактом красного женьшеня и полипептидами",
+    "priceRetail": 1960,
+    "pricePartner": "980 / 3pv"
+  },
+  {
+    "id": 473,
+    "category": "health",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/чай-6-вкусов.png",
+    "name": "Тибетский чай «шесть трав»",
+    "priceRetail": 200,
+    "pricePartner": "100 / 0,10pv"
+  },
+  {
+    "id": 474,
+    "category": "health",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ЧАЙ-КУКУРУЗНЫЕ-РЫЛЬЦА.png",
+    "name": "Чай из кукурузных рылец",
+    "priceRetail": 920,
+    "pricePartner": "460 / 1,50pv"
+  },
+  {
+    "id": 475,
+    "category": "health",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Nlirich-Кубики-коричневого-сахара-с-розой200-г）-1.png",
+    "name": "Кубики коричневого сахара с розой",
+    "priceRetail": 946,
+    "pricePartner": "473 / 473 купон / 0,50pv"
+  },
+  {
+    "id": 476,
+    "category": "health",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Чай-для-похудения.png",
+    "name": "Чай для комфортного похудения",
+    "priceRetail": 1500,
+    "pricePartner": "750 / 3pv"
+  },
+  {
+    "id": 477,
+    "category": "eco-friendly-laundry-products",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ILife-18-кг-Антибактериальный-стиральный-порошок-Камелия-768x584-1.png",
+    "name": "Антибактериальный жидкий стиральный порошок «камелия»",
+    "priceRetail": 1090,
+    "pricePartner": "545 / 1pv"
+  },
+  {
+    "id": 478,
+    "category": "eco-friendly-laundry-products",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/iLiFE-Отбеливающий-гель-для-стирки-с-энзимами-2-кг-1-768x584-1.png",
+    "name": "Отбеливающий гель для стирки с энзимами",
+    "priceRetail": 1178,
+    "pricePartner": "589 / 2pv"
+  },
+  {
+    "id": 479,
+    "category": "eco-friendly-laundry-products",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/iLiFE-Отбеливающий-гель-для-стирки-с-энзимами-1-кг-768x584-1.png",
+    "name": "Отбеливающий гель для стирки с энзимами",
+    "priceRetail": 589,
+    "pricePartner": "299 / 299 купон / 0,50pv"
+  },
+  {
+    "id": 480,
+    "category": "eco-friendly-laundry-products",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/iLiFE-Антибактериальный-гель-для-стирки-против-чесоточного-зудня-2-кг-300x228-1.png",
+    "name": "Антибактериальный гель против чесоточного зудня",
+    "priceRetail": 1178,
+    "pricePartner": "589 / 2pv"
+  },
+  {
+    "id": 481,
+    "category": "eco-friendly-laundry-products",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/iLiFE-Микромолекулярный-гель-для-стирки-на-растительной-основе-2-кг-300x228-1.png",
+    "name": "Микромолекулярный гель для стирки на растительной основе",
+    "priceRetail": 1068,
+    "pricePartner": "534 / 1pv"
+  },
+  {
+    "id": 482,
+    "category": "eco-friendly-laundry-products",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/iLiFE-МногофункциональныiLiFE-Микромолекулярный-гель-для-стирки-на-растительной-основе-1-кгй-гель-для-стирки-2кг-300x225-1.png",
+    "name": "Микромолекулярный гель для стирки на растительной основе",
+    "priceRetail": 598,
+    "pricePartner": "299 / 299 купон / 0,50pv"
+  },
+  {
+    "id": 483,
+    "category": "eco-friendly-laundry-products",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Ilife-18-кг-стиральный-порошок-с-микрокапсулами-300x228-1.png",
+    "name": "Жидкий стиральный порошок с микрокапсулами",
+    "priceRetail": 1066,
+    "pricePartner": "533 / 1pv"
+  },
+  {
+    "id": 484,
+    "category": "eco-friendly-laundry-products",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/iLiFE-Антибактериальный-гель-для-стирки-с-экстрактом-бамбука-1-кг-300x225-1.png",
+    "name": "Антибактериальный гель для стирки с экстрактом бамбука",
+    "priceRetail": 578,
+    "pricePartner": "289 / 1pv"
+  },
+  {
+    "id": 485,
+    "category": "eco-friendly-laundry-products",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/iLiFE-Многофункциональный-гель-для-стирки-2кг-300x225-1.png",
+    "name": "Многофункциональный гель для стирки",
+    "priceRetail": 1178,
+    "pricePartner": "589 / 589 купон / 1pv"
+  },
+  {
+    "id": 486,
+    "category": "eco-friendly-laundry-products",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/iLiFE-Многофункциональный-гель-для-стирки-300x225-1.png",
+    "name": "Многофункциональный гель для стирки",
+    "priceRetail": 598,
+    "pricePartner": "299 / 299 купон / 0,50pv"
+  },
+  {
+    "id": 487,
+    "category": "eco-friendly-laundry-products",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/iLiFE-Гель-для-стирки-цветнiLiFE-Многофункциональный-гель-для-стирки-цветочный-аромат-1-кгого-белья-_Защита-цвета_-1-к-300x225-1.png",
+    "name": "Многофункциональный гель для стирки «цветочный аромат»",
+    "priceRetail": 598,
+    "pricePartner": "299 / 299 купон / 0,50pv"
+  },
+  {
+    "id": 488,
+    "category": "eco-friendly-laundry-products",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/iLiFE-Гель-для-стирки-цветного-белья-_Защита-цвета_-1-кг-300x225-1.png",
+    "name": "Гель для стирки белья «защита цвета»",
+    "priceRetail": 708,
+    "pricePartner": "354 / 354 купон / 0,50pv"
+  },
+  {
+    "id": 489,
+    "category": "eco-friendly-laundry-products",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/iLiFE-Гель-для-стирки-против-чесоточного-зудня-1кг-300x228-1.png",
+    "name": "Антибактериальный гель для стирки против пылевых клещей",
+    "priceRetail": 546,
+    "pricePartner": "350 / 350 купон / 0,50pv"
+  },
+  {
+    "id": 490,
+    "category": "eco-friendly-laundry-products",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/iLiFE-Средство-для-стирки-натурального-шёлка-и-шерсти-800-мл-300x228-1.png",
+    "name": "Средство для стирки натурального шелка и шерсти",
+    "priceRetail": 956,
+    "pricePartner": "478 / 2pv"
+  },
+  {
+    "id": 491,
+    "category": "eco-friendly-laundry-products",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Стиральный-порошок-Love-Life-чистый-и-гладкий-32-кг-аромат-лаванды-300x225-1.png",
+    "name": "Стиральный порошок с ароматом лаванды",
+    "priceRetail": 1718,
+    "pricePartner": "859 / 859 купон / 1pv"
+  },
+  {
+    "id": 492,
+    "category": "eco-friendly-laundry-products",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/iLiFE-Антибактериальный-гель-для-стирки-нижнего-белья-цветочный-аромат-1-кг-300x225-1.png",
+    "name": "Антибактериальный гель для стирки нижнего белья",
+    "priceRetail": 836,
+    "pricePartner": "418 / 418 купон / 0,50pv"
+  },
+  {
+    "id": 493,
+    "category": "eco-friendly-laundry-products",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ГЕЛЬ-НИЖНЕЕ-Б-300x225-1.png",
+    "name": "Гель с травами и цветочным ароматом для стирки нижнего белья",
+    "priceRetail": 624,
+    "pricePartner": "312 / 1pv"
+  },
+  {
+    "id": 494,
+    "category": "eco-friendly-laundry-products",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/iLiFE-Многофункциональный-мыльный-порошок-2-кг-300x228-1.png",
+    "name": "Многофункциональный мыльный порошок",
+    "priceRetail": 912,
+    "pricePartner": "456 / 1pv"
+  },
+  {
+    "id": 495,
+    "category": "eco-friendly-laundry-products",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/iLiFE-Гелевые-капсулы-для-стирки-белья-_Красный-гранат_-300x228-1.png",
+    "name": "Гелевые капсулы для стирки «красный гранат»",
+    "priceRetail": 712,
+    "pricePartner": "356 / 356 купон / 0,50pv"
+  },
+  {
+    "id": 496,
+    "category": "eco-friendly-laundry-products",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Гель-для-стирки-8-раз-более-чистый-многоэффективный-с-четырьмя-полостями-в-виде-шариков-300x240-1.png",
+    "name": "Эффективный гель для стирки с четырьмя полостями в виде шариков",
+    "priceRetail": 1500,
+    "pricePartner": "750 / 3pv"
+  },
+  {
+    "id": 497,
+    "category": "eco-friendly-laundry-products",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Greenleaf-Гель-для-стирки-для-защиты-цвета-1-кг-300x240-1.png",
+    "name": "Гель для стирки «защита цвета»",
+    "priceRetail": 1000,
+    "pricePartner": "500 / 1,50pv"
+  },
+  {
+    "id": 498,
+    "category": "eco-friendly-laundry-products",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/стирка-бесфосфат-500-г-фиолет-300x231-1.png",
+    "name": "Мультиактивное антибактериальное средство для стирки",
+    "priceRetail": 360,
+    "pricePartner": "180 / 180 купон / 0,20pv"
+  },
+  {
+    "id": 499,
+    "category": "eco-friendly-laundry-products",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Пятновыводитель-и-бактериовыводитель-бесфосфатное-средство-для-стирки-300x231-1.png",
+    "name": "Бесфосфатное антибактериальное средство для стирки",
+    "priceRetail": 546,
+    "pricePartner": "490 / 490 купон / 0,50pv"
+  },
+  {
+    "id": 500,
+    "category": "eco-friendly-laundry-products",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ДЕЗОДОРАНТ-ДОМ-ОДЕЖДЫ-300x228-1.png",
+    "name": "Дезодорирующее антибактериальное средство для одежды с приятным ароматом",
+    "priceRetail": 400,
+    "pricePartner": "200 / 200 купон"
+  },
+  {
+    "id": 501,
+    "category": "eco-friendly-laundry-products",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/КОНД-ЛАВАНДА-2-300x228-1.png",
+    "name": "Ухаживающий ополаскиватель для белья с ароматом лаванды",
+    "priceRetail": 1100,
+    "pricePartner": "550 / 1pv"
+  },
+  {
+    "id": 502,
+    "category": "eco-friendly-laundry-products",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/КОНД-ВИШНЯ-300x228-1.png",
+    "name": "Ухаживающий ополаскиватель для белья с ароматом цветов вишни",
+    "priceRetail": 1100,
+    "pricePartner": "550 / 1pv"
+  },
+  {
+    "id": 503,
+    "category": "eco-friendly-laundry-products",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ФРЕЗИЯ-1-300x225-1.png",
+    "name": "Парфюмированный кондиционер для белья в гранулах «фрезия»",
+    "priceRetail": 1300,
+    "pricePartner": "650 / 3pv"
+  },
+  {
+    "id": 504,
+    "category": "eco-friendly-laundry-products",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/СОСО-300x225-1.png",
+    "name": "Парфюмированный кондиционер для белья в гранулах «мадемуазель сосо»",
+    "priceRetail": 1300,
+    "pricePartner": "650 / 3pv"
+  },
+  {
+    "id": 505,
+    "category": "eco-friendly-laundry-products",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ЮЖНЫЙ-ВЕТЕР-2-300x225-1.png",
+    "name": "Парфюмированный кондиционер для белья в гранулах «южный ветер»",
+    "priceRetail": 1300,
+    "pricePartner": "650 / 3pv"
+  },
+  {
+    "id": 506,
+    "category": "eco-friendly-laundry-products",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/детская-стирка-с-энзимами-300x228-1.png",
+    "name": "Жидкое средство для стирки детской одежды с аминокислотами «морская мелодия»",
+    "priceRetail": 712,
+    "pricePartner": "356 / 1pv"
+  },
+  {
+    "id": 507,
+    "category": "eco-friendly-laundry-products",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/гель-для-стирки-500-мл-300x228-1.png",
+    "name": "Антибактериальный гель для стирки вещей новорожденных детей",
+    "priceRetail": 600,
+    "pricePartner": "300 / 300 купон / 0,50pv"
+  },
+  {
+    "id": 508,
+    "category": "eco-friendly-laundry-products",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/детский-гель-стирка-300x228-1.png",
+    "name": "Антибактериальный гель для стирки детских вещей с энзимами",
+    "priceRetail": 936,
+    "pricePartner": "468 / 468 купон / 0,50pv"
+  },
+  {
+    "id": 509,
+    "category": "eco-friendly-laundry-products",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/КАРАНДАШ-ДЛЯ-УДАЛЕНИЯ-ПЯТЕН-300x228-1.png",
+    "name": "Карандаш для удаления пятен",
+    "priceRetail": 546,
+    "pricePartner": "150 / 0,50pv"
+  },
+  {
+    "id": 510,
+    "category": "eco-friendly-laundry-products",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/iLiFE-Гель-отбеливатель-для-замачивания-белого-белья-700-г-300x228-1.png",
+    "name": "Гель — отбеливатель для замачивания белого белья",
+    "priceRetail": 548,
+    "pricePartner": "274 / 1pv"
+  },
+  {
+    "id": 511,
+    "category": "eco-friendly-laundry-products",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/iLiFE-Гель-для-замачивания-цветных-вещей-700-г-300x228-1.png",
+    "name": "Гель для замачивания цветных вещей",
+    "priceRetail": 702,
+    "pricePartner": "351 / 1pv"
+  },
+  {
+    "id": 512,
+    "category": "eco-friendly-laundry-products",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/iLiFE-Высокоэффективное-средство-для-удаления-стойких-загрязнений-300-мл-300x228-1.png",
+    "name": "Высоко эффективное средство для удаления стойких загрязнений",
+    "priceRetail": 600,
+    "pricePartner": "300 / 1pv"
+  },
+  {
+    "id": 513,
+    "category": "eco-friendly-laundry-products",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/СОЛЬ-ОТБЕЛИВАТЕЛЬ-300x228-1.png",
+    "name": "Эффективная ароматизированная активная минеральная соль",
+    "priceRetail": 848,
+    "pricePartner": "424 / 424 купон / 0,50pv"
+  },
+  {
+    "id": 514,
+    "category": "eco-friendly-laundry-products",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ПЛАСТИНЫ-ДЛЯ-БЕЛЬЯ-300x229-1.png",
+    "name": "Пластинки для цветного белья, предотвращающие окрашивание",
+    "priceRetail": 560,
+    "pricePartner": "280 / 1pv"
+  },
+  {
+    "id": 515,
+    "category": "eco-friendly-laundry-products",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/iLiFE-Парфюмированное-жидкое-мыло-для-стирки-800-мл-300x225-1.png",
+    "name": "Парфюмированное жидкое мыло для стирки",
+    "priceRetail": 956,
+    "pricePartner": "478 / 2pv"
+  },
+  {
+    "id": 516,
+    "category": "eco-friendly-laundry-products",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/iLiFE-Хозяйственное-мыло-с-содой-и-энзимами-200-г-х-2-шт-300x228-1.png",
+    "name": "Хозяйственное мыло с содой и энзимами",
+    "priceRetail": 578,
+    "pricePartner": "289 / 1pv"
+  },
+  {
+    "id": 517,
+    "category": "eco-friendly-laundry-products",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/МЫЛО-ДЛЯ-НИЖНЕГО-БЕЛЬЯ-300x228-1.png",
+    "name": "Антибактериальное мыло для стирки нижнего белья",
+    "priceRetail": 272,
+    "pricePartner": "136 / 136 купон / 0,20pv"
+  },
+  {
+    "id": 518,
+    "category": "eco-friendly-laundry-products",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/МЫЛО-ХОЗ-300x228-1.png",
+    "name": "Антибактериальное хозяйственное мыло",
+    "priceRetail": 200,
+    "pricePartner": "100 / 100 купон / 0,20pv"
+  },
+  {
+    "id": 519,
+    "category": "eco-friendly-home-remedies",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Ilife-Антибактериальное-мыло-для-мытья-посуды-125-кг-с-глубоководной-морской-солью-768x584-1.png",
+    "name": "Антибактериальное мыло для мытья посуды с глубоководной морской солью",
+    "priceRetail": 794,
+    "pricePartner": "397 / 1pv"
+  },
+  {
+    "id": 520,
+    "category": "eco-friendly-home-remedies",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ПОДУДА-ЭНЗИМЫ-768x576-1.png",
+    "name": "Моющее средство для посуды с энзимами и минеральной солью",
+    "priceRetail": 848,
+    "pricePartner": "424 / 424 купон / 0,50pv"
+  },
+  {
+    "id": 521,
+    "category": "eco-friendly-home-remedies",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ПОДУДА-ФРУКТЫ-300x228-1.png",
+    "name": "Фруктовое мыло для мытья посуды",
+    "priceRetail": 486,
+    "pricePartner": "243 / 1pv"
+  },
+  {
+    "id": 522,
+    "category": "eco-friendly-home-remedies",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Greenleaf-125-кг-жидкость-для-мытья-посуды-с-имбирем-300x228-1.png",
+    "name": "Жидкость для мытья посуды с имбирем",
+    "priceRetail": 670,
+    "pricePartner": "335 / 1pv"
+  },
+  {
+    "id": 523,
+    "category": "eco-friendly-home-remedies",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ПОДУДА-ЗЕЛ-ЧАЙ-300x228-1.png",
+    "name": "Жидкость для мытья посуды с ароматом чая",
+    "priceRetail": 600,
+    "pricePartner": "300 / 300 купон / 0,20pv"
+  },
+  {
+    "id": 524,
+    "category": "eco-friendly-home-remedies",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/iLiFE-1-кг-Моющее-средство-с-фруктовым-ароматом-300x225-1.png",
+    "name": "Моющее средство для посуды с фруктовым ароматом",
+    "priceRetail": 767,
+    "pricePartner": "337 / 337 купон / 0,50pv"
+  },
+  {
+    "id": 525,
+    "category": "eco-friendly-home-remedies",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/iLiFE-Моющее-средство-для-посуды-1-кг-300x228-1.png",
+    "name": "Моющее средство для посуды",
+    "priceRetail": 498,
+    "pricePartner": "249 / 249 купон / 1pv"
+  },
+  {
+    "id": 526,
+    "category": "eco-friendly-home-remedies",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ПОДУДА-БАМБУК-300x228-1.png",
+    "name": "Моющее средство для посуды с экстрактом бамбука",
+    "priceRetail": 767,
+    "pricePartner": "389 / 389 купон / 0,50pv"
+  },
+  {
+    "id": 527,
+    "category": "eco-friendly-home-remedies",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/МЫТЬЕ-ФРУКТОВ-300x228-1.png",
+    "name": "Средство для мытья фруктов и овощей",
+    "priceRetail": 1286,
+    "pricePartner": "643 / 2,50pv"
+  },
+  {
+    "id": 528,
+    "category": "eco-friendly-home-remedies",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/МЫТЬЕ-ФРУКТОВ-УНИВЕРСАЛ-1-300x228-1.png",
+    "name": "Дезинфицирующее средство для мытья фруктов, овощей, столовых приборов",
+    "priceRetail": 800,
+    "pricePartner": "400 / 400 купон / 0,50pv"
+  },
+  {
+    "id": 529,
+    "category": "eco-friendly-home-remedies",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/Ilife-Очиститель-следов-от-чая-90-мл-300x228-1.png",
+    "name": "Очиститель следов от чая",
+    "priceRetail": 758,
+    "pricePartner": "379 / 2pv"
+  },
+  {
+    "id": 530,
+    "category": "eco-friendly-home-remedies",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/iLiFE-15-г-_5-Средство-для-удаления-чайного-налёта-300x228-1.png",
+    "name": "Средство для удаления чайного налета",
+    "priceRetail": 356,
+    "pricePartner": "178 / 178 купон / 0,20pv"
+  },
+  {
+    "id": 531,
+    "category": "eco-friendly-home-remedies",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/iLiFE-Средство-для-чистки-накипи-300x228-1.png",
+    "name": "Средство для чистки накипи",
+    "priceRetail": 320,
+    "pricePartner": "160 / 160 купон / 0,20pv"
+  },
+  {
+    "id": 532,
+    "category": "eco-friendly-home-remedies",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/iLife-Многофункциональный-очиститель-масла-300x225-1.png",
+    "name": "Многофункциональный очиститель масла",
+    "priceRetail": 650,
+    "pricePartner": "325 / 1pv"
+  },
+  {
+    "id": 533,
+    "category": "eco-friendly-home-remedies",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/KARDLI-Многофункциональная-электролизная-вода-300x225-1.png",
+    "name": "Многофункциональная электролизная вода",
+    "priceRetail": 692,
+    "pricePartner": "346 / 346 купон / 0,50pv"
+  },
+  {
+    "id": 534,
+    "category": "eco-friendly-home-remedies",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/многоф-средство-300x231-1.png",
+    "name": "Многофункциональный комбинированный набор чистящего спрея",
+    "priceRetail": 1190,
+    "pricePartner": "595 / 595 купон / 0,50pv"
+  },
+  {
+    "id": 535,
+    "category": "eco-friendly-home-remedies",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/1-Набор-средств-для-удаления-жировых-загрязнений-300x228-1.png",
+    "name": "Набор средств для удаления жировых загрязнений",
+    "priceRetail": 820,
+    "pricePartner": "410/ 410 купон / 0,20pv"
+  },
+  {
+    "id": 536,
+    "category": "eco-friendly-home-remedies",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/iLiFE-500-мл-Чистящее-средство-для-удаления-жира-и-нагара-300x228-1.png",
+    "name": "Чистящее средство для удаления жира и нагара",
+    "priceRetail": 472,
+    "pricePartner": "236 / 236 купон / 0,50pv"
+  },
+  {
+    "id": 537,
+    "category": "eco-friendly-home-remedies",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/iLiFE-500-мл-Чистящее-средство-для-кухни-от-жира-и-нагара-300x228-1.png",
+    "name": "Чистящее средство для удаления жира и нагара",
+    "priceRetail": 490,
+    "pricePartner": "245 / 245 купон / 0,50pv"
+  },
+  {
+    "id": 538,
+    "category": "eco-friendly-home-remedies",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/от-жира-и-назгара-300x231-1.png",
+    "name": "Кухонное средство для удаления пятен и тяжелого масла",
+    "priceRetail": 550,
+    "pricePartner": "275 / 275 купон / 0,20pv"
+  },
+  {
+    "id": 539,
+    "category": "eco-friendly-home-remedies",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/CARICH-Очищающие-влажные-салфетки-для-кухни-300x226-1.png",
+    "name": "Очищающие влажные салфетки для кухни",
+    "priceRetail": 508,
+    "pricePartner": "254 / 254 купон / 0,20pv"
+  },
+  {
+    "id": 540,
+    "category": "eco-friendly-home-remedies",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/СРЕДСТВО-ЧИСТКА-СТИР-МАШМИНЫ1-300x226-1.png",
+    "name": "Средство для чистки стиральной машины",
+    "priceRetail": 460,
+    "pricePartner": "230 / 230 купон / 0,50pv"
+  },
+  {
+    "id": 541,
+    "category": "eco-friendly-home-remedies",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ТАБЛЕТКИ-ЧИСТКА-СТИР-МАШМИНЫ-300x226-1.png",
+    "name": "Быстро растворимые шипучие таблетки для чистки стиральной машины",
+    "priceRetail": 360,
+    "pricePartner": "180 / 180 купон / 0,20pv"
+  },
+  {
+    "id": 542,
+    "category": "eco-friendly-home-remedies",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/МЫТЬЕ-ПОЛА-САЛФЕТКИ-300x226-1.png",
+    "name": "Многофункциональные чистящие салфетки для пола",
+    "priceRetail": 512,
+    "pricePartner": "256 / 256 купон / 0,50pv"
+  },
+  {
+    "id": 543,
+    "category": "eco-friendly-home-remedies",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/МЫТЬЕ-ПОЛА-300x228-1.png",
+    "name": "Средство для мытья пола",
+    "priceRetail": 460,
+    "pricePartner": "230 / 230 купон / 0,20pv"
+  },
+  {
+    "id": 544,
+    "category": "eco-friendly-home-remedies",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/МЫТЬЕ-СТЕКОЛ-300x226-1.png",
+    "name": "Средство для мытья стекол",
+    "priceRetail": 980,
+    "pricePartner": "490 / 490 купон / 0,20pv"
+  },
+  {
+    "id": 545,
+    "category": "eco-friendly-home-remedies",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/СПРЕЙ-ОТ-ЧЕСНОЧНОГО-ЗУДНЯ-300x228-1.png",
+    "name": "Спрей, уничтожающий пылевых клещей",
+    "priceRetail": 500,
+    "pricePartner": "250 / 1pv"
+  },
+  {
+    "id": 546,
+    "category": "eco-friendly-home-remedies",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/для-ванны-аромат-300x229-1.png",
+    "name": "Ароматизированное средство для чистки ванной",
+    "priceRetail": 596,
+    "pricePartner": "298 / 298 купон / 0,20pv"
+  },
+  {
+    "id": 547,
+    "category": "eco-friendly-home-remedies",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/iLiFE-500-мл-Сверхсильное-жидкое-чистящее-средство-для-туалета-300x228-1.png",
+    "name": "Сверхсильное жидкое чистящее средство для туалета",
+    "priceRetail": 450,
+    "pricePartner": "225 / 225 купон / 0,50pv"
+  },
+  {
+    "id": 548,
+    "category": "eco-friendly-home-remedies",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/БЕЛО-ГОЛУБАЯ-ПЕНА-300x226-1.png",
+    "name": "Чистящее средство для унитаза «бело — голубая пена»",
+    "priceRetail": 352,
+    "pricePartner": "176 / 176 купон / 0,20pv"
+  },
+  {
+    "id": 549,
+    "category": "eco-friendly-home-remedies",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/iLiFE-Твердое-средство-для-чистки-труб-300x228-1.png",
+    "name": "Твердое средство для чистки труб",
+    "priceRetail": 940,
+    "pricePartner": "470 / 470 купон / 0,50pv"
+  },
+  {
+    "id": 550,
+    "category": "eco-friendly-home-remedies",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/дезодоратор-для-труб-300x228-1.png",
+    "name": "Дезодоратор для труб",
+    "priceRetail": 560,
+    "pricePartner": "280 / 280 купон / 0,20pv"
+  },
+  {
+    "id": 551,
+    "category": "eco-friendly-home-remedies",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ЖИДКОЕ-ОТ-ЗАСОРОВ-300x228-1.png",
+    "name": "Жидкое средство для устранения неприятного запаха из труб",
+    "priceRetail": 490,
+    "pricePartner": "245 / 245 купон / 0,50pv"
+  },
+  {
+    "id": 552,
+    "category": "eco-friendly-home-remedies",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/MOREREAL-Кухонное-полотенце-из-древесного-волокна-25_25-см-300x225-1.png",
+    "name": "Кухонное полотенце из древесного волокна",
+    "priceRetail": 534,
+    "pricePartner": "267 / 1pv"
+  },
+  {
+    "id": 553,
+    "category": "eco-friendly-home-remedies",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/KARDLI-Изящная-квадратная-тканевая-салфетка-2-шт.-в-упаковке-300x228-1.png",
+    "name": "Изящная тканевая квадратная салфетка",
+    "priceRetail": 852,
+    "pricePartner": "426 / 426 купон / 0,50pv"
+  },
+  {
+    "id": 554,
+    "category": "eco-friendly-home-remedies",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/CARICH-Салфетки-хозяйственные-50-шт-300x225-1.png",
+    "name": "Салфетки хозяйственные",
+    "priceRetail": 460,
+    "pricePartner": "230 / 230 купон / 0,20pv"
+  },
+  {
+    "id": 555,
+    "category": "eco-friendly-home-remedies",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/губка-дреаесная-300x228-1.png",
+    "name": "Губка для мытья посуды из древесной целлюлозы",
+    "priceRetail": 360,
+    "pricePartner": "180 / 180 купон / 0,20pv"
+  },
+  {
+    "id": 556,
+    "category": "eco-friendly-home-remedies",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/ЧИСТЯЩАЯ-ГУБКА-С-ВЫПЕЗОМ-300x228-1.png",
+    "name": "Чистящая губка с v — образным вырезом",
+    "priceRetail": 278,
+    "pricePartner": "139 / 139 купон / 0,20pv"
+  },
+  {
+    "id": 557,
+    "category": "eco-friendly-home-remedies",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/губка-меланин-300x228-1.png",
+    "name": "Волшебная меланиновая губка",
+    "priceRetail": 578,
+    "pricePartner": "289 / 289 купон / 0,20pv"
+  },
+  {
+    "id": 558,
+    "category": "eco-friendly-home-remedies",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/губка-сизал-300x230-1.png",
+    "name": "Губка для кухни из натурального сизалевого волокна",
+    "priceRetail": 288,
+    "pricePartner": "144 / 144 купон / 0,20pv"
+  },
+  {
+    "id": 559,
+    "category": "eco-friendly-home-remedies",
+    "image": "https://greenleaf-catalog.ru/wp-content/uploads/2025/02/KARDLI-Металлическая-мочалка-для-мытья-посуды-6-300x228-1.png",
+    "name": "Металлическая мочалка для чистки посуды",
+    "priceRetail": 380,
+    "pricePartner": "190 / 190 купон / 0,20pv"
   }
 ]
