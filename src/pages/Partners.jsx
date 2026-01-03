@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import styles from './Partners.module.scss';
 
+const API_URL = 'http://localhost:3001/api'; // или ваш production URL
+
 const Partners = () => {
   const [formData, setFormData] = useState({
     lastName: '',
@@ -16,7 +18,6 @@ const Partners = () => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-
   const validateEmail = (email) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(email);
@@ -89,7 +90,7 @@ const Partners = () => {
       return;
     }
 
-    // Проверка: если не партнёр, кнопка должна быть заблокирована
+    // Если не партнёр, не отправляем форму
     if (formData.isPartner === 'no') {
       return;
     }
@@ -97,19 +98,44 @@ const Partners = () => {
     setIsSubmitting(true);
 
     try {
-      // Здесь будет отправка на сервер
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      setIsSubmitted(true);
-      setFormData({
-        lastName: '',
-        firstName: '',
-        middleName: '',
-        email: '',
-        phone: '',
-        isPartner: '',
-        goal: '',
-        consent: false,
+      // Отправляем данные на бэкенд
+      const response = await fetch(`${API_URL}/partner`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          middleName: formData.middleName,
+          phone: formData.phone,
+          email: formData.email,
+          goal: formData.goal,
+        }),
       });
+
+      if (!response.ok) {
+        throw new Error('Ошибка при отправке формы');
+      }
+
+      const data = await response.json();
+
+      if (data.success) {
+        setIsSubmitted(true);
+        // Сброс формы
+        setFormData({
+          lastName: '',
+          firstName: '',
+          middleName: '',
+          email: '',
+          phone: '',
+          isPartner: '',
+          goal: '',
+          consent: false,
+        });
+      } else {
+        throw new Error(data.error || 'Неизвестная ошибка');
+      }
     } catch (error) {
       console.error('Ошибка отправки формы:', error);
       setErrors({ submit: 'Произошла ошибка. Попробуйте позже.' });
@@ -118,8 +144,7 @@ const Partners = () => {
     }
   };
 
-  const isSubmitDisabled =
-    formData.isPartner !== 'yes' || !formData.consent || isSubmitting;
+  const isSubmitDisabled = formData.isPartner !== 'no' || !formData.consent || isSubmitting;
 
   if (isSubmitted) {
     return (
@@ -128,13 +153,9 @@ const Partners = () => {
           <div className={styles.successIcon}>✓</div>
           <h2>Заявка отправлена!</h2>
           <p>
-            Спасибо за ваш интерес к партнёрской программе. Мы свяжемся с вами в
-            ближайшее время.
+            Спасибо за ваш интерес к партнёрской программе. Мы свяжемся с вами в ближайшее время.
           </p>
-          <button
-            className={styles.backButton}
-            onClick={() => setIsSubmitted(false)}
-          >
+          <button className={styles.backButton} onClick={() => setIsSubmitted(false)}>
             Отправить ещё одну заявку
           </button>
         </div>
@@ -147,8 +168,8 @@ const Partners = () => {
       <h1>Стать партнёром</h1>
       <div className={styles.content}>
         <p className={styles.intro}>
-          Присоединяйтесь к нашей партнёрской программе и получите доступ к
-          специальным ценам и условиям сотрудничества.
+          Присоединяйтесь к нашей партнёрской программе и получите доступ к специальным ценам и
+          условиям сотрудничества.
         </p>
 
         <form className={styles.form} onSubmit={handleSubmit}>
@@ -166,9 +187,7 @@ const Partners = () => {
                 className={errors.lastName ? styles.error : ''}
                 placeholder="Введите фамилию"
               />
-              {errors.lastName && (
-                <span className={styles.errorMessage}>{errors.lastName}</span>
-              )}
+              {errors.lastName && <span className={styles.errorMessage}>{errors.lastName}</span>}
             </div>
 
             <div className={styles.formGroup}>
@@ -184,9 +203,7 @@ const Partners = () => {
                 className={errors.firstName ? styles.error : ''}
                 placeholder="Введите имя"
               />
-              {errors.firstName && (
-                <span className={styles.errorMessage}>{errors.firstName}</span>
-              )}
+              {errors.firstName && <span className={styles.errorMessage}>{errors.firstName}</span>}
             </div>
           </div>
 
@@ -216,9 +233,7 @@ const Partners = () => {
                 className={errors.email ? styles.error : ''}
                 placeholder="example@mail.com"
               />
-              {errors.email && (
-                <span className={styles.errorMessage}>{errors.email}</span>
-              )}
+              {errors.email && <span className={styles.errorMessage}>{errors.email}</span>}
             </div>
 
             <div className={styles.formGroup}>
@@ -234,16 +249,13 @@ const Partners = () => {
                 className={errors.phone ? styles.error : ''}
                 placeholder="+7 (___) ___-__-__"
               />
-              {errors.phone && (
-                <span className={styles.errorMessage}>{errors.phone}</span>
-              )}
+              {errors.phone && <span className={styles.errorMessage}>{errors.phone}</span>}
             </div>
           </div>
 
           <div className={styles.formGroup}>
             <label>
-              Вы уже партнёр компании?{' '}
-              <span className={styles.required}>*</span>
+              Вы уже партнёр компании? <span className={styles.required}>*</span>
             </label>
             <div className={styles.radioGroup}>
               <label className={styles.radioLabel}>
@@ -267,12 +279,10 @@ const Partners = () => {
                 <span>Нет</span>
               </label>
             </div>
-            {errors.isPartner && (
-              <span className={styles.errorMessage}>{errors.isPartner}</span>
-            )}
+            {errors.isPartner && <span className={styles.errorMessage}>{errors.isPartner}</span>}
           </div>
 
-          {formData.isPartner === 'yes' && (
+          {formData.isPartner === 'no' && (
             <div className={styles.formGroup}>
               <label>
                 Цель <span className={styles.required}>*</span>
@@ -299,18 +309,13 @@ const Partners = () => {
                   <span>Скидка на продукт</span>
                 </label>
               </div>
-              {errors.goal && (
-                <span className={styles.errorMessage}>{errors.goal}</span>
-              )}
+              {errors.goal && <span className={styles.errorMessage}>{errors.goal}</span>}
             </div>
           )}
 
-          {formData.isPartner === 'no' && (
+          {formData.isPartner === 'yes' && (
             <div className={styles.infoMessage}>
-              <p>
-                Для подачи заявки необходимо быть партнёром компании. Если вы
-                хотите стать партнёром, свяжитесь с нами по указанным контактам.
-              </p>
+              <p>Если вы уже являетесь партнёром компании, то заполнять форму не нужно</p>
             </div>
           )}
 
@@ -328,20 +333,12 @@ const Partners = () => {
                 <span className={styles.required}>*</span>
               </span>
             </label>
-            {errors.consent && (
-              <span className={styles.errorMessage}>{errors.consent}</span>
-            )}
+            {errors.consent && <span className={styles.errorMessage}>{errors.consent}</span>}
           </div>
 
-          {errors.submit && (
-            <div className={styles.submitError}>{errors.submit}</div>
-          )}
+          {errors.submit && <div className={styles.submitError}>{errors.submit}</div>}
 
-          <button
-            type="submit"
-            className={styles.submitButton}
-            disabled={isSubmitDisabled}
-          >
+          <button type="submit" className={styles.submitButton} disabled={isSubmitDisabled}>
             {isSubmitting ? 'Отправка...' : 'Отправить заявку'}
           </button>
         </form>

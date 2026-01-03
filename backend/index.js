@@ -11,137 +11,158 @@ app.use(express.json());
 const BOT_TOKEN = process.env.BOT_TOKEN.trim();
 const ADMIN_ID = Number(process.env.CHAT_ID);
 
-const bot = new TelegramBot(BOT_TOKEN, { polling: true });
-
-// ===== Инициализация базы =====
 await initDB();
 
-// ===== API добавления заявки =====
+const bot = new TelegramBot(BOT_TOKEN, { polling: true });
+
+/* ================= API ================= */
+
+// 📞 Форма "Перезвоните"
 app.post('/api/callback', async (req, res) => {
   const { phone } = req.body;
-  if (!phone) return res.status(400).json({ error: 'Phone is required' });
+  if (!phone) return res.status(400).json({ error: 'Phone required' });
 
-  await Request.create({ phone });
-
-  bot.sendMessage(ADMIN_ID, '📩 У вас новая заявка!', {
-    reply_markup: {
-      inline_keyboard: [[{ text: '📋 Показать список', callback_data: 'show_list' }]],
-    },
+  await Request.create({
+    type: 'callback',
+    phone,
   });
 
+  notifyAdmin('📞 Новая заявка на звонок');
   res.json({ success: true });
 });
 
-// ===== Получение текущих заявок =====
-async function getRequests() {
-  return await Request.findAll({ order: [['created_at', 'ASC']] });
+// 🤝 Форма "Стать партнёром"
+app.post('/api/partner', async (req, res) => {
+  const { firstName, lastName, middleName, phone, email, goal } = req.body;
+
+  await Request.create({
+    type: 'partner',
+    firstName,
+    lastName,
+    middleName,
+    phone,
+    email,
+    goal,
+  });
+
+  notifyAdmin('🤝 Новая заявка партнёра');
+  res.json({ success: true });
+});
+
+/* ================= BOT ================= */
+
+function notifyAdmin(text) {
+  bot.sendMessage(ADMIN_ID, text, {
+    reply_markup: {
+      inline_keyboard: [[{ text: '📋 Показать заявки', callback_data: 'list' }]],
+    },
+  });
 }
 
-// ===== Генерация клавиатуры списка текущих заявок =====
-async function getRequestKeyboard() {
+async function getRequests(status = null) {
+  return Request.findAll({
+    where: status ? { status } : {},
+    order: [['created_at', 'ASC']],
+  });
+}
+
+async function getKeyboard() {
   const requests = await getRequests();
   const keyboard = [];
 
   requests.forEach((r) => {
-    if (r.status === 'выполнена') return; // показываем только текущие
-    const emoji = r.status === 'новая' ? '🆕' : '';
-    keyboard.push([{ text: `${emoji} ${r.phone}`, callback_data: `view_${r.id}` }]);
+    if (r.status === 'выполнена') return;
+
+    const icon = r.type === 'partner' ? '🤝' : '📞';
+    const label = r.phone || r.email || 'Заявка';
+
+    keyboard.push([
+      {
+        text: `${icon} ${label}`,
+        callback_data: `view_${r.id}`,
+      },
+    ]);
   });
 
-  keyboard.push([{ text: '🔄 Обновить список', callback_data: 'refresh' }]);
-  keyboard.push([{ text: '📜 История выполненных', callback_data: 'history' }]);
+  keyboard.push([{ text: '📜 История', callback_data: 'history' }]);
+  keyboard.push([{ text: '🔄 Обновить', callback_data: 'list' }]);
 
   return { reply_markup: { inline_keyboard: keyboard } };
 }
 
-// ===== Отправка списка текущих заявок =====
-async function sendRequestList() {
-  bot.sendMessage(ADMIN_ID, '📋 Текущий список заявок:', await getRequestKeyboard());
+async function sendList() {
+  bot.sendMessage(ADMIN_ID, '📋 Текущие заявки:', await getKeyboard());
 }
 
-// ===== Обработка кнопок =====
-bot.on('callback_query', async (callbackQuery) => {
-  const msg = callbackQuery.message;
-  const data = callbackQuery.data;
+/* ================= CALLBACKS ================= */
 
-  // Обновление списка
-  if (data === 'refresh' || data === 'show_list') {
-    bot.deleteMessage(msg.chat.id, msg.message_id).catch(() => {});
-    return sendRequestList();
+bot.on('callback_query', async (q) => {
+  const { data, message } = q;
+
+  if (data === 'list') {
+    await bot.deleteMessage(message.chat.id, message.message_id).catch(() => {});
+    return sendList();
   }
 
-  // История выполненных заявок
   if (data === 'history') {
-    const done = await Request.findAll({
-      where: { status: 'выполнена' },
-      order: [['completed_at', 'ASC']],
-    });
+    const done = await getRequests('выполнена');
     const text =
       done.length === 0
-        ? '📜 История выполненных заявок пуста.'
-        : '📜 История выполненных заявок:\n' + done.map((r) => `• ${r.phone}`).join('\n');
+        ? 'История пуста'
+        : '📜 Выполненные заявки:\n' + done.map((r) => `• ${r.phone || r.email}`).join('\n');
+
+    return bot.sendMessage(ADMIN_ID, text, {
+      reply_markup: {
+        inline_keyboard: [[{ text: '⬅ Назад', callback_data: 'list' }]],
+      },
+    });
+  }
+
+  const [action, id] = data.split('_');
+  const request = await Request.findByPk(id);
+  if (!request) return;
+
+  if (action === 'view') {
+    request.status = 'просмотрена';
+    await request.save();
+
+    let text = '';
+
+    if (request.type === 'callback') {
+      text = `📞 Заявка на звонок\n\nТелефон: ${request.phone}`;
+    } else {
+      text = `
+🤝 Заявка партнёра
+
+ФИО: ${request.lastName} ${request.firstName} ${request.middleName}
+📞 Телефон: ${request.phone}
+📧 Email: ${request.email}
+🎯 Цель: ${request.goal}
+`;
+    }
 
     return bot.sendMessage(ADMIN_ID, text, {
       reply_markup: {
         inline_keyboard: [
-          [{ text: '🗑 Очистить историю', callback_data: 'clear_history' }],
-          [{ text: '⬅️ Назад', callback_data: 'refresh' }],
+          [{ text: '✅ Выполнено', callback_data: `done_${id}` }],
+          [{ text: '⬅ Назад', callback_data: 'list' }],
         ],
       },
     });
   }
 
-  // Очистка истории
-  if (data === 'clear_history') {
-    await Request.destroy({ where: { status: 'выполнена' } });
-    bot.sendMessage(ADMIN_ID, '🗑 История выполненных заявок очищена!');
-    return bot.answerCallbackQuery(callbackQuery.id);
-  }
-
-  // Работа с отдельной заявкой
-  const [action, id] = data.split('_');
-  const request = await Request.findByPk(id);
-  if (!request) return bot.answerCallbackQuery(callbackQuery.id, { text: 'Заявка не найдена' });
-
-  if (action === 'view') {
-    if (request.status === 'новая') request.status = 'просмотрена';
-    await request.save();
-
-    bot.sendMessage(
-      ADMIN_ID,
-      `📞 Номер телефона: ${request.phone}\nВы можете скопировать его.\n\nОтметить как выполненную?`,
-      {
-        reply_markup: {
-          inline_keyboard: [
-            [{ text: '✅ Выполнено', callback_data: `done_${request.id}` }],
-            [{ text: '⬅️ Назад', callback_data: 'refresh' }],
-          ],
-        },
-      },
-    );
-  } else if (action === 'done') {
+  if (action === 'done') {
     request.status = 'выполнена';
     request.completed_at = new Date();
     await request.save();
-    bot.sendMessage(ADMIN_ID, `✅ Заявка ${request.phone} выполнена`);
-    bot.deleteMessage(msg.chat.id, msg.message_id).catch(() => {});
-    sendRequestList();
+
+    await bot.deleteMessage(message.chat.id, message.message_id).catch(() => {});
+    return sendList();
   }
 
-  bot.answerCallbackQuery(callbackQuery.id);
+  bot.answerCallbackQuery(q.id);
 });
 
-// ===== Любое сообщение от админа =====
-bot.on('message', (msg) => {
-  if (msg.chat.id !== ADMIN_ID) return;
-  if (msg.text.startsWith('/')) return;
+/* ================= START ================= */
 
-  bot.sendMessage(ADMIN_ID, '📋 Вы можете просмотреть список заявок:', {
-    reply_markup: {
-      inline_keyboard: [[{ text: 'Показать список заявок', callback_data: 'show_list' }]],
-    },
-  });
-});
-
-// ===== Запуск сервера =====
-app.listen(3001, () => console.log('Server running on http://localhost:3001'));
+app.listen(3001, () => console.log('🚀 Server running on http://localhost:3001'));

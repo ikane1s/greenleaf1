@@ -9,10 +9,31 @@ const sequelize = new Sequelize({
 export const Request = sequelize.define(
   'Request',
   {
-    phone: { type: DataTypes.STRING, allowNull: false },
-    status: { type: DataTypes.STRING, allowNull: false, defaultValue: 'новая' },
-    created_at: { type: DataTypes.DATE, allowNull: false, defaultValue: Sequelize.NOW },
-    completed_at: { type: DataTypes.DATE, allowNull: true },
+    type: {
+      type: DataTypes.STRING,
+      allowNull: false, // callback | partner
+    },
+
+    phone: DataTypes.STRING,
+
+    // данные партнёра
+    firstName: DataTypes.STRING,
+    lastName: DataTypes.STRING,
+    middleName: DataTypes.STRING,
+    email: DataTypes.STRING,
+    goal: DataTypes.TEXT,
+
+    status: {
+      type: DataTypes.STRING,
+      defaultValue: 'новая', // новая | просмотрена | выполнена
+    },
+
+    created_at: {
+      type: DataTypes.DATE,
+      defaultValue: Sequelize.NOW,
+    },
+
+    completed_at: DataTypes.DATE,
   },
   {
     tableName: 'requests',

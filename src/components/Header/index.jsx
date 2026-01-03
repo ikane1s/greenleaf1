@@ -1,21 +1,18 @@
-import React, { useState } from "react";
-import styles from "./Header.module.scss";
-import logo from "../../assets/logo.svg";
-import { Link } from "react-router-dom";
-import iconMax from "../../assets/iconMax.svg";
-import iconTG from "../../assets/iconTG.svg";
-import iconMail from "../../assets/iconMail.svg";
+import React, { useState } from 'react';
+import styles from './Header.module.scss';
+import logo from '../../assets/logo.svg';
+import { Link } from 'react-router-dom';
+import iconMax from '../../assets/iconMax.svg';
+import iconTG from '../../assets/iconTG.svg';
+import iconMail from '../../assets/iconMail.svg';
 
-const Header = () => {
+const Header = ({ setCurrentPage }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <>
       {mobileMenuOpen && (
-        <div
-          className={styles.overlay}
-          onClick={() => setMobileMenuOpen(false)}
-        />
+        <div className={styles.overlay} onClick={() => setMobileMenuOpen(false)} />
       )}
       <header className={styles.header}>
         <div className={styles.logo}>
@@ -29,19 +26,13 @@ const Header = () => {
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label="Меню"
         >
-          <span className={mobileMenuOpen ? styles.open : ""}></span>
-          <span className={mobileMenuOpen ? styles.open : ""}></span>
-          <span className={mobileMenuOpen ? styles.open : ""}></span>
+          <span className={mobileMenuOpen ? styles.open : ''}></span>
+          <span className={mobileMenuOpen ? styles.open : ''}></span>
+          <span className={mobileMenuOpen ? styles.open : ''}></span>
         </button>
 
-        <nav
-          className={`${styles.nav} ${mobileMenuOpen ? styles.navOpen : ""}`}
-        >
-          <Link
-            className={styles.nav_main}
-            to="/"
-            onClick={() => setMobileMenuOpen(false)}
-          >
+        <nav className={`${styles.nav} ${mobileMenuOpen ? styles.navOpen : ''}`}>
+          <Link className={styles.nav_main} to="/" onClick={() => setMobileMenuOpen(false)}>
             Главная
           </Link>
 
@@ -63,61 +54,91 @@ const Header = () => {
             <div className={styles.catalogMenu}>
               <Link
                 to="/catalog/facial-skin-care"
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  setCurrentPage(1);
+                }}
               >
                 Уход за кожей лица
               </Link>
               <Link
                 to="/catalog/decorative-cosmetics"
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  setCurrentPage(1);
+                }}
               >
                 Декоративная косметика
               </Link>
               <Link
                 to="/catalog/body-skin-care"
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  setCurrentPage(1);
+                }}
               >
                 Уход за кожей тела
               </Link>
               <Link
                 to="/catalog/hair-care"
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  setCurrentPage(1);
+                }}
               >
                 Уход за волосами
               </Link>
               <Link
                 to="/catalog/oral-hygiene"
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  setCurrentPage(1);
+                }}
               >
                 Гигиена полости рта
               </Link>
               <Link
                 to="/catalog/personal-hygiene"
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  setCurrentPage(1);
+                }}
               >
                 Личная гигиена
               </Link>
               <Link
                 to="/catalog/products-for-children"
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  setCurrentPage(1);
+                }}
               >
                 Товары для детей
               </Link>
               <Link
                 to="/catalog/health"
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  setCurrentPage(1);
+                }}
               >
                 Здоровье
               </Link>
               <Link
                 to="/catalog/eco-friendly-laundry-products"
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  setCurrentPage(1);
+                }}
               >
                 Эко-средства для стирки
               </Link>
               <Link
                 to="/catalog/eco-friendly-home-remedies"
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  setCurrentPage(1);
+                }}
               >
                 Эко-средства для дома
               </Link>
