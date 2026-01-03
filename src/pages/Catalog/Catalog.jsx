@@ -17,16 +17,23 @@ const categoryMap = {
   'eco-friendly-home-remedies': 'Эко-средства для дома',
 };
 
-const SORT_OPTIONS = {
+const SORT_OPTIONS_CUSTOMER = {
   priceAsc: { label: 'Цена: по возрастанию', value: 'priceAsc' },
   priceDesc: { label: 'Цена: по убыванию', value: 'priceDesc' },
   nameAsc: { label: 'Название: А-Я', value: 'nameAsc' },
   nameDesc: { label: 'Название: Я-А', value: 'nameDesc' },
 };
 
+const SORT_OPTIONS_PARTNER = {
+  priceAsc: { label: 'Цена партнёра: по возрастанию', value: 'priceAsc' },
+  priceDesc: { label: 'Цена партнёра: по убыванию', value: 'priceDesc' },
+  nameAsc: { label: 'Название: А-Я', value: 'nameAsc' },
+  nameDesc: { label: 'Название: Я-А', value: 'nameDesc' },
+};
+
 const PRODUCTS_PER_PAGE = 12;
 
-// Функция для извлечения числового значения цены
+// Функция для извлечения числового значения цены партнёра
 const getPriceValue = (pricePartner) => {
   if (typeof pricePartner === 'number') return pricePartner;
   if (typeof pricePartner === 'string') {
@@ -48,10 +55,10 @@ const getPV = (pricePartner) => {
 const Catalog = ({ currentPage, setCurrentPage }) => {
   const { category } = useParams();
   const navigate = useNavigate();
+  const [userType, setUserType] = useState('customer'); // 'customer' или 'partner'
   const [sortBy, setSortBy] = useState('priceAsc');
   const [priceFilter, setPriceFilter] = useState({ min: '', max: '' });
   const [pvFilter, setPvFilter] = useState({ min: '', max: '' });
-  const [showFilters, setShowFilters] = useState(false);
 
   // Получаем нормальное название категории
   const categoryName = categoryMap[category] || 'Каталог';
@@ -65,35 +72,53 @@ const Catalog = ({ currentPage, setCurrentPage }) => {
   const filteredAndSortedProducts = useMemo(() => {
     let filtered = [...categoryProducts];
 
-    // Фильтр по цене партнёра
+    // Фильтр по цене (розничной для покупателей, партнёрской для партнёров)
     if (priceFilter.min) {
-      filtered = filtered.filter((p) => getPriceValue(p.pricePartner) >= Number(priceFilter.min));
+      if (userType === 'customer') {
+        filtered = filtered.filter((p) => p.priceRetail >= Number(priceFilter.min));
+      } else {
+        filtered = filtered.filter((p) => getPriceValue(p.pricePartner) >= Number(priceFilter.min));
+      }
     }
     if (priceFilter.max) {
-      filtered = filtered.filter((p) => getPriceValue(p.pricePartner) <= Number(priceFilter.max));
+      if (userType === 'customer') {
+        filtered = filtered.filter((p) => p.priceRetail <= Number(priceFilter.max));
+      } else {
+        filtered = filtered.filter((p) => getPriceValue(p.pricePartner) <= Number(priceFilter.max));
+      }
     }
 
-    // Фильтр по PV
-    if (pvFilter.min) {
-      filtered = filtered.filter((p) => {
-        const pv = getPV(p.pricePartner);
-        return pv !== null && pv >= Number(pvFilter.min);
-      });
-    }
-    if (pvFilter.max) {
-      filtered = filtered.filter((p) => {
-        const pv = getPV(p.pricePartner);
-        return pv !== null && pv <= Number(pvFilter.max);
-      });
+    // Фильтр по PV (только для партнёров)
+    if (userType === 'partner') {
+      if (pvFilter.min) {
+        filtered = filtered.filter((p) => {
+          const pv = getPV(p.pricePartner);
+          return pv !== null && pv >= Number(pvFilter.min);
+        });
+      }
+      if (pvFilter.max) {
+        filtered = filtered.filter((p) => {
+          const pv = getPV(p.pricePartner);
+          return pv !== null && pv <= Number(pvFilter.max);
+        });
+      }
     }
 
     // Сортировка
     filtered.sort((a, b) => {
       switch (sortBy) {
         case 'priceAsc':
-          return getPriceValue(a.pricePartner) - getPriceValue(b.pricePartner);
+          if (userType === 'customer') {
+            return a.priceRetail - b.priceRetail;
+          } else {
+            return getPriceValue(a.pricePartner) - getPriceValue(b.pricePartner);
+          }
         case 'priceDesc':
-          return getPriceValue(b.pricePartner) - getPriceValue(a.pricePartner);
+          if (userType === 'customer') {
+            return b.priceRetail - a.priceRetail;
+          } else {
+            return getPriceValue(b.pricePartner) - getPriceValue(a.pricePartner);
+          }
         case 'nameAsc':
           return a.name.localeCompare(b.name, 'ru');
         case 'nameDesc':
@@ -104,7 +129,7 @@ const Catalog = ({ currentPage, setCurrentPage }) => {
     });
 
     return filtered;
-  }, [categoryProducts, sortBy, priceFilter, pvFilter]);
+  }, [categoryProducts, sortBy, priceFilter, pvFilter, userType]);
 
   // Пагинация
   const totalPages = Math.ceil(filteredAndSortedProducts.length / PRODUCTS_PER_PAGE);
@@ -141,32 +166,27 @@ const Catalog = ({ currentPage, setCurrentPage }) => {
   // Функция для генерации страниц пагинации
   const getPaginationPages = () => {
     const pages = [];
-    const maxVisible = 5; // Максимум видимых страниц
+    const maxVisible = 5;
 
     if (totalPages <= maxVisible) {
-      // Если страниц мало, показываем все
       for (let i = 1; i <= totalPages; i++) {
         pages.push(i);
       }
     } else {
-      // Всегда показываем первую страницу
       pages.push(1);
 
       if (currentPage <= 3) {
-        // В начале списка
         for (let i = 2; i <= 4; i++) {
           pages.push(i);
         }
         pages.push('...');
         pages.push(totalPages);
       } else if (currentPage >= totalPages - 2) {
-        // В конце списка
         pages.push('...');
         for (let i = totalPages - 3; i <= totalPages; i++) {
           pages.push(i);
         }
       } else {
-        // В середине списка
         pages.push('...');
         for (let i = currentPage - 1; i <= currentPage + 1; i++) {
           pages.push(i);
@@ -178,6 +198,8 @@ const Catalog = ({ currentPage, setCurrentPage }) => {
 
     return pages;
   };
+
+  const sortOptions = userType === 'customer' ? SORT_OPTIONS_CUSTOMER : SORT_OPTIONS_PARTNER;
 
   return (
     <div className={styles.catalog}>
@@ -195,10 +217,35 @@ const Catalog = ({ currentPage, setCurrentPage }) => {
             )}
           </div>
 
+          {/* Переключатель типа пользователя */}
+          <div className={styles.filterSection}>
+            <h3>Для кого фильтрация</h3>
+            <div className={styles.userTypeToggle}>
+              <button
+                className={`${styles.toggleButton} ${userType === 'customer' ? styles.active : ''}`}
+                onClick={() => {
+                  setUserType('customer');
+                  resetFilters();
+                }}
+              >
+                Покупатель
+              </button>
+              <button
+                className={`${styles.toggleButton} ${userType === 'partner' ? styles.active : ''}`}
+                onClick={() => {
+                  setUserType('partner');
+                  resetFilters();
+                }}
+              >
+                Партнёр
+              </button>
+            </div>
+          </div>
+
           <div className={styles.filterSection}>
             <h3>Сортировка</h3>
             <select value={sortBy} onChange={handleSortChange} className={styles.sortSelect}>
-              {Object.values(SORT_OPTIONS).map((option) => (
+              {Object.values(sortOptions).map((option) => (
                 <option key={option.value} value={option.value}>
                   {option.label}
                 </option>
@@ -207,7 +254,9 @@ const Catalog = ({ currentPage, setCurrentPage }) => {
           </div>
 
           <div className={styles.filterSection}>
-            <h3>Цена партнёра (₽)</h3>
+            <h3>
+              {userType === 'customer' ? 'Розничная цена (₽)' : 'Цена партнёра (₽)'}
+            </h3>
             <div className={styles.rangeInputs}>
               <input
                 type="number"
@@ -227,66 +276,69 @@ const Catalog = ({ currentPage, setCurrentPage }) => {
             </div>
           </div>
 
-          <div className={styles.filterSection}>
-            <h3>PV (баллы)</h3>
-            <div className={styles.rangeInputs}>
-              <input
-                type="number"
-                placeholder="От"
-                value={pvFilter.min}
-                onChange={(e) => handlePvFilterChange('min', e.target.value)}
-                min="0"
-                step="0.1"
-              />
-              <span>-</span>
-              <input
-                type="number"
-                placeholder="До"
-                value={pvFilter.max}
-                onChange={(e) => handlePvFilterChange('max', e.target.value)}
-                min="0"
-                step="0.1"
-              />
+          {userType === 'partner' && (
+            <div className={styles.filterSection}>
+              <h3>PV (баллы)</h3>
+              <div className={styles.rangeInputs}>
+                <input
+                  type="number"
+                  placeholder="От"
+                  value={pvFilter.min}
+                  onChange={(e) => handlePvFilterChange('min', e.target.value)}
+                  min="0"
+                  step="0.1"
+                />
+                <span>-</span>
+                <input
+                  type="number"
+                  placeholder="До"
+                  value={pvFilter.max}
+                  onChange={(e) => handlePvFilterChange('max', e.target.value)}
+                  min="0"
+                  step="0.1"
+                />
+              </div>
             </div>
-          </div>
+          )}
 
-          <div className={styles.filterSection}>
-            <h3>Быстрые фильтры по цене</h3>
-            <div className={styles.quickFilters}>
-              <button
-                className={styles.quickFilterBtn}
-                onClick={() => {
-                  setPriceFilter({ min: '', max: '500' });
-                  setCurrentPage(1);
-                }}
-              >
-                До 500 ₽
-              </button>
-              <button
-                className={styles.quickFilterBtn}
-                onClick={() => {
-                  setPriceFilter({ min: '500', max: '1000' });
-                  setCurrentPage(1);
-                }}
-              >
-                500-1000 ₽
-              </button>
-              <button
-                className={styles.quickFilterBtn}
-                onClick={() => {
-                  setPriceFilter({ min: '1000', max: '' });
-                  setCurrentPage(1);
-                }}
-              >
-                От 1000 ₽
-              </button>
+          {userType === 'customer' && (
+            <div className={styles.filterSection}>
+              <h3>Быстрые фильтры по цене</h3>
+              <div className={styles.quickFilters}>
+                <button
+                  className={styles.quickFilterBtn}
+                  onClick={() => {
+                    setPriceFilter({ min: '', max: '500' });
+                    setCurrentPage(1);
+                  }}
+                >
+                  До 500 ₽
+                </button>
+                <button
+                  className={styles.quickFilterBtn}
+                  onClick={() => {
+                    setPriceFilter({ min: '500', max: '1000' });
+                    setCurrentPage(1);
+                  }}
+                >
+                  500-1000 ₽
+                </button>
+                <button
+                  className={styles.quickFilterBtn}
+                  onClick={() => {
+                    setPriceFilter({ min: '1000', max: '' });
+                    setCurrentPage(1);
+                  }}
+                >
+                  От 1000 ₽
+                </button>
+              </div>
             </div>
-          </div>
+          )}
         </aside>
 
         {/* Основной контент */}
         <main className={styles.mainContent}>
-          {/* Результаты */}
           {filteredAndSortedProducts.length > 0 ? (
             <>
               <div className={styles.products}>
@@ -302,14 +354,25 @@ const Catalog = ({ currentPage, setCurrentPage }) => {
                       <p className={styles.productDescription}>{product.description}</p>
                     )}
                     <div className={styles.productPrices}>
-                      <span className={styles.retailPrice}>Розница: {product.priceRetail} ₽</span>
-                      <span className={styles.partnerPrice}>Партнёр: {product.pricePartner}</span>
+                      <div className={styles.priceRow}>
+                        <span className={styles.priceLabel}>Розница:</span>
+                        <span className={styles.retailPriceMain}>
+                          {product.priceRetail} ₽
+                        </span>
+                      </div>
+                      {product.pricePartner && (
+                        <div className={styles.priceRow}>
+                          <span className={styles.priceLabel}>Партнёр:</span>
+                          <span className={styles.partnerPriceMain}>
+                            {product.pricePartner}
+                          </span>
+                        </div>
+                      )}
                     </div>
                   </div>
                 ))}
               </div>
 
-              {/* Пагинация */}
               {totalPages > 1 && (
                 <div className={styles.pagination}>
                   <button

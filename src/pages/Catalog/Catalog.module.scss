@@ -67,32 +67,15 @@
     border: 1px solid var(--border-color);
     position: sticky;
     top: 100px;
-    max-height: calc(100vh - 120px);
-    overflow-y: auto;
     width: 100%;
+    height: fit-content;
+    max-height: calc(100vh - 120px);
+    overflow-y: visible;
 
     @media (min-width: 1024px) {
       width: 280px;
       flex-shrink: 0;
       padding: 24px;
-    }
-
-    &::-webkit-scrollbar {
-      width: 6px;
-    }
-
-    &::-webkit-scrollbar-track {
-      background: var(--bg-gray);
-      border-radius: 3px;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background: var(--primary-green);
-      border-radius: 3px;
-
-      &:hover {
-        background: var(--primary-green-dark);
-      }
     }
   }
 
@@ -120,6 +103,38 @@
       font-weight: 600;
       color: var(--text-primary);
       margin-bottom: 12px;
+    }
+  }
+
+  .userTypeToggle {
+    display: flex;
+    gap: 8px;
+    background: var(--bg-gray);
+    padding: 4px;
+    border-radius: 12px;
+  }
+
+  .toggleButton {
+    flex: 1;
+    padding: 10px 16px;
+    background: transparent;
+    color: var(--text-primary);
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-base);
+
+    &.active {
+      background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green-dark) 100%);
+      color: #fff;
+      box-shadow: var(--shadow-sm);
+    }
+
+    &:hover:not(.active) {
+      background: rgba(132, 182, 38, 0.1);
+      color: var(--primary-green-dark);
     }
   }
 
@@ -337,38 +352,50 @@
     .productPrices {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 10px;
       font-weight: 500;
-      font-size: 13px;
       padding-top: 12px;
       border-top: 1px solid var(--border-color);
 
-      @media (min-width: 768px) {
-        font-size: 15px;
-        gap: 8px;
+      .priceRow {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
       }
 
-      .retailPrice {
+      .priceLabel {
+        font-size: 13px;
         color: var(--text-secondary);
-        text-decoration: line-through;
-        font-size: 12px;
-        opacity: 0.7;
+        font-weight: 500;
+        flex-shrink: 0;
 
         @media (min-width: 768px) {
           font-size: 14px;
         }
       }
 
-      .partnerPrice {
+      .retailPriceMain {
         color: var(--primary-green-dark);
-        font-size: 16px;
-        font-weight: 700;
-        display: flex;
-        align-items: center;
-        gap: 6px;
+        font-size: 24px;
+        font-weight: 800;
+        line-height: 1.2;
+        text-align: right;
 
         @media (min-width: 768px) {
-          font-size: 18px;
+          font-size: 28px;
+        }
+      }
+
+      .partnerPriceMain {
+        color: var(--primary-blue);
+        font-size: 24px;
+        font-weight: 800;
+        line-height: 1.2;
+        text-align: right;
+
+        @media (min-width: 768px) {
+          font-size: 28px;
         }
       }
     }

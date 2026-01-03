@@ -9,6 +9,7 @@ import iconMail from "../../assets/iconMail.svg";
 const ProductDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const [currentSlide, setCurrentSlide] = useState(0);
   const [showVideo, setShowVideo] = useState(false);
 
   const product = productsData.find((p) => p.id === Number(id));
@@ -24,16 +25,30 @@ const ProductDetail = () => {
     );
   }
 
+  // Создаем слайды: фото + видео
+  const slides = [
+    { type: "image", src: product.image, alt: product.name },
+    { type: "video", label: "Видео о товаре" },
+  ];
+
   const handleVideoClick = () => {
     setShowVideo(true);
+  };
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
   };
 
   return (
     <div className={styles.productDetail}>
       <button className={styles.backBtn} onClick={() => navigate(-1)}>
         <svg
-          width="24"
-          height="24"
+          width="20"
+          height="20"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -45,34 +60,96 @@ const ProductDetail = () => {
       </button>
 
       <div className={styles.productContainer}>
-        {/* Левая часть - изображение */}
+        {/* Левая часть - слайдер */}
         <div className={styles.imageSection}>
-          <div className={styles.imageWrapper}>
-            <img
-              src={product.image}
-              alt={product.name}
-              className={styles.mainImage}
-            />
-            <div className={styles.imageOverlay}>
-              <button
-                className={styles.videoButton}
-                onClick={handleVideoClick}
-                aria-label="Посмотреть видео"
-              >
-                <svg
-                  width="64"
-                  height="64"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <circle cx="12" cy="12" r="10" />
-                  <polygon points="10 8 16 12 10 16 10 8" />
-                </svg>
-                <span>Посмотреть видео</span>
-              </button>
+          <div className={styles.sliderWrapper}>
+            <div
+              className={styles.slider}
+              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+            >
+              {slides.map((slide, index) => (
+                <div key={index} className={styles.slide}>
+                  {slide.type === "image" ? (
+                    <img
+                      src={slide.src}
+                      alt={slide.alt}
+                      className={styles.slideImage}
+                    />
+                  ) : (
+                    <div className={styles.videoSlide}>
+                      <button
+                        className={styles.videoButton}
+                        onClick={handleVideoClick}
+                        aria-label="Посмотреть видео"
+                      >
+                        <svg
+                          width="48"
+                          height="48"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                        >
+                          <circle cx="12" cy="12" r="10" />
+                          <polygon points="10 8 16 12 10 16 10 8" />
+                        </svg>
+                        <span>Посмотреть видео</span>
+                      </button>
+                    </div>
+                  )}
+                </div>
+              ))}
             </div>
+
+            {slides.length > 1 && (
+              <>
+                <button
+                  className={styles.sliderButton}
+                  onClick={prevSlide}
+                  aria-label="Предыдущий слайд"
+                >
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path d="M15 18l-6-6 6-6" />
+                  </svg>
+                </button>
+                <button
+                  className={`${styles.sliderButton} ${styles.next}`}
+                  onClick={nextSlide}
+                  aria-label="Следующий слайд"
+                >
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path d="M9 18l6-6-6-6" />
+                  </svg>
+                </button>
+
+                <div className={styles.sliderDots}>
+                  {slides.map((_, index) => (
+                    <button
+                      key={index}
+                      className={`${styles.dot} ${
+                        currentSlide === index ? styles.active : ""
+                      }`}
+                      onClick={() => setCurrentSlide(index)}
+                      aria-label={`Слайд ${index + 1}`}
+                    />
+                  ))}
+                </div>
+              </>
+            )}
           </div>
         </div>
 
@@ -109,49 +186,6 @@ const ProductDetail = () => {
               {product.description ||
                 `${product.name} - это высококачественный продукт из нашей линейки натуральной косметики. Изготовлен из экологически чистых ингредиентов, прошедших строгий контроль качества. Продукт подходит для ежедневного использования и обеспечивает эффективный уход за кожей.`}
             </p>
-            <div className={styles.features}>
-              <div className={styles.feature}>
-                <span className={styles.featureIcon}>🌿</span>
-                <span>100% натуральные ингредиенты</span>
-              </div>
-              <div className={styles.feature}>
-                <span className={styles.featureIcon}>✨</span>
-                <span>Протестировано дерматологами</span>
-              </div>
-              <div className={styles.feature}>
-                <span className={styles.featureIcon}>💚</span>
-                <span>Эко-дружелюбная упаковка</span>
-              </div>
-              <div className={styles.feature}>
-                <span className={styles.featureIcon}>🇷🇺</span>
-                <span>Производство в России</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Дополнительная информация */}
-          <div className={styles.additionalInfo}>
-            <div className={styles.infoCard}>
-              <div className={styles.infoIcon}>✨</div>
-              <div>
-                <h3>Качество</h3>
-                <p>Натуральные ингредиенты</p>
-              </div>
-            </div>
-            <div className={styles.infoCard}>
-              <div className={styles.infoIcon}>🚚</div>
-              <div>
-                <h3>Доставка</h3>
-                <p>Быстрая доставка по всей России</p>
-              </div>
-            </div>
-            <div className={styles.infoCard}>
-              <div className={styles.infoIcon}>💚</div>
-              <div>
-                <h3>Экологично</h3>
-                <p>Эко-дружелюбная продукция</p>
-              </div>
-            </div>
           </div>
 
           {/* Социальные сети */}

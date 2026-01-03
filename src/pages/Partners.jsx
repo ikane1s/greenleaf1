@@ -90,8 +90,8 @@ const Partners = () => {
       return;
     }
 
-    // Если не партнёр, не отправляем форму
-    if (formData.isPartner === 'no') {
+    // Если уже партнёр, не отправляем форму
+    if (formData.isPartner === 'yes') {
       return;
     }
 
@@ -171,6 +171,43 @@ const Partners = () => {
           Присоединяйтесь к нашей партнёрской программе и получите доступ к специальным ценам и
           условиям сотрудничества.
         </p>
+
+        {/* Преимущества партнёрства */}
+        <div className={styles.benefits}>
+          <h2>Преимущества партнёрства</h2>
+          <div className={styles.benefitsGrid}>
+            <div className={styles.benefitCard}>
+              <div className={styles.benefitIcon}>💰</div>
+              <h3>Скидка до 50%</h3>
+              <p>Приобретайте продукцию со скидкой до 50% от розничной цены</p>
+            </div>
+            <div className={styles.benefitCard}>
+              <div className={styles.benefitIcon}>📈</div>
+              <h3>Пассивный доход</h3>
+              <p>Стройте свой бизнес и получайте дополнительный доход</p>
+            </div>
+            <div className={styles.benefitCard}>
+              <div className={styles.benefitIcon}>🎁</div>
+              <h3>Бонусы и подарки</h3>
+              <p>Участвуйте в акциях, получайте бонусы и ценные подарки</p>
+            </div>
+            <div className={styles.benefitCard}>
+              <div className={styles.benefitIcon}>🤝</div>
+              <h3>Поддержка команды</h3>
+              <p>Обучающие материалы и поддержка на всех этапах</p>
+            </div>
+            <div className={styles.benefitCard}>
+              <div className={styles.benefitIcon}>🌍</div>
+              <h3>Гибкий график</h3>
+              <p>Работайте в удобное для вас время из любой точки мира</p>
+            </div>
+            <div className={styles.benefitCard}>
+              <div className={styles.benefitIcon}>⭐</div>
+              <h3>Статус и признание</h3>
+              <p>Достигайте новых уровней и получайте особые привилегии</p>
+            </div>
+          </div>
+        </div>
 
         <form className={styles.form} onSubmit={handleSubmit}>
           <div className={styles.formRow}>
@@ -282,6 +319,12 @@ const Partners = () => {
             {errors.isPartner && <span className={styles.errorMessage}>{errors.isPartner}</span>}
           </div>
 
+          {formData.isPartner === 'yes' && (
+            <div className={styles.infoMessage}>
+              <p>Если вы уже являетесь партнёром компании, то заполнять форму не нужно</p>
+            </div>
+          )}
+
           {formData.isPartner === 'no' && (
             <div className={styles.formGroup}>
               <label>
@@ -310,12 +353,6 @@ const Partners = () => {
                 </label>
               </div>
               {errors.goal && <span className={styles.errorMessage}>{errors.goal}</span>}
-            </div>
-          )}
-
-          {formData.isPartner === 'yes' && (
-            <div className={styles.infoMessage}>
-              <p>Если вы уже являетесь партнёром компании, то заполнять форму не нужно</p>
             </div>
           )}
 

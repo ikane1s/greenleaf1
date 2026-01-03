@@ -7,21 +7,30 @@ const CallbackButton = ({ onClick }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setVisible(window.scrollY > 300);
+      const scrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+      setVisible(scrollY > 300);
     };
 
     // Проверяем сразу при монтировании
     handleScroll();
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    // Используем passive для лучшей производительности
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll, { passive: true });
+    
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
   }, []);
 
-  if (!visible) return null;
-
   return (
-    <button className={styles.callbackButton} onClick={onClick}>
-      <img src={foto} alt="" />
+    <button 
+      className={`${styles.callbackButton} ${visible ? styles.visible : ''}`} 
+      onClick={onClick}
+      aria-label="Заказать звонок"
+    >
+      <img src={foto} alt="Связаться с нами" />
     </button>
   );
 };

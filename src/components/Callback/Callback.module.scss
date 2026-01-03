@@ -12,12 +12,21 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
   z-index: 1000;
   transition: all 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.8);
 
   @media (min-width: 768px) {
     width: 60px;
     height: 60px;
     bottom: 30px;
     right: 30px;
+  }
+
+  &.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
   }
 
   img {

@@ -1,7 +1,65 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './Home.module.scss';
 
+const brands = [
+  {
+    name: 'GreenLeaf',
+    description: 'Основной бренд компании, специализирующийся на натуральной косметике и экологически чистых продуктах.',
+  },
+  {
+    name: 'Carich Kardli',
+    description: 'Премиальная линейка косметических средств с уникальными формулами для профессионального ухода.',
+  },
+  {
+    name: 'Pink Point',
+    description: 'Современная косметика с акцентом на нежные оттенки и деликатный уход за кожей.',
+  },
+  {
+    name: 'Nilrich',
+    description: 'Инновационные продукты для ухода за кожей с использованием передовых технологий.',
+  },
+  {
+    name: 'iLife',
+    description: 'Эко-дружелюбная линейка продуктов для здорового образа жизни и природного ухода.',
+  },
+  {
+    name: 'Blue Point',
+    description: 'Специализированные средства для проблемной кожи и интенсивного ухода.',
+  },
+  {
+    name: 'SeaLuxe',
+    description: 'Морская косметика с минералами и экстрактами водорослей для глубокого увлажнения.',
+  },
+  {
+    name: 'Zhonggui',
+    description: 'Традиционная китайская косметика с натуральными ингредиентами и вековыми рецептами.',
+  },
+  {
+    name: 'Marvisa',
+    description: 'Элегантная косметика премиум-класса для особого ухода и роскошного ощущения.',
+  },
+  {
+    name: 'Yibeile',
+    description: 'Современные решения для ухода за кожей с акцентом на эффективность и комфорт.',
+  },
+  {
+    name: 'Maweis',
+    description: 'Профессиональная косметика для салонов красоты и домашнего использования.',
+  },
+  {
+    name: 'Leadpodi',
+    description: 'Инновационные продукты с активными компонентами для видимых результатов.',
+  },
+  {
+    name: 'Jing Hu Xi',
+    description: 'Традиционная азиатская косметика с натуральными экстрактами и мягкими формулами.',
+  },
+];
+
 const Home = () => {
+  const [selectedBrand, setSelectedBrand] = useState(null);
+
   return (
     <div className={styles.home}>
       <section className={styles.hero}>
@@ -10,6 +68,14 @@ const Home = () => {
           Ваш надежный партнер в мире натуральной косметики и экологически чистых продуктов. Мы
           предлагаем только лучшее для вашего здоровья и красоты.
         </p>
+        <div className={styles.heroButtons}>
+          <Link to="/catalog/facial-skin-care" className={styles.primaryButton}>
+            Продукция
+          </Link>
+          <Link to="/become-a-partners" className={styles.secondaryButton}>
+            Стать партнером
+          </Link>
+        </div>
       </section>
 
       <div className={styles.features}>
@@ -35,6 +101,35 @@ const Home = () => {
           </p>
         </div>
       </div>
+
+      <section className={styles.brandsSection}>
+        <h2 className={styles.sectionTitle}>Бренды компании</h2>
+        <div className={styles.brandsGrid}>
+          {brands.map((brand, index) => (
+            <button
+              key={index}
+              className={`${styles.brandButton} ${
+                selectedBrand === index ? styles.active : ''
+              }`}
+              onClick={() => setSelectedBrand(selectedBrand === index ? null : index)}
+            >
+              {brand.name}
+            </button>
+          ))}
+        </div>
+
+        {selectedBrand !== null && (
+          <div className={styles.brandInfo}>
+            <div className={styles.brandLogo}>
+              <div className={styles.logoPlaceholder}>
+                {brands[selectedBrand].name.charAt(0)}
+              </div>
+            </div>
+            <h3>{brands[selectedBrand].name}</h3>
+            <p>{brands[selectedBrand].description}</p>
+          </div>
+        )}
+      </section>
     </div>
   );
 };

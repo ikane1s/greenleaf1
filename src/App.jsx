@@ -1,14 +1,15 @@
-import './App.scss';
-import Catalog from './pages/Catalog/Catalog';
-import Home from './pages/Home';
-import ProductDetail from './pages/ProductDetail/ProductDetail';
-import { Route, Routes } from 'react-router-dom';
-import NotFound from './pages/NotFound';
-import Header from './components/Header';
-import CallbackButton from './components/Callback/CallbackButton';
-import CallbackModal from './components/Callback/CallbackModal';
-import { useState } from 'react';
-import Partners from './pages/Partners';
+import "./App.scss";
+import Catalog from "./pages/Catalog/Catalog";
+import Home from "./pages/Home";
+import ProductDetail from "./pages/ProductDetail/ProductDetail";
+import { Route, Routes } from "react-router-dom";
+import NotFound from "./pages/NotFound";
+import Header from "./components/Header";
+import CallbackButton from "./components/Callback/CallbackButton";
+import CallbackModal from "./components/Callback/CallbackModal";
+import { useState } from "react";
+import Partners from "./pages/Partners";
+import AboutUs from "./pages/AboutUs";
 
 function App() {
   const [open, setOpen] = useState(false);
@@ -21,10 +22,16 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route
           path="/catalog/:category"
-          element={<Catalog currentPage={currentPage} setCurrentPage={setCurrentPage} />}
+          element={
+            <Catalog
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+            />
+          }
         />
         <Route path="/product/:id" element={<ProductDetail />} />
         <Route path="/become-a-partners" element={<Partners />} />
+        <Route path="/about-us" element={<AboutUs />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <CallbackButton onClick={() => setOpen(true)} />

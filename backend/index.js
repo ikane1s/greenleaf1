@@ -22,12 +22,26 @@ app.post('/api/callback', async (req, res) => {
   const { phone } = req.body;
   if (!phone) return res.status(400).json({ error: 'Phone required' });
 
-  await Request.create({
+  const request = await Request.create({
     type: 'callback',
     phone,
   });
 
-  notifyAdmin('📞 Новая заявка на звонок');
+  // Отправляем детали заявки в Telegram
+  const message = `📞 Новая заявка на звонок
+
+📞 Телефон: ${phone}
+Время: ${new Date().toLocaleString('ru-RU')}`;
+
+  bot.sendMessage(ADMIN_ID, message, {
+    reply_markup: {
+      inline_keyboard: [
+        [{ text: '✅ Выполнено', callback_data: `done_${request.id}` }],
+        [{ text: '📋 Показать все заявки', callback_data: 'list' }],
+      ],
+    },
+  });
+
   res.json({ success: true });
 });
 
@@ -35,7 +49,7 @@ app.post('/api/callback', async (req, res) => {
 app.post('/api/partner', async (req, res) => {
   const { firstName, lastName, middleName, phone, email, goal } = req.body;
 
-  await Request.create({
+  const request = await Request.create({
     type: 'partner',
     firstName,
     lastName,
@@ -45,7 +59,25 @@ app.post('/api/partner', async (req, res) => {
     goal,
   });
 
-  notifyAdmin('🤝 Новая заявка партнёра');
+  // Отправляем детали заявки в Telegram
+  const message = `🤝 Новая заявка партнёра
+
+👤 ФИО: ${lastName} ${firstName} ${middleName || ''}
+📞 Телефон: ${phone}
+📧 Email: ${email}
+🎯 Цель: ${goal === 'business' ? 'Бизнес' : goal === 'discount' ? 'Скидка на продукт' : goal}
+
+Время: ${new Date().toLocaleString('ru-RU')}`;
+
+  bot.sendMessage(ADMIN_ID, message, {
+    reply_markup: {
+      inline_keyboard: [
+        [{ text: '✅ Выполнено', callback_data: `done_${request.id}` }],
+        [{ text: '📋 Показать все заявки', callback_data: 'list' }],
+      ],
+    },
+  });
+
   res.json({ success: true });
 });
 
