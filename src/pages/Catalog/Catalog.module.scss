@@ -1,21 +1,22 @@
 .catalog {
-  padding: 20px 16px;
+  padding: 40px 20px;
   max-width: 1600px;
   margin: 0 auto;
   min-height: calc(100vh - 100px);
+  background: #f8faf9;
 
   @media (min-width: 768px) {
-    padding: 40px 24px;
+    padding: 60px 40px;
   }
 
   @media (min-width: 1024px) {
-    padding: 0 40px;
+    padding: 60px 40px;
   }
 
   .title {
-    font-size: 24px;
-    font-weight: 700;
-    margin-bottom: 24px;
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 40px;
     color: var(--text-primary);
     text-align: center;
     background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green-dark) 100%);
@@ -23,24 +24,25 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
     position: relative;
+    letter-spacing: -0.5px;
 
     @media (min-width: 768px) {
-      font-size: 32px;
-      margin-bottom: 32px;
+      font-size: 38px;
+      margin-bottom: 48px;
     }
 
     @media (min-width: 1024px) {
-      font-size: 42px;
-      margin-bottom: 48px;
+      font-size: 48px;
+      margin-bottom: 56px;
     }
 
     &::after {
       content: '';
       position: absolute;
-      bottom: -12px;
+      bottom: -16px;
       left: 50%;
       transform: translateX(-50%);
-      width: 80px;
+      width: 100px;
       height: 4px;
       background: linear-gradient(90deg, var(--primary-green) 0%, var(--primary-green-dark) 100%);
       border-radius: 2px;
@@ -60,22 +62,22 @@
   }
 
   .sidebar {
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    background: #fff;
     border-radius: 16px;
-    padding: 20px;
-    box-shadow: var(--shadow-md);
-    border: 1px solid var(--border-color);
+    padding: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e8ecea;
     position: sticky;
     top: 100px;
     width: 100%;
     height: fit-content;
     max-height: calc(100vh - 120px);
-    overflow-y: visible;
+    overflow-y: auto;
 
     @media (min-width: 1024px) {
-      width: 280px;
+      width: 300px;
       flex-shrink: 0;
-      padding: 24px;
+      padding: 28px;
     }
   }
 
@@ -266,20 +268,20 @@
   }
 
   .productCard {
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-    border-radius: 16px;
-    padding: 16px;
-    box-shadow: var(--shadow-md);
+    background: #fff;
+    border-radius: 14px;
+    padding: 18px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
     display: flex;
     flex-direction: column;
-    transition: all var(--transition-base);
-    border: 1px solid var(--border-color);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1.5px solid #e8ecea;
     position: relative;
     overflow: hidden;
     cursor: pointer;
 
     @media (min-width: 768px) {
-      padding: 20px;
+      padding: 22px;
     }
 
     &::before {
@@ -288,15 +290,15 @@
       top: 0;
       left: 0;
       right: 0;
-      height: 4px;
+      height: 3px;
       background: linear-gradient(90deg, var(--primary-green) 0%, var(--primary-green-dark) 100%);
       transform: scaleX(0);
-      transition: transform var(--transition-base);
+      transition: transform 0.4s ease;
     }
 
     &:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--shadow-xl), var(--shadow-green);
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(132, 182, 38, 0.15);
       border-color: rgba(132, 182, 38, 0.3);
 
       &::before {
@@ -304,7 +306,7 @@
       }
 
       .productImage {
-        transform: scale(1.05);
+        transform: scale(1.06);
       }
     }
 
@@ -352,52 +354,55 @@
     .productPrices {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 6px;
       font-weight: 500;
       padding-top: 16px;
-      border-top: 2px solid var(--border-color);
+      border-top: 1px solid #e8ecea;
+      margin-top: auto;
 
       .priceRow {
         display: flex;
         justify-content: space-between;
-        align-items: baseline;
-        gap: 12px;
+        align-items: center;
+        gap: 8px;
       }
 
       .priceLabel {
-        font-size: 12px;
+        font-size: 10px;
         color: var(--text-secondary);
         font-weight: 500;
         flex-shrink: 0;
         text-transform: uppercase;
         letter-spacing: 0.5px;
+        opacity: 0.7;
 
         @media (min-width: 768px) {
-          font-size: 13px;
+          font-size: 11px;
         }
       }
 
       .retailPriceMain {
         color: var(--primary-green-dark);
-        font-size: 20px;
+        font-size: 18px;
         font-weight: 700;
         line-height: 1.2;
         text-align: right;
 
         @media (min-width: 768px) {
-          font-size: 22px;
+          font-size: 20px;
         }
       }
 
       .partnerPriceMain {
-        color: var(--primary-blue);
-        font-size: 20px;
-        font-weight: 700;
-        line-height: 1.2;
+        color: var(--text-secondary);
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 1.4;
         text-align: right;
+        opacity: 0.8;
 
         @media (min-width: 768px) {
-          font-size: 22px;
+          font-size: 13px;
         }
       }
     }

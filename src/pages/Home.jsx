@@ -120,6 +120,15 @@ const Home = () => {
     return () => clearInterval(interval);
   }, []);
 
+  // Функции для ручного управления каруселью
+  const nextCategory = () => {
+    setCurrentCategoryIndex((prev) => (prev + 1) % categories.length);
+  };
+
+  const prevCategory = () => {
+    setCurrentCategoryIndex((prev) => (prev - 1 + categories.length) % categories.length);
+  };
+
   return (
     <div className={styles.home}>
       <section className={styles.hero}>
@@ -195,23 +204,35 @@ const Home = () => {
       <section className={styles.categoriesSection}>
         <h2 className={styles.sectionTitle}>КАТЕГОРИИ</h2>
         <div className={styles.categoriesSlider}>
-          <div
-            className={styles.categoriesTrack}
-            style={{
-              transform: `translateX(-${currentCategoryIndex * (100 / 3)}%)`,
-            }}
-          >
-            {categories.map((category, index) => (
-              <Link
-                key={index}
-                to={category.path}
-                className={styles.categoryCard}
-              >
-                <div className={styles.categoryIcon}>{category.icon}</div>
-                <span>{category.name}</span>
-              </Link>
-            ))}
+          <button className={styles.sliderButton} onClick={prevCategory} aria-label="Предыдущая">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M15 18l-6-6 6-6"/>
+            </svg>
+          </button>
+          <div className={styles.categoriesContainer}>
+            <div
+              className={styles.categoriesTrack}
+              style={{
+                transform: `translateX(-${currentCategoryIndex * (100 / 3)}%)`,
+              }}
+            >
+              {categories.map((category, index) => (
+                <Link
+                  key={index}
+                  to={category.path}
+                  className={styles.categoryCard}
+                >
+                  <div className={styles.categoryIcon}>{category.icon}</div>
+                  <span>{category.name}</span>
+                </Link>
+              ))}
+            </div>
           </div>
+          <button className={styles.sliderButton} onClick={nextCategory} aria-label="Следующая">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M9 18l6-6-6-6"/>
+            </svg>
+          </button>
         </div>
         <div className={styles.categoryIndicators}>
           {categories.map((_, index) => (

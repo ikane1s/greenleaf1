@@ -121,18 +121,22 @@ const Partners = () => {
       const data = await response.json();
 
       if (data.success) {
+        // Показываем сообщение об успехе на 3 секунды
         setIsSubmitted(true);
-        // Сброс формы
-        setFormData({
-          lastName: '',
-          firstName: '',
-          middleName: '',
-          email: '',
-          phone: '',
-          isPartner: '',
-          goal: '',
-          consent: false,
-        });
+        setTimeout(() => {
+          setIsSubmitted(false);
+          // Сброс формы
+          setFormData({
+            lastName: '',
+            firstName: '',
+            middleName: '',
+            email: '',
+            phone: '',
+            isPartner: '',
+            goal: '',
+            consent: false,
+          });
+        }, 3000);
       } else {
         throw new Error(data.error || 'Неизвестная ошибка');
       }
@@ -146,25 +150,16 @@ const Partners = () => {
 
   const isSubmitDisabled = formData.isPartner !== 'no' || !formData.consent || isSubmitting;
 
-  if (isSubmitted) {
-    return (
-      <div className={styles.partners}>
-        <div className={styles.successMessage}>
-          <div className={styles.successIcon}>✓</div>
-          <h2>Заявка отправлена!</h2>
-          <p>
-            Спасибо за ваш интерес к партнёрской программе. Мы свяжемся с вами в ближайшее время.
-          </p>
-          <button className={styles.backButton} onClick={() => setIsSubmitted(false)}>
-            Отправить ещё одну заявку
-          </button>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className={styles.partners}>
+      {isSubmitted && (
+        <div className={styles.successNotification}>
+          <div className={styles.successContent}>
+            <div className={styles.successIcon}>✓</div>
+            <span>Заявка отправлена!</span>
+          </div>
+        </div>
+      )}
       <h1>Стать партнёром</h1>
       <div className={styles.content}>
         <p className={styles.intro}>
