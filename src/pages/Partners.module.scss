@@ -132,6 +132,38 @@
     }
   }
 
+  .videoSection {
+    margin-bottom: 48px;
+    width: 100%;
+
+    @media (min-width: 768px) {
+      margin-bottom: 60px;
+    }
+
+    .videoContainer {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      background: #000;
+
+      @media (min-width: 768px) {
+        border-radius: 24px;
+      }
+    }
+
+    .video {
+      width: 100%;
+      height: auto;
+      display: block;
+      max-height: 600px;
+      object-fit: contain;
+    }
+  }
+
   .benefits {
     margin-bottom: 48px;
     padding: 32px 0;

@@ -175,6 +175,20 @@ const Partners = () => {
           условиям сотрудничества.
         </p>
 
+        {/* Видео секция */}
+        <div className={styles.videoSection}>
+          <div className={styles.videoContainer}>
+            <video
+              controls
+              className={styles.video}
+              poster="https://greenleaf-catalog.ru/wp-content/uploads/2025/02/logo.png"
+            >
+              <source src="https://green-leaf.shop/GREENLEAF.mp4" type="video/mp4" />
+              Ваш браузер не поддерживает видео.
+            </video>
+          </div>
+        </div>
+
         {/* Преимущества партнёрства */}
         <div className={styles.benefits}>
           <h2>Преимущества партнёрства</h2>
