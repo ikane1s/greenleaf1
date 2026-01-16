@@ -1,5 +1,13 @@
 import React, { useState } from 'react';
 import styles from './Partners.module.scss';
+import { 
+  FaDollarSign, 
+  FaChartLine, 
+  FaGift, 
+  FaHandshake, 
+  FaGlobe, 
+  FaStar 
+} from 'react-icons/fa';
 
 const API_URL = 'http://localhost:3001/api'; // или ваш production URL
 
@@ -172,32 +180,44 @@ const Partners = () => {
           <h2>Преимущества партнёрства</h2>
           <div className={styles.benefitsGrid}>
             <div className={styles.benefitCard}>
-              <div className={styles.benefitIcon}>💰</div>
+              <div className={styles.benefitIcon}>
+                <FaDollarSign />
+              </div>
               <h3>Скидка до 50%</h3>
               <p>Приобретайте продукцию со скидкой до 50% от розничной цены</p>
             </div>
             <div className={styles.benefitCard}>
-              <div className={styles.benefitIcon}>📈</div>
+              <div className={styles.benefitIcon}>
+                <FaChartLine />
+              </div>
               <h3>Пассивный доход</h3>
               <p>Стройте свой бизнес и получайте дополнительный доход</p>
             </div>
             <div className={styles.benefitCard}>
-              <div className={styles.benefitIcon}>🎁</div>
+              <div className={styles.benefitIcon}>
+                <FaGift />
+              </div>
               <h3>Бонусы и подарки</h3>
               <p>Участвуйте в акциях, получайте бонусы и ценные подарки</p>
             </div>
             <div className={styles.benefitCard}>
-              <div className={styles.benefitIcon}>🤝</div>
+              <div className={styles.benefitIcon}>
+                <FaHandshake />
+              </div>
               <h3>Поддержка команды</h3>
               <p>Обучающие материалы и поддержка на всех этапах</p>
             </div>
             <div className={styles.benefitCard}>
-              <div className={styles.benefitIcon}>🌍</div>
+              <div className={styles.benefitIcon}>
+                <FaGlobe />
+              </div>
               <h3>Гибкий график</h3>
               <p>Работайте в удобное для вас время из любой точки мира</p>
             </div>
             <div className={styles.benefitCard}>
-              <div className={styles.benefitIcon}>⭐</div>
+              <div className={styles.benefitIcon}>
+                <FaStar />
+              </div>
               <h3>Статус и признание</h3>
               <p>Достигайте новых уровней и получайте особые привилегии</p>
             </div>

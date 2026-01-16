@@ -210,11 +210,20 @@
     .benefitIcon {
       font-size: 40px;
       margin-bottom: 16px;
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary-green);
+      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
 
       @media (min-width: 768px) {
         font-size: 48px;
         margin-bottom: 20px;
+      }
+
+      svg {
+        width: 1em;
+        height: 1em;
       }
     }
 
