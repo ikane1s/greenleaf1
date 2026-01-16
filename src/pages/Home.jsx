@@ -454,7 +454,6 @@ const Home = () => {
                 onClick={() =>
                   setSelectedBrand(selectedBrand === index ? null : index)
                 }
-                onMouseEnter={() => setSelectedBrand(index)}
               >
                 <div className={styles.brandCardInner}>
                   <div className={styles.brandLogoWrapper}>
@@ -465,13 +464,45 @@ const Home = () => {
                     />
                   </div>
                   <h3>{brand.name}</h3>
-                  <div className={styles.brandHoverInfo}>
-                    <p>{brand.description}</p>
-                  </div>
                 </div>
               </div>
             ))}
           </div>
+
+          {selectedBrand !== null && (
+            <div className={styles.brandInfo}>
+              <button
+                className={styles.brandInfoClose}
+                onClick={() => setSelectedBrand(null)}
+                aria-label="Закрыть"
+              >
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+              </button>
+              <div className={styles.brandInfoContent}>
+                <div className={styles.brandInfoLogoWrapper}>
+                  <img
+                    src={brands[selectedBrand].logo}
+                    alt={brands[selectedBrand].name}
+                    className={styles.brandInfoLogo}
+                  />
+                </div>
+                <div className={styles.brandInfoText}>
+                  <h3>{brands[selectedBrand].name}</h3>
+                  <p>{brands[selectedBrand].description}</p>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </section>
     </div>
