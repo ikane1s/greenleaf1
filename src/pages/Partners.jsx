@@ -1,13 +1,6 @@
 import React, { useState } from 'react';
 import styles from './Partners.module.scss';
-import { 
-  FaDollarSign, 
-  FaChartLine, 
-  FaGift, 
-  FaHandshake, 
-  FaGlobe, 
-  FaStar 
-} from 'react-icons/fa';
+import { FaDollarSign, FaChartLine, FaGift, FaHandshake, FaGlobe, FaStar } from 'react-icons/fa';
 
 const API_URL = 'http://localhost:3001/api'; // или ваш production URL
 

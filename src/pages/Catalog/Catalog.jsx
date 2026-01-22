@@ -254,9 +254,7 @@ const Catalog = ({ currentPage, setCurrentPage }) => {
           </div>
 
           <div className={styles.filterSection}>
-            <h3>
-              {userType === 'customer' ? 'Розничная цена (₽)' : 'Цена партнёра (₽)'}
-            </h3>
+            <h3>{userType === 'customer' ? 'Розничная цена (₽)' : 'Цена партнёра (₽)'}</h3>
             <div className={styles.rangeInputs}>
               <input
                 type="number"
@@ -350,22 +348,15 @@ const Catalog = ({ currentPage, setCurrentPage }) => {
                   >
                     <img src={product.image} alt={product.name} className={styles.productImage} />
                     <h3 className={styles.productName}>{product.name}</h3>
-                    {product.description && (
-                      <p className={styles.productDescription}>{product.description}</p>
-                    )}
                     <div className={styles.productPrices}>
                       <div className={styles.priceRow}>
                         <span className={styles.priceLabel}>Розница:</span>
-                        <span className={styles.retailPriceMain}>
-                          {product.priceRetail} ₽
-                        </span>
+                        <span className={styles.retailPriceMain}>{product.priceRetail} ₽</span>
                       </div>
                       {product.pricePartner && (
                         <div className={styles.priceRow}>
                           <span className={styles.priceLabel}>Партнёр:</span>
-                          <span className={styles.partnerPriceMain}>
-                            {product.pricePartner}
-                          </span>
+                          <span className={styles.partnerPriceMain}>{product.pricePartner}</span>
                         </div>
                       )}
                     </div>

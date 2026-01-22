@@ -1,18 +1,35 @@
-import React, { useState } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
-import productsData from "../../data/products.json";
-import styles from "./ProductDetail.module.scss";
-import iconTG from "../../assets/iconTG.svg";
-import iconMax from "../../assets/iconMax.svg";
-import iconMail from "../../assets/iconMail.svg";
+import React, { useState, useRef, useEffect } from 'react';
+import { useParams, useNavigate, Link } from 'react-router-dom';
+import productsData from '../../data/products.json';
+import styles from './ProductDetail.module.scss';
+import iconTG from '../../assets/iconTG.svg';
+import iconMax from '../../assets/iconMax.svg';
+import iconMail from '../../assets/iconMail.svg';
 
 const ProductDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [showVideo, setShowVideo] = useState(false);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const videoRef = useRef(null);
 
   const product = productsData.find((p) => p.id === Number(id));
+
+  useEffect(() => {
+    // При открытии модального окна с видео
+    if (showVideo && videoRef.current) {
+      videoRef.current.play().catch((e) => console.log('Автовоспроизведение не разрешено:', e));
+    }
+
+    // При закрытии модального окна
+    return () => {
+      if (videoRef.current) {
+        videoRef.current.pause();
+        videoRef.current.currentTime = 0;
+      }
+    };
+  }, [showVideo]);
 
   if (!product) {
     return (
@@ -25,14 +42,21 @@ const ProductDetail = () => {
     );
   }
 
-  // Создаем слайды: фото + видео
+  // Проверяем наличие видео
+  const hasVideo = product.videoUrl && product.videoUrl.trim() !== '';
+
+  // Создаем слайды
   const slides = [
-    { type: "image", src: product.image, alt: product.name },
-    { type: "video", label: "Видео о товаре" },
+    { type: 'image', src: product.image, alt: product.name },
+    ...(hasVideo ? [{ type: 'video', label: 'Видео о товаре' }] : []),
   ];
 
   const handleVideoClick = () => {
     setShowVideo(true);
+  };
+
+  const handleVideoLoaded = () => {
+    setIsVideoLoaded(true);
   };
 
   const nextSlide = () => {
@@ -41,6 +65,14 @@ const ProductDetail = () => {
 
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
+
+  const closeModal = () => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+    }
+    setShowVideo(false);
   };
 
   return (
@@ -69,12 +101,8 @@ const ProductDetail = () => {
             >
               {slides.map((slide, index) => (
                 <div key={index} className={styles.slide}>
-                  {slide.type === "image" ? (
-                    <img
-                      src={slide.src}
-                      alt={slide.alt}
-                      className={styles.slideImage}
-                    />
+                  {slide.type === 'image' ? (
+                    <img src={slide.src} alt={slide.alt} className={styles.slideImage} />
                   ) : (
                     <div className={styles.videoSlide}>
                       <button
@@ -140,9 +168,7 @@ const ProductDetail = () => {
                   {slides.map((_, index) => (
                     <button
                       key={index}
-                      className={`${styles.dot} ${
-                        currentSlide === index ? styles.active : ""
-                      }`}
+                      className={`${styles.dot} ${currentSlide === index ? styles.active : ''}`}
                       onClick={() => setCurrentSlide(index)}
                       aria-label={`Слайд ${index + 1}`}
                     />
@@ -168,15 +194,11 @@ const ProductDetail = () => {
           <div className={styles.prices}>
             <div className={styles.priceItem}>
               <span className={styles.priceLabel}>Розничная цена:</span>
-              <span className={styles.retailPrice}>
-                {product.priceRetail} ₽
-              </span>
+              <span className={styles.retailPrice}>{product.priceRetail} ₽</span>
             </div>
             <div className={styles.priceItem}>
               <span className={styles.priceLabel}>Партнёрская цена:</span>
-              <span className={styles.partnerPrice}>
-                {product.pricePartner}
-              </span>
+              <span className={styles.partnerPrice}>{product.pricePartner}</span>
             </div>
           </div>
 
@@ -210,10 +232,7 @@ const ProductDetail = () => {
                 <img src={iconMax} alt="Max" />
                 <span>Max</span>
               </a>
-              <a
-                href="mailto:swetbog72@gmail.com"
-                className={styles.socialLink}
-              >
+              <a href="mailto:swetbog72@gmail.com" className={styles.socialLink}>
                 <img src={iconMail} alt="Email" />
                 <span>Email</span>
               </a>
@@ -223,17 +242,10 @@ const ProductDetail = () => {
       </div>
 
       {/* Модальное окно для видео */}
-      {showVideo && (
-        <div className={styles.videoModal} onClick={() => setShowVideo(false)}>
-          <div
-            className={styles.videoContent}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              className={styles.closeButton}
-              onClick={() => setShowVideo(false)}
-              aria-label="Закрыть"
-            >
+      {showVideo && hasVideo && (
+        <div className={styles.videoModal} onClick={closeModal}>
+          <div className={styles.videoContent} onClick={(e) => e.stopPropagation()}>
+            <button className={styles.closeButton} onClick={closeModal} aria-label="Закрыть">
               <svg
                 width="24"
                 height="24"
@@ -246,11 +258,33 @@ const ProductDetail = () => {
                 <line x1="6" y1="6" x2="18" y2="18" />
               </svg>
             </button>
-            <div className={styles.videoPlaceholder}>
-              <p>Видео о товаре</p>
-              <p className={styles.videoNote}>
-                Здесь будет размещено видео с демонстрацией товара
-              </p>
+
+            <div className={styles.videoContainer}>
+              <video
+                ref={videoRef}
+                className={styles.videoPlayer}
+                src={product.videoUrl}
+                controls
+                autoPlay
+                onLoadedData={handleVideoLoaded}
+                playsInline
+                poster={product.image} // Постер - главное изображение товара
+              >
+                Ваш браузер не поддерживает видео.
+                <a href={product.videoUrl}>Скачайте видео</a>
+              </video>
+
+              {!isVideoLoaded && (
+                <div className={styles.videoLoading}>
+                  <div className={styles.spinner}></div>
+                  <p>Загрузка видео...</p>
+                </div>
+              )}
+            </div>
+
+            <div className={styles.videoInfoModal}>
+              <h4>{product.name}</h4>
+              <p>Видеообзор продукта</p>
             </div>
           </div>
         </div>
