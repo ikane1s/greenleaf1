@@ -1,7 +1,119 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import productsData from '../../data/products.json';
 import styles from './Catalog.module.scss';
+
+// Хук для метатегов
+const useMetaTags = (meta) => {
+  useEffect(() => {
+    if (!meta) return;
+
+    // Обновляем title
+    if (meta.title) {
+      document.title = meta.title;
+    }
+
+    // Функция обновления/создания метатега
+    const updateOrCreateMeta = (name, property, content) => {
+      const selector = property ? `meta[property="${property}"]` : `meta[name="${name}"]`;
+      let element = document.querySelector(selector);
+
+      if (!element) {
+        element = document.createElement('meta');
+        if (property) {
+          element.setAttribute('property', property);
+        } else {
+          element.setAttribute('name', name);
+        }
+        document.head.appendChild(element);
+      }
+
+      element.setAttribute('content', content);
+    };
+
+    // Description
+    if (meta.description) {
+      updateOrCreateMeta('description', null, meta.description);
+    }
+
+    // Keywords
+    if (meta.keywords) {
+      updateOrCreateMeta('keywords', null, meta.keywords);
+    }
+
+    // Open Graph
+    if (meta.ogTitle) {
+      updateOrCreateMeta(null, 'og:title', meta.ogTitle);
+    }
+    if (meta.ogDescription) {
+      updateOrCreateMeta(null, 'og:description', meta.ogDescription);
+    }
+    if (meta.ogImage) {
+      updateOrCreateMeta(null, 'og:image', meta.ogImage);
+    }
+    if (meta.ogUrl) {
+      updateOrCreateMeta(null, 'og:url', meta.ogUrl);
+    }
+    if (meta.ogType) {
+      updateOrCreateMeta(null, 'og:type', meta.ogType);
+    }
+
+    // Twitter
+    if (meta.twitterCard) {
+      updateOrCreateMeta('twitter:card', null, meta.twitterCard);
+    }
+    if (meta.twitterTitle) {
+      updateOrCreateMeta('twitter:title', null, meta.twitterTitle);
+    }
+    if (meta.twitterDescription) {
+      updateOrCreateMeta('twitter:description', null, meta.twitterDescription);
+    }
+
+    // Каноническая ссылка
+    if (meta.canonical) {
+      let link = document.querySelector('link[rel="canonical"]');
+      if (!link) {
+        link = document.createElement('link');
+        link.setAttribute('rel', 'canonical');
+        document.head.appendChild(link);
+      }
+      link.setAttribute('href', meta.canonical);
+    }
+  }, [meta]);
+};
+
+// Компонент MetaTags
+const MetaTags = ({
+  title,
+  description,
+  keywords,
+  ogTitle,
+  ogDescription,
+  ogImage,
+  ogUrl,
+  ogType = 'website',
+  twitterCard = 'summary_large_image',
+  twitterTitle,
+  twitterDescription,
+  canonical,
+}) => {
+  useMetaTags({
+    title,
+    description,
+    keywords,
+    ogTitle: ogTitle || title,
+    ogDescription: ogDescription || description,
+    ogImage,
+    ogUrl,
+    ogType,
+    twitterCard,
+    twitterTitle: twitterTitle || title,
+    twitterDescription: twitterDescription || description,
+    canonical,
+  });
+
+  return null;
+};
 
 // Словарь для красивых названий категорий
 const categoryMap = {
@@ -15,6 +127,53 @@ const categoryMap = {
   health: 'Здоровье',
   'eco-friendly-laundry-products': 'Эко-средства для стирки',
   'eco-friendly-home-remedies': 'Эко-средства для дома',
+};
+
+// Словарь для описаний категорий
+const categoryDescriptions = {
+  'facial-skin-care':
+    'Купить средства для ухода за кожей лица: кремы, сыворотки, тоники, маски. Натуральная косметика для всех типов кожи. Доставка по всей России.',
+  'decorative-cosmetics':
+    'Декоративная косметика: помады, тени, тональные средства, тушь. Качественная косметика для создания идеального образа. Широкий выбор.',
+  'body-skin-care':
+    'Средства для ухода за телом: лосьоны, скрабы, масла, кремы. Уход за кожей тела с натуральными компонентами. Увлажнение и питание.',
+  'hair-care':
+    'Шампуни, бальзамы, маски и сыворотки для волос. Профессиональный уход за всеми типами волос. Восстановление и укрепление.',
+  'oral-hygiene':
+    'Зубные пасты, щетки, ополаскиватели для полости рта. Комплексный уход за здоровьем зубов и десен. Профилактика кариеса.',
+  'personal-hygiene':
+    'Средства личной гигиены: дезодоранты, мыло, гели для душа. Натуральные и безопасные продукты для ежедневного ухода.',
+  'products-for-children':
+    'Товары для детей: косметика, средства гигиены, уход. Безопасные продукты для самых маленьких. Гипоаллергенные составы.',
+  health:
+    'Витамины, БАДы, средства для поддержания здоровья. Натуральные добавки для укрепления иммунитета и общего тонуса организма.',
+  'eco-friendly-laundry-products':
+    'Экологичные средства для стирки: порошки, кондиционеры, пятновыводители. Безопасно для вас, вашей семьи и природы.',
+  'eco-friendly-home-remedies':
+    'Эко-средства для уборки дома: моющие средства, спреи, концентраты. Эффективно и экологично. Без вредной химии.',
+};
+
+// Словарь для ключевых слов
+const categoryKeywords = {
+  'facial-skin-care':
+    'уход за кожей лица, крем для лица, сыворотка, тоник, маска, натуральная косметика, купить косметику, skincare',
+  'decorative-cosmetics':
+    'декоративная косметика, помада, тени, тональный крем, тушь, макияж, купить косметику, бьюти, makeup',
+  'body-skin-care':
+    'уход за телом, лосьон для тела, скраб, масло для тела, крем для тела, увлажнение кожи, купить',
+  'hair-care':
+    'уход за волосами, шампунь, бальзам, маска для волос, сыворотка, восстановление волос, купить',
+  'oral-hygiene':
+    'гигиена полости рта, зубная паста, зубная щетка, ополаскиватель, уход за зубами, стоматология',
+  'personal-hygiene':
+    'личная гигиена, дезодорант, мыло, гель для душа, средства гигиены, ежедневный уход',
+  'products-for-children':
+    'товары для детей, детская косметика, гигиена для детей, безопасные средства, уход за ребенком',
+  health: 'здоровье, витамины, БАДы, добавки, иммунитет, укрепление здоровья, wellness',
+  'eco-friendly-laundry-products':
+    'эко средства для стирки, экологичный порошок, кондиционер для белья, пятновыводитель, экологичная стирка',
+  'eco-friendly-home-remedies':
+    'эко средства для дома, моющие средства, экологичная уборка, безопасная химия, уборка дома',
 };
 
 const SORT_OPTIONS_CUSTOMER = {
@@ -55,13 +214,30 @@ const getPV = (pricePartner) => {
 const Catalog = ({ currentPage, setCurrentPage }) => {
   const { category } = useParams();
   const navigate = useNavigate();
-  const [userType, setUserType] = useState('customer'); // 'customer' или 'partner'
+  const [userType, setUserType] = useState('customer');
   const [sortBy, setSortBy] = useState('priceAsc');
   const [priceFilter, setPriceFilter] = useState({ min: '', max: '' });
   const [pvFilter, setPvFilter] = useState({ min: '', max: '' });
 
   // Получаем нормальное название категории
   const categoryName = categoryMap[category] || 'Каталог';
+  const categoryDescription =
+    categoryDescriptions[category] ||
+    `Купить товары категории ${categoryName}. Большой выбор, выгодные цены, доставка по всей России.`;
+  const categoryKeywordsText =
+    categoryKeywords[category] || `${categoryName}, купить, цена, интернет-магазин, доставка`;
+
+  // Получаем URL для канонической ссылки
+  const baseUrl = 'https://greenleaf.com';
+  const canonicalUrl = `${baseUrl}/catalog/${category}`;
+  const currentPath =
+    typeof window !== 'undefined' ? window.location.pathname : `/catalog/${category}`;
+
+  // Получаем изображение для OG
+  const getCategoryImage = () => {
+    const firstProduct = categoryProducts[0];
+    return firstProduct?.image || `${baseUrl}/og-default.jpg`;
+  };
 
   // Фильтруем товары по категории
   const categoryProducts = useMemo(() => {
@@ -201,8 +377,110 @@ const Catalog = ({ currentPage, setCurrentPage }) => {
 
   const sortOptions = userType === 'customer' ? SORT_OPTIONS_CUSTOMER : SORT_OPTIONS_PARTNER;
 
+  // Формируем заголовок с учетом пагинации
+  const getPageTitle = () => {
+    if (currentPage === 1) {
+      return `${categoryName} - GreenLeaf`;
+    } else {
+      return `${categoryName} - Страница ${currentPage} | GreenLeaf`;
+    }
+  };
+
+  // Формируем описание с учетом пагинации
+  const getPageDescription = () => {
+    if (currentPage === 1) {
+      return categoryDescription;
+    } else {
+      return `Страница ${currentPage} категории "${categoryName}". ${categoryDescription}`;
+    }
+  };
+
+  // Формируем каноническую ссылку с учетом пагинации
+  const getCanonicalUrl = () => {
+    if (currentPage === 1) {
+      return canonicalUrl;
+    } else {
+      return `${canonicalUrl}?page=${currentPage}`;
+    }
+  };
+
   return (
     <div className={styles.catalog}>
+      {/* Метатеги - не визуальный компонент */}
+      <MetaTags
+        title={getPageTitle()}
+        description={getPageDescription()}
+        keywords={categoryKeywordsText}
+        ogTitle={getPageTitle()}
+        ogDescription={getPageDescription()}
+        ogImage={getCategoryImage()}
+        ogUrl={`${baseUrl}${currentPath}`}
+        ogType="website"
+        twitterCard="summary_large_image"
+        twitterTitle={getPageTitle()}
+        twitterDescription={getPageDescription()}
+        canonical={getCanonicalUrl()}
+      />
+
+      {/* Структурированные данные для категории - скрытые */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'CollectionPage',
+            name: categoryName,
+            description: categoryDescription,
+            url: canonicalUrl,
+            numberOfItems: filteredAndSortedProducts.length,
+            mainEntity: {
+              '@type': 'ItemList',
+              numberOfItems: paginatedProducts.length,
+              itemListElement: paginatedProducts.map((product, index) => ({
+                '@type': 'ListItem',
+                position: index + 1,
+                item: {
+                  '@type': 'Product',
+                  name: product.name,
+                  description: product.shortDescription || product.description,
+                  image: product.image,
+                  url: `${baseUrl}/product/${product.id}`,
+                  offers: {
+                    '@type': 'Offer',
+                    price: product.priceRetail,
+                    priceCurrency: 'RUB',
+                    availability: 'https://schema.org/InStock',
+                  },
+                },
+              })),
+            },
+            breadcrumb: {
+              '@type': 'BreadcrumbList',
+              itemListElement: [
+                {
+                  '@type': 'ListItem',
+                  position: 1,
+                  name: 'Главная',
+                  item: baseUrl,
+                },
+                {
+                  '@type': 'ListItem',
+                  position: 2,
+                  name: 'Каталог',
+                  item: `${baseUrl}/catalog`,
+                },
+                {
+                  '@type': 'ListItem',
+                  position: 3,
+                  name: categoryName,
+                  item: canonicalUrl,
+                },
+              ],
+            },
+          }),
+        }}
+      />
+
       <h1 className={styles.title}>{categoryName}</h1>
 
       <div className={styles.catalogLayout}>
@@ -337,21 +615,51 @@ const Catalog = ({ currentPage, setCurrentPage }) => {
 
         {/* Основной контент */}
         <main className={styles.mainContent}>
+          {/* Скрытая SEO информация */}
+          <div style={{ display: 'none' }}>
+            <p>
+              В категории "{categoryName}" представлено {filteredAndSortedProducts.length} товаров.
+              {userType === 'customer'
+                ? ' Все товары доступны по розничным ценам с доставкой по всей России.'
+                : ' Для партнеров доступны специальные цены с PV (партнерскими баллами).'}
+            </p>
+          </div>
+
           {filteredAndSortedProducts.length > 0 ? (
             <>
               <div className={styles.products}>
-                {paginatedProducts.map((product) => (
+                {paginatedProducts.map((product, index) => (
                   <div
                     key={product.id}
                     className={styles.productCard}
                     onClick={() => navigate(`/product/${product.id}`)}
+                    itemScope
+                    itemType="https://schema.org/Product"
                   >
-                    <img src={product.image} alt={product.name} className={styles.productImage} />
-                    <h3 className={styles.productName}>{product.name}</h3>
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className={styles.productImage}
+                      itemProp="image"
+                      loading="lazy"
+                    />
+                    <h3 className={styles.productName} itemProp="name">
+                      {product.name}
+                    </h3>
                     <div className={styles.productPrices}>
                       <div className={styles.priceRow}>
                         <span className={styles.priceLabel}>Розница:</span>
-                        <span className={styles.retailPriceMain}>{product.priceRetail} ₽</span>
+                        <span
+                          className={styles.retailPriceMain}
+                          itemProp="offers"
+                          itemScope
+                          itemType="https://schema.org/Offer"
+                        >
+                          <meta itemProp="priceCurrency" content="RUB" />
+                          <meta itemProp="price" content={product.priceRetail} />
+                          <meta itemProp="availability" content="https://schema.org/InStock" />
+                          {product.priceRetail} ₽
+                        </span>
                       </div>
                       {product.pricePartner && (
                         <div className={styles.priceRow}>
@@ -359,6 +667,13 @@ const Catalog = ({ currentPage, setCurrentPage }) => {
                           <span className={styles.partnerPriceMain}>{product.pricePartner}</span>
                         </div>
                       )}
+                    </div>
+                    {/* Скрытое описание для микроразметки */}
+                    <div style={{ display: 'none' }}>
+                      <span itemProp="description">
+                        {product.shortDescription || product.description}
+                      </span>
+                      <span itemProp="category">{categoryName}</span>
                     </div>
                   </div>
                 ))}
@@ -409,6 +724,8 @@ const Catalog = ({ currentPage, setCurrentPage }) => {
                               behavior: 'smooth',
                             });
                           }}
+                          aria-label={`Страница ${page}`}
+                          aria-current={currentPage === page ? 'page' : undefined}
                         >
                           {page}
                         </button>

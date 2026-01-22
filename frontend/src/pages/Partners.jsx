@@ -1,8 +1,120 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './Partners.module.scss';
 import { FaDollarSign, FaChartLine, FaGift, FaHandshake, FaGlobe, FaStar } from 'react-icons/fa';
 
-const API_URL = 'http://localhost:3001/api'; // или ваш production URL
+// Хук для метатегов
+const useMetaTags = (meta) => {
+  useEffect(() => {
+    if (!meta) return;
+
+    // Обновляем title
+    if (meta.title) {
+      document.title = meta.title;
+    }
+
+    // Функция обновления/создания метатега
+    const updateOrCreateMeta = (name, property, content) => {
+      const selector = property ? `meta[property="${property}"]` : `meta[name="${name}"]`;
+      let element = document.querySelector(selector);
+
+      if (!element) {
+        element = document.createElement('meta');
+        if (property) {
+          element.setAttribute('property', property);
+        } else {
+          element.setAttribute('name', name);
+        }
+        document.head.appendChild(element);
+      }
+
+      element.setAttribute('content', content);
+    };
+
+    // Description
+    if (meta.description) {
+      updateOrCreateMeta('description', null, meta.description);
+    }
+
+    // Keywords
+    if (meta.keywords) {
+      updateOrCreateMeta('keywords', null, meta.keywords);
+    }
+
+    // Open Graph
+    if (meta.ogTitle) {
+      updateOrCreateMeta(null, 'og:title', meta.ogTitle);
+    }
+    if (meta.ogDescription) {
+      updateOrCreateMeta(null, 'og:description', meta.ogDescription);
+    }
+    if (meta.ogImage) {
+      updateOrCreateMeta(null, 'og:image', meta.ogImage);
+    }
+    if (meta.ogUrl) {
+      updateOrCreateMeta(null, 'og:url', meta.ogUrl);
+    }
+    if (meta.ogType) {
+      updateOrCreateMeta(null, 'og:type', meta.ogType);
+    }
+
+    // Twitter
+    if (meta.twitterCard) {
+      updateOrCreateMeta('twitter:card', null, meta.twitterCard);
+    }
+    if (meta.twitterTitle) {
+      updateOrCreateMeta('twitter:title', null, meta.twitterTitle);
+    }
+    if (meta.twitterDescription) {
+      updateOrCreateMeta('twitter:description', null, meta.twitterDescription);
+    }
+
+    // Каноническая ссылка
+    if (meta.canonical) {
+      let link = document.querySelector('link[rel="canonical"]');
+      if (!link) {
+        link = document.createElement('link');
+        link.setAttribute('rel', 'canonical');
+        document.head.appendChild(link);
+      }
+      link.setAttribute('href', meta.canonical);
+    }
+  }, [meta]);
+};
+
+// Компонент MetaTags
+const MetaTags = ({
+  title,
+  description,
+  keywords,
+  ogTitle,
+  ogDescription,
+  ogImage,
+  ogUrl,
+  ogType = 'website',
+  twitterCard = 'summary_large_image',
+  twitterTitle,
+  twitterDescription,
+  canonical,
+}) => {
+  useMetaTags({
+    title,
+    description,
+    keywords,
+    ogTitle: ogTitle || title,
+    ogDescription: ogDescription || description,
+    ogImage,
+    ogUrl,
+    ogType,
+    twitterCard,
+    twitterTitle: twitterTitle || title,
+    twitterDescription: twitterDescription || description,
+    canonical,
+  });
+
+  return null;
+};
+
+const API_URL = 'http://localhost:3001/api';
 
 const Partners = () => {
   const [formData, setFormData] = useState({
@@ -19,6 +131,24 @@ const Partners = () => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  // SEO данные для страницы
+  const seoData = {
+    title: 'Партнерская программа GreenLeaf | Стать партнером',
+    description:
+      'Присоединяйтесь к партнерской программе GreenLeaf. Скидки до 50%, пассивный доход, обучение и поддержка. Заполните заявку на партнерство.',
+    keywords:
+      'партнерская программа GreenLeaf, стать партнером, MLM бизнес, сетевик, партнерство, дополнительный доход, работа на себя, GreenLeaf партнер',
+    ogImage: 'https://greenleaf-catalog.ru/wp-content/uploads/2025/02/logo.png',
+    canonical: 'https://greenleaf.com/become-a-partners',
+  };
+
+  // Текущий URL для OG
+  const currentUrl =
+    typeof window !== 'undefined'
+      ? window.location.origin + window.location.pathname
+      : seoData.canonical;
+
   const validateEmail = (email) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(email);
@@ -36,7 +166,6 @@ const Partners = () => {
       [name]: type === 'checkbox' ? checked : value,
     }));
 
-    // Очищаем ошибку при изменении поля
     if (errors[name]) {
       setErrors((prev) => ({
         ...prev,
@@ -91,7 +220,6 @@ const Partners = () => {
       return;
     }
 
-    // Если уже партнёр, не отправляем форму
     if (formData.isPartner === 'yes') {
       return;
     }
@@ -99,7 +227,6 @@ const Partners = () => {
     setIsSubmitting(true);
 
     try {
-      // Отправляем данные на бэкенд
       const response = await fetch(`${API_URL}/partner`, {
         method: 'POST',
         headers: {
@@ -122,11 +249,9 @@ const Partners = () => {
       const data = await response.json();
 
       if (data.success) {
-        // Показываем сообщение об успехе на 3 секунды
         setIsSubmitted(true);
         setTimeout(() => {
           setIsSubmitted(false);
-          // Сброс формы
           setFormData({
             lastName: '',
             firstName: '',
@@ -153,6 +278,125 @@ const Partners = () => {
 
   return (
     <div className={styles.partners}>
+      {/* Метатеги для SEO */}
+      <MetaTags
+        title={seoData.title}
+        description={seoData.description}
+        keywords={seoData.keywords}
+        ogTitle={seoData.title}
+        ogDescription={seoData.description}
+        ogImage={seoData.ogImage}
+        ogUrl={currentUrl}
+        ogType="website"
+        twitterCard="summary_large_image"
+        twitterTitle={seoData.title}
+        twitterDescription={seoData.description}
+        canonical={seoData.canonical}
+      />
+
+      {/* Структурированные данные для страницы */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'WebPage',
+            name: 'Партнерская программа GreenLeaf',
+            description: seoData.description,
+            url: seoData.canonical,
+            breadcrumb: {
+              '@type': 'BreadcrumbList',
+              itemListElement: [
+                {
+                  '@type': 'ListItem',
+                  position: 1,
+                  name: 'Главная',
+                  item: 'https://greenleaf.com',
+                },
+                {
+                  '@type': 'ListItem',
+                  position: 2,
+                  name: 'Стать партнером',
+                  item: seoData.canonical,
+                },
+              ],
+            },
+            mainEntity: {
+              '@type': 'ContactPage',
+            },
+          }),
+        }}
+      />
+
+      {/* Структурированные данные для формы */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Organization',
+            name: 'GreenLeaf',
+            url: 'https://greenleaf.com',
+            email: 'info@greenleaf.com',
+            telephone: '+7 (800) 123-45-67',
+            contactPoint: {
+              '@type': 'ContactPoint',
+              contactType: 'Customer service',
+              telephone: '+7 (800) 123-45-67',
+              email: 'info@greenleaf.com',
+              availableLanguage: ['Russian'],
+              contactOption: 'TollFree',
+            },
+          }),
+        }}
+      />
+
+      {/* Структурированные данные для партнерской программы */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'OfferCatalog',
+            name: 'Партнерская программа GreenLeaf',
+            description: 'Предложения для партнеров компании GreenLeaf',
+            numberOfItems: 6,
+            itemListElement: [
+              {
+                '@type': 'Offer',
+                name: 'Скидка до 50%',
+                description: 'Приобретайте продукцию со скидкой до 50% от розничной цены',
+              },
+              {
+                '@type': 'Offer',
+                name: 'Пассивный доход',
+                description: 'Стройте свой бизнес и получайте дополнительный доход',
+              },
+              {
+                '@type': 'Offer',
+                name: 'Бонусы и подарки',
+                description: 'Участвуйте в акциях, получайте бонусы и ценные подарки',
+              },
+              {
+                '@type': 'Offer',
+                name: 'Поддержка команды',
+                description: 'Обучающие материалы и поддержка на всех этапах',
+              },
+              {
+                '@type': 'Offer',
+                name: 'Гибкий график',
+                description: 'Работайте в удобное для вас время из любой точки мира',
+              },
+              {
+                '@type': 'Offer',
+                name: 'Статус и признание',
+                description: 'Достигайте новых уровней и получайте особые привилегии',
+              },
+            ],
+          }),
+        }}
+      />
+
       {isSubmitted && (
         <div className={styles.successNotification}>
           <div className={styles.successContent}>
@@ -175,8 +419,13 @@ const Partners = () => {
               controls
               className={styles.video}
               poster="https://greenleaf-catalog.ru/wp-content/uploads/2025/02/logo.png"
+              aria-label="Видео о партнерской программе GreenLeaf"
+              preload="metadata"
             >
-              <source src="https://green-leaf.shop/GREENLEAF.mp4" type="video/mp4" />
+              <source
+                src="https://rutube.ru/play/embed/3638daf77c303792e20bf56a4f865d02"
+                type="video/mp4"
+              />
               Ваш браузер не поддерживает видео.
             </video>
           </div>
@@ -186,52 +435,59 @@ const Partners = () => {
         <div className={styles.benefits}>
           <h2>Преимущества партнёрства</h2>
           <div className={styles.benefitsGrid}>
-            <div className={styles.benefitCard}>
+            <div className={styles.benefitCard} itemScope itemType="https://schema.org/Offer">
               <div className={styles.benefitIcon}>
                 <FaDollarSign />
               </div>
-              <h3>Скидка до 50%</h3>
-              <p>Приобретайте продукцию со скидкой до 50% от розничной цены</p>
+              <h3 itemProp="name">Скидка до 50%</h3>
+              <p itemProp="description">
+                Приобретайте продукцию со скидкой до 50% от розничной цены
+              </p>
             </div>
-            <div className={styles.benefitCard}>
+            <div className={styles.benefitCard} itemScope itemType="https://schema.org/Offer">
               <div className={styles.benefitIcon}>
                 <FaChartLine />
               </div>
-              <h3>Пассивный доход</h3>
-              <p>Стройте свой бизнес и получайте дополнительный доход</p>
+              <h3 itemProp="name">Пассивный доход</h3>
+              <p itemProp="description">Стройте свой бизнес и получайте дополнительный доход</p>
             </div>
-            <div className={styles.benefitCard}>
+            <div className={styles.benefitCard} itemScope itemType="https://schema.org/Offer">
               <div className={styles.benefitIcon}>
                 <FaGift />
               </div>
-              <h3>Бонусы и подарки</h3>
-              <p>Участвуйте в акциях, получайте бонусы и ценные подарки</p>
+              <h3 itemProp="name">Бонусы и подарки</h3>
+              <p itemProp="description">Участвуйте в акциях, получайте бонусы и ценные подарки</p>
             </div>
-            <div className={styles.benefitCard}>
+            <div className={styles.benefitCard} itemScope itemType="https://schema.org/Offer">
               <div className={styles.benefitIcon}>
                 <FaHandshake />
               </div>
-              <h3>Поддержка команды</h3>
-              <p>Обучающие материалы и поддержка на всех этапах</p>
+              <h3 itemProp="name">Поддержка команды</h3>
+              <p itemProp="description">Обучающие материалы и поддержка на всех этапах</p>
             </div>
-            <div className={styles.benefitCard}>
+            <div className={styles.benefitCard} itemScope itemType="https://schema.org/Offer">
               <div className={styles.benefitIcon}>
                 <FaGlobe />
               </div>
-              <h3>Гибкий график</h3>
-              <p>Работайте в удобное для вас время из любой точки мира</p>
+              <h3 itemProp="name">Гибкий график</h3>
+              <p itemProp="description">Работайте в удобное для вас время из любой точки мира</p>
             </div>
-            <div className={styles.benefitCard}>
+            <div className={styles.benefitCard} itemScope itemType="https://schema.org/Offer">
               <div className={styles.benefitIcon}>
                 <FaStar />
               </div>
-              <h3>Статус и признание</h3>
-              <p>Достигайте новых уровней и получайте особые привилегии</p>
+              <h3 itemProp="name">Статус и признание</h3>
+              <p itemProp="description">Достигайте новых уровней и получайте особые привилегии</p>
             </div>
           </div>
         </div>
 
-        <form className={styles.form} onSubmit={handleSubmit}>
+        <form
+          className={styles.form}
+          onSubmit={handleSubmit}
+          itemScope
+          itemType="https://schema.org/ContactPage"
+        >
           <div className={styles.formRow}>
             <div className={styles.formGroup}>
               <label htmlFor="lastName">
@@ -245,6 +501,8 @@ const Partners = () => {
                 onChange={handleChange}
                 className={errors.lastName ? styles.error : ''}
                 placeholder="Введите фамилию"
+                itemProp="familyName"
+                aria-required="true"
               />
               {errors.lastName && <span className={styles.errorMessage}>{errors.lastName}</span>}
             </div>
@@ -261,6 +519,8 @@ const Partners = () => {
                 onChange={handleChange}
                 className={errors.firstName ? styles.error : ''}
                 placeholder="Введите имя"
+                itemProp="givenName"
+                aria-required="true"
               />
               {errors.firstName && <span className={styles.errorMessage}>{errors.firstName}</span>}
             </div>
@@ -275,6 +535,7 @@ const Partners = () => {
               value={formData.middleName}
               onChange={handleChange}
               placeholder="Введите отчество (необязательно)"
+              itemProp="additionalName"
             />
           </div>
 
@@ -291,6 +552,8 @@ const Partners = () => {
                 onChange={handleChange}
                 className={errors.email ? styles.error : ''}
                 placeholder="example@mail.com"
+                itemProp="email"
+                aria-required="true"
               />
               {errors.email && <span className={styles.errorMessage}>{errors.email}</span>}
             </div>
@@ -307,6 +570,8 @@ const Partners = () => {
                 onChange={handleChange}
                 className={errors.phone ? styles.error : ''}
                 placeholder="+7 (___) ___-__-__"
+                itemProp="telephone"
+                aria-required="true"
               />
               {errors.phone && <span className={styles.errorMessage}>{errors.phone}</span>}
             </div>
@@ -324,6 +589,7 @@ const Partners = () => {
                   value="yes"
                   checked={formData.isPartner === 'yes'}
                   onChange={handleChange}
+                  aria-required="true"
                 />
                 <span>Да</span>
               </label>
@@ -334,6 +600,7 @@ const Partners = () => {
                   value="no"
                   checked={formData.isPartner === 'no'}
                   onChange={handleChange}
+                  aria-required="true"
                 />
                 <span>Нет</span>
               </label>
@@ -360,6 +627,7 @@ const Partners = () => {
                     value="business"
                     checked={formData.goal === 'business'}
                     onChange={handleChange}
+                    aria-required="true"
                   />
                   <span>Бизнес</span>
                 </label>
@@ -370,6 +638,7 @@ const Partners = () => {
                     value="discount"
                     checked={formData.goal === 'discount'}
                     onChange={handleChange}
+                    aria-required="true"
                   />
                   <span>Скидка на продукт</span>
                 </label>
@@ -386,6 +655,7 @@ const Partners = () => {
                 checked={formData.consent}
                 onChange={handleChange}
                 className={errors.consent ? styles.error : ''}
+                aria-required="true"
               />
               <span>
                 Я согласен(а) на обработку персональных данных{' '}
@@ -397,10 +667,43 @@ const Partners = () => {
 
           {errors.submit && <div className={styles.submitError}>{errors.submit}</div>}
 
-          <button type="submit" className={styles.submitButton} disabled={isSubmitDisabled}>
+          <button
+            type="submit"
+            className={styles.submitButton}
+            disabled={isSubmitDisabled}
+            itemProp="potentialAction"
+          >
             {isSubmitting ? 'Отправка...' : 'Отправить заявку'}
           </button>
         </form>
+      </div>
+
+      {/* Скрытая SEO информация */}
+      <div style={{ display: 'none' }} aria-hidden="true">
+        <h2>Партнерская программа GreenLeaf</h2>
+        <p>
+          Компания GreenLeaf предлагает выгодные условия сотрудничества в рамках партнерской
+          программы. Станьте партнером компании и получайте скидки до 50% на продукцию, возможность
+          построения собственного бизнеса и пассивного дохода.
+        </p>
+        <p>
+          Наша партнерская программа подходит как для тех, кто хочет просто покупать продукцию со
+          скидкой, так и для тех, кто планирует построить серьезный бизнес в сфере сетевого
+          маркетинга.
+        </p>
+        <h3>Ключевые преимущества для партнеров:</h3>
+        <ul>
+          <li>Высокие скидки на продукцию GreenLeaf</li>
+          <li>Обучение и поддержка от опытных наставников</li>
+          <li>Гибкий график работы из любой точки мира</li>
+          <li>Маркетинговые материалы и инструменты для продвижения</li>
+          <li>Бонусная программа и мотивационные поездки</li>
+          <li>Карьерный рост и лидерские позиции</li>
+        </ul>
+        <p>
+          Для того чтобы стать партнером GreenLeaf, заполните форму на этой странице. Наш менеджер
+          свяжется с вами в течение 24 часов для консультации и оформления документов.
+        </p>
       </div>
     </div>
   );

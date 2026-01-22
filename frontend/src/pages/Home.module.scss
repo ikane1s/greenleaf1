@@ -41,19 +41,16 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background-image: linear-gradient(
-          135deg,
-          rgba(132, 182, 38, 0.9) 0%,
-          rgba(74, 164, 54, 0.15) 100%
-        ),
-        url("https://greenleaf-global.com/static/img/about/centerBuilding.png");
+      background-image:
+        linear-gradient(135deg, rgba(132, 182, 38, 0.9) 0%, rgba(74, 164, 54, 0.15) 100%),
+        url('https://greenleaf-global.com/static/img/about/centerBuilding.png');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       z-index: 0;
 
       &::after {
-        content: "";
+        content: '';
         position: absolute;
         top: 0;
         left: 0;
@@ -74,16 +71,9 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: radial-gradient(
-          circle at 20% 50%,
-          rgba(255, 255, 255, 0.15) 0%,
-          transparent 50%
-        ),
-        radial-gradient(
-          circle at 80% 80%,
-          rgba(255, 255, 255, 0.1) 0%,
-          transparent 50%
-        );
+      background:
+        radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
       pointer-events: none;
       z-index: 1;
     }
@@ -423,18 +413,13 @@
     }
 
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       top: 0;
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.2),
-        transparent
-      );
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
       transition: left 0.5s;
     }
 
@@ -444,11 +429,7 @@
   }
 
   .primaryButton {
-    background: linear-gradient(
-      135deg,
-      var(--primary-green) 0%,
-      var(--primary-green-dark) 100%
-    );
+    background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green-dark) 100%);
     color: #fff;
     box-shadow: 0 4px 20px rgba(132, 182, 38, 0.3);
 
@@ -588,7 +569,7 @@
       }
 
       @media (min-width: 768px) {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(5, 1fr);
         gap: 16px;
       }
 
@@ -740,17 +721,13 @@
       }
 
       &::before {
-        content: "";
+        content: '';
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
         height: 3px;
-        background: linear-gradient(
-          90deg,
-          var(--primary-green) 0%,
-          var(--primary-green-dark) 100%
-        );
+        background: linear-gradient(90deg, var(--primary-green) 0%, var(--primary-green-dark) 100%);
         transform: scaleX(0);
         transition: transform 0.4s ease;
       }
@@ -1008,7 +985,7 @@
         }
 
         &::before {
-          content: "";
+          content: '';
           position: absolute;
           top: 0;
           left: 0;
@@ -1268,7 +1245,7 @@
         }
 
         &::before {
-          content: "";
+          content: '';
           position: absolute;
           top: 0;
           left: 0;
