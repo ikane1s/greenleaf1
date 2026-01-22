@@ -32,12 +32,12 @@ import productsForMan from "../assets/productsForMan.png";
 
 const productsImages = [
   {
-    src: product1,
-    title: "Натуральная косметика",
+    src: product3,
+    title: "Средства для стирки",
     description: "Экологически чистые продукты для ухода за кожей",
   },
   {
-    src: product2,
+    src: product1,
     title: "Декоративная косметика",
     description: "Качественная косметика для создания идеального образа",
   },
@@ -90,7 +90,7 @@ const categories = [
     name: "Товары для здоровья",
     path: "/catalog/health",
     image:
-      "https://i.pinimg.com/1200x/c2/cd/e0/c2cde02087cfd74de974e004f141c712.jpg",
+      "https://i.pinimg.com/736x/ff/9d/5e/ff9d5edb78312791619a258eb1d417ea.jpg",
   },
   {
     name: "Одежда и текстиль",
@@ -305,7 +305,7 @@ const Home = () => {
           <div className={styles.advantageIcon}>
             <FaDollarSign />
           </div>
-          <h3>БЛАГАЯ ЦЕЛЬ КОМПАНИИ</h3>
+          <h3>ЦЕЛЬ КОМПАНИИ</h3>
           <p>
             А именно: распространение качественной продукции по разумной цене на
             мировом рынке. Сделать людей счастливее, здоровее, красивее и

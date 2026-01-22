@@ -12,9 +12,45 @@ const ProductDetail = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [showVideo, setShowVideo] = useState(false);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
   const videoRef = useRef(null);
 
   const product = productsData.find((p) => p.id === Number(id));
+
+  // Функция для форматирования описания
+  const formatDescription = (text) => {
+    if (!text) return [];
+    
+    let formatted = text;
+    
+    // Разделяем по специальным маркерам и заголовкам
+    formatted = formatted.replace(/(ОБЪЕМ\s+\d+\s*мл)/gi, '\n\n**$1**\n');
+    formatted = formatted.replace(/(SEALUXE|GREENLEAF|CARICH|KARDLI)/gi, '\n\n**$1**\n');
+    formatted = formatted.replace(/([①-⑨])\s*слой:/g, '\n\n$1 слой:');
+    formatted = formatted.replace(/(➤)/g, '\n\n$1');
+    formatted = formatted.replace(/(Особенности продукта:|Способ применения:|Результат:|Активные ингредиенты:)/g, '\n\n**$1**\n');
+    
+    // Разделяем длинные предложения
+    formatted = formatted.replace(/\.([А-ЯЁ])/g, '.\n\n$1');
+    
+    // Убираем множественные переносы
+    formatted = formatted.replace(/\n{3,}/g, '\n\n');
+    
+    // Разбиваем на строки и фильтруем пустые
+    const lines = formatted
+      .split('\n')
+      .map(line => line.trim())
+      .filter(line => line.length > 0);
+    
+    return lines;
+  };
+
+  const descriptionLines = formatDescription(product?.description);
+  const MAX_PREVIEW_LINES = 5;
+  const shouldShowExpandButton = descriptionLines.length > MAX_PREVIEW_LINES;
+  const displayedLines = isDescriptionExpanded 
+    ? descriptionLines 
+    : descriptionLines.slice(0, MAX_PREVIEW_LINES);
 
   useEffect(() => {
     // При открытии модального окна с видео
@@ -105,24 +141,35 @@ const ProductDetail = () => {
                     <img src={slide.src} alt={slide.alt} className={styles.slideImage} />
                   ) : (
                     <div className={styles.videoSlide}>
-                      <button
-                        className={styles.videoButton}
-                        onClick={handleVideoClick}
-                        aria-label="Посмотреть видео"
-                      >
-                        <svg
-                          width="48"
-                          height="48"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                        >
-                          <circle cx="12" cy="12" r="10" />
-                          <polygon points="10 8 16 12 10 16 10 8" />
-                        </svg>
-                        <span>Посмотреть видео</span>
-                      </button>
+                      <div className={styles.videoThumbnail}>
+                        <img 
+                          src={product.image} 
+                          alt={product.name}
+                          className={styles.thumbnailImage}
+                        />
+                        <div className={styles.videoOverlay}>
+                          <button
+                            className={styles.videoButton}
+                            onClick={handleVideoClick}
+                            aria-label="Посмотреть видео"
+                          >
+                            <div className={styles.playIconWrapper}>
+                              <svg
+                                width="64"
+                                height="64"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                              >
+                                <circle cx="12" cy="12" r="10" />
+                                <polygon points="10 8 16 12 10 16 10 8" fill="currentColor" />
+                              </svg>
+                            </div>
+                            <span className={styles.videoButtonText}>Смотреть видео</span>
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   )}
                 </div>
@@ -204,10 +251,69 @@ const ProductDetail = () => {
 
           <div className={styles.description}>
             <h2>Описание</h2>
-            <p>
-              {product.description ||
-                `${product.name} - это высококачественный продукт из нашей линейки натуральной косметики. Изготовлен из экологически чистых ингредиентов, прошедших строгий контроль качества. Продукт подходит для ежедневного использования и обеспечивает эффективный уход за кожей.`}
-            </p>
+            <div className={styles.descriptionContent}>
+              {displayedLines.map((line, index) => {
+                // Проверяем, является ли строка заголовком
+                const isBold = line.includes('**') || 
+                              /^(ОБЪЕМ|SEALUXE|GREENLEAF|CARICH|KARDLI|Особенности продукта|Способ применения|Результат|Активные ингредиенты)/i.test(line);
+                
+                // Проверяем нумерованные пункты и извлекаем номер
+                const numberedMatch = line.match(/^([①-⑨])\s*(.*)/);
+                const isNumbered = !!numberedMatch;
+                const numberSymbol = numberedMatch ? numberedMatch[1] : null;
+                
+                // Проверяем маркированные пункты
+                const isBullet = /^➤/.test(line);
+                
+                // Убираем маркеры форматирования
+                let cleanLine = line.replace(/\*\*/g, '').trim();
+                
+                // Если это нумерованный пункт, убираем символ из текста
+                if (isNumbered && numberedMatch) {
+                  cleanLine = numberedMatch[2].trim();
+                }
+                
+                if (!cleanLine) return null;
+                
+                return (
+                  <p 
+                    key={index} 
+                    className={`${styles.descriptionLine} ${
+                      isBold ? styles.bold : ''
+                    } ${
+                      isNumbered ? styles.numbered : ''
+                    } ${
+                      isBullet ? styles.bullet : ''
+                    }`}
+                    data-number={numberSymbol || undefined}
+                  >
+                    {cleanLine}
+                  </p>
+                );
+              })}
+              {shouldShowExpandButton && (
+                <button
+                  className={styles.expandButton}
+                  onClick={() => setIsDescriptionExpanded(!isDescriptionExpanded)}
+                >
+                  {isDescriptionExpanded ? (
+                    <>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M18 15l-6-6-6 6" />
+                      </svg>
+                      Скрыть
+                    </>
+                  ) : (
+                    <>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M6 9l6 6 6-6" />
+                      </svg>
+                      Подробнее
+                    </>
+                  )}
+                </button>
+              )}
+            </div>
           </div>
 
           {/* Социальные сети */}
@@ -268,7 +374,7 @@ const ProductDetail = () => {
                 autoPlay
                 onLoadedData={handleVideoLoaded}
                 playsInline
-                poster={product.image} // Постер - главное изображение товара
+                poster={product.image}
               >
                 Ваш браузер не поддерживает видео.
                 <a href={product.videoUrl}>Скачайте видео</a>
