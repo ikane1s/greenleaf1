@@ -106,39 +106,63 @@
           font-size: 15px;
           line-height: 1.8;
           color: var(--text-secondary);
-          padding: 18px 0;
-          padding-left: 44px;
+          padding: 24px 0;
+          padding-left: 52px;
           position: relative;
           border-bottom: 1px solid #e8ecea;
-          transition: color 0.3s ease;
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          background: linear-gradient(135deg, transparent 0%, transparent 100%);
+          border-radius: 12px;
+          margin-bottom: 8px;
 
           @media (min-width: 768px) {
             font-size: 16px;
-            padding: 22px 0;
-            padding-left: 52px;
+            padding: 28px 0;
+            padding-left: 60px;
           }
 
           &:last-child {
             border-bottom: none;
+            margin-bottom: 0;
           }
 
           &:hover {
             color: var(--text-primary);
+            background: linear-gradient(135deg, rgba(132, 182, 38, 0.05) 0%, rgba(74, 164, 54, 0.03) 100%);
+            padding-left: 56px;
+            transform: translateX(4px);
+
+            @media (min-width: 768px) {
+              padding-left: 64px;
+            }
+
+            .infoContent {
+              strong {
+                color: var(--primary-green-dark);
+              }
+            }
           }
 
           .leafIcon {
             position: absolute;
             left: 0;
-            font-size: 22px;
+            font-size: 24px;
             color: var(--primary-green);
-            filter: drop-shadow(0 2px 4px rgba(132, 182, 38, 0.3));
-            transition: transform 0.3s ease;
+            filter: drop-shadow(0 2px 6px rgba(132, 182, 38, 0.4));
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             align-items: center;
             justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, rgba(132, 182, 38, 0.1) 0%, rgba(74, 164, 54, 0.05) 100%);
+            border-radius: 50%;
+            border: 2px solid rgba(132, 182, 38, 0.2);
 
             @media (min-width: 768px) {
-              font-size: 26px;
+              font-size: 28px;
+              width: 48px;
+              height: 48px;
             }
 
             svg {
@@ -148,7 +172,33 @@
           }
 
           &:hover .leafIcon {
-            transform: scale(1.1) rotate(5deg);
+            transform: scale(1.15) rotate(10deg);
+            background: linear-gradient(135deg, rgba(132, 182, 38, 0.2) 0%, rgba(74, 164, 54, 0.1) 100%);
+            border-color: var(--primary-green);
+            box-shadow: 0 4px 12px rgba(132, 182, 38, 0.3);
+          }
+
+          .infoContent {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+
+            strong {
+              font-size: 16px;
+              font-weight: 700;
+              color: var(--text-primary);
+              transition: color 0.3s ease;
+              margin-bottom: 4px;
+
+              @media (min-width: 768px) {
+                font-size: 17px;
+              }
+            }
+
+            p {
+              margin: 0;
+              line-height: 1.7;
+            }
           }
         }
       }

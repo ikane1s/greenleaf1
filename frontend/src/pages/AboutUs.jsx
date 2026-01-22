@@ -293,38 +293,55 @@ const AboutUs = () => {
               <span className={styles.leafIcon}>
                 <FaLeaf />
               </span>
-              GREENLEAF основан в 1998 году и до 2016 года работал только в Китае.
+              <div className={styles.infoContent}>
+                <strong>Основание компании</strong>
+                <p>GREENLEAF основан в 1998 году и до 2016 года работал только в Китае.</p>
+              </div>
             </li>
             <li itemProp="description">
               <span className={styles.leafIcon}>
                 <FaLeaf />
               </span>
-              GREENLEAF с 2018 года официально зарегистрировалась в России как ООО "Зеленый лист".
+              <div className={styles.infoContent}>
+                <strong>Российское представительство</strong>
+                <p>GREENLEAF с 2018 года официально зарегистрировалась в России как ООО "Зеленый лист".</p>
+              </div>
             </li>
             <li itemProp="description">
               <span className={styles.leafIcon}>
                 <FaLeaf />
               </span>
-              GREENLEAF занимается исследованиями, разработкой технологий, производством,
-              международным сотрудничеством и маркетингом.
+              <div className={styles.infoContent}>
+                <strong>Сфера деятельности</strong>
+                <p>GREENLEAF занимается исследованиями, разработкой технологий, производством, международным сотрудничеством и маркетингом.</p>
+              </div>
             </li>
             <li itemProp="description">
               <span className={styles.leafIcon}>
                 <FaLeaf />
               </span>
-              GREENLEAF - технологический лидер в биохимической промышленности Китая.
+              <div className={styles.infoContent}>
+                <strong>Технологическое лидерство</strong>
+                <p>GREENLEAF - технологический лидер в биохимической промышленности Китая.</p>
+              </div>
             </li>
             <li itemProp="description">
               <span className={styles.leafIcon}>
                 <FaLeaf />
               </span>
-              GREENLEAF имеет пять научно-исследовательских центров и пять производственных баз.
+              <div className={styles.infoContent}>
+                <strong>Инфраструктура</strong>
+                <p>GREENLEAF имеет пять научно-исследовательских центров и пять производственных баз.</p>
+              </div>
             </li>
             <li itemProp="description">
               <span className={styles.leafIcon}>
                 <FaLeaf />
               </span>
-              GREENLEAF объединяет традиционный линейный бизнес, сетевой маркетинг и франчайзинг.
+              <div className={styles.infoContent}>
+                <strong>Бизнес-модель</strong>
+                <p>GREENLEAF объединяет традиционный линейный бизнес, сетевой маркетинг и франчайзинг.</p>
+              </div>
             </li>
           </ul>
         </div>

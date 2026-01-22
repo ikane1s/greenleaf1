@@ -245,6 +245,9 @@ bot.on('callback_query', async (q) => {
     let text = '';
     let keyboard = [];
 
+    // Очищаем номер телефона от лишних символов для tel: ссылки
+    const cleanPhone = request.phone.replace(/[\s\-\(\)]/g, '').replace(/^\+?7/, '+7');
+    
     if (request.type === 'callback') {
       text = `📞 Заявка на звонок\n\n`;
       text += `📞 Телефон: <code>${request.phone}</code>\n`;
@@ -252,7 +255,7 @@ bot.on('callback_query', async (q) => {
       text += `📊 Статус: ${request.status === 'просмотрена' ? 'Просмотрена' : 'Новая'}`;
       
       keyboard = [
-        [{ text: '📞 Позвонить', url: `tel:${request.phone}` }],
+        [{ text: '📞 Позвонить', url: cleanPhone }],
         [{ text: '✅ Выполнено', callback_data: `done_${id}` }],
         [{ text: '⬅ Назад', callback_data: `list_callback` }],
       ];
@@ -266,7 +269,7 @@ bot.on('callback_query', async (q) => {
       text += `📊 Статус: ${request.status === 'просмотрена' ? 'Просмотрена' : 'Новая'}`;
       
       keyboard = [
-        [{ text: '📞 Позвонить', url: `tel:${request.phone}` }],
+        [{ text: '📞 Позвонить', url: cleanPhone }],
         request.email ? [{ text: '📧 Написать на email', url: `mailto:${request.email}` }] : [],
         [{ text: '✅ Выполнено', callback_data: `done_${id}` }],
         [{ text: '⬅ Назад', callback_data: `list_partner` }],
@@ -312,6 +315,14 @@ bot.on('callback_query', async (q) => {
 // Команда /start для главного меню
 bot.onText(/\/start/, () => {
   sendMainMenu();
+});
+
+// Обработка всех текстовых сообщений - показываем главное меню
+bot.on('message', async (msg) => {
+  // Пропускаем команды и callback queries
+  if (msg.text && !msg.text.startsWith('/')) {
+    await sendMainMenu();
+  }
 });
 
 /* ================= START ================= */

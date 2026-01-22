@@ -415,19 +415,16 @@ const Partners = () => {
         {/* Видео секция */}
         <div className={styles.videoSection}>
           <div className={styles.videoContainer}>
-            <video
-              controls
-              className={styles.video}
-              poster="https://greenleaf-catalog.ru/wp-content/uploads/2025/02/logo.png"
-              aria-label="Видео о партнерской программе GreenLeaf"
-              preload="metadata"
-            >
-              <source
-                src="https://rutube.ru/play/embed/3638daf77c303792e20bf56a4f865d02"
-                type="video/mp4"
-              />
-              Ваш браузер не поддерживает видео.
-            </video>
+            <iframe
+              width="100%"
+              height="405"
+              src="https://rutube.ru/play/embed/3638daf77c303792e20bf56a4f865d02"
+              style={{ border: 'none', borderRadius: '16px' }}
+              allow="clipboard-write; autoplay"
+              allowFullScreen
+              title="Видео о партнерской программе GreenLeaf"
+              loading="lazy"
+            ></iframe>
           </div>
         </div>
 
