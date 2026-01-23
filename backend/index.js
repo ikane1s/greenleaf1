@@ -7,17 +7,15 @@ import { Request, initDB } from './models.js';
 const app = express();
 
 // ================= CORS НАСТРОЙКА =================
-app.use(
-  cors({
-    origin: [
-      'https://sskzpsk6.up.railway.app', // твой Railway фронтенд
-      'http://localhost:3000', // локальная разработка
-      'https://greenleaf-nso.ru', // твой кастомный домен
-    ],
-    credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  }),
-);
+app.use(cors({
+  origin: [
+    'https://greenleaf-frontend-production.up.railway.app',      
+    'https://greenleaf-nso.ru',             
+    'https://sskzpsk6.up.railway.app',     
+    'http://localhost:3000'               
+  ],
+  credentials: true
+}));
 
 app.use(express.json());
 

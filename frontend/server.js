@@ -11,10 +11,12 @@ const __dirname = path.dirname(__filename);
 console.log('📁 __dirname:', __dirname);
 
 const app = express();
+// Railway автоматически устанавливает PORT через переменную окружения
 const PORT = process.env.PORT || 3000;
 
 console.log('🔌 PORT:', PORT);
 console.log('🌍 NODE_ENV:', process.env.NODE_ENV);
+console.log('📋 All environment variables:', Object.keys(process.env).filter(k => k.includes('PORT') || k.includes('RAILWAY')));
 
 const buildPath = path.join(__dirname, 'build');
 const indexPath = path.join(buildPath, 'index.html');
