@@ -31,6 +31,7 @@ import product9 from '../assets/productsImagesHome/product9.jpg';
 import product10 from '../assets/productsImagesHome/product10.jpg';
 import productsForKids from '../assets/productsForKids.png';
 import productsForMan from '../assets/productsForMan.png';
+import yxodovaya from '../assets/greenleaf_yxodovaya.jpg';
 
 // Хук для метатегов
 const useMetaTags = (meta) => {
@@ -155,7 +156,8 @@ const productsImages = [
   {
     src: product6,
     title: 'Средства для уборки дома',
-    description: 'Экологически чистые средства для уборки эффективно справляются с любыми загрязнениями.',
+    description:
+      'Экологически чистые средства для уборки эффективно справляются с любыми загрязнениями.',
     alt: 'Средства для уборки дома GreenLeaf',
     category: 'eco-friendly-home-remedies',
   },
@@ -190,7 +192,8 @@ const productsImages = [
   {
     src: product4,
     title: 'Товары для здоровья',
-    description: 'Натуральные продукты для поддержания здоровья и укрепления иммунитета всей семьи. ',
+    description:
+      'Натуральные продукты для поддержания здоровья и укрепления иммунитета всей семьи. ',
     alt: 'Продукты для здоровья GreenLeaf',
     category: 'health',
   },
@@ -255,10 +258,10 @@ const categories = [
     alt: 'Товары для мужчин GreenLeaf',
   },
   {
-    name: 'Продукты и напитки',
-    path: '/catalog/health',
-    image: 'https://i.pinimg.com/736x/7e/3e/cc/7e3eccab1cb4ab3e15a153a2f6f864aa.jpg',
-    alt: 'Полезные продукты и напитки',
+    name: 'Уходовая косметика',
+    path: '/catalog/decorative-cosmetics',
+    image: yxodovaya,
+    alt: 'Уходовая косметика',
   },
 ];
 

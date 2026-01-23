@@ -3,7 +3,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import productsData from '../../data/products.json';
 import styles from './ProductDetail.module.scss';
 import iconTG from '../../assets/iconTG.svg';
-import iconMax from '../../assets/iconMax.svg';
+import iconMax from '../../assets/max.svg';
 import iconMail from '../../assets/iconMail.svg';
 
 // Хук для метатегов

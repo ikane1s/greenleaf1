@@ -13,318 +13,576 @@ const ADMIN_ID = Number(process.env.CHAT_ID);
 
 await initDB();
 
-const bot = new TelegramBot(BOT_TOKEN, { polling: true });
+const bot = new TelegramBot(BOT_TOKEN, {
+  polling: true,
+});
+
+// Конфигурация
+const MAX_COMPLETED_REQUESTS = 10; // Максимальное количество выполненных заявок в истории
+
+/* ================= UTILITY FUNCTIONS ================= */
+
+// Функция для очистки старых выполненных заявок
+async function cleanupOldRequests() {
+  try {
+    // Получаем все выполненные заявки, отсортированные по дате выполнения (новые сверху)
+    const allCompleted = await Request.findAll({
+      where: { status: 'выполнена' },
+      order: [['completed_at', 'DESC']],
+    });
+
+    // Если выполненных заявок больше максимума, удаляем старые
+    if (allCompleted.length > MAX_COMPLETED_REQUESTS) {
+      const toDelete = allCompleted.slice(MAX_COMPLETED_REQUESTS);
+      const idsToDelete = toDelete.map((r) => r.id);
+
+      await Request.destroy({
+        where: {
+          id: idsToDelete,
+          status: 'выполнена',
+        },
+      });
+
+      console.log(`🗑️ Удалено ${toDelete.length} старых выполненных заявок`);
+    }
+  } catch (error) {
+    console.error('Error cleaning up old requests:', error);
+  }
+}
+
+// Вызываем очистку при запуске
+cleanupOldRequests();
 
 /* ================= API ================= */
 
 // 📞 Форма "Перезвоните"
 app.post('/api/callback', async (req, res) => {
-  const { phone } = req.body;
-  if (!phone) return res.status(400).json({ error: 'Phone required' });
+  try {
+    const { phone } = req.body;
+    if (!phone) return res.status(400).json({ error: 'Phone required' });
 
-  const request = await Request.create({
-    type: 'callback',
-    phone,
-  });
+    const request = await Request.create({
+      type: 'callback',
+      phone,
+    });
 
-  // Отправляем детали заявки в Telegram
-  const message = `📞 Новая заявка на звонок
+    const message = `📞 Новая заявка на звонок\n\n📞 Телефон: ${phone}\nВремя: ${new Date().toLocaleString('ru-RU')}`;
 
-📞 Телефон: ${phone}
-Время: ${new Date().toLocaleString('ru-RU')}`;
+    await bot.sendMessage(ADMIN_ID, message, {
+      reply_markup: {
+        inline_keyboard: [
+          [{ text: '✅ Выполнено', callback_data: `done_${request.id}` }],
+          [{ text: '📋 Главное меню', callback_data: 'main_menu' }],
+        ],
+      },
+    });
 
-  bot.sendMessage(ADMIN_ID, message, {
-    reply_markup: {
-      inline_keyboard: [
-        [{ text: '✅ Выполнено', callback_data: `done_${request.id}` }],
-        [{ text: '📋 Главное меню', callback_data: 'main_menu' }],
-      ],
-    },
-  });
-
-  res.json({ success: true });
+    res.json({ success: true });
+  } catch (error) {
+    console.error('Error in callback form:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
 });
 
 // 🤝 Форма "Стать партнёром"
 app.post('/api/partner', async (req, res) => {
-  const { firstName, lastName, middleName, phone, email, goal } = req.body;
+  try {
+    const { firstName, lastName, middleName, phone, email, goal } = req.body;
 
-  const request = await Request.create({
-    type: 'partner',
-    firstName,
-    lastName,
-    middleName,
-    phone,
-    email,
-    goal,
-  });
+    const request = await Request.create({
+      type: 'partner',
+      firstName,
+      lastName,
+      middleName,
+      phone,
+      email,
+      goal,
+    });
 
-  // Отправляем детали заявки в Telegram
-  const message = `🤝 Новая заявка партнёра
+    const message = `🤝 Новая заявка партнёра\n\n👤 ФИО: ${lastName} ${firstName} ${middleName || ''}\n📞 Телефон: ${phone}\n📧 Email: ${email}\n🎯 Цель: ${goal === 'business' ? 'Бизнес' : goal === 'discount' ? 'Скидка на продукт' : goal || 'Не указана'}\n\nВремя: ${new Date().toLocaleString('ru-RU')}`;
 
-👤 ФИО: ${lastName} ${firstName} ${middleName || ''}
-📞 Телефон: ${phone}
-📧 Email: ${email}
-🎯 Цель: ${goal === 'business' ? 'Бизнес' : goal === 'discount' ? 'Скидка на продукт' : goal}
+    await bot.sendMessage(ADMIN_ID, message, {
+      reply_markup: {
+        inline_keyboard: [
+          [{ text: '✅ Выполнено', callback_data: `done_${request.id}` }],
+          [{ text: '📋 Главное меню', callback_data: 'main_menu' }],
+        ],
+      },
+    });
 
-Время: ${new Date().toLocaleString('ru-RU')}`;
-
-  bot.sendMessage(ADMIN_ID, message, {
-    reply_markup: {
-      inline_keyboard: [
-        [{ text: '✅ Выполнено', callback_data: `done_${request.id}` }],
-        [{ text: '📋 Главное меню', callback_data: 'main_menu' }],
-      ],
-    },
-  });
-
-  res.json({ success: true });
+    res.json({ success: true });
+  } catch (error) {
+    console.error('Error in partner form:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
 });
 
-/* ================= BOT ================= */
-
-function notifyAdmin(text) {
-  bot.sendMessage(ADMIN_ID, text, {
-    reply_markup: {
-      inline_keyboard: [[{ text: '📋 Показать заявки', callback_data: 'list' }]],
-    },
-  });
-}
-
-async function getRequests(status = null, type = null) {
-  const where = {};
-  if (status) where.status = status;
-  if (type) where.type = type;
-
-  return Request.findAll({
-    where,
-    order: [['created_at', 'DESC']],
-  });
-}
+/* ================= BOT FUNCTIONS ================= */
 
 async function getMainKeyboard() {
-  const partnerRequests = await getRequests(null, 'partner');
-  const callbackRequests = await getRequests(null, 'callback');
-  
-  const activePartners = partnerRequests.filter(r => r.status !== 'выполнена').length;
-  const activeCallbacks = callbackRequests.filter(r => r.status !== 'выполнена').length;
+  try {
+    const partnerRequests = await Request.findAll({ where: { type: 'partner' } });
+    const callbackRequests = await Request.findAll({ where: { type: 'callback' } });
 
-  return {
-    reply_markup: {
-      inline_keyboard: [
-        [
-          {
-            text: `🤝 Заявки партнёрства (${activePartners})`,
-            callback_data: 'list_partner',
-          },
-        ],
-        [
-          {
-            text: `📞 Заявки на звонок (${activeCallbacks})`,
-            callback_data: 'list_callback',
-          },
-        ],
-        [{ text: '📜 История всех заявок', callback_data: 'history' }],
-      ],
-    },
-  };
-}
+    const activePartners = partnerRequests.filter((r) => r.status !== 'выполнена').length;
+    const activeCallbacks = callbackRequests.filter((r) => r.status !== 'выполнена').length;
 
-async function getTypeKeyboard(type) {
-  const requests = await getRequests(null, type);
-  const keyboard = [];
-  const activeRequests = requests.filter((r) => r.status !== 'выполнена');
-
-  if (activeRequests.length === 0) {
-    keyboard.push([
-      {
-        text: '✅ Нет активных заявок',
-        callback_data: 'empty',
-      },
-    ]);
-  } else {
-    activeRequests.forEach((r) => {
-      const label =
-        r.type === 'partner'
-          ? `${r.lastName || ''} ${r.firstName || ''} ${r.phone || ''}`.trim() || 'Заявка'
-          : r.phone || 'Заявка';
-
-      keyboard.push([
-        {
-          text: `• ${label}`,
-          callback_data: `view_${r.id}`,
-        },
-      ]);
-    });
-  }
-
-  keyboard.push([{ text: '⬅ Назад к спискам', callback_data: 'main_menu' }]);
-  keyboard.push([{ text: '🔄 Обновить', callback_data: `list_${type}` }]);
-
-  return { reply_markup: { inline_keyboard: keyboard } };
-}
-
-async function sendMainMenu() {
-  await bot.sendMessage(ADMIN_ID, '📋 Главное меню заявок:', await getMainKeyboard());
-}
-
-async function sendTypeList(type) {
-  const typeName = type === 'partner' ? '🤝 Заявки партнёрства' : '📞 Заявки на звонок';
-  await bot.sendMessage(ADMIN_ID, `${typeName}:`, await getTypeKeyboard(type));
-}
-
-/* ================= CALLBACKS ================= */
-
-bot.on('callback_query', async (q) => {
-  const { data, message } = q;
-
-  // Главное меню
-  if (data === 'main_menu') {
-    await bot.deleteMessage(message.chat.id, message.message_id).catch(() => {});
-    return sendMainMenu();
-  }
-
-  // Списки по типам
-  if (data === 'list_partner' || data === 'list_callback') {
-    await bot.deleteMessage(message.chat.id, message.message_id).catch(() => {});
-    const type = data.replace('list_', '');
-    return sendTypeList(type);
-  }
-
-  // История
-  if (data === 'history') {
-    await bot.deleteMessage(message.chat.id, message.message_id).catch(() => {});
-    const done = await getRequests('выполнена');
-    
-    if (done.length === 0) {
-      return bot.sendMessage(ADMIN_ID, '📜 История пуста', {
-        reply_markup: {
-          inline_keyboard: [[{ text: '⬅ Назад', callback_data: 'main_menu' }]],
-        },
-      });
-    }
-
-    const partners = done.filter((r) => r.type === 'partner');
-    const callbacks = done.filter((r) => r.type === 'callback');
-
-    let text = '📜 Выполненные заявки:\n\n';
-    
-    if (partners.length > 0) {
-      text += '🤝 Партнёрство:\n';
-      partners.forEach((r) => {
-        text += `• ${r.lastName || ''} ${r.firstName || ''} - ${r.phone || r.email || 'Нет контакта'}\n`;
-      });
-      text += '\n';
-    }
-
-    if (callbacks.length > 0) {
-      text += '📞 Звонки:\n';
-      callbacks.forEach((r) => {
-        text += `• ${r.phone || 'Нет телефона'}\n`;
-      });
-    }
-
-    return bot.sendMessage(ADMIN_ID, text, {
+    return {
       reply_markup: {
-        inline_keyboard: [[{ text: '⬅ Назад', callback_data: 'main_menu' }]],
+        inline_keyboard: [
+          [
+            {
+              text: `🤝 Заявки партнёрства (${activePartners})`,
+              callback_data: 'list_partner',
+            },
+          ],
+          [
+            {
+              text: `📞 Заявки на звонок (${activeCallbacks})`,
+              callback_data: 'list_callback',
+            },
+          ],
+          [{ text: '📜 История заявок (последние 10)', callback_data: 'history' }],
+        ],
       },
-    });
-  }
-
-  // Просмотр заявки
-  if (data.startsWith('view_')) {
-    const id = data.replace('view_', '');
-    const request = await Request.findByPk(id);
-    if (!request) {
-      return bot.answerCallbackQuery(q.id, { text: 'Заявка не найдена' });
-    }
-
-    request.status = 'просмотрена';
-    await request.save();
-
-    let text = '';
-    let keyboard = [];
-
-    // Очищаем номер телефона от лишних символов для tel: ссылки
-    const cleanPhone = request.phone.replace(/[\s\-\(\)]/g, '').replace(/^\+?7/, '+7');
-    
-    if (request.type === 'callback') {
-      text = `📞 Заявка на звонок\n\n`;
-      text += `📞 Телефон: <code>${request.phone}</code>\n`;
-      text += `⏰ Время заявки: ${new Date(request.created_at).toLocaleString('ru-RU')}\n`;
-      text += `📊 Статус: ${request.status === 'просмотрена' ? 'Просмотрена' : 'Новая'}`;
-      
-      keyboard = [
-        [{ text: '📞 Позвонить', url: cleanPhone }],
-        [{ text: '✅ Выполнено', callback_data: `done_${id}` }],
-        [{ text: '⬅ Назад', callback_data: `list_callback` }],
-      ];
-    } else {
-      text = `🤝 Заявка партнёра\n\n`;
-      text += `👤 ФИО: ${request.lastName || ''} ${request.firstName || ''} ${request.middleName || ''}\n`;
-      text += `📞 Телефон: <code>${request.phone}</code>\n`;
-      text += `📧 Email: ${request.email || 'Не указан'}\n`;
-      text += `🎯 Цель: ${request.goal === 'business' ? 'Бизнес' : request.goal === 'discount' ? 'Скидка на продукт' : request.goal || 'Не указана'}\n`;
-      text += `⏰ Время заявки: ${new Date(request.created_at).toLocaleString('ru-RU')}\n`;
-      text += `📊 Статус: ${request.status === 'просмотрена' ? 'Просмотрена' : 'Новая'}`;
-      
-      keyboard = [
-        [{ text: '📞 Позвонить', url: cleanPhone }],
-        request.email ? [{ text: '📧 Написать на email', url: `mailto:${request.email}` }] : [],
-        [{ text: '✅ Выполнено', callback_data: `done_${id}` }],
-        [{ text: '⬅ Назад', callback_data: `list_partner` }],
-      ].filter(Boolean);
-    }
-
-    await bot.deleteMessage(message.chat.id, message.message_id).catch(() => {});
-    return bot.sendMessage(ADMIN_ID, text, {
-      parse_mode: 'HTML',
+    };
+  } catch (error) {
+    console.error('Error getting main keyboard:', error);
+    return {
       reply_markup: {
-        inline_keyboard: keyboard,
+        inline_keyboard: [[{ text: '📋 Обновить меню', callback_data: 'main_menu' }]],
       },
-    });
+    };
   }
+}
 
-  // Отметить как выполненное
-  if (data.startsWith('done_')) {
-    const id = data.replace('done_', '');
-    const request = await Request.findByPk(id);
-    if (!request) {
-      return bot.answerCallbackQuery(q.id, { text: 'Заявка не найдена' });
-    }
+/* ================= BOT EVENT HANDLERS ================= */
 
-    request.status = 'выполнена';
-    request.completed_at = new Date();
-    await request.save();
-
-    await bot.deleteMessage(message.chat.id, message.message_id).catch(() => {});
-    await bot.answerCallbackQuery(q.id, { text: '✅ Заявка отмечена как выполненная' });
-    
-    // Возвращаемся к списку соответствующего типа
-    return sendTypeList(request.type);
+// Главное меню
+bot.onText(/\/start/, async (msg) => {
+  try {
+    const keyboard = await getMainKeyboard();
+    await bot.sendMessage(msg.chat.id, '📋 Главное меню заявок:', keyboard);
+  } catch (error) {
+    console.error('Error handling /start:', error);
+    await bot.sendMessage(msg.chat.id, 'Произошла ошибка. Попробуйте еще раз.');
   }
-
-  // Пустое действие
-  if (data === 'empty') {
-    return bot.answerCallbackQuery(q.id, { text: 'Нет активных заявок' });
-  }
-
-  bot.answerCallbackQuery(q.id);
 });
 
-// Команда /start для главного меню
-bot.onText(/\/start/, () => {
-  sendMainMenu();
-});
-
-// Обработка всех текстовых сообщений - показываем главное меню
+// Обработка текстовых сообщений
 bot.on('message', async (msg) => {
-  // Пропускаем команды и callback queries
   if (msg.text && !msg.text.startsWith('/')) {
-    await sendMainMenu();
+    try {
+      const keyboard = await getMainKeyboard();
+      await bot.sendMessage(msg.chat.id, '📋 Главное меню заявок:', keyboard);
+    } catch (error) {
+      console.error('Error handling message:', error);
+    }
   }
 });
 
-/* ================= START ================= */
+// Обработка callback кнопок
+bot.on('callback_query', async (query) => {
+  const chatId = query.message.chat.id;
+  const messageId = query.message.message_id;
+  const data = query.data;
 
-app.listen(3001, () => console.log('🚀 Server running on http://localhost:3001'));
+  try {
+    // Сначала отвечаем на callback, чтобы Telegram знал, что запрос обработан
+    await bot.answerCallbackQuery(query.id).catch(() => {});
+
+    // Главное меню
+    if (data === 'main_menu') {
+      const keyboard = await getMainKeyboard();
+      try {
+        await bot.editMessageText('📋 Главное меню заявок:', {
+          chat_id: chatId,
+          message_id: messageId,
+          reply_markup: keyboard.reply_markup,
+        });
+      } catch (error) {
+        // Если не удалось отредактировать, удаляем старое сообщение и отправляем новое
+        await bot.deleteMessage(chatId, messageId).catch(() => {});
+        await bot.sendMessage(chatId, '📋 Главное меню заявок:', keyboard);
+      }
+      return;
+    }
+
+    // Список заявок партнерства
+    if (data === 'list_partner') {
+      const requests = await Request.findAll({
+        where: {
+          type: 'partner',
+          status: ['новая', 'просмотрена'],
+        },
+        order: [['created_at', 'DESC']],
+      });
+
+      if (requests.length === 0) {
+        try {
+          await bot.editMessageText('🤝 Нет активных заявок партнёрства', {
+            chat_id: chatId,
+            message_id: messageId,
+            reply_markup: {
+              inline_keyboard: [
+                [{ text: '⬅ Назад', callback_data: 'main_menu' }],
+                [{ text: '🔄 Обновить', callback_data: 'list_partner' }],
+              ],
+            },
+          });
+        } catch (error) {
+          await bot.deleteMessage(chatId, messageId).catch(() => {});
+          await bot.sendMessage(chatId, '🤝 Нет активных заявок партнёрства', {
+            reply_markup: {
+              inline_keyboard: [
+                [{ text: '⬅ Назад', callback_data: 'main_menu' }],
+                [{ text: '🔄 Обновить', callback_data: 'list_partner' }],
+              ],
+            },
+          });
+        }
+        return;
+      }
+
+      const keyboard = [];
+      requests.forEach((r) => {
+        const label =
+          `${r.lastName || ''} ${r.firstName || ''} ${r.phone || ''}`.trim() || `Заявка #${r.id}`;
+        keyboard.push([{ text: `• ${label}`, callback_data: `view_${r.id}` }]);
+      });
+
+      keyboard.push([{ text: '⬅ Назад', callback_data: 'main_menu' }]);
+      keyboard.push([{ text: '🔄 Обновить', callback_data: 'list_partner' }]);
+
+      try {
+        await bot.editMessageText('🤝 Заявки партнёрства:', {
+          chat_id: chatId,
+          message_id: messageId,
+          reply_markup: { inline_keyboard: keyboard },
+        });
+      } catch (error) {
+        await bot.deleteMessage(chatId, messageId).catch(() => {});
+        await bot.sendMessage(chatId, '🤝 Заявки партнёрства:', {
+          reply_markup: { inline_keyboard: keyboard },
+        });
+      }
+      return;
+    }
+
+    // Список заявок на звонок
+    if (data === 'list_callback') {
+      const requests = await Request.findAll({
+        where: {
+          type: 'callback',
+          status: ['новая', 'просмотрена'],
+        },
+        order: [['created_at', 'DESC']],
+      });
+
+      if (requests.length === 0) {
+        try {
+          await bot.editMessageText('📞 Нет активных заявок на звонок', {
+            chat_id: chatId,
+            message_id: messageId,
+            reply_markup: {
+              inline_keyboard: [
+                [{ text: '⬅ Назад', callback_data: 'main_menu' }],
+                [{ text: '🔄 Обновить', callback_data: 'list_callback' }],
+              ],
+            },
+          });
+        } catch (error) {
+          await bot.deleteMessage(chatId, messageId).catch(() => {});
+          await bot.sendMessage(chatId, '📞 Нет активных заявок на звонок', {
+            reply_markup: {
+              inline_keyboard: [
+                [{ text: '⬅ Назад', callback_data: 'main_menu' }],
+                [{ text: '🔄 Обновить', callback_data: 'list_callback' }],
+              ],
+            },
+          });
+        }
+        return;
+      }
+
+      const keyboard = [];
+      requests.forEach((r) => {
+        keyboard.push([
+          { text: `• ${r.phone || `Заявка #${r.id}`}`, callback_data: `view_${r.id}` },
+        ]);
+      });
+
+      keyboard.push([{ text: '⬅ Назад', callback_data: 'main_menu' }]);
+      keyboard.push([{ text: '🔄 Обновить', callback_data: 'list_callback' }]);
+
+      try {
+        await bot.editMessageText('📞 Заявки на звонок:', {
+          chat_id: chatId,
+          message_id: messageId,
+          reply_markup: { inline_keyboard: keyboard },
+        });
+      } catch (error) {
+        await bot.deleteMessage(chatId, messageId).catch(() => {});
+        await bot.sendMessage(chatId, '📞 Заявки на звонок:', {
+          reply_markup: { inline_keyboard: keyboard },
+        });
+      }
+      return;
+    }
+
+    // История заявок
+    if (data === 'history') {
+      const doneRequests = await Request.findAll({
+        where: { status: 'выполнена' },
+        order: [['completed_at', 'DESC']],
+        limit: MAX_COMPLETED_REQUESTS,
+      });
+
+      if (doneRequests.length === 0) {
+        try {
+          await bot.editMessageText('📜 История выполненных заявок пуста', {
+            chat_id: chatId,
+            message_id: messageId,
+            reply_markup: {
+              inline_keyboard: [[{ text: '⬅ Назад', callback_data: 'main_menu' }]],
+            },
+          });
+        } catch (error) {
+          await bot.deleteMessage(chatId, messageId).catch(() => {});
+          await bot.sendMessage(chatId, '📜 История выполненных заявок пуста', {
+            reply_markup: {
+              inline_keyboard: [[{ text: '⬅ Назад', callback_data: 'main_menu' }]],
+            },
+          });
+        }
+        return;
+      }
+
+      let historyText = `📜 История заявок (последние ${doneRequests.length}):\n\n`;
+
+      doneRequests.forEach((r, index) => {
+        const date = new Date(r.completed_at || r.created_at).toLocaleString('ru-RU');
+        if (r.type === 'partner') {
+          historyText += `${index + 1}. 🤝 ${r.lastName || ''} ${r.firstName || ''} - ${r.phone || r.email || 'Нет контакта'}\n   📅 ${date}\n\n`;
+        } else {
+          historyText += `${index + 1}. 📞 ${r.phone || 'Нет телефона'}\n   📅 ${date}\n\n`;
+        }
+      });
+
+      historyText += `\nℹ️ В истории сохраняются только последние ${MAX_COMPLETED_REQUESTS} выполненных заявок.`;
+
+      try {
+        await bot.editMessageText(historyText, {
+          chat_id: chatId,
+          message_id: messageId,
+          reply_markup: {
+            inline_keyboard: [[{ text: '⬅ Назад', callback_data: 'main_menu' }]],
+          },
+        });
+      } catch (error) {
+        await bot.deleteMessage(chatId, messageId).catch(() => {});
+        await bot.sendMessage(chatId, historyText, {
+          reply_markup: {
+            inline_keyboard: [[{ text: '⬅ Назад', callback_data: 'main_menu' }]],
+          },
+        });
+      }
+      return;
+    }
+
+    // Просмотр заявки
+    if (data.startsWith('view_')) {
+      const requestId = parseInt(data.replace('view_', ''));
+      const request = await Request.findByPk(requestId);
+
+      if (!request) {
+        await bot.answerCallbackQuery(query.id, {
+          text: '❌ Заявка не найдена',
+          show_alert: true,
+        });
+        return;
+      }
+
+      // Обновляем статус на "просмотрена"
+      if (request.status === 'новая') {
+        request.status = 'просмотрена';
+        await request.save();
+      }
+
+      let text = '';
+      let keyboard = [];
+
+      // Формируем текст заявки
+      if (request.type === 'callback') {
+        text = `📞 Заявка на звонок\n\n`;
+        text += `📞 Телефон: <code>${request.phone || 'Не указан'}</code>\n`;
+        text += `⏰ Время заявки: ${new Date(request.created_at).toLocaleString('ru-RU')}\n`;
+        text += `📊 Статус: ${request.status === 'выполнена' ? '✅ Выполнена' : request.status === 'просмотрена' ? '👁 Просмотрена' : '🆕 Новая'}\n`;
+        text += `🆔 ID: ${request.id}`;
+
+        // Формируем простую клавиатуру БЕЗ URL
+        keyboard = [
+          [{ text: '✅ Выполнено', callback_data: `done_${request.id}` }],
+          [{ text: '⬅ Назад', callback_data: 'list_callback' }],
+        ];
+      } else {
+        text = `🤝 Заявка партнёра\n\n`;
+        text += `👤 ФИО: ${request.lastName || ''} ${request.firstName || ''} ${request.middleName || ''}\n`;
+        text += `📞 Телефон: <code>${request.phone || 'Не указан'}</code>\n`;
+        text += `📧 Email: <code>${request.email || 'Не указан'}</code>\n`;
+        text += `🎯 Цель: ${request.goal === 'business' ? 'Бизнес' : request.goal === 'discount' ? 'Скидка на продукт' : request.goal || 'Не указана'}\n`;
+        text += `⏰ Время заявки: ${new Date(request.created_at).toLocaleString('ru-RU')}\n`;
+        text += `📊 Статус: ${request.status === 'выполнена' ? '✅ Выполнена' : request.status === 'просмотрена' ? '👁 Просмотрена' : '🆕 Новая'}\n`;
+        text += `🆔 ID: ${request.id}`;
+
+        // Формируем простую клавиатуру БЕЗ URL
+        keyboard = [
+          [{ text: '✅ Выполнено', callback_data: `done_${request.id}` }],
+          [{ text: '⬅ Назад', callback_data: 'list_partner' }],
+        ];
+      }
+
+      try {
+        await bot.editMessageText(text, {
+          chat_id: chatId,
+          message_id: messageId,
+          parse_mode: 'HTML',
+          reply_markup: { inline_keyboard: keyboard },
+        });
+      } catch (error) {
+        // Если не удалось отредактировать сообщение, удаляем старое и отправляем новое
+        await bot.deleteMessage(chatId, messageId).catch(() => {});
+        await bot.sendMessage(chatId, text, {
+          parse_mode: 'HTML',
+          reply_markup: { inline_keyboard: keyboard },
+        });
+      }
+
+      return;
+    }
+
+    // Копирование телефона
+    if (data.startsWith('copy_phone_')) {
+      const requestId = parseInt(data.replace('copy_phone_', ''));
+      const request = await Request.findByPk(requestId);
+
+      if (request && request.phone) {
+        await bot.answerCallbackQuery(query.id, {
+          text: `📞 Телефон скопирован: ${request.phone}`,
+          show_alert: true,
+        });
+      } else {
+        await bot.answerCallbackQuery(query.id, {
+          text: '❌ Телефон не найден',
+          show_alert: true,
+        });
+      }
+      return;
+    }
+
+    // Копирование email
+    if (data.startsWith('copy_email_')) {
+      const requestId = parseInt(data.replace('copy_email_', ''));
+      const request = await Request.findByPk(requestId);
+
+      if (request && request.email) {
+        await bot.answerCallbackQuery(query.id, {
+          text: `📧 Email скопирован: ${request.email}`,
+          show_alert: true,
+        });
+      } else {
+        await bot.answerCallbackQuery(query.id, {
+          text: '❌ Email не найден',
+          show_alert: true,
+        });
+      }
+      return;
+    }
+
+    // Отметить как выполненное
+    if (data.startsWith('done_')) {
+      const requestId = parseInt(data.replace('done_', ''));
+      const request = await Request.findByPk(requestId);
+
+      if (!request) {
+        await bot.answerCallbackQuery(query.id, {
+          text: '❌ Заявка не найдена',
+          show_alert: true,
+        });
+        return;
+      }
+
+      request.status = 'выполнена';
+      request.completed_at = new Date();
+      await request.save();
+
+      // Очищаем старые заявки после добавления новой выполненной
+      await cleanupOldRequests();
+
+      await bot.answerCallbackQuery(query.id, {
+        text: '✅ Заявка отмечена как выполненная',
+        show_alert: false,
+      });
+
+      // Показываем сообщение об успехе
+      let successText = `✅ Заявка #${request.id} отмечена как выполненная\n\n`;
+
+      if (request.type === 'callback') {
+        successText += `📞 ${request.phone || 'Нет телефона'}`;
+      } else {
+        successText += `🤝 ${request.lastName || ''} ${request.firstName || ''} - ${request.phone || request.email || 'Нет контакта'}`;
+      }
+
+      try {
+        await bot.editMessageText(successText, {
+          chat_id: chatId,
+          message_id: messageId,
+          reply_markup: {
+            inline_keyboard: [
+              [{ text: '⬅ Назад к списку', callback_data: `list_${request.type}` }],
+              [{ text: '📋 Главное меню', callback_data: 'main_menu' }],
+            ],
+          },
+        });
+      } catch (error) {
+        await bot.deleteMessage(chatId, messageId).catch(() => {});
+        await bot.sendMessage(chatId, successText, {
+          reply_markup: {
+            inline_keyboard: [
+              [{ text: '⬅ Назад к списку', callback_data: `list_${request.type}` }],
+              [{ text: '📋 Главное меню', callback_data: 'main_menu' }],
+            ],
+          },
+        });
+      }
+
+      return;
+    }
+
+    // Пустые действия
+    if (data === 'loading' || data === 'empty') {
+      return;
+    }
+  } catch (error) {
+    console.error('Error processing callback:', error);
+    try {
+      await bot.answerCallbackQuery(query.id, {
+        text: '❌ Произошла ошибка',
+        show_alert: true,
+      });
+    } catch (e) {
+      // Игнорируем ошибки ответа на callback
+    }
+  }
+});
+
+/* ================= START SERVER ================= */
+
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on http://localhost:${PORT}`);
+  console.log(`🤖 Bot started for admin: ${ADMIN_ID}`);
+  console.log(
+    `📊 В истории будут сохраняться последние ${MAX_COMPLETED_REQUESTS} выполненных заявок`,
+  );
+});
