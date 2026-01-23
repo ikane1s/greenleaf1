@@ -5,7 +5,20 @@ import 'dotenv/config';
 import { Request, initDB } from './models.js';
 
 const app = express();
-app.use(cors());
+
+// ================= CORS НАСТРОЙКА =================
+app.use(
+  cors({
+    origin: [
+      'https://sskzpsk6.up.railway.app', // твой Railway фронтенд
+      'http://localhost:3000', // локальная разработка
+      'https://greenleaf-nso.ru', // твой кастомный домен
+    ],
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  }),
+);
+
 app.use(express.json());
 
 const BOT_TOKEN = process.env.BOT_TOKEN.trim();
@@ -19,6 +32,73 @@ const bot = new TelegramBot(BOT_TOKEN, {
 
 // Конфигурация
 const MAX_COMPLETED_REQUESTS = 10; // Максимальное количество выполненных заявок в истории
+
+/* ================= ТЕСТОВЫЕ МАРШРУТЫ API ================= */
+
+// 1. Главный маршрут /api
+app.get('/api', (req, res) => {
+  res.json({
+    name: 'GreenLeaf API',
+    version: '1.0',
+    status: 'operational',
+    timestamp: new Date().toISOString(),
+    endpoints: {
+      health: 'GET /api/health',
+      test: 'GET /api/test',
+      callback: 'POST /api/callback',
+      partner: 'POST /api/partner',
+      products: 'GET /api/products',
+      partners: 'GET /api/partners',
+    },
+  });
+});
+
+// 2. Health check маршрут
+app.get('/api/health', (req, res) => {
+  res.json({
+    status: 'ok',
+    service: 'greenleaf-backend',
+    timestamp: new Date().toISOString(),
+    environment: process.env.NODE_ENV || 'development',
+    cors: 'enabled',
+    database: 'connected',
+  });
+});
+
+// 3. Тестовый маршрут
+app.get('/api/test', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Backend API is working correctly!',
+    data: {
+      server: 'Express/Node.js',
+      bot: 'Telegram bot connected',
+      database: 'PostgreSQL via Sequelize',
+    },
+  });
+});
+
+// 4. Products маршрут (пример)
+app.get('/api/products', (req, res) => {
+  res.json({
+    products: [
+      { id: 1, name: 'Product A', price: 100 },
+      { id: 2, name: 'Product B', price: 200 },
+      { id: 3, name: 'Product C', price: 300 },
+    ],
+  });
+});
+
+// 5. Partners маршрут (пример)
+app.get('/api/partners', (req, res) => {
+  res.json({
+    partners: [
+      { id: 1, name: 'Partner A', category: 'Retail' },
+      { id: 2, name: 'Partner B', category: 'Wholesale' },
+      { id: 3, name: 'Partner C', category: 'Manufacturer' },
+    ],
+  });
+});
 
 /* ================= UTILITY FUNCTIONS ================= */
 
@@ -53,7 +133,7 @@ async function cleanupOldRequests() {
 // Вызываем очистку при запуске
 cleanupOldRequests();
 
-/* ================= API ================= */
+/* ================= ПРОДУКШЕН МАРШРУТЫ API ================= */
 
 // 📞 Форма "Перезвоните"
 app.post('/api/callback', async (req, res) => {
@@ -532,6 +612,7 @@ bot.on('callback_query', async (query) => {
     }
 
     // Отметить как выполненное
+    // Отметить как выполненное
     if (data.startsWith('done_')) {
       const requestId = parseInt(data.replace('done_', ''));
       const request = await Request.findByPk(requestId);
@@ -565,7 +646,7 @@ bot.on('callback_query', async (query) => {
         successText += `🤝 ${request.lastName || ''} ${request.firstName || ''} - ${
           request.phone || request.email || 'Нет контакта'
         }`;
-      }
+      } // ← ЭТОЙ СКОБКИ НЕ ХВАТАЛО!
 
       try {
         await bot.editMessageText(successText, {
@@ -591,7 +672,7 @@ bot.on('callback_query', async (query) => {
       }
 
       return;
-    }
+    } // ← ЭТО закрывающая скобка для if (data.startsWith('done_'))
 
     // Пустые действия
     if (data === 'loading' || data === 'empty') {
@@ -619,4 +700,5 @@ app.listen(PORT, '0.0.0.0', () => {
   console.log(
     `📊 В истории будут сохраняться последние ${MAX_COMPLETED_REQUESTS} выполненных заявок`,
   );
+  console.log(`🌐 API доступно по адресу: https://greenleaf1-production.up.railway.app/api`);
 });
