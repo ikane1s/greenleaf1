@@ -9,18 +9,31 @@ const app = express();
 // ================= CORS НАСТРОЙКА =================
 app.use(cors({
   origin: [
-    'https://greenleaf-frontend-production.up.railway.app',      
-    'https://greenleaf-nso.ru',             
-    'https://sskzpsk6.up.railway.app',     
-    'http://localhost:3000'               
+    'https://global.greenleaf-nso.ru',        // ← ТВОЙ ОСНОВНОЙ ДОМЕН
+    'https://greenleaf-nso.ru',               // ← основной домен без subdomain
+    'https://sskzpsk6.up.railway.app',        // ← Railway домен
+    'http://localhost:3000'                   // ← для разработки
   ],
   credentials: true
 }));
 
 app.use(express.json());
 
-const BOT_TOKEN = process.env.BOT_TOKEN.trim();
+// Middleware для отладки (временно)
+app.use((req, res, next) => {
+  console.log(`[${req.method}] ${req.url}`);
+  console.log('Origin:', req.headers.origin);
+  console.log('Content-Type:', req.headers['content-type']);
+  next();
+});
+
+const BOT_TOKEN = process.env.BOT_TOKEN?.trim();
 const ADMIN_ID = Number(process.env.CHAT_ID);
+
+if (!BOT_TOKEN || !ADMIN_ID) {
+  console.error('❌ Missing BOT_TOKEN or CHAT_ID in environment variables');
+  process.exit(1);
+}
 
 await initDB();
 
@@ -29,7 +42,7 @@ const bot = new TelegramBot(BOT_TOKEN, {
 });
 
 // Конфигурация
-const MAX_COMPLETED_REQUESTS = 10; // Максимальное количество выполненных заявок в истории
+const MAX_COMPLETED_REQUESTS = 10;
 
 /* ================= ТЕСТОВЫЕ МАРШРУТЫ API ================= */
 
@@ -76,7 +89,7 @@ app.get('/api/test', (req, res) => {
   });
 });
 
-// 4. Products маршрут (пример)
+// 4. Products маршрут
 app.get('/api/products', (req, res) => {
   res.json({
     products: [
@@ -87,7 +100,7 @@ app.get('/api/products', (req, res) => {
   });
 });
 
-// 5. Partners маршрут (пример)
+// 5. Partners маршрут
 app.get('/api/partners', (req, res) => {
   res.json({
     partners: [
@@ -100,16 +113,13 @@ app.get('/api/partners', (req, res) => {
 
 /* ================= UTILITY FUNCTIONS ================= */
 
-// Функция для очистки старых выполненных заявок
 async function cleanupOldRequests() {
   try {
-    // Получаем все выполненные заявки, отсортированные по дате выполнения (новые сверху)
     const allCompleted = await Request.findAll({
       where: { status: 'выполнена' },
       order: [['completed_at', 'DESC']],
     });
 
-    // Если выполненных заявок больше максимума, удаляем старые
     if (allCompleted.length > MAX_COMPLETED_REQUESTS) {
       const toDelete = allCompleted.slice(MAX_COMPLETED_REQUESTS);
       const idsToDelete = toDelete.map((r) => r.id);
@@ -128,46 +138,100 @@ async function cleanupOldRequests() {
   }
 }
 
-// Вызываем очистку при запуске
 cleanupOldRequests();
 
 /* ================= ПРОДУКШЕН МАРШРУТЫ API ================= */
 
 // 📞 Форма "Перезвоните"
 app.post('/api/callback', async (req, res) => {
+  console.log('📞 [CALLBACK] Request received');
+  console.log('📞 [CALLBACK] Headers:', req.headers);
+  console.log('📞 [CALLBACK] Body:', req.body);
+  console.log('📞 [CALLBACK] Body type:', typeof req.body);
+  
   try {
+    if (!req.body || typeof req.body !== 'object') {
+      console.error('📞 [CALLBACK ERROR] Invalid request body');
+      return res.status(400).json({ 
+        success: false, 
+        error: 'Invalid JSON format',
+        received: req.body 
+      });
+    }
+    
     const { phone } = req.body;
-    if (!phone) return res.status(400).json({ error: 'Phone required' });
+    
+    if (!phone) {
+      console.error('📞 [CALLBACK ERROR] Phone is required');
+      return res.status(400).json({ 
+        success: false, 
+        error: 'Phone number is required' 
+      });
+    }
 
+    console.log('📞 [CALLBACK] Creating request with phone:', phone);
+    
     const request = await Request.create({
       type: 'callback',
       phone,
     });
 
-    const message = `📞 Новая заявка на звонок\n\n📞 Телефон: ${phone}\nВремя: ${new Date().toLocaleString(
-      'ru-RU',
-    )}`;
+    console.log('📞 [CALLBACK] Request created with ID:', request.id);
 
-    await bot.sendMessage(ADMIN_ID, message, {
-      reply_markup: {
-        inline_keyboard: [
-          [{ text: '✅ Выполнено', callback_data: `done_${request.id}` }],
-          [{ text: '📋 Главное меню', callback_data: 'main_menu' }],
-        ],
-      },
+    const message = `📞 Новая заявка на звонок\n\n📞 Телефон: ${phone}\nВремя: ${new Date().toLocaleString('ru-RU')}`;
+
+    try {
+      await bot.sendMessage(ADMIN_ID, message, {
+        reply_markup: {
+          inline_keyboard: [
+            [{ text: '✅ Выполнено', callback_data: `done_${request.id}` }],
+            [{ text: '📋 Главное меню', callback_data: 'main_menu' }],
+          ],
+        },
+      });
+      console.log('📞 [CALLBACK] Telegram notification sent');
+    } catch (botError) {
+      console.warn('📞 [CALLBACK WARN] Telegram bot error:', botError.message);
+    }
+
+    console.log('📞 [CALLBACK] Sending success response');
+    res.json({ 
+      success: true, 
+      message: 'Callback request received',
+      requestId: request.id 
     });
-
-    res.json({ success: true });
+    
   } catch (error) {
-    console.error('Error in callback form:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    console.error('📞 [CALLBACK ERROR] Callback error:', error);
+    res.status(500).json({ 
+      success: false, 
+      error: 'Internal server error',
+      details: process.env.NODE_ENV === 'development' ? error.message : undefined
+    });
   }
 });
 
 // 🤝 Форма "Стать партнёром"
 app.post('/api/partner', async (req, res) => {
+  console.log('🤝 [PARTNER] Request received');
+  console.log('🤝 [PARTNER] Body:', req.body);
+  
   try {
+    if (!req.body || typeof req.body !== 'object') {
+      return res.status(400).json({ 
+        success: false, 
+        error: 'Invalid JSON format' 
+      });
+    }
+    
     const { firstName, lastName, middleName, phone, email, goal } = req.body;
+
+    if (!phone || !firstName || !lastName) {
+      return res.status(400).json({ 
+        success: false, 
+        error: 'Required fields: firstName, lastName, phone' 
+      });
+    }
 
     const request = await Request.create({
       type: 'partner',
@@ -179,6 +243,8 @@ app.post('/api/partner', async (req, res) => {
       goal,
     });
 
+    console.log('🤝 [PARTNER] Request created with ID:', request.id);
+
     const message = `🤝 Новая заявка партнёра\n\n👤 ФИО: ${lastName} ${firstName} ${
       middleName || ''
     }\n📞 Телефон: ${phone}\n📧 Email: ${email || 'Не указан'}\n🎯 Цель: ${
@@ -189,19 +255,31 @@ app.post('/api/partner', async (req, res) => {
         : goal || 'Не указана'
     }\n\nВремя: ${new Date().toLocaleString('ru-RU')}`;
 
-    await bot.sendMessage(ADMIN_ID, message, {
-      reply_markup: {
-        inline_keyboard: [
-          [{ text: '✅ Выполнено', callback_data: `done_${request.id}` }],
-          [{ text: '📋 Главное меню', callback_data: 'main_menu' }],
-        ],
-      },
-    });
+    try {
+      await bot.sendMessage(ADMIN_ID, message, {
+        reply_markup: {
+          inline_keyboard: [
+            [{ text: '✅ Выполнено', callback_data: `done_${request.id}` }],
+            [{ text: '📋 Главное меню', callback_data: 'main_menu' }],
+          ],
+        },
+      });
+      console.log('🤝 [PARTNER] Telegram notification sent');
+    } catch (botError) {
+      console.warn('🤝 [PARTNER WARN] Telegram bot error:', botError.message);
+    }
 
-    res.json({ success: true });
+    res.json({ 
+      success: true, 
+      message: 'Partner request received',
+      requestId: request.id 
+    });
   } catch (error) {
-    console.error('Error in partner form:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    console.error('🤝 [PARTNER ERROR] Partner form error:', error);
+    res.status(500).json({ 
+      success: false, 
+      error: 'Internal server error' 
+    });
   }
 });
 
@@ -246,7 +324,6 @@ async function getMainKeyboard() {
 
 /* ================= BOT EVENT HANDLERS ================= */
 
-// Главное меню
 bot.onText(/\/start/, async (msg) => {
   try {
     const keyboard = await getMainKeyboard();
@@ -257,7 +334,6 @@ bot.onText(/\/start/, async (msg) => {
   }
 });
 
-// Обработка текстовых сообщений
 bot.on('message', async (msg) => {
   if (msg.text && !msg.text.startsWith('/')) {
     try {
@@ -269,17 +345,14 @@ bot.on('message', async (msg) => {
   }
 });
 
-// Обработка callback кнопок
 bot.on('callback_query', async (query) => {
   const chatId = query.message.chat.id;
   const messageId = query.message.message_id;
   const data = query.data;
 
   try {
-    // Сначала отвечаем на callback, чтобы Telegram знал, что запрос обработан
     await bot.answerCallbackQuery(query.id).catch(() => {});
 
-    // Главное меню
     if (data === 'main_menu') {
       const keyboard = await getMainKeyboard();
       try {
@@ -289,14 +362,12 @@ bot.on('callback_query', async (query) => {
           reply_markup: keyboard.reply_markup,
         });
       } catch (error) {
-        // Если не удалось отредактировать, удаляем старое сообщение и отправляем новое
         await bot.deleteMessage(chatId, messageId).catch(() => {});
         await bot.sendMessage(chatId, '📋 Главное меню заявок:', keyboard);
       }
       return;
     }
 
-    // Список заявок партнерства
     if (data === 'list_partner') {
       const requests = await Request.findAll({
         where: {
@@ -357,7 +428,6 @@ bot.on('callback_query', async (query) => {
       return;
     }
 
-    // Список заявок на звонок
     if (data === 'list_callback') {
       const requests = await Request.findAll({
         where: {
@@ -418,7 +488,6 @@ bot.on('callback_query', async (query) => {
       return;
     }
 
-    // История заявок
     if (data === 'history') {
       const doneRequests = await Request.findAll({
         where: { status: 'выполнена' },
@@ -480,7 +549,6 @@ bot.on('callback_query', async (query) => {
       return;
     }
 
-    // Просмотр заявки
     if (data.startsWith('view_')) {
       const requestId = parseInt(data.replace('view_', ''));
       const request = await Request.findByPk(requestId);
@@ -493,7 +561,6 @@ bot.on('callback_query', async (query) => {
         return;
       }
 
-      // Обновляем статус на "просмотрена"
       if (request.status === 'новая') {
         request.status = 'просмотрена';
         await request.save();
@@ -502,7 +569,6 @@ bot.on('callback_query', async (query) => {
       let text = '';
       let keyboard = [];
 
-      // Формируем текст заявки
       if (request.type === 'callback') {
         text = `📞 Заявка на звонок\n\n`;
         text += `📞 Телефон: <code>${request.phone || 'Не указан'}</code>\n`;
@@ -516,7 +582,6 @@ bot.on('callback_query', async (query) => {
         }\n`;
         text += `🆔 ID: ${request.id}`;
 
-        // Формируем простую клавиатуру БЕЗ URL
         keyboard = [
           [{ text: '✅ Выполнено', callback_data: `done_${request.id}` }],
           [{ text: '⬅ Назад', callback_data: 'list_callback' }],
@@ -545,7 +610,6 @@ bot.on('callback_query', async (query) => {
         }\n`;
         text += `🆔 ID: ${request.id}`;
 
-        // Формируем простую клавиатуру БЕЗ URL
         keyboard = [
           [{ text: '✅ Выполнено', callback_data: `done_${request.id}` }],
           [{ text: '⬅ Назад', callback_data: 'list_partner' }],
@@ -560,7 +624,6 @@ bot.on('callback_query', async (query) => {
           reply_markup: { inline_keyboard: keyboard },
         });
       } catch (error) {
-        // Если не удалось отредактировать сообщение, удаляем старое и отправляем новое
         await bot.deleteMessage(chatId, messageId).catch(() => {});
         await bot.sendMessage(chatId, text, {
           parse_mode: 'HTML',
@@ -571,7 +634,6 @@ bot.on('callback_query', async (query) => {
       return;
     }
 
-    // Копирование телефона
     if (data.startsWith('copy_phone_')) {
       const requestId = parseInt(data.replace('copy_phone_', ''));
       const request = await Request.findByPk(requestId);
@@ -590,7 +652,6 @@ bot.on('callback_query', async (query) => {
       return;
     }
 
-    // Копирование email
     if (data.startsWith('copy_email_')) {
       const requestId = parseInt(data.replace('copy_email_', ''));
       const request = await Request.findByPk(requestId);
@@ -609,8 +670,6 @@ bot.on('callback_query', async (query) => {
       return;
     }
 
-    // Отметить как выполненное
-    // Отметить как выполненное
     if (data.startsWith('done_')) {
       const requestId = parseInt(data.replace('done_', ''));
       const request = await Request.findByPk(requestId);
@@ -627,7 +686,6 @@ bot.on('callback_query', async (query) => {
       request.completed_at = new Date();
       await request.save();
 
-      // Очищаем старые заявки после добавления новой выполненной
       await cleanupOldRequests();
 
       await bot.answerCallbackQuery(query.id, {
@@ -635,7 +693,6 @@ bot.on('callback_query', async (query) => {
         show_alert: false,
       });
 
-      // Показываем сообщение об успехе
       let successText = `✅ Заявка #${request.id} отмечена как выполненная\n\n`;
 
       if (request.type === 'callback') {
@@ -644,7 +701,7 @@ bot.on('callback_query', async (query) => {
         successText += `🤝 ${request.lastName || ''} ${request.firstName || ''} - ${
           request.phone || request.email || 'Нет контакта'
         }`;
-      } // ← ЭТОЙ СКОБКИ НЕ ХВАТАЛО!
+      }
 
       try {
         await bot.editMessageText(successText, {
@@ -670,9 +727,8 @@ bot.on('callback_query', async (query) => {
       }
 
       return;
-    } // ← ЭТО закрывающая скобка для if (data.startsWith('done_'))
+    }
 
-    // Пустые действия
     if (data === 'loading' || data === 'empty') {
       return;
     }
