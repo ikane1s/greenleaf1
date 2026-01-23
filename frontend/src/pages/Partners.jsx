@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styles from './Partners.module.scss';
 import { FaDollarSign, FaChartLine, FaGift, FaHandshake, FaGlobe, FaStar } from 'react-icons/fa';
+import { formatPhoneNumber, getCleanPhoneNumber } from '../utils/phoneFormatter';
+import API_URL from '../config.js';
 
 // Хук для метатегов
 const useMetaTags = (meta) => {
@@ -114,8 +116,6 @@ const MetaTags = ({
   return null;
 };
 
-const API_URL = 'http://localhost:3001/api';
-
 const Partners = () => {
   const [formData, setFormData] = useState({
     lastName: '',
@@ -155,15 +155,24 @@ const Partners = () => {
   };
 
   const validatePhone = (phone) => {
-    const re = /^(\+7|8)?[\s\-]?\(?[0-9]{3}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/;
-    return re.test(phone.replace(/\s/g, ''));
+    // Получаем чистый номер (только цифры)
+    const cleanPhone = getCleanPhoneNumber(phone);
+    // Проверяем, что номер начинается с 7 и имеет 11 цифр
+    return /^7\d{10}$/.test(cleanPhone);
   };
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
+
+    // Автоматическое форматирование для поля телефона
+    let processedValue = value;
+    if (name === 'phone' && type === 'tel') {
+      processedValue = formatPhoneNumber(value);
+    }
+
     setFormData((prev) => ({
       ...prev,
-      [name]: type === 'checkbox' ? checked : value,
+      [name]: type === 'checkbox' ? checked : processedValue,
     }));
 
     if (errors[name]) {
@@ -185,9 +194,8 @@ const Partners = () => {
       newErrors.firstName = 'Введите имя';
     }
 
-    if (!formData.email.trim()) {
-      newErrors.email = 'Введите email';
-    } else if (!validateEmail(formData.email)) {
+    // Email необязателен, но если указан, должен быть корректным
+    if (formData.email.trim() && !validateEmail(formData.email)) {
       newErrors.email = 'Введите корректный email';
     }
 
@@ -227,6 +235,9 @@ const Partners = () => {
     setIsSubmitting(true);
 
     try {
+      // Отправляем чистый номер телефона (только цифры)
+      const cleanPhone = getCleanPhoneNumber(formData.phone);
+
       const response = await fetch(`${API_URL}/partner`, {
         method: 'POST',
         headers: {
@@ -236,7 +247,7 @@ const Partners = () => {
           firstName: formData.firstName,
           lastName: formData.lastName,
           middleName: formData.middleName,
-          phone: formData.phone,
+          phone: cleanPhone,
           email: formData.email,
           goal: formData.goal,
         }),
@@ -415,16 +426,16 @@ const Partners = () => {
         {/* Видео секция */}
         <div className={styles.videoSection}>
           <div className={styles.videoContainer}>
-            <iframe
-              width="100%"
-              height="405"
-              src="https://rutube.ru/play/embed/3638daf77c303792e20bf56a4f865d02"
-              style={{ border: 'none', borderRadius: '16px' }}
-              allow="clipboard-write; autoplay"
-              allowFullScreen
-              title="Видео о партнерской программе GreenLeaf"
-              loading="lazy"
-            ></iframe>
+            <video
+              controls
+              className={styles.video}
+              poster="https://greenleaf-catalog.ru/wp-content/uploads/2025/02/logo.png"
+              aria-label="Видео о партнерской программе GreenLeaf"
+              preload="metadata"
+            >
+              <source src="https://green-leaf.shop/GREENLEAF.mp4" type="video/mp4" />
+              Ваш браузер не поддерживает видео.
+            </video>
           </div>
         </div>
 
@@ -538,9 +549,7 @@ const Partners = () => {
 
           <div className={styles.formRow}>
             <div className={styles.formGroup}>
-              <label htmlFor="email">
-                Email <span className={styles.required}>*</span>
-              </label>
+              <label htmlFor="email">Email</label>
               <input
                 type="email"
                 id="email"
@@ -548,9 +557,8 @@ const Partners = () => {
                 value={formData.email}
                 onChange={handleChange}
                 className={errors.email ? styles.error : ''}
-                placeholder="example@mail.com"
+                placeholder="example@mail.com (необязательно)"
                 itemProp="email"
-                aria-required="true"
               />
               {errors.email && <span className={styles.errorMessage}>{errors.email}</span>}
             </div>

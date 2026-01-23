@@ -7,6 +7,7 @@ import NotFound from './pages/NotFound';
 import Header from './components/Header';
 import CallbackButton from './components/Callback/CallbackButton';
 import CallbackModal from './components/Callback/CallbackModal';
+import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import { useState, useEffect } from 'react';
 import Partners from './pages/Partners';
 import AboutUs from './pages/AboutUs';
@@ -39,6 +40,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
+        <ScrollToTop />
         <CallbackButton onClick={() => setOpen(true)} />
         {open && <CallbackModal onClose={() => setOpen(false)} />}
       </div>

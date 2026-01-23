@@ -434,15 +434,33 @@ const ProductDetail = () => {
                           >
                             <div className={styles.playIconWrapper}>
                               <svg
-                                width="64"
-                                height="64"
+                                width="36"
+                                height="36"
                                 viewBox="0 0 24 24"
                                 fill="none"
-                                stroke="currentColor"
-                                strokeWidth="2"
+                                xmlns="http://www.w3.org/2000/svg"
                               >
-                                <circle cx="12" cy="12" r="10" />
-                                <polygon points="10 8 16 12 10 16 10 8" fill="currentColor" />
+                                <circle
+                                  cx="12"
+                                  cy="12"
+                                  r="11"
+                                  fill="currentColor"
+                                  opacity="0.15"
+                                />
+                                <circle
+                                  cx="12"
+                                  cy="12"
+                                  r="10"
+                                  stroke="currentColor"
+                                  strokeWidth="2"
+                                  fill="none"
+                                />
+                                <path
+                                  d="M10 8L16 12L10 16V8Z"
+                                  fill="currentColor"
+                                  stroke="currentColor"
+                                  strokeWidth="0.5"
+                                />
                               </svg>
                             </div>
                             <span className={styles.videoButtonText}>Смотреть видео</span>

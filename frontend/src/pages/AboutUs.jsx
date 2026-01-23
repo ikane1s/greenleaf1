@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import styles from './AboutUs.module.scss';
 import { FaLeaf, FaCloud, FaGift, FaLink, FaShoppingBag, FaLaptop, FaGlobe } from 'react-icons/fa';
+import onlyLogo from '../assets/onlyLogo.png';
 
 // Хук для метатегов (импортируйте из общего файла или оставьте здесь)
 const useMetaTags = (meta) => {
@@ -249,6 +250,9 @@ const AboutUs = () => {
       {/* Видео и информация */}
       <section className={styles.videoSection}>
         <div className={styles.videoContainer}>
+          <div className={styles.logoWrapper}>
+            <img src={onlyLogo} alt="GreenLeaf Logo" className={styles.logo} />
+          </div>
           <video
             controls
             className={styles.video}

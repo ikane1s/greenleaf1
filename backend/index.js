@@ -66,7 +66,9 @@ app.post('/api/callback', async (req, res) => {
       phone,
     });
 
-    const message = `📞 Новая заявка на звонок\n\n📞 Телефон: ${phone}\nВремя: ${new Date().toLocaleString('ru-RU')}`;
+    const message = `📞 Новая заявка на звонок\n\n📞 Телефон: ${phone}\nВремя: ${new Date().toLocaleString(
+      'ru-RU',
+    )}`;
 
     await bot.sendMessage(ADMIN_ID, message, {
       reply_markup: {
@@ -99,7 +101,15 @@ app.post('/api/partner', async (req, res) => {
       goal,
     });
 
-    const message = `🤝 Новая заявка партнёра\n\n👤 ФИО: ${lastName} ${firstName} ${middleName || ''}\n📞 Телефон: ${phone}\n📧 Email: ${email}\n🎯 Цель: ${goal === 'business' ? 'Бизнес' : goal === 'discount' ? 'Скидка на продукт' : goal || 'Не указана'}\n\nВремя: ${new Date().toLocaleString('ru-RU')}`;
+    const message = `🤝 Новая заявка партнёра\n\n👤 ФИО: ${lastName} ${firstName} ${
+      middleName || ''
+    }\n📞 Телефон: ${phone}\n📧 Email: ${email || 'Не указан'}\n🎯 Цель: ${
+      goal === 'business'
+        ? 'Бизнес'
+        : goal === 'discount'
+        ? 'Скидка на продукт'
+        : goal || 'Не указана'
+    }\n\nВремя: ${new Date().toLocaleString('ru-RU')}`;
 
     await bot.sendMessage(ADMIN_ID, message, {
       reply_markup: {
@@ -363,7 +373,9 @@ bot.on('callback_query', async (query) => {
       doneRequests.forEach((r, index) => {
         const date = new Date(r.completed_at || r.created_at).toLocaleString('ru-RU');
         if (r.type === 'partner') {
-          historyText += `${index + 1}. 🤝 ${r.lastName || ''} ${r.firstName || ''} - ${r.phone || r.email || 'Нет контакта'}\n   📅 ${date}\n\n`;
+          historyText += `${index + 1}. 🤝 ${r.lastName || ''} ${r.firstName || ''} - ${
+            r.phone || r.email || 'Нет контакта'
+          }\n   📅 ${date}\n\n`;
         } else {
           historyText += `${index + 1}. 📞 ${r.phone || 'Нет телефона'}\n   📅 ${date}\n\n`;
         }
@@ -417,7 +429,13 @@ bot.on('callback_query', async (query) => {
         text = `📞 Заявка на звонок\n\n`;
         text += `📞 Телефон: <code>${request.phone || 'Не указан'}</code>\n`;
         text += `⏰ Время заявки: ${new Date(request.created_at).toLocaleString('ru-RU')}\n`;
-        text += `📊 Статус: ${request.status === 'выполнена' ? '✅ Выполнена' : request.status === 'просмотрена' ? '👁 Просмотрена' : '🆕 Новая'}\n`;
+        text += `📊 Статус: ${
+          request.status === 'выполнена'
+            ? '✅ Выполнена'
+            : request.status === 'просмотрена'
+            ? '👁 Просмотрена'
+            : '🆕 Новая'
+        }\n`;
         text += `🆔 ID: ${request.id}`;
 
         // Формируем простую клавиатуру БЕЗ URL
@@ -427,12 +445,26 @@ bot.on('callback_query', async (query) => {
         ];
       } else {
         text = `🤝 Заявка партнёра\n\n`;
-        text += `👤 ФИО: ${request.lastName || ''} ${request.firstName || ''} ${request.middleName || ''}\n`;
+        text += `👤 ФИО: ${request.lastName || ''} ${request.firstName || ''} ${
+          request.middleName || ''
+        }\n`;
         text += `📞 Телефон: <code>${request.phone || 'Не указан'}</code>\n`;
         text += `📧 Email: <code>${request.email || 'Не указан'}</code>\n`;
-        text += `🎯 Цель: ${request.goal === 'business' ? 'Бизнес' : request.goal === 'discount' ? 'Скидка на продукт' : request.goal || 'Не указана'}\n`;
+        text += `🎯 Цель: ${
+          request.goal === 'business'
+            ? 'Бизнес'
+            : request.goal === 'discount'
+            ? 'Скидка на продукт'
+            : request.goal || 'Не указана'
+        }\n`;
         text += `⏰ Время заявки: ${new Date(request.created_at).toLocaleString('ru-RU')}\n`;
-        text += `📊 Статус: ${request.status === 'выполнена' ? '✅ Выполнена' : request.status === 'просмотрена' ? '👁 Просмотрена' : '🆕 Новая'}\n`;
+        text += `📊 Статус: ${
+          request.status === 'выполнена'
+            ? '✅ Выполнена'
+            : request.status === 'просмотрена'
+            ? '👁 Просмотрена'
+            : '🆕 Новая'
+        }\n`;
         text += `🆔 ID: ${request.id}`;
 
         // Формируем простую клавиатуру БЕЗ URL
@@ -530,7 +562,9 @@ bot.on('callback_query', async (query) => {
       if (request.type === 'callback') {
         successText += `📞 ${request.phone || 'Нет телефона'}`;
       } else {
-        successText += `🤝 ${request.lastName || ''} ${request.firstName || ''} - ${request.phone || request.email || 'Нет контакта'}`;
+        successText += `🤝 ${request.lastName || ''} ${request.firstName || ''} - ${
+          request.phone || request.email || 'Нет контакта'
+        }`;
       }
 
       try {
@@ -579,8 +613,8 @@ bot.on('callback_query', async (query) => {
 /* ================= START SERVER ================= */
 
 const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`🚀 Server running on port ${PORT}`);
   console.log(`🤖 Bot started for admin: ${ADMIN_ID}`);
   console.log(
     `📊 В истории будут сохраняться последние ${MAX_COMPLETED_REQUESTS} выполненных заявок`,

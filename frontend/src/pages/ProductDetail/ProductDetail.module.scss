@@ -170,29 +170,55 @@
   .playIconWrapper {
     width: 80px;
     height: 80px;
-    background: rgba(255, 255, 255, 0.95);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.95) 100%);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), 0 0 0 4px rgba(132, 182, 38, 0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     color: var(--primary-green);
+    position: relative;
+    overflow: hidden;
 
     @media (min-width: 768px) {
       width: 100px;
       height: 100px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), 0 0 0 5px rgba(132, 182, 38, 0.12);
+    }
+
+    // Эффект блеска
+    &::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(255, 255, 255, 0.3) 50%,
+        transparent 70%
+      );
+      transform: rotate(45deg);
+      transition: transform 0.6s ease;
+      opacity: 0;
     }
 
     svg {
-      width: 40px;
-      height: 40px;
-      margin-left: 4px; // Смещение для визуального центрирования треугольника
+      width: 36px;
+      height: 36px;
+      margin-left: 3px; // Смещение для визуального центрирования треугольника
+      filter: drop-shadow(0 2px 4px rgba(74, 164, 54, 0.3));
+      transition: all 0.3s ease;
+      z-index: 1;
+      position: relative;
 
       @media (min-width: 768px) {
-        width: 50px;
-        height: 50px;
-        margin-left: 5px;
+        width: 46px;
+        height: 46px;
+        margin-left: 4px;
       }
     }
   }
@@ -211,10 +237,20 @@
   }
 
   &:hover .playIconWrapper {
-    transform: scale(1.1);
-    background: #fff;
-    box-shadow: 0 12px 32px rgba(132, 182, 38, 0.5);
+    transform: scale(1.12);
+    background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.98) 100%);
+    box-shadow: 0 12px 40px rgba(132, 182, 38, 0.5), 0 0 0 6px rgba(132, 182, 38, 0.15);
     color: var(--primary-green-dark);
+
+    &::before {
+      opacity: 1;
+      transform: rotate(45deg) translate(100%, 100%);
+    }
+
+    svg {
+      transform: scale(1.05);
+      filter: drop-shadow(0 4px 8px rgba(74, 164, 54, 0.4));
+    }
   }
 
   &:active .playIconWrapper {

@@ -1,10 +1,37 @@
 import { Sequelize, DataTypes } from 'sequelize';
 
-const sequelize = new Sequelize({
-  dialect: 'sqlite',
-  storage: './database.sqlite',
-  logging: false,
-});
+// Настройка подключения к PostgreSQL
+// DATABASE_URL должен быть в формате: postgresql://user:password@host:port/database
+const getSequelizeConfig = () => {
+  const databaseUrl = process.env.DATABASE_URL;
+
+  if (!databaseUrl) {
+    throw new Error(
+      'DATABASE_URL не установлен. Убедитесь, что переменная окружения DATABASE_URL настроена.',
+    );
+  }
+
+  // Определяем, нужен ли SSL (обычно нужен для облачных БД, не нужен для локальной)
+  const needsSSL =
+    databaseUrl.includes('railway') ||
+    databaseUrl.includes('render') ||
+    databaseUrl.includes('heroku');
+
+  return {
+    dialect: 'postgres',
+    dialectOptions: needsSSL
+      ? {
+          ssl: {
+            require: true,
+            rejectUnauthorized: false,
+          },
+        }
+      : {},
+    logging: process.env.NODE_ENV === 'development' ? console.log : false,
+  };
+};
+
+const sequelize = new Sequelize(process.env.DATABASE_URL, getSequelizeConfig());
 
 export const Request = sequelize.define(
   'Request',
