@@ -326,6 +326,14 @@ app.listen(PORT, '0.0.0.0', () => {
    npm install && npm run build
    ```
 
+   **Важно:** Используйте `npm install` вместо `npm ci`, чтобы избежать проблем с синхронизацией `package-lock.json`.
+
+   **Альтернатива (если есть проблемы с зависимостями):**
+
+   ```
+   npm install --legacy-peer-deps && npm run build
+   ```
+
 4. **Настройте Start Command:**
 
    ```
@@ -339,7 +347,7 @@ app.listen(PORT, '0.0.0.0', () => {
 В настройках сервиса фронтенда добавьте:
 
 ```
-REACT_APP_API_URL=https://ваш-бэкенд-url.up.railway.app/api
+REACT_APP_API_URL=https://greenleaf1-production.up.railway.app/api
 PORT=3000
 NODE_ENV=production
 ```
