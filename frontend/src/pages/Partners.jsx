@@ -510,7 +510,7 @@ const Partners = () => {
                 className={errors.lastName ? styles.error : ''}
                 placeholder="Введите фамилию"
                 itemProp="familyName"
-                aria-required="true"
+                required
               />
               {errors.lastName && <span className={styles.errorMessage}>{errors.lastName}</span>}
             </div>
@@ -528,7 +528,7 @@ const Partners = () => {
                 className={errors.firstName ? styles.error : ''}
                 placeholder="Введите имя"
                 itemProp="givenName"
-                aria-required="true"
+                required
               />
               {errors.firstName && <span className={styles.errorMessage}>{errors.firstName}</span>}
             </div>
@@ -576,7 +576,7 @@ const Partners = () => {
                 className={errors.phone ? styles.error : ''}
                 placeholder="+7 (___) ___-__-__"
                 itemProp="telephone"
-                aria-required="true"
+                required
               />
               {errors.phone && <span className={styles.errorMessage}>{errors.phone}</span>}
             </div>
@@ -594,7 +594,7 @@ const Partners = () => {
                   value="yes"
                   checked={formData.isPartner === 'yes'}
                   onChange={handleChange}
-                  aria-required="true"
+                  required
                 />
                 <span>Да</span>
               </label>
@@ -605,7 +605,7 @@ const Partners = () => {
                   value="no"
                   checked={formData.isPartner === 'no'}
                   onChange={handleChange}
-                  aria-required="true"
+                  required
                 />
                 <span>Нет</span>
               </label>
@@ -632,7 +632,7 @@ const Partners = () => {
                     value="business"
                     checked={formData.goal === 'business'}
                     onChange={handleChange}
-                    aria-required="true"
+                    required
                   />
                   <span>Бизнес</span>
                 </label>
@@ -643,7 +643,7 @@ const Partners = () => {
                     value="discount"
                     checked={formData.goal === 'discount'}
                     onChange={handleChange}
-                    aria-required="true"
+                    required
                   />
                   <span>Скидка на продукт</span>
                 </label>
@@ -660,7 +660,7 @@ const Partners = () => {
                 checked={formData.consent}
                 onChange={handleChange}
                 className={errors.consent ? styles.error : ''}
-                aria-required="true"
+                required
               />
               <span>
                 Я согласен(а) на обработку персональных данных{' '}
