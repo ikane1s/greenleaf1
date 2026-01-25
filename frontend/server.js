@@ -35,41 +35,56 @@ if (!existsSync(indexPath)) {
 
 console.log('✅ Build directory found, serving files...');
 
-// РАЗДАЕМ СТАТИЧЕСКИЕ ФАЙЛЫ БЕЗ ДОЛГОГО КЭШИРОВАНИЯ
-app.use(express.static(buildPath, {
-  setHeaders: (res, filePath) => {
-    // HTML - не кэшируем вообще
-    if (filePath.endsWith('.html')) {
-      res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-      res.setHeader('Pragma', 'no-cache');
-      res.setHeader('Expires', '0');
-    }
-    // Остальные файлы - кэшируем, но с возможностью инвалидации
-    else {
-      res.setHeader('Cache-Control', 'public, max-age=0, must-revalidate');
-    }
-  }
-}));
-
 // Логирование всех запросов
 app.use((req, res, next) => {
   console.log(`📥 ${req.method} ${req.path}`);
   next();
 });
 
-// Все остальные запросы отправляем на index.html (для React Router)
+// Раздаем статические файлы (CSS, JS, изображения и т.д.)
+// Важно: только для реальных файлов, не для маршрутов
+app.use(express.static(buildPath, {
+  index: false, // Отключаем автоматическую отдачу index.html для корня
+  setHeaders: (res, filePath) => {
+    // HTML - не кэшируем
+    if (filePath.endsWith('.html')) {
+      res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+      res.setHeader('Pragma', 'no-cache');
+      res.setHeader('Expires', '0');
+    }
+    // Статические ресурсы - кэшируем
+    else {
+      res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+    }
+  }
+}));
+
+// Обработка корневого маршрута
+app.get('/', (req, res) => {
+  console.log(`📄 Serving index.html for root: ${req.path}`);
+  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+  res.setHeader('Pragma', 'no-cache');
+  res.setHeader('Expires', '0');
+  res.sendFile(indexPath);
+});
+
+// Все остальные маршруты (включая /product/60, /catalog/... и т.д.) отправляем на index.html
+// Это позволяет React Router обработать маршрут на клиенте
 app.get('*', (req, res) => {
-  console.log(`📄 Serving index.html for: ${req.path}`);
+  console.log(`📄 Serving index.html for route: ${req.path}`);
   
   // Явно указываем заголовки против кэширования для index.html
   res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
   res.setHeader('Pragma', 'no-cache');
   res.setHeader('Expires', '0');
+  res.setHeader('Content-Type', 'text/html; charset=utf-8');
   
   res.sendFile(indexPath, (err) => {
     if (err) {
-      console.error('Error sending index.html:', err);
+      console.error('❌ Error sending index.html:', err);
       res.status(500).send('Internal Server Error');
+    } else {
+      console.log(`✅ Successfully served index.html for: ${req.path}`);
     }
   });
 });
