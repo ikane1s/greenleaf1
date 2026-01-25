@@ -43,23 +43,29 @@ app.use((req, res, next) => {
 
 // Middleware для исправления путей к статическим файлам
 // Если запрос идет к статическому файлу с неправильным путем (например /product/static/...),
-// перенаправляем на правильный путь (/static/...)
+// пытаемся найти файл по правильному пути
 app.use((req, res, next) => {
   // Проверяем, является ли это запросом к статическому файлу с неправильным путем
-  const staticPathMatch = req.path.match(/^\/[^\/]+\/(static|assets|manifest\.json|.*\.(js|css|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot))$/);
+  // Паттерн: /любой-путь/static/... или /любой-путь/файл.расширение
+  const staticPathMatch = req.path.match(/^\/([^\/]+)\/(static\/|.*\.(js|css|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot|json)$)/);
   
   if (staticPathMatch) {
     // Извлекаем правильный путь (убираем первый сегмент пути)
     const correctPath = req.path.replace(/^\/[^\/]+/, '');
-    console.log(`🔄 Redirecting static file: ${req.path} -> ${correctPath}`);
-    return res.redirect(301, correctPath);
+    const correctFilePath = path.join(buildPath, correctPath);
+    
+    // Проверяем, существует ли файл по правильному пути
+    if (existsSync(correctFilePath)) {
+      console.log(`🔄 Serving static file from corrected path: ${req.path} -> ${correctPath}`);
+      return res.sendFile(correctFilePath);
+    }
   }
   
   next();
 });
 
 // Раздаем статические файлы (CSS, JS, изображения и т.д.)
-// Важно: express.static автоматически проверяет существование файла
+// express.static автоматически проверяет существование файла
 // Если файл не существует, передает управление следующему middleware
 app.use(express.static(buildPath, {
   index: false, // Отключаем автоматическую отдачу index.html для корня
@@ -90,19 +96,7 @@ app.get('/', (req, res) => {
 
 // Все остальные маршруты (включая /product/60, /catalog/... и т.д.) отправляем на index.html
 // Это позволяет React Router обработать маршрут на клиенте
-// Важно: этот маршрут срабатывает ТОЛЬКО если статический файл не найден
 app.get('*', (req, res) => {
-  // Проверяем, не является ли запрос запросом к статическому файлу
-  const staticExtensions = ['.js', '.css', '.png', '.jpg', '.jpeg', '.gif', '.svg', '.ico', '.woff', '.woff2', '.ttf', '.eot', '.json'];
-  const isStaticFile = staticExtensions.some(ext => req.path.toLowerCase().endsWith(ext));
-  
-  if (isStaticFile) {
-    // Если это запрос к статическому файлу, но файл не найден - 404
-    console.log(`❌ Static file not found: ${req.path}`);
-    res.status(404).send('File not found');
-    return;
-  }
-  
   console.log(`📄 Serving index.html for route: ${req.path}`);
   
   // Явно указываем заголовки против кэширования для index.html
