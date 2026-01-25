@@ -42,7 +42,8 @@ app.use((req, res, next) => {
 });
 
 // Раздаем статические файлы (CSS, JS, изображения и т.д.)
-// Важно: только для реальных файлов, не для маршрутов
+// Важно: express.static автоматически проверяет существование файла
+// Если файл не существует, передает управление следующему middleware
 app.use(express.static(buildPath, {
   index: false, // Отключаем автоматическую отдачу index.html для корня
   setHeaders: (res, filePath) => {
@@ -52,11 +53,12 @@ app.use(express.static(buildPath, {
       res.setHeader('Pragma', 'no-cache');
       res.setHeader('Expires', '0');
     }
-    // Статические ресурсы - кэшируем
+    // Статические ресурсы (JS, CSS, изображения) - кэшируем
     else {
       res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
     }
-  }
+  },
+  fallthrough: true // Продолжаем обработку, если файл не найден
 }));
 
 // Обработка корневого маршрута
@@ -65,12 +67,25 @@ app.get('/', (req, res) => {
   res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
   res.setHeader('Pragma', 'no-cache');
   res.setHeader('Expires', '0');
+  res.setHeader('Content-Type', 'text/html; charset=utf-8');
   res.sendFile(indexPath);
 });
 
 // Все остальные маршруты (включая /product/60, /catalog/... и т.д.) отправляем на index.html
 // Это позволяет React Router обработать маршрут на клиенте
+// Важно: этот маршрут срабатывает ТОЛЬКО если статический файл не найден
 app.get('*', (req, res) => {
+  // Проверяем, не является ли запрос запросом к статическому файлу
+  const staticExtensions = ['.js', '.css', '.png', '.jpg', '.jpeg', '.gif', '.svg', '.ico', '.woff', '.woff2', '.ttf', '.eot', '.json'];
+  const isStaticFile = staticExtensions.some(ext => req.path.toLowerCase().endsWith(ext));
+  
+  if (isStaticFile) {
+    // Если это запрос к статическому файлу, но файл не найден - 404
+    console.log(`❌ Static file not found: ${req.path}`);
+    res.status(404).send('File not found');
+    return;
+  }
+  
   console.log(`📄 Serving index.html for route: ${req.path}`);
   
   // Явно указываем заголовки против кэширования для index.html
