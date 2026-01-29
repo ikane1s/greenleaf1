@@ -222,28 +222,40 @@ const productsImages = [
 
 const categories = [
   {
-    name: 'Уход за домом',
-    path: '/catalog/eco-friendly-home-remedies',
-    image: 'https://i.pinimg.com/1200x/db/95/14/db951467fedc2689bf6ec066af79fc4a.jpg',
-    alt: 'Эко средства для ухода за домом',
+    name: 'Уход за кожей лица',
+    path: '/catalog/facial-skin-care',
+    image: product10,
+    alt: 'Средства для ухода за кожей лица GreenLeaf',
   },
   {
-    name: 'Макияж',
+    name: 'Декоративная косметика',
     path: '/catalog/decorative-cosmetics',
     image: 'https://i.pinimg.com/736x/7d/83/fe/7d83febd81c5220667fc72e8a6104297.jpg',
     alt: 'Декоративная косметика GreenLeaf',
   },
   {
-    name: 'Товары для здоровья',
-    path: '/catalog/health',
-    image: 'https://i.pinimg.com/736x/ff/9d/5e/ff9d5edb78312791619a258eb1d417ea.jpg',
-    alt: 'Товары для здоровья и wellness',
+    name: 'Уход за кожей тела',
+    path: '/catalog/body-skin-care',
+    image: product2,
+    alt: 'Средства для ухода за кожей тела',
   },
   {
-    name: 'Одежда и текстиль',
-    path: '/catalog/body-skin-care',
-    image: 'https://i.pinimg.com/736x/7e/3e/cc/7e3eccab1cb4ab3e15a153a2f6f864aa.jpg',
-    alt: 'Средства для ухода за кожей тела',
+    name: 'Уход за волосами',
+    path: '/catalog/hair-care',
+    image: product7,
+    alt: 'Средства для ухода за волосами GreenLeaf',
+  },
+  {
+    name: 'Гигиена полости рта',
+    path: '/catalog/oral-hygiene',
+    image: product8,
+    alt: 'Средства гигиены полости рта GreenLeaf',
+  },
+  {
+    name: 'Личная гигиена',
+    path: '/catalog/personal-hygiene',
+    image: productsForMan,
+    alt: 'Средства личной гигиены GreenLeaf',
   },
   {
     name: 'Товары для детей',
@@ -252,16 +264,22 @@ const categories = [
     alt: 'Безопасные товары для детей',
   },
   {
-    name: 'Товары для мужчин',
-    path: '/catalog/personal-hygiene',
-    image: productsForMan,
-    alt: 'Товары для мужчин GreenLeaf',
+    name: 'Здоровье',
+    path: '/catalog/health',
+    image: product4,
+    alt: 'Товары для здоровья и wellness',
   },
   {
-    name: 'Уходовая косметика',
-    path: '/catalog/decorative-cosmetics',
-    image: yxodovaya,
-    alt: 'Уходовая косметика',
+    name: 'Эко-средства для стирки',
+    path: '/catalog/eco-friendly-laundry-products',
+    image: product3,
+    alt: 'Эко средства для стирки GreenLeaf',
+  },
+  {
+    name: 'Эко-средства для дома',
+    path: '/catalog/eco-friendly-home-remedies',
+    image: product6,
+    alt: 'Эко средства для ухода за домом',
   },
 ];
 
@@ -373,11 +391,11 @@ const Home = () => {
 
   // SEO данные для главной страницы
   const seoData = {
-    title: 'GreenLeaf - Натуральная косметика и экопродукты | Интернет-магазин',
+    title: 'GreenLeaf Новосибирск - Натуральная косметика и экопродукты | Интернет-магазин',
     description:
-      'Интернет-магазин GreenLeaf - натуральная косметика, эко-средства для дома, товары для здоровья. Более 5000 товаров, скидки до 50%, партнерская программа. Доставка по всей России.',
+      'GreenLeaf Новосибирск - натуральная косметика, эко-средства для дома, товары для здоровья. Более 5000 товаров, скидки до 50%, партнерская программа. Доставка по всей России. Гринлиф Новосибирск.',
     keywords:
-      'GreenLeaf, натуральная косметика, экопродукты, средства для дома, товары для здоровья, купить косметику, эко средства, партнерская программа, сетевой маркетинг, MLM',
+      'greenleaf, greenleaf новосибирск, гринлиф, гринлиф новосибирск, GreenLeaf, натуральная косметика, экопродукты, средства для дома, товары для здоровья, купить косметику новосибирск, эко средства, партнерская программа, сетевой маркетинг, MLM, косметика новосибирск, интернет магазин косметики',
     ogImage: 'https://greenleaf-catalog.ru/wp-content/uploads/2025/02/logo.png',
     canonical: 'https://greenleaf.com/',
   };

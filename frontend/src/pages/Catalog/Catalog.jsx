@@ -218,6 +218,7 @@ const Catalog = ({ currentPage, setCurrentPage }) => {
   const [sortBy, setSortBy] = useState('priceAsc');
   const [priceFilter, setPriceFilter] = useState({ min: '', max: '' });
   const [pvFilter, setPvFilter] = useState({ min: '', max: '' });
+  const [isFiltersOpen, setIsFiltersOpen] = useState(false);
 
   // Получаем нормальное название категории
   const categoryName = categoryMap[category] || 'Каталог';
@@ -225,7 +226,7 @@ const Catalog = ({ currentPage, setCurrentPage }) => {
     categoryDescriptions[category] ||
     `Купить товары категории ${categoryName}. Большой выбор, выгодные цены, доставка по всей России.`;
   const categoryKeywordsText =
-    categoryKeywords[category] || `${categoryName}, купить, цена, интернет-магазин, доставка`;
+    `${categoryKeywords[category] || categoryName}, greenleaf, greenleaf новосибирск, гринлиф, гринлиф новосибирск, купить, цена, интернет-магазин, доставка, косметика новосибирск`;
 
   // Получаем URL для канонической ссылки
   const baseUrl = 'https://greenleaf.com';
@@ -483,16 +484,66 @@ const Catalog = ({ currentPage, setCurrentPage }) => {
 
       <h1 className={styles.title}>{categoryName}</h1>
 
+      {/* Кнопка для открытия фильтров на мобильных устройствах */}
+      <button
+        className={styles.mobileFiltersButton}
+        onClick={() => setIsFiltersOpen(!isFiltersOpen)}
+        aria-label="Открыть фильтры"
+      >
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+        >
+          <path d="M3 6h18M7 12h10M11 18h2" />
+        </svg>
+        <span>Фильтры и сортировка</span>
+        {isFiltersOpen ? (
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M18 15l-6-6-6 6" />
+          </svg>
+        ) : (
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M6 9l6 6 6-6" />
+          </svg>
+        )}
+      </button>
+
+      {/* Overlay для закрытия фильтров на мобильных */}
+      {isFiltersOpen && (
+        <div
+          className={styles.filtersOverlay}
+          onClick={() => setIsFiltersOpen(false)}
+          aria-hidden="true"
+        />
+      )}
+
       <div className={styles.catalogLayout}>
         {/* Боковая панель фильтров */}
-        <aside className={styles.sidebar}>
+        <aside className={`${styles.sidebar} ${isFiltersOpen ? styles.sidebarOpen : ''}`}>
           <div className={styles.sidebarHeader}>
             <h2>Фильтры</h2>
-            {hasActiveFilters && (
-              <button className={styles.resetButton} onClick={resetFilters}>
-                Сбросить
+            <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+              {hasActiveFilters && (
+                <button className={styles.resetButton} onClick={resetFilters}>
+                  Сбросить
+                </button>
+              )}
+              {/* Кнопка закрытия на мобильных */}
+              <button
+                className={styles.closeFiltersButton}
+                onClick={() => setIsFiltersOpen(false)}
+                aria-label="Закрыть фильтры"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
               </button>
-            )}
+            </div>
           </div>
 
           {/* Переключатель типа пользователя */}

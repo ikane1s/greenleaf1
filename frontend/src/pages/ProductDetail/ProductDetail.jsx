@@ -152,8 +152,8 @@ const ProductDetail = () => {
 
     return {
       title: `${product.name} - Купить в GreenLeaf | ${product.priceRetail} ₽`,
-      description: `${product.name}. ${shortDescription} Купить по цене ${product.priceRetail} ₽. Доставка по всей России.`,
-      keywords: `${product.name}, купить, цена, отзывы, GreenLeaf, ${categoryName.toLowerCase()}`,
+      description: `${product.name}. ${shortDescription} Купить по цене ${product.priceRetail} ₽ в GreenLeaf Новосибирск. Доставка по всей России. Гринлиф Новосибирск.`,
+      keywords: `${product.name}, greenleaf, greenleaf новосибирск, гринлиф, гринлиф новосибирск, купить, цена, отзывы, GreenLeaf, ${categoryName.toLowerCase()}, косметика новосибирск`,
       ogImage: product.image,
       canonical: `https://greenleaf.com/product/${id}`,
       ogType: 'product',
