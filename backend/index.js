@@ -758,19 +758,23 @@ bot.on('callback_query', async (query) => {
 /* ================= START SERVER ================= */
 
 // Эндпоинт для Telegram вебхука - принимает любой путь начинающийся с /webhook
-// Эндпоинт для Telegram вебхука - принимает /webhook и /webhook/что-угодно
-app.post(/^\/webhook(\/.*)?$/, (req, res) => {
-  try {
-    console.log('📨 Получен webhook от Telegram');
-    console.log('📨 Path:', req.path);
-    console.log('📨 Body:', JSON.stringify(req.body).substring(0, 200) + '...');
+app.post('/webhook*', (req, res) => {
+  console.log('📨 Webhook received on path:', req.path);
+  console.log('📨 Body keys:', Object.keys(req.body));
 
+  try {
+    // Передаём обновление боту
     bot.processUpdate(req.body);
     res.sendStatus(200);
   } catch (error) {
-    console.error('❌ Ошибка обработки webhook:', error);
+    console.error('❌ Error processing update:', error);
     res.sendStatus(500);
   }
+});
+
+// Этот обработчик нужен, чтобы на GET запросы по тому же адресу не было 404
+app.get('/webhook*', (req, res) => {
+  res.send('Webhook endpoint is active. Use POST for Telegram updates.');
 });
 
 const PORT = process.env.PORT || 3001;
