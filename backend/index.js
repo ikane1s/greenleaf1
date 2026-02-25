@@ -7,15 +7,17 @@ import { Request, initDB } from './models.js';
 const app = express();
 
 // ================= CORS НАСТРОЙКА =================
-app.use(cors({
-  origin: [
-    'https://global.greenleaf-nso.ru',        // ← ТВОЙ ОСНОВНОЙ ДОМЕН
-    'https://greenleaf-nso.ru',               // ← основной домен без subdomain
-    'https://sskzpsk6.up.railway.app',        // ← Railway домен
-    'http://localhost:3000'                   // ← для разработки
-  ],
-  credentials: true
-}));
+app.use(
+  cors({
+    origin: [
+      'https://global.greenleaf-nso.ru',
+      'https://greenleaf-nso.ru',
+      'https://www.greenleaf-nso.ru', // добавьте www
+      'http://localhost:3000',
+    ],
+    credentials: true,
+  }),
+);
 
 app.use(express.json());
 
@@ -37,9 +39,18 @@ if (!BOT_TOKEN || !ADMIN_ID) {
 
 await initDB();
 
-const bot = new TelegramBot(BOT_TOKEN, {
-  polling: true,
-});
+const bot = new TelegramBot(BOT_TOKEN);
+
+// В production используем webhook
+if (process.env.NODE_ENV === 'production') {
+  const webhookUrl = 'https://greenleaf-nso.ru/webhook'; // или ваш домен
+  bot.setWebHook(`${webhookUrl}/bot${BOT_TOKEN}`);
+  console.log('🌐 Webhook установлен на:', `${webhookUrl}/bot${BOT_TOKEN}`);
+} else {
+  // В development используем polling
+  await bot.startPolling();
+  console.log('🔄 Бот запущен в режиме polling (development)');
+}
 
 // Конфигурация
 const MAX_COMPLETED_REQUESTS = 10;
@@ -148,29 +159,29 @@ app.post('/api/callback', async (req, res) => {
   console.log('📞 [CALLBACK] Headers:', req.headers);
   console.log('📞 [CALLBACK] Body:', req.body);
   console.log('📞 [CALLBACK] Body type:', typeof req.body);
-  
+
   try {
     if (!req.body || typeof req.body !== 'object') {
       console.error('📞 [CALLBACK ERROR] Invalid request body');
-      return res.status(400).json({ 
-        success: false, 
+      return res.status(400).json({
+        success: false,
         error: 'Invalid JSON format',
-        received: req.body 
+        received: req.body,
       });
     }
-    
+
     const { phone } = req.body;
-    
+
     if (!phone) {
       console.error('📞 [CALLBACK ERROR] Phone is required');
-      return res.status(400).json({ 
-        success: false, 
-        error: 'Phone number is required' 
+      return res.status(400).json({
+        success: false,
+        error: 'Phone number is required',
       });
     }
 
     console.log('📞 [CALLBACK] Creating request with phone:', phone);
-    
+
     const request = await Request.create({
       type: 'callback',
       phone,
@@ -195,18 +206,17 @@ app.post('/api/callback', async (req, res) => {
     }
 
     console.log('📞 [CALLBACK] Sending success response');
-    res.json({ 
-      success: true, 
+    res.json({
+      success: true,
       message: 'Callback request received',
-      requestId: request.id 
+      requestId: request.id,
     });
-    
   } catch (error) {
     console.error('📞 [CALLBACK ERROR] Callback error:', error);
-    res.status(500).json({ 
-      success: false, 
+    res.status(500).json({
+      success: false,
       error: 'Internal server error',
-      details: process.env.NODE_ENV === 'development' ? error.message : undefined
+      details: process.env.NODE_ENV === 'development' ? error.message : undefined,
     });
   }
 });
@@ -215,21 +225,21 @@ app.post('/api/callback', async (req, res) => {
 app.post('/api/partner', async (req, res) => {
   console.log('🤝 [PARTNER] Request received');
   console.log('🤝 [PARTNER] Body:', req.body);
-  
+
   try {
     if (!req.body || typeof req.body !== 'object') {
-      return res.status(400).json({ 
-        success: false, 
-        error: 'Invalid JSON format' 
+      return res.status(400).json({
+        success: false,
+        error: 'Invalid JSON format',
       });
     }
-    
+
     const { firstName, lastName, middleName, phone, email, goal } = req.body;
 
     if (!phone || !firstName || !lastName) {
-      return res.status(400).json({ 
-        success: false, 
-        error: 'Required fields: firstName, lastName, phone' 
+      return res.status(400).json({
+        success: false,
+        error: 'Required fields: firstName, lastName, phone',
       });
     }
 
@@ -251,8 +261,8 @@ app.post('/api/partner', async (req, res) => {
       goal === 'business'
         ? 'Бизнес'
         : goal === 'discount'
-        ? 'Скидка на продукт'
-        : goal || 'Не указана'
+          ? 'Скидка на продукт'
+          : goal || 'Не указана'
     }\n\nВремя: ${new Date().toLocaleString('ru-RU')}`;
 
     try {
@@ -269,16 +279,16 @@ app.post('/api/partner', async (req, res) => {
       console.warn('🤝 [PARTNER WARN] Telegram bot error:', botError.message);
     }
 
-    res.json({ 
-      success: true, 
+    res.json({
+      success: true,
       message: 'Partner request received',
-      requestId: request.id 
+      requestId: request.id,
     });
   } catch (error) {
     console.error('🤝 [PARTNER ERROR] Partner form error:', error);
-    res.status(500).json({ 
-      success: false, 
-      error: 'Internal server error' 
+    res.status(500).json({
+      success: false,
+      error: 'Internal server error',
     });
   }
 });
@@ -577,8 +587,8 @@ bot.on('callback_query', async (query) => {
           request.status === 'выполнена'
             ? '✅ Выполнена'
             : request.status === 'просмотрена'
-            ? '👁 Просмотрена'
-            : '🆕 Новая'
+              ? '👁 Просмотрена'
+              : '🆕 Новая'
         }\n`;
         text += `🆔 ID: ${request.id}`;
 
@@ -597,16 +607,16 @@ bot.on('callback_query', async (query) => {
           request.goal === 'business'
             ? 'Бизнес'
             : request.goal === 'discount'
-            ? 'Скидка на продукт'
-            : request.goal || 'Не указана'
+              ? 'Скидка на продукт'
+              : request.goal || 'Не указана'
         }\n`;
         text += `⏰ Время заявки: ${new Date(request.created_at).toLocaleString('ru-RU')}\n`;
         text += `📊 Статус: ${
           request.status === 'выполнена'
             ? '✅ Выполнена'
             : request.status === 'просмотрена'
-            ? '👁 Просмотрена'
-            : '🆕 Новая'
+              ? '👁 Просмотрена'
+              : '🆕 Новая'
         }\n`;
         text += `🆔 ID: ${request.id}`;
 
@@ -746,6 +756,18 @@ bot.on('callback_query', async (query) => {
 });
 
 /* ================= START SERVER ================= */
+
+// Эндпоинт для Telegram вебхука
+app.post(`/webhook`, (req, res) => {
+  try {
+    console.log('📨 Получен webhook от Telegram');
+    bot.processUpdate(req.body);
+    res.sendStatus(200);
+  } catch (error) {
+    console.error('❌ Ошибка обработки webhook:', error);
+    res.sendStatus(500);
+  }
+});
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, '0.0.0.0', () => {
