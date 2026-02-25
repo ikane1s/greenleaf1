@@ -12,7 +12,7 @@ app.use(
     origin: [
       'https://global.greenleaf-nso.ru',
       'https://greenleaf-nso.ru',
-      'https://www.greenleaf-nso.ru', // добавьте www
+      'https://www.greenleaf-nso.ru',
       'http://localhost:3000',
     ],
     credentials: true,
