@@ -31,6 +31,8 @@ app.use((req, res, next) => {
 
 const BOT_TOKEN = process.env.BOT_TOKEN?.trim();
 const ADMIN_ID = Number(process.env.CHAT_ID);
+const WEBHOOK_BASE_URL =
+  process.env.WEBHOOK_BASE_URL?.trim().replace(/\/$/, '') || 'https://greenleaf-nso.ru';
 
 if (!BOT_TOKEN || !ADMIN_ID) {
   console.error('❌ Missing BOT_TOKEN or CHAT_ID in environment variables');
@@ -41,6 +43,7 @@ console.log('🔧 Конфигурация:');
 console.log('  - BOT_TOKEN установлен:', !!BOT_TOKEN);
 console.log('  - ADMIN_ID:', ADMIN_ID);
 console.log('  - NODE_ENV:', process.env.NODE_ENV);
+console.log('  - WEBHOOK_BASE_URL:', WEBHOOK_BASE_URL);
 
 await initDB();
 console.log('✅ База данных инициализирована');
@@ -91,8 +94,7 @@ async function verifyBot() {
 
 // ================= НАСТРОЙКА ВЕБХУКА =================
 if (process.env.NODE_ENV === 'production') {
-  const webhookUrl = 'https://greenleaf-nso.ru/webhook';
-  const fullWebhookUrl = `${webhookUrl}/bot${BOT_TOKEN}`;
+  const fullWebhookUrl = `${WEBHOOK_BASE_URL}/webhook/bot${BOT_TOKEN}`;
 
   console.log('🔧 Установка вебхука на:', fullWebhookUrl);
 
@@ -103,7 +105,11 @@ if (process.env.NODE_ENV === 'production') {
       return verifyBot();
     })
     .catch((err) => {
-      console.error('❌ Ошибка установки вебхука:', err);
+      console.error('❌ Ошибка установки вебхука:', {
+        message: err.message,
+        code: err.code,
+        response: err.response?.body,
+      });
     });
 } else {
   console.log('🔄 Запуск в режиме polling...');
@@ -712,7 +718,7 @@ app.listen(PORT, '0.0.0.0', () => {
   console.log(`📡 Порт: ${PORT}`);
   console.log(`🤖 Admin ID: ${ADMIN_ID}`);
   console.log(`📊 Максимум заявок в истории: ${MAX_COMPLETED_REQUESTS}`);
-  console.log(`🌐 API: https://greenleaf-nso.ru/api`);
-  console.log(`🌍 Webhook: https://greenleaf-nso.ru/webhook/bot${BOT_TOKEN}`);
+  console.log(`🌐 API: ${WEBHOOK_BASE_URL}/api`);
+  console.log(`🌍 Webhook: ${WEBHOOK_BASE_URL}/webhook/bot${BOT_TOKEN}`);
   console.log('================================\n');
 });
