@@ -757,24 +757,31 @@ bot.on('callback_query', async (query) => {
 
 /* ================= START SERVER ================= */
 
-// Эндпоинт для Telegram вебхука - принимает любой путь начинающийся с /webhook
-app.post('/webhook*', (req, res) => {
-  console.log('📨 Webhook received on path:', req.path);
-  console.log('📨 Body keys:', Object.keys(req.body));
+app.use('/webhook', (req, res, next) => {
+  // Пропускаем только POST запросы
+  if (req.method !== 'POST') {
+    // Для всех остальных методов (GET, HEAD и т.д.) просто возвращаем OK
+    return res.status(200).send('Webhook endpoint is active. Please use POST.');
+  }
+
+  console.log('📨 Webhook received:');
+  console.log('  - Full path:', req.originalUrl);
+  console.log('  - Method:', req.method);
+  console.log('  - Body keys:', Object.keys(req.body || {}));
 
   try {
-    // Передаём обновление боту
-    bot.processUpdate(req.body);
+    // Передаём обновление в бота
+    if (req.body && bot) {
+      bot.processUpdate(req.body);
+      console.log('✅ Update processed successfully');
+    } else {
+      console.log('⚠️ No body or bot not ready');
+    }
     res.sendStatus(200);
   } catch (error) {
-    console.error('❌ Error processing update:', error);
+    console.error('❌ Error processing webhook:', error);
     res.sendStatus(500);
   }
-});
-
-// Этот обработчик нужен, чтобы на GET запросы по тому же адресу не было 404
-app.get('/webhook*', (req, res) => {
-  res.send('Webhook endpoint is active. Use POST for Telegram updates.');
 });
 
 const PORT = process.env.PORT || 3001;
