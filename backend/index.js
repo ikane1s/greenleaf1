@@ -37,27 +37,120 @@ if (!BOT_TOKEN || !ADMIN_ID) {
   process.exit(1);
 }
 
+console.log('🔧 Конфигурация:');
+console.log('  - BOT_TOKEN установлен:', !!BOT_TOKEN);
+console.log('  - ADMIN_ID:', ADMIN_ID);
+console.log('  - NODE_ENV:', process.env.NODE_ENV);
+
 await initDB();
+console.log('✅ База данных инициализирована');
 
 const bot = new TelegramBot(BOT_TOKEN);
 
-// В production используем webhook
-if (process.env.NODE_ENV === 'production') {
-  const webhookUrl = 'https://greenleaf-nso.ru/webhook'; // или ваш домен
-  bot.setWebHook(`${webhookUrl}/bot${BOT_TOKEN}`);
-  console.log('🌐 Webhook установлен на:', `${webhookUrl}/bot${BOT_TOKEN}`);
-} else {
-  // В development используем polling
-  await bot.startPolling();
-  console.log('🔄 Бот запущен в режиме polling (development)');
+// ================= ПРОВЕРКА БОТА =================
+async function verifyBot() {
+  try {
+    console.log('🤔 Проверка бота...');
+    const me = await bot.getMe();
+    console.log('✅ Бот найден:', {
+      username: me.username,
+      id: me.id,
+      first_name: me.first_name,
+    });
+
+    // Проверяем вебхук
+    const webhookInfo = await bot.getWebHookInfo();
+    console.log('🌐 Информация о вебхуке:', {
+      url: webhookInfo.url || 'не установлен',
+      pending_updates: webhookInfo.pending_update_count,
+      max_connections: webhookInfo.max_connections,
+    });
+
+    // Пробуем отправить тестовое сообщение
+    console.log('📤 Отправка тестового сообщения админу...');
+    const testMsg = await bot.sendMessage(
+      ADMIN_ID,
+      `✅ Бот успешно запущен!\n🕐 ${new Date().toLocaleString('ru-RU')}\n📊 Режим: ${process.env.NODE_ENV}`,
+    );
+    console.log('✅ Тестовое сообщение отправлено, ID:', testMsg.message_id);
+  } catch (error) {
+    console.error('❌ Ошибка проверки бота:', {
+      message: error.message,
+      code: error.code,
+      response: error.response?.body,
+    });
+
+    if (error.code === 'ETELEGRAM' && error.message.includes('403')) {
+      console.error('⚠️ Бот заблокирован пользователем. Разблокируйте бота в Telegram');
+    }
+    if (error.code === 'ETELEGRAM' && error.message.includes('400')) {
+      console.error('⚠️ Неправильный CHAT_ID. Убедитесь что ADMIN_ID правильный');
+    }
+  }
 }
+
+// ================= НАСТРОЙКА ВЕБХУКА =================
+if (process.env.NODE_ENV === 'production') {
+  const webhookUrl = 'https://greenleaf-nso.ru/webhook';
+  const fullWebhookUrl = `${webhookUrl}/bot${BOT_TOKEN}`;
+
+  console.log('🔧 Установка вебхука на:', fullWebhookUrl);
+
+  bot
+    .setWebHook(fullWebhookUrl)
+    .then(() => {
+      console.log('🌐 Webhook успешно установлен');
+      return verifyBot();
+    })
+    .catch((err) => {
+      console.error('❌ Ошибка установки вебхука:', err);
+    });
+} else {
+  console.log('🔄 Запуск в режиме polling...');
+  bot
+    .startPolling()
+    .then(() => {
+      console.log('✅ Polling запущен');
+      return verifyBot();
+    })
+    .catch((err) => {
+      console.error('❌ Ошибка запуска polling:', err);
+    });
+}
+
+// ================= ОБРАБОТЧИК ВЕБХУКА =================
+app.use('/webhook', (req, res, next) => {
+  // Пропускаем только POST запросы
+  if (req.method !== 'POST') {
+    return res.status(200).send('Webhook endpoint is active. Please use POST.');
+  }
+
+  console.log('\n📨 ===== WEBHOOK ПОЛУЧЕН =====');
+  console.log('  - Full path:', req.originalUrl);
+  console.log('  - Method:', req.method);
+  console.log('  - Body keys:', Object.keys(req.body || {}));
+  console.log('  - Body preview:', JSON.stringify(req.body).substring(0, 200));
+
+  try {
+    // Передаём обновление в бота
+    if (req.body && bot) {
+      bot.processUpdate(req.body);
+      console.log('✅ Update передан боту');
+    } else {
+      console.log('⚠️ Нет body или бот не готов');
+    }
+    res.sendStatus(200);
+  } catch (error) {
+    console.error('❌ Ошибка обработки webhook:', error);
+    res.sendStatus(500);
+  }
+});
 
 // Конфигурация
 const MAX_COMPLETED_REQUESTS = 10;
 
 /* ================= ТЕСТОВЫЕ МАРШРУТЫ API ================= */
 
-// 1. Главный маршрут /api
 app.get('/api', (req, res) => {
   res.json({
     name: 'GreenLeaf API',
@@ -67,6 +160,7 @@ app.get('/api', (req, res) => {
     endpoints: {
       health: 'GET /api/health',
       test: 'GET /api/test',
+      testBot: 'GET /api/test-bot',
       callback: 'POST /api/callback',
       partner: 'POST /api/partner',
       products: 'GET /api/products',
@@ -75,7 +169,6 @@ app.get('/api', (req, res) => {
   });
 });
 
-// 2. Health check маршрут
 app.get('/api/health', (req, res) => {
   res.json({
     status: 'ok',
@@ -87,7 +180,60 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-// 3. Тестовый маршрут
+// ================= ТЕСТОВЫЙ МАРШРУТ ДЛЯ ПРОВЕРКИ БОТА =================
+app.get('/api/test-bot', async (req, res) => {
+  console.log('\n🧪 ===== ТЕСТ БОТА =====');
+
+  try {
+    // Проверяем бота
+    const me = await bot.getMe();
+    console.log('✅ Информация о боте:', me.username);
+
+    // Проверяем вебхук
+    const webhookInfo = await bot.getWebHookInfo();
+    console.log('📊 Информация о вебхуке:', webhookInfo.url);
+
+    // Пробуем отправить сообщение
+    console.log('📤 Отправка тестового сообщения...');
+    const testMessage = await bot.sendMessage(
+      ADMIN_ID,
+      `🧪 Тестовое сообщение от API\n🕐 ${new Date().toLocaleString('ru-RU')}`,
+    );
+    console.log('✅ Сообщение отправлено, ID:', testMessage.message_id);
+
+    res.json({
+      success: true,
+      bot: {
+        username: me.username,
+        id: me.id,
+        isBot: me.is_bot,
+      },
+      webhook: {
+        url: webhookInfo.url,
+        pending_updates: webhookInfo.pending_update_count,
+      },
+      admin: {
+        id: ADMIN_ID,
+        message_sent: true,
+        message_id: testMessage.message_id,
+      },
+    });
+  } catch (error) {
+    console.error('❌ Ошибка теста бота:', {
+      message: error.message,
+      code: error.code,
+      response: error.response?.body,
+    });
+
+    res.status(500).json({
+      success: false,
+      error: error.message,
+      code: error.code,
+      details: error.response?.body,
+    });
+  }
+});
+
 app.get('/api/test', (req, res) => {
   res.json({
     success: true,
@@ -100,7 +246,6 @@ app.get('/api/test', (req, res) => {
   });
 });
 
-// 4. Products маршрут
 app.get('/api/products', (req, res) => {
   res.json({
     products: [
@@ -111,7 +256,6 @@ app.get('/api/products', (req, res) => {
   });
 });
 
-// 5. Partners маршрут
 app.get('/api/partners', (req, res) => {
   res.json({
     partners: [
@@ -155,44 +299,36 @@ cleanupOldRequests();
 
 // 📞 Форма "Перезвоните"
 app.post('/api/callback', async (req, res) => {
-  console.log('📞 [CALLBACK] Request received');
-  console.log('📞 [CALLBACK] Headers:', req.headers);
-  console.log('📞 [CALLBACK] Body:', req.body);
-  console.log('📞 [CALLBACK] Body type:', typeof req.body);
+  console.log('\n📞 ===== НОВАЯ ЗАЯВКА CALLBACK =====');
+  console.log('📞 Тело запроса:', req.body);
 
   try {
-    if (!req.body || typeof req.body !== 'object') {
-      console.error('📞 [CALLBACK ERROR] Invalid request body');
-      return res.status(400).json({
-        success: false,
-        error: 'Invalid JSON format',
-        received: req.body,
-      });
-    }
-
     const { phone } = req.body;
 
     if (!phone) {
-      console.error('📞 [CALLBACK ERROR] Phone is required');
+      console.error('📞 Ошибка: телефон не указан');
       return res.status(400).json({
         success: false,
         error: 'Phone number is required',
       });
     }
 
-    console.log('📞 [CALLBACK] Creating request with phone:', phone);
-
+    console.log('📞 Создание заявки в БД...');
     const request = await Request.create({
       type: 'callback',
       phone,
     });
 
-    console.log('📞 [CALLBACK] Request created with ID:', request.id);
+    console.log('📞 Заявка создана, ID:', request.id);
 
-    const message = `📞 Новая заявка на звонок\n\n📞 Телефон: ${phone}\nВремя: ${new Date().toLocaleString('ru-RU')}`;
+    const message = `📞 Новая заявка на звонок\n\n📞 Телефон: ${phone}\n🆔 ID: ${request.id}\n🕐 Время: ${new Date().toLocaleString('ru-RU')}`;
+
+    console.log('📤 Отправка уведомления в Telegram...');
+    console.log('  - Admin ID:', ADMIN_ID);
+    console.log('  - Message preview:', message.substring(0, 50) + '...');
 
     try {
-      await bot.sendMessage(ADMIN_ID, message, {
+      const sentMessage = await bot.sendMessage(ADMIN_ID, message, {
         reply_markup: {
           inline_keyboard: [
             [{ text: '✅ Выполнено', callback_data: `done_${request.id}` }],
@@ -200,49 +336,46 @@ app.post('/api/callback', async (req, res) => {
           ],
         },
       });
-      console.log('📞 [CALLBACK] Telegram notification sent');
+      console.log('✅ Уведомление отправлено, ID сообщения:', sentMessage.message_id);
     } catch (botError) {
-      console.warn('📞 [CALLBACK WARN] Telegram bot error:', botError.message);
+      console.error('❌ Ошибка отправки в Telegram:', {
+        message: botError.message,
+        code: botError.code,
+        response: botError.response?.body,
+      });
     }
 
-    console.log('📞 [CALLBACK] Sending success response');
     res.json({
       success: true,
       message: 'Callback request received',
       requestId: request.id,
     });
   } catch (error) {
-    console.error('📞 [CALLBACK ERROR] Callback error:', error);
+    console.error('❌ Ошибка обработки callback:', error);
     res.status(500).json({
       success: false,
       error: 'Internal server error',
-      details: process.env.NODE_ENV === 'development' ? error.message : undefined,
     });
   }
 });
 
 // 🤝 Форма "Стать партнёром"
 app.post('/api/partner', async (req, res) => {
-  console.log('🤝 [PARTNER] Request received');
-  console.log('🤝 [PARTNER] Body:', req.body);
+  console.log('\n🤝 ===== НОВАЯ ЗАЯВКА PARTNER =====');
+  console.log('🤝 Тело запроса:', req.body);
 
   try {
-    if (!req.body || typeof req.body !== 'object') {
-      return res.status(400).json({
-        success: false,
-        error: 'Invalid JSON format',
-      });
-    }
-
     const { firstName, lastName, middleName, phone, email, goal } = req.body;
 
     if (!phone || !firstName || !lastName) {
+      console.error('🤝 Ошибка: обязательные поля не заполнены');
       return res.status(400).json({
         success: false,
         error: 'Required fields: firstName, lastName, phone',
       });
     }
 
+    console.log('🤝 Создание заявки в БД...');
     const request = await Request.create({
       type: 'partner',
       firstName,
@@ -253,20 +386,18 @@ app.post('/api/partner', async (req, res) => {
       goal,
     });
 
-    console.log('🤝 [PARTNER] Request created with ID:', request.id);
+    console.log('🤝 Заявка создана, ID:', request.id);
 
-    const message = `🤝 Новая заявка партнёра\n\n👤 ФИО: ${lastName} ${firstName} ${
-      middleName || ''
-    }\n📞 Телефон: ${phone}\n📧 Email: ${email || 'Не указан'}\n🎯 Цель: ${
-      goal === 'business'
-        ? 'Бизнес'
-        : goal === 'discount'
-          ? 'Скидка на продукт'
-          : goal || 'Не указана'
-    }\n\nВремя: ${new Date().toLocaleString('ru-RU')}`;
+    const message = `🤝 Новая заявка партнёра\n\n👤 ФИО: ${lastName} ${firstName} ${middleName || ''}\n📞 Телефон: ${phone}\n📧 Email: ${email || 'Не указан'}\n🎯 Цель: ${
+      goal === 'business' ? 'Бизнес' : goal === 'discount' ? 'Скидка' : goal || 'Не указана'
+    }\n🆔 ID: ${request.id}\n🕐 Время: ${new Date().toLocaleString('ru-RU')}`;
+
+    console.log('📤 Отправка уведомления в Telegram...');
+    console.log('  - Admin ID:', ADMIN_ID);
+    console.log('  - Message length:', message.length);
 
     try {
-      await bot.sendMessage(ADMIN_ID, message, {
+      const sentMessage = await bot.sendMessage(ADMIN_ID, message, {
         reply_markup: {
           inline_keyboard: [
             [{ text: '✅ Выполнено', callback_data: `done_${request.id}` }],
@@ -274,9 +405,13 @@ app.post('/api/partner', async (req, res) => {
           ],
         },
       });
-      console.log('🤝 [PARTNER] Telegram notification sent');
+      console.log('✅ Уведомление отправлено, ID сообщения:', sentMessage.message_id);
     } catch (botError) {
-      console.warn('🤝 [PARTNER WARN] Telegram bot error:', botError.message);
+      console.error('❌ Ошибка отправки в Telegram:', {
+        message: botError.message,
+        code: botError.code,
+        response: botError.response?.body,
+      });
     }
 
     res.json({
@@ -285,7 +420,7 @@ app.post('/api/partner', async (req, res) => {
       requestId: request.id,
     });
   } catch (error) {
-    console.error('🤝 [PARTNER ERROR] Partner form error:', error);
+    console.error('❌ Ошибка обработки partner:', error);
     res.status(500).json({
       success: false,
       error: 'Internal server error',
@@ -335,27 +470,30 @@ async function getMainKeyboard() {
 /* ================= BOT EVENT HANDLERS ================= */
 
 bot.onText(/\/start/, async (msg) => {
+  console.log('\n🤖 Команда /start от пользователя:', msg.from?.username);
   try {
     const keyboard = await getMainKeyboard();
     await bot.sendMessage(msg.chat.id, '📋 Главное меню заявок:', keyboard);
+    console.log('✅ Ответ на /start отправлен');
   } catch (error) {
-    console.error('Error handling /start:', error);
-    await bot.sendMessage(msg.chat.id, 'Произошла ошибка. Попробуйте еще раз.');
+    console.error('❌ Ошибка в /start:', error);
   }
 });
 
 bot.on('message', async (msg) => {
   if (msg.text && !msg.text.startsWith('/')) {
+    console.log('\n🤖 Сообщение от пользователя:', msg.text);
     try {
       const keyboard = await getMainKeyboard();
       await bot.sendMessage(msg.chat.id, '📋 Главное меню заявок:', keyboard);
     } catch (error) {
-      console.error('Error handling message:', error);
+      console.error('❌ Ошибка обработки сообщения:', error);
     }
   }
 });
 
 bot.on('callback_query', async (query) => {
+  console.log('\n🔄 Callback query:', query.data);
   const chatId = query.message.chat.id;
   const messageId = query.message.message_id;
   const data = query.data;
@@ -365,16 +503,11 @@ bot.on('callback_query', async (query) => {
 
     if (data === 'main_menu') {
       const keyboard = await getMainKeyboard();
-      try {
-        await bot.editMessageText('📋 Главное меню заявок:', {
-          chat_id: chatId,
-          message_id: messageId,
-          reply_markup: keyboard.reply_markup,
-        });
-      } catch (error) {
-        await bot.deleteMessage(chatId, messageId).catch(() => {});
-        await bot.sendMessage(chatId, '📋 Главное меню заявок:', keyboard);
-      }
+      await bot.editMessageText('📋 Главное меню заявок:', {
+        chat_id: chatId,
+        message_id: messageId,
+        reply_markup: keyboard.reply_markup,
+      });
       return;
     }
 
@@ -388,28 +521,16 @@ bot.on('callback_query', async (query) => {
       });
 
       if (requests.length === 0) {
-        try {
-          await bot.editMessageText('🤝 Нет активных заявок партнёрства', {
-            chat_id: chatId,
-            message_id: messageId,
-            reply_markup: {
-              inline_keyboard: [
-                [{ text: '⬅ Назад', callback_data: 'main_menu' }],
-                [{ text: '🔄 Обновить', callback_data: 'list_partner' }],
-              ],
-            },
-          });
-        } catch (error) {
-          await bot.deleteMessage(chatId, messageId).catch(() => {});
-          await bot.sendMessage(chatId, '🤝 Нет активных заявок партнёрства', {
-            reply_markup: {
-              inline_keyboard: [
-                [{ text: '⬅ Назад', callback_data: 'main_menu' }],
-                [{ text: '🔄 Обновить', callback_data: 'list_partner' }],
-              ],
-            },
-          });
-        }
+        await bot.editMessageText('🤝 Нет активных заявок партнёрства', {
+          chat_id: chatId,
+          message_id: messageId,
+          reply_markup: {
+            inline_keyboard: [
+              [{ text: '⬅ Назад', callback_data: 'main_menu' }],
+              [{ text: '🔄 Обновить', callback_data: 'list_partner' }],
+            ],
+          },
+        });
         return;
       }
 
@@ -423,18 +544,11 @@ bot.on('callback_query', async (query) => {
       keyboard.push([{ text: '⬅ Назад', callback_data: 'main_menu' }]);
       keyboard.push([{ text: '🔄 Обновить', callback_data: 'list_partner' }]);
 
-      try {
-        await bot.editMessageText('🤝 Заявки партнёрства:', {
-          chat_id: chatId,
-          message_id: messageId,
-          reply_markup: { inline_keyboard: keyboard },
-        });
-      } catch (error) {
-        await bot.deleteMessage(chatId, messageId).catch(() => {});
-        await bot.sendMessage(chatId, '🤝 Заявки партнёрства:', {
-          reply_markup: { inline_keyboard: keyboard },
-        });
-      }
+      await bot.editMessageText('🤝 Заявки партнёрства:', {
+        chat_id: chatId,
+        message_id: messageId,
+        reply_markup: { inline_keyboard: keyboard },
+      });
       return;
     }
 
@@ -448,28 +562,16 @@ bot.on('callback_query', async (query) => {
       });
 
       if (requests.length === 0) {
-        try {
-          await bot.editMessageText('📞 Нет активных заявок на звонок', {
-            chat_id: chatId,
-            message_id: messageId,
-            reply_markup: {
-              inline_keyboard: [
-                [{ text: '⬅ Назад', callback_data: 'main_menu' }],
-                [{ text: '🔄 Обновить', callback_data: 'list_callback' }],
-              ],
-            },
-          });
-        } catch (error) {
-          await bot.deleteMessage(chatId, messageId).catch(() => {});
-          await bot.sendMessage(chatId, '📞 Нет активных заявок на звонок', {
-            reply_markup: {
-              inline_keyboard: [
-                [{ text: '⬅ Назад', callback_data: 'main_menu' }],
-                [{ text: '🔄 Обновить', callback_data: 'list_callback' }],
-              ],
-            },
-          });
-        }
+        await bot.editMessageText('📞 Нет активных заявок на звонок', {
+          chat_id: chatId,
+          message_id: messageId,
+          reply_markup: {
+            inline_keyboard: [
+              [{ text: '⬅ Назад', callback_data: 'main_menu' }],
+              [{ text: '🔄 Обновить', callback_data: 'list_callback' }],
+            ],
+          },
+        });
         return;
       }
 
@@ -483,18 +585,11 @@ bot.on('callback_query', async (query) => {
       keyboard.push([{ text: '⬅ Назад', callback_data: 'main_menu' }]);
       keyboard.push([{ text: '🔄 Обновить', callback_data: 'list_callback' }]);
 
-      try {
-        await bot.editMessageText('📞 Заявки на звонок:', {
-          chat_id: chatId,
-          message_id: messageId,
-          reply_markup: { inline_keyboard: keyboard },
-        });
-      } catch (error) {
-        await bot.deleteMessage(chatId, messageId).catch(() => {});
-        await bot.sendMessage(chatId, '📞 Заявки на звонок:', {
-          reply_markup: { inline_keyboard: keyboard },
-        });
-      }
+      await bot.editMessageText('📞 Заявки на звонок:', {
+        chat_id: chatId,
+        message_id: messageId,
+        reply_markup: { inline_keyboard: keyboard },
+      });
       return;
     }
 
@@ -506,56 +601,33 @@ bot.on('callback_query', async (query) => {
       });
 
       if (doneRequests.length === 0) {
-        try {
-          await bot.editMessageText('📜 История выполненных заявок пуста', {
-            chat_id: chatId,
-            message_id: messageId,
-            reply_markup: {
-              inline_keyboard: [[{ text: '⬅ Назад', callback_data: 'main_menu' }]],
-            },
-          });
-        } catch (error) {
-          await bot.deleteMessage(chatId, messageId).catch(() => {});
-          await bot.sendMessage(chatId, '📜 История выполненных заявок пуста', {
-            reply_markup: {
-              inline_keyboard: [[{ text: '⬅ Назад', callback_data: 'main_menu' }]],
-            },
-          });
-        }
-        return;
-      }
-
-      let historyText = `📜 История заявок (последние ${doneRequests.length}):\n\n`;
-
-      doneRequests.forEach((r, index) => {
-        const date = new Date(r.completed_at || r.created_at).toLocaleString('ru-RU');
-        if (r.type === 'partner') {
-          historyText += `${index + 1}. 🤝 ${r.lastName || ''} ${r.firstName || ''} - ${
-            r.phone || r.email || 'Нет контакта'
-          }\n   📅 ${date}\n\n`;
-        } else {
-          historyText += `${index + 1}. 📞 ${r.phone || 'Нет телефона'}\n   📅 ${date}\n\n`;
-        }
-      });
-
-      historyText += `\nℹ️ В истории сохраняются только последние ${MAX_COMPLETED_REQUESTS} выполненных заявок.`;
-
-      try {
-        await bot.editMessageText(historyText, {
+        await bot.editMessageText('📜 История выполненных заявок пуста', {
           chat_id: chatId,
           message_id: messageId,
           reply_markup: {
             inline_keyboard: [[{ text: '⬅ Назад', callback_data: 'main_menu' }]],
           },
         });
-      } catch (error) {
-        await bot.deleteMessage(chatId, messageId).catch(() => {});
-        await bot.sendMessage(chatId, historyText, {
-          reply_markup: {
-            inline_keyboard: [[{ text: '⬅ Назад', callback_data: 'main_menu' }]],
-          },
-        });
+        return;
       }
+
+      let historyText = `📜 История заявок (последние ${doneRequests.length}):\n\n`;
+      doneRequests.forEach((r, index) => {
+        const date = new Date(r.completed_at || r.created_at).toLocaleString('ru-RU');
+        if (r.type === 'partner') {
+          historyText += `${index + 1}. 🤝 ${r.lastName || ''} ${r.firstName || ''} - ${r.phone || r.email || 'Нет контакта'}\n   📅 ${date}\n\n`;
+        } else {
+          historyText += `${index + 1}. 📞 ${r.phone || 'Нет телефона'}\n   📅 ${date}\n\n`;
+        }
+      });
+
+      await bot.editMessageText(historyText, {
+        chat_id: chatId,
+        message_id: messageId,
+        reply_markup: {
+          inline_keyboard: [[{ text: '⬅ Назад', callback_data: 'main_menu' }]],
+        },
+      });
       return;
     }
 
@@ -564,10 +636,7 @@ bot.on('callback_query', async (query) => {
       const request = await Request.findByPk(requestId);
 
       if (!request) {
-        await bot.answerCallbackQuery(query.id, {
-          text: '❌ Заявка не найдена',
-          show_alert: true,
-        });
+        await bot.answerCallbackQuery(query.id, { text: '❌ Заявка не найдена', show_alert: true });
         return;
       }
 
@@ -580,103 +649,25 @@ bot.on('callback_query', async (query) => {
       let keyboard = [];
 
       if (request.type === 'callback') {
-        text = `📞 Заявка на звонок\n\n`;
-        text += `📞 Телефон: <code>${request.phone || 'Не указан'}</code>\n`;
-        text += `⏰ Время заявки: ${new Date(request.created_at).toLocaleString('ru-RU')}\n`;
-        text += `📊 Статус: ${
-          request.status === 'выполнена'
-            ? '✅ Выполнена'
-            : request.status === 'просмотрена'
-              ? '👁 Просмотрена'
-              : '🆕 Новая'
-        }\n`;
-        text += `🆔 ID: ${request.id}`;
-
+        text = `📞 Заявка на звонок\n\n📞 Телефон: <code>${request.phone || 'Не указан'}</code>\n⏰ Время: ${new Date(request.created_at).toLocaleString('ru-RU')}\n📊 Статус: ${request.status}\n🆔 ID: ${request.id}`;
         keyboard = [
           [{ text: '✅ Выполнено', callback_data: `done_${request.id}` }],
           [{ text: '⬅ Назад', callback_data: 'list_callback' }],
         ];
       } else {
-        text = `🤝 Заявка партнёра\n\n`;
-        text += `👤 ФИО: ${request.lastName || ''} ${request.firstName || ''} ${
-          request.middleName || ''
-        }\n`;
-        text += `📞 Телефон: <code>${request.phone || 'Не указан'}</code>\n`;
-        text += `📧 Email: <code>${request.email || 'Не указан'}</code>\n`;
-        text += `🎯 Цель: ${
-          request.goal === 'business'
-            ? 'Бизнес'
-            : request.goal === 'discount'
-              ? 'Скидка на продукт'
-              : request.goal || 'Не указана'
-        }\n`;
-        text += `⏰ Время заявки: ${new Date(request.created_at).toLocaleString('ru-RU')}\n`;
-        text += `📊 Статус: ${
-          request.status === 'выполнена'
-            ? '✅ Выполнена'
-            : request.status === 'просмотрена'
-              ? '👁 Просмотрена'
-              : '🆕 Новая'
-        }\n`;
-        text += `🆔 ID: ${request.id}`;
-
+        text = `🤝 Заявка партнёра\n\n👤 ФИО: ${request.lastName || ''} ${request.firstName || ''} ${request.middleName || ''}\n📞 Телефон: <code>${request.phone || 'Не указан'}</code>\n📧 Email: <code>${request.email || 'Не указан'}</code>\n🎯 Цель: ${request.goal || 'Не указана'}\n⏰ Время: ${new Date(request.created_at).toLocaleString('ru-RU')}\n📊 Статус: ${request.status}\n🆔 ID: ${request.id}`;
         keyboard = [
           [{ text: '✅ Выполнено', callback_data: `done_${request.id}` }],
           [{ text: '⬅ Назад', callback_data: 'list_partner' }],
         ];
       }
 
-      try {
-        await bot.editMessageText(text, {
-          chat_id: chatId,
-          message_id: messageId,
-          parse_mode: 'HTML',
-          reply_markup: { inline_keyboard: keyboard },
-        });
-      } catch (error) {
-        await bot.deleteMessage(chatId, messageId).catch(() => {});
-        await bot.sendMessage(chatId, text, {
-          parse_mode: 'HTML',
-          reply_markup: { inline_keyboard: keyboard },
-        });
-      }
-
-      return;
-    }
-
-    if (data.startsWith('copy_phone_')) {
-      const requestId = parseInt(data.replace('copy_phone_', ''));
-      const request = await Request.findByPk(requestId);
-
-      if (request && request.phone) {
-        await bot.answerCallbackQuery(query.id, {
-          text: `📞 Телефон скопирован: ${request.phone}`,
-          show_alert: true,
-        });
-      } else {
-        await bot.answerCallbackQuery(query.id, {
-          text: '❌ Телефон не найден',
-          show_alert: true,
-        });
-      }
-      return;
-    }
-
-    if (data.startsWith('copy_email_')) {
-      const requestId = parseInt(data.replace('copy_email_', ''));
-      const request = await Request.findByPk(requestId);
-
-      if (request && request.email) {
-        await bot.answerCallbackQuery(query.id, {
-          text: `📧 Email скопирован: ${request.email}`,
-          show_alert: true,
-        });
-      } else {
-        await bot.answerCallbackQuery(query.id, {
-          text: '❌ Email не найден',
-          show_alert: true,
-        });
-      }
+      await bot.editMessageText(text, {
+        chat_id: chatId,
+        message_id: messageId,
+        parse_mode: 'HTML',
+        reply_markup: { inline_keyboard: keyboard },
+      });
       return;
     }
 
@@ -685,111 +676,43 @@ bot.on('callback_query', async (query) => {
       const request = await Request.findByPk(requestId);
 
       if (!request) {
-        await bot.answerCallbackQuery(query.id, {
-          text: '❌ Заявка не найдена',
-          show_alert: true,
-        });
+        await bot.answerCallbackQuery(query.id, { text: '❌ Заявка не найдена', show_alert: true });
         return;
       }
 
       request.status = 'выполнена';
       request.completed_at = new Date();
       await request.save();
-
       await cleanupOldRequests();
 
-      await bot.answerCallbackQuery(query.id, {
-        text: '✅ Заявка отмечена как выполненная',
-        show_alert: false,
+      await bot.answerCallbackQuery(query.id, { text: '✅ Заявка выполнена', show_alert: false });
+
+      await bot.editMessageText(`✅ Заявка #${request.id} выполнена`, {
+        chat_id: chatId,
+        message_id: messageId,
+        reply_markup: {
+          inline_keyboard: [
+            [{ text: '⬅ Назад к списку', callback_data: `list_${request.type}` }],
+            [{ text: '📋 Главное меню', callback_data: 'main_menu' }],
+          ],
+        },
       });
-
-      let successText = `✅ Заявка #${request.id} отмечена как выполненная\n\n`;
-
-      if (request.type === 'callback') {
-        successText += `📞 ${request.phone || 'Нет телефона'}`;
-      } else {
-        successText += `🤝 ${request.lastName || ''} ${request.firstName || ''} - ${
-          request.phone || request.email || 'Нет контакта'
-        }`;
-      }
-
-      try {
-        await bot.editMessageText(successText, {
-          chat_id: chatId,
-          message_id: messageId,
-          reply_markup: {
-            inline_keyboard: [
-              [{ text: '⬅ Назад к списку', callback_data: `list_${request.type}` }],
-              [{ text: '📋 Главное меню', callback_data: 'main_menu' }],
-            ],
-          },
-        });
-      } catch (error) {
-        await bot.deleteMessage(chatId, messageId).catch(() => {});
-        await bot.sendMessage(chatId, successText, {
-          reply_markup: {
-            inline_keyboard: [
-              [{ text: '⬅ Назад к списку', callback_data: `list_${request.type}` }],
-              [{ text: '📋 Главное меню', callback_data: 'main_menu' }],
-            ],
-          },
-        });
-      }
-
-      return;
-    }
-
-    if (data === 'loading' || data === 'empty') {
       return;
     }
   } catch (error) {
-    console.error('Error processing callback:', error);
-    try {
-      await bot.answerCallbackQuery(query.id, {
-        text: '❌ Произошла ошибка',
-        show_alert: true,
-      });
-    } catch (e) {
-      // Игнорируем ошибки ответа на callback
-    }
+    console.error('❌ Ошибка обработки callback:', error);
   }
 });
 
 /* ================= START SERVER ================= */
 
-app.use('/webhook', (req, res, next) => {
-  // Пропускаем только POST запросы
-  if (req.method !== 'POST') {
-    // Для всех остальных методов (GET, HEAD и т.д.) просто возвращаем OK
-    return res.status(200).send('Webhook endpoint is active. Please use POST.');
-  }
-
-  console.log('📨 Webhook received:');
-  console.log('  - Full path:', req.originalUrl);
-  console.log('  - Method:', req.method);
-  console.log('  - Body keys:', Object.keys(req.body || {}));
-
-  try {
-    // Передаём обновление в бота
-    if (req.body && bot) {
-      bot.processUpdate(req.body);
-      console.log('✅ Update processed successfully');
-    } else {
-      console.log('⚠️ No body or bot not ready');
-    }
-    res.sendStatus(200);
-  } catch (error) {
-    console.error('❌ Error processing webhook:', error);
-    res.sendStatus(500);
-  }
-});
-
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, '0.0.0.0', () => {
-  console.log(`🚀 Server running on port ${PORT}`);
-  console.log(`🤖 Bot started for admin: ${ADMIN_ID}`);
-  console.log(
-    `📊 В истории будут сохраняться последние ${MAX_COMPLETED_REQUESTS} выполненных заявок`,
-  );
-  console.log(`🌐 API доступно по адресу: https://greenleaf1-production.up.railway.app/api`);
+  console.log('\n🚀 ===== СЕРВЕР ЗАПУЩЕН =====');
+  console.log(`📡 Порт: ${PORT}`);
+  console.log(`🤖 Admin ID: ${ADMIN_ID}`);
+  console.log(`📊 Максимум заявок в истории: ${MAX_COMPLETED_REQUESTS}`);
+  console.log(`🌐 API: https://greenleaf-nso.ru/api`);
+  console.log(`🌍 Webhook: https://greenleaf-nso.ru/webhook/bot${BOT_TOKEN}`);
+  console.log('================================\n');
 });
