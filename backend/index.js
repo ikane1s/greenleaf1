@@ -757,10 +757,13 @@ bot.on('callback_query', async (query) => {
 
 /* ================= START SERVER ================= */
 
-// Эндпоинт для Telegram вебхука
-app.post(`/webhook`, (req, res) => {
+// Эндпоинт для Telegram вебхука - принимает любой путь начинающийся с /webhook
+app.post('/webhook*', (req, res) => {
   try {
     console.log('📨 Получен webhook от Telegram');
+    console.log('📨 Path:', req.path);
+    console.log('📨 Body:', JSON.stringify(req.body).substring(0, 200) + '...');
+
     bot.processUpdate(req.body);
     res.sendStatus(200);
   } catch (error) {
